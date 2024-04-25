@@ -1,0 +1,201 @@
+Or(Not(DYNAMIC_ATTRIBUTE-46),
+   name(docker.io/bitnami/redis:6.2.4-debian-10-r13) ==
+   docker.io/bitnami/redis)
+
+Or(Not(DYNAMIC_ATTRIBUTE-47),
+   tag(docker.io/bitnami/redis:6.2.4-debian-10-r13) ==
+   6.2.4-debian-10-r13)
+
+Or(Not(DYNAMIC_ATTRIBUTE-50),
+   name(getdtk/graph-example1-app:latest) ==
+   getdtk/graph-example1-app)
+
+Or(Not(DYNAMIC_ATTRIBUTE-51),
+   tag(getdtk/graph-example1-app:latest) == latest)
+
+Or(Not(DYNAMIC_ATTRIBUTE-54),
+   name(getdtk/graph-example2-app:latest) ==
+   getdtk/graph-example2-app)
+
+Or(Not(DYNAMIC_ATTRIBUTE-55),
+   tag(getdtk/graph-example2-app:latest) == latest)
+
+Or(Not(DYNAMIC_ATTRIBUTE-151),
+   secret_value(HelmParser.Kube.Secret-0/keys,
+                redis-password) ==
+   secret(redis, redis-password:Kube.Secret.Key))
+
+Or(Not(DYNAMIC_ATTRIBUTE-154),
+   secret_value(KubernetesParser.Kube.Secret-0/keys,
+                db_password) ==
+   secret(node-app2-secret, db_password:Kube.Secret.Key))
+
+Or(Not(DYNAMIC_ATTRIBUTE-157),
+   secret_value(KubernetesParser.Kube.Secret-1/keys,
+                db_password) ==
+   secret(node-app1-secret, db_password:Kube.Secret.Key))
+
+Or(Not(DYNAMIC_COMPONENT_LINK-166),
+   parent(KubernetesParser.Kube.Ingress.DefaultBackend-0) ==
+   KubernetesParser.Kube.Ingress-0)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-167),
+   parent(KubernetesParser.Kube.Ingress.DefaultBackend-1) ==
+   KubernetesParser.Kube.Ingress-1)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-171),
+   parent(KubernetesParser.Kube.Ingress-2/default_backend) ==
+   KubernetesParser.Kube.Ingress-2)
+
+Or(Not(DYNAMIC_ATTRIBUTE-187),
+   replica_count(HelmParser.Kube.StatefulSet-0/stable_network_id) ==
+   replicas(HelmParser.Kube.StatefulSet-0))
+
+Or(Not(DYNAMIC_ATTRIBUTE-188),
+   hostname(HelmParser.Kube.StatefulSet-0/stable_network_id) ==
+   name(HelmParser.Kube.StatefulSet-0))
+
+Or(Not(DYNAMIC_ATTRIBUTE-189),
+   namespace(HelmParser.Kube.StatefulSet-0/stable_network_id) ==
+   namespace(HelmParser.Kube.StatefulSet-0))
+
+Or(Not(DYNAMIC_ATTRIBUTE-190),
+   service(HelmParser.Kube.StatefulSet-0/stable_network_id) ==
+   service_name(HelmParser.Kube.StatefulSet-0))
+
+Or(Not(DYNAMIC_ATTRIBUTE-191),
+   cluster_domain_name(HelmParser.Kube.StatefulSet-0/stable_network_id) ==
+   cluster_domain_name(kube_cluster(manifest_set(HelmParser.Kube.StatefulSet-0))))
+
+Or(Not(DYNAMIC_ATTRIBUTE-194),
+   replica_count(HelmParser.Kube.StatefulSet-1/stable_network_id) ==
+   replicas(HelmParser.Kube.StatefulSet-1))
+
+Or(Not(DYNAMIC_ATTRIBUTE-195),
+   hostname(HelmParser.Kube.StatefulSet-1/stable_network_id) ==
+   name(HelmParser.Kube.StatefulSet-1))
+
+Or(Not(DYNAMIC_ATTRIBUTE-196),
+   namespace(HelmParser.Kube.StatefulSet-1/stable_network_id) ==
+   namespace(HelmParser.Kube.StatefulSet-1))
+
+Or(Not(DYNAMIC_ATTRIBUTE-197),
+   service(HelmParser.Kube.StatefulSet-1/stable_network_id) ==
+   service_name(HelmParser.Kube.StatefulSet-1))
+
+Or(Not(DYNAMIC_ATTRIBUTE-198),
+   cluster_domain_name(HelmParser.Kube.StatefulSet-1/stable_network_id) ==
+   cluster_domain_name(kube_cluster(manifest_set(HelmParser.Kube.StatefulSet-1))))
+
+Or(Not(DYNAMIC_COMPONENT_LINK-206),
+   kube_cluster(Config.ManifestSet.Instantiation-0) ==
+   KubeCluster-0)
+
+Or(Not(DYNAMIC_ATTRIBUTE-207),
+   conditionally_cast_to_port_number(ca4e8e130aadab2c76b7dbc7707864e4bddd395ff1b4a01265d442d879a9f5d9) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-208),
+   conditionally_cast_to_port_number(redis-14.4.0) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-209),
+   conditionally_cast_to_port_number(442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-210),
+   conditionally_cast_to_port_number(Helm) == COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-211),
+   conditionally_cast_to_port_number(8679d9a94a8356d93113a80b6b831c94387f2b72e1c0688249d3327275c32b7d) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-212),
+   conditionally_cast_to_port_number(node-app2) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-213),
+   conditionally_cast_to_port_number(master) == COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-214),
+   conditionally_cast_to_port_number(44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-215),
+   conditionally_cast_to_port_number(COMMON.NONE) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-216),
+   conditionally_cast_to_port_number(bitnami/redis) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-217),
+   conditionally_cast_to_port_number(6.2.4-debian-10-r13) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-218),
+   conditionally_cast_to_port_number(False) == COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-220),
+   conditionally_cast_to_port_number(8081) == 8081)
+
+Or(Not(DYNAMIC_ATTRIBUTE-221),
+   conditionally_cast_to_port_number(replica) == COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-222),
+   conditionally_cast_to_port_number(ExternalName) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-223),
+   conditionally_cast_to_port_number(6379) == 6379)
+
+Or(Not(DYNAMIC_ATTRIBUTE-224),
+   conditionally_cast_to_port_number(redis-4.4.0) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-225),
+   conditionally_cast_to_port_number(node-app1) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-226),
+   conditionally_cast_to_port_number(redis) == COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-227),
+   conditionally_cast_to_port_number(node) == COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-229),
+   conditionally_cast_to_port_number(80) == 80)
+
+Or(Not(DYNAMIC_ATTRIBUTE-230),
+   conditionally_cast_to_port_number(f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-231),
+   conditionally_cast_to_port_number(IfNotPresent) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-232),
+   conditionally_cast_to_port_number(no_match_value) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-233),
+   conditionally_cast_to_port_number(/) == COMMON.NONE)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-234),
+   cast_to_port(6379) == 6379)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-236),
+   cast_to_port(8080) == 8080)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-237),
+   cast_to_port(COMMON.NONE) == COMMON.NONE)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-239),
+   cast_to_port(31112) == 31112)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-240),
+   cast_to_port(8081) == 8081)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-241), cast_to_port(80) == 80)
+
+

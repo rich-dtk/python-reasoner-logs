@@ -1,0 +1,175 @@
+type: Config.ManifestSet.Instantiation
+logical_id: Config.ManifestSet.Instantiation-0
+attributes:
+  namespace:
+    type: Kube.Namespace
+
+---
+type: Container.Image
+logical_id: docker.io/bitnami/redis:6.2.4-debian-10-r13
+
+---
+type: Container.Image
+logical_id: getdtk/graph-example1-app:latest
+
+---
+type: Container.Image
+logical_id: getdtk/graph-example2-app:latest
+
+---
+type: Kube.Deployment
+logical_id: KubernetesParser.Kube.Deployment-0
+components:
+- type: Kube.Pod.Template
+  logical_id: KubernetesParser.Kube.Pod.Template-0
+  components:
+  - type: Kube.Container
+    logical_id: KubernetesParser.Kube.Container-0
+    components:
+    - type: Kube.Container.EnvVars
+      logical_id: KubernetesParser.Kube.Container-0/env_vars
+      fqdn: template/containers/env_vars
+
+---
+type: Kube.Deployment
+logical_id: KubernetesParser.Kube.Deployment-1
+components:
+- type: Kube.Pod.Template
+  logical_id: KubernetesParser.Kube.Pod.Template-1
+  components:
+  - type: Kube.Container
+    logical_id: KubernetesParser.Kube.Container-1
+    components:
+    - type: Kube.Container.EnvVars
+      logical_id: KubernetesParser.Kube.Container-1/env_vars
+      fqdn: template/containers/env_vars
+
+---
+type: Kube.Ingress.Class
+logical_id: ShadowIngressClass
+
+---
+type: Kube.Ingress
+logical_id: KubernetesParser.Kube.Ingress-0
+components:
+- type: Kube.Ingress.DefaultBackend
+  logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-0
+  fqdn: default_backend
+
+---
+type: Kube.Ingress
+logical_id: KubernetesParser.Kube.Ingress-1
+components:
+- type: Kube.Ingress.DefaultBackend
+  logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-1
+  fqdn: default_backend
+
+---
+type: Kube.Ingress
+logical_id: KubernetesParser.Kube.Ingress-2
+components:
+- type: Kube.Ingress.DefaultBackend
+  logical_id: KubernetesParser.Kube.Ingress-2/default_backend
+  fqdn: default_backend
+
+---
+type: Kube.Service
+logical_id: HelmParser.Kube.Service-0
+attributes:
+  name:
+    value: redis-headless
+    type: Kube.Name
+
+---
+type: Kube.Service
+logical_id: HelmParser.Kube.Service-1
+attributes:
+  name:
+    value: redis-master
+    type: Kube.Name
+
+---
+type: Kube.Service
+logical_id: HelmParser.Kube.Service-2
+attributes:
+  name:
+    value: redis-replicas
+    type: Kube.Name
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Ingress-2/default_backend/kube_service
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2/kube_service
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3/kube_service
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Service-0
+attributes:
+  name:
+    value: node-app2-svc
+    type: Kube.Name
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Service-1
+attributes:
+  name:
+    value: node-app1-svc
+    type: Kube.Name
+
+---
+type: Kube.StatefulSet
+logical_id: HelmParser.Kube.StatefulSet-0
+components:
+- type: Kube.Pod.Template
+  logical_id: HelmParser.Kube.Pod.Template-0
+  components:
+  - type: Kube.Container
+    logical_id: HelmParser.Kube.Container-0
+    components:
+    - type: Kube.Container.EnvVars
+      logical_id: HelmParser.Kube.Container-0/env_vars
+      fqdn: template/containers/env_vars
+
+---
+type: Kube.StatefulSet
+logical_id: HelmParser.Kube.StatefulSet-1
+components:
+- type: Kube.Pod.Template
+  logical_id: HelmParser.Kube.Pod.Template-1
+  components:
+  - type: Kube.Container
+    logical_id: HelmParser.Kube.Container-1
+    components:
+    - type: Kube.Container.EnvVars
+      logical_id: HelmParser.Kube.Container-1/env_vars
+      fqdn: template/containers/env_vars
+
+---
+type: Source.Reasoner
+logical_id: Source.Reasoner-0
+
+---

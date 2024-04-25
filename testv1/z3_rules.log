@@ -1,0 +1,1296 @@
+_parent.Kube.Workload(KubernetesParser.Kube.Deployment-0) ==
+KubernetesParser.Kube.Deployment-0
+
+_parent.Kube.Workload(KubernetesParser.Kube.Deployment-1) ==
+KubernetesParser.Kube.Deployment-1
+
+_parent.Kube.Workload(HelmParser.Kube.StatefulSet-0) ==
+HelmParser.Kube.StatefulSet-0
+
+_parent.Kube.Workload(HelmParser.Kube.StatefulSet-1) ==
+HelmParser.Kube.StatefulSet-1
+
+Or(Not(RULE-2),
+   ForAll([?sts, ?service],
+          Or(Not(manifest_set(?service) ==
+                 manifest_set(?sts)),
+             same_manifest_set(?service,
+                               _parent.Kube.Workload(?sts)))))
+
+Or(Not(RULE-3),
+   ForAll(?sts,
+          manifest_set(?sts) ==
+          manifest_set(_parent.Kube.Workload(?sts))))
+
+Or(Not(RULE-4),
+   ForAll([?deployment, ?service],
+          Or(Not(manifest_set(?service) ==
+                 manifest_set(?deployment)),
+             same_manifest_set(?service,
+                               _parent.Kube.Workload(?deployment)))))
+
+Or(Not(RULE-5),
+   ForAll(?deployment,
+          manifest_set(?deployment) ==
+          manifest_set(_parent.Kube.Workload(?deployment))))
+
+Or(Not(RULE-6),
+   ForAll([?kube.workload-1, ?kube.workload-2],
+          Or(Not(manifest_set(?kube.workload-1) ==
+                 manifest_set(?kube.workload-2)),
+             same_manifest_set(?kube.workload-1,
+                               ?kube.workload-2))))
+
+Or(Not(RULE-7),
+   ForAll([?helm.chart, ?helm.chart.release, ?container],
+          Or(Not(And(name_with_version(?helm.chart) ==
+                     If(has_key(labels(workload(?container)),
+                                helm.sh/chart),
+                        value(labels(workload(?container)),
+                              helm.sh/chart),
+                        no_match_value),
+                     release(?helm.chart,
+                             ?helm.chart.release))),
+             helm_chart_release(?container,
+                                ?helm.chart.release))))
+
+Or(Not(RULE-8),
+   ForAll(?container,
+          Or(If(has_key(labels(workload(?container)),
+                        app.kubernetes.io/instance),
+                value(labels(workload(?container)),
+                      app.kubernetes.io/instance),
+                no_match_value) ==
+             no_match_value,
+             helm_chart_release_name(?container,
+                                     If(has_key(labels(workload(?container)),
+                                        app.kubernetes.io/instance),
+                                        value(labels(workload(?container)),
+                                        app.kubernetes.io/instance),
+                                        no_match_value)))))
+
+Or(Not(RULE-9),
+   ForAll(?sts,
+          (If(has_key(labels(?sts),
+                      app.kubernetes.io/managed-by),
+              value(labels(?sts),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?sts)))
+
+Or(Not(RULE-10),
+   ForAll(?sts,
+          _managed_by_helm_helper(?sts,
+                                  If(managed_by_helm(?sts),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-11),
+   ForAll(?service,
+          (If(has_key(labels(?service),
+                      app.kubernetes.io/managed-by),
+              value(labels(?service),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?service)))
+
+Or(Not(RULE-12),
+   ForAll(?service,
+          _managed_by_helm_helper(?service,
+                                  If(managed_by_helm(?service),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-13),
+   ForAll(?deployment,
+          (If(has_key(labels(?deployment),
+                      app.kubernetes.io/managed-by),
+              value(labels(?deployment),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?deployment)))
+
+Or(Not(RULE-14),
+   ForAll(?deployment,
+          _managed_by_helm_helper(?deployment,
+                                  If(managed_by_helm(?deployment),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-15),
+   ForAll(?kube.secret,
+          (If(has_key(labels(?kube.secret),
+                      app.kubernetes.io/managed-by),
+              value(labels(?kube.secret),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?kube.secret)))
+
+Or(Not(RULE-16),
+   ForAll(?kube.secret,
+          _managed_by_helm_helper(?kube.secret,
+                                  If(managed_by_helm(?kube.secret),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-17),
+   ForAll(?service,
+          (If(has_key(labels(?service),
+                      app.kubernetes.io/managed-by),
+              value(labels(?service),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?service)))
+
+Or(Not(RULE-18),
+   ForAll(?service,
+          _managed_by_helm_helper(?service,
+                                  If(managed_by_helm(?service),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-19),
+   ForAll(?kube.ingress,
+          (If(has_key(labels(?kube.ingress),
+                      app.kubernetes.io/managed-by),
+              value(labels(?kube.ingress),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?kube.ingress)))
+
+Or(Not(RULE-20),
+   ForAll(?kube.ingress,
+          _managed_by_helm_helper(?kube.ingress,
+                                  If(managed_by_helm(?kube.ingress),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-21),
+   ForAll(?kube.ingress.class,
+          (If(has_key(labels(?kube.ingress.class),
+                      app.kubernetes.io/managed-by),
+              value(labels(?kube.ingress.class),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?kube.ingress.class)))
+
+Or(Not(RULE-22),
+   ForAll(?kube.ingress.class,
+          _managed_by_helm_helper(?kube.ingress.class,
+                                  If(managed_by_helm(?kube.ingress.class),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-23),
+   ForAll(?kube.ingress,
+          (If(has_key(labels(?kube.ingress),
+                      app.kubernetes.io/managed-by),
+              value(labels(?kube.ingress),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?kube.ingress)))
+
+Or(Not(RULE-24),
+   ForAll(?kube.ingress,
+          _managed_by_helm_helper(?kube.ingress,
+                                  If(managed_by_helm(?kube.ingress),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-25),
+   ForAll([?kube.namespace-1, ?kube.namespace-2],
+          matching_namespace(?kube.namespace-1,
+                             ?kube.namespace-2) ==
+          And(Not(?kube.namespace-1 == COMMON.NONE),
+              ?kube.namespace-1 == ?kube.namespace-2)))
+
+Or(Not(RULE-26),
+   ForAll([?service, ?kube.workload],
+          namespace_match(?service, ?kube.workload) ==
+          matching_namespace(namespace(?service),
+                             namespace(?kube.workload))))
+
+Or(Not(RULE-27),
+   ForAll(?deployment,
+          namespace(?deployment) ==
+          namespace(_parent.Kube.Workload(?deployment))))
+
+Or(Not(RULE-28),
+   ForAll(?sts,
+          namespace(?sts) ==
+          namespace(_parent.Kube.Workload(?sts))))
+
+Or(Not(RULE-29),
+   ForAll([?service, ?service_port],
+          Or(Not(ports(?service, ?service_port)),
+             cross_namespace_endpoints(?service_port,
+                                       name(?service),
+                                       namespace(?service),
+                                       cluster_domain_name(kube_cluster(manifest_set(?service))),
+                                       target_port(?service_port)))))
+
+Or(Not(RULE-30),
+   ForAll([?service_port,
+           ?kube.name,
+           ?kube.namespace,
+           ?kubecluster.domainname,
+           ?port],
+          Or(Not(cross_namespace_endpoints(?service_port,
+                                        ?kube.name,
+                                        ?kube.namespace,
+                                        ?kubecluster.domainname,
+                                        ?port)),
+             debug_cross_namespace_endpoints_user(?service_port,
+                                        ?kube.name))))
+
+Or(Not(RULE-31),
+   ForAll(?service_port,
+          target_port(?service_port) ==
+          debug_target_port(?service_port)))
+
+Or(Not(RULE-32),
+   label_subset(HelmParser.Kube.Service-0,
+                HelmParser.Kube.StatefulSet-0))
+
+Or(Not(RULE-33),
+   label_subset(HelmParser.Kube.Service-1,
+                HelmParser.Kube.StatefulSet-0))
+
+Or(Not(RULE-34),
+   label_subset(HelmParser.Kube.Service-0,
+                HelmParser.Kube.StatefulSet-1))
+
+Or(Not(RULE-35),
+   label_subset(HelmParser.Kube.Service-2,
+                HelmParser.Kube.StatefulSet-1))
+
+Or(Not(RULE-36),
+   label_subset(KubernetesParser.Kube.Service-0,
+                KubernetesParser.Kube.Deployment-0))
+
+Or(Not(RULE-37),
+   service_label_match(HelmParser.Kube.StatefulSet-0,
+                       HelmParser.Kube.Service-0))
+
+Or(Not(RULE-38),
+   service_label_match(HelmParser.Kube.StatefulSet-0,
+                       HelmParser.Kube.Service-1))
+
+Or(Not(RULE-39),
+   service_label_match(HelmParser.Kube.StatefulSet-1,
+                       HelmParser.Kube.Service-0))
+
+Or(Not(RULE-40),
+   service_label_match(HelmParser.Kube.StatefulSet-1,
+                       HelmParser.Kube.Service-2))
+
+Or(Not(RULE-41),
+   service_label_match(KubernetesParser.Kube.Deployment-0,
+                       KubernetesParser.Kube.Service-0))
+
+Or(Not(RULE-42),
+   ForAll([?service_port, ?kube.container.portitem],
+          Or(Not(And(connects_through_service(?kube.container.portitem,
+                                        service(?service_port)),
+                     Or(And(Not(container_port(?kube.container.portitem) ==
+                                COMMON.NONE),
+                            conditionally_cast_to_port_number(If(target_port(?service_port) ==
+                                        COMMON.NONE,
+                                        cast_to_port(port(?service_port)),
+                                        target_port(?service_port))) ==
+                            container_port(?kube.container.portitem)),
+                        And(Not(name(?kube.container.portitem) ==
+                                COMMON.NONE),
+                            If(target_port(?service_port) ==
+                               COMMON.NONE,
+                               cast_to_port(port(?service_port)),
+                               target_port(?service_port)) ==
+                            name(?kube.container.portitem))))),
+             matching_network_port_number(?kube.container.portitem,
+                                        ?service_port) ==
+             container_port(?kube.container.portitem))))
+
+Or(Not(RULE-43),
+   ForAll([?service_port, ?kube.workload, ?service],
+          Or(Not(ports(?service, ?service_port)),
+             pod_obj_link(?service_port, ?kube.workload) ==
+             And(namespace_match(?service, ?kube.workload),
+                 label_subset(?service, ?kube.workload)))))
+
+Or(Not(RULE-44),
+   ForAll(?container,
+          container_image(image(?container)) ==
+          container_image(?container)))
+
+Or(_EMatch.marked(docker.io/bitnami/redis:6.2.4-debian-10-r13),
+   Not(RULE-45))
+
+Or(Not(RULE-48),
+   container_image(docker.io/bitnami/redis:6.2.4-debian-10-r13) ==
+   docker.io/bitnami/redis:6.2.4-debian-10-r13)
+
+Or(_EMatch.marked(getdtk/graph-example1-app:latest),
+   Not(RULE-49))
+
+Or(Not(RULE-52),
+   container_image(getdtk/graph-example1-app) ==
+   getdtk/graph-example1-app:latest)
+
+Or(_EMatch.marked(getdtk/graph-example2-app:latest),
+   Not(RULE-53))
+
+Or(Not(RULE-56),
+   container_image(getdtk/graph-example2-app) ==
+   getdtk/graph-example2-app:latest)
+
+Or(Not(RULE-57),
+   ForAll([?deployment, ?service],
+          Or(Not(And(namespace(?deployment) ==
+                     namespace(?service),
+                     service_label_match(?deployment,
+                                        ?service))),
+             connected_by_service(?deployment, ?service))))
+
+Or(Not(RULE-58),
+   ForAll([?deployment, ?container, ?service],
+          Or(Not(And(connected_by_service(?deployment,
+                                        ?service),
+                     workload(?container) ==
+                     _parent.Kube.Workload(?deployment))),
+             connected_by_service(?container, ?service))))
+
+Or(Not(RULE-59),
+   ForAll([?sts, ?service],
+          Or(Not(And(namespace(?sts) == namespace(?service),
+                     service_label_match(?sts, ?service))),
+             connected_by_service(?sts, ?service))))
+
+Or(Not(RULE-60),
+   ForAll([?sts, ?container, ?service],
+          Or(Not(And(connected_by_service(?sts, ?service),
+                     workload(?container) ==
+                     _parent.Kube.Workload(?sts))),
+             connected_by_service(?container, ?service))))
+
+Or(Not(RULE-61),
+   ForAll([?service, ?container, ?kube.container.portitem],
+          Or(Not(And(connected_by_service(?container,
+                                        ?service),
+                     Kube.Container.ports(?container,
+                                        ?kube.container.portitem))),
+             connects_through_service(?kube.container.portitem,
+                                      ?service))))
+
+Or(_EMatch.marked(KubernetesParser.Kube.Container-0/env_vars),
+   Not(RULE-62))
+
+Or(Not(RULE-63),
+   env_vars(KubernetesParser.Kube.Container-0) ==
+   KubernetesParser.Kube.Container-0/env_vars)
+
+Or(Not(RULE-64),
+   value(KubernetesParser.Kube.Container-0/env_vars,
+         DB_PORT) ==
+   6379)
+
+Or(Not(RULE-65),
+   _meta_attr_fn__value__c__Config.Value(KubernetesParser.Kube.Container-0/env_vars,
+                                        DB_PORT) ==
+   COMMON.NONE)
+
+Or(Not(RULE-66),
+   env_vars(KubernetesParser.Kube.Container-0) ==
+   KubernetesParser.Kube.Container-0/env_vars)
+
+Or(Not(RULE-67),
+   value(KubernetesParser.Kube.Container-0/env_vars, PORT) ==
+   8080)
+
+Or(Not(RULE-68),
+   _meta_attr_fn__value__c__Config.Value(KubernetesParser.Kube.Container-0/env_vars,
+                                        PORT) ==
+   COMMON.NONE)
+
+Or(Not(RULE-69),
+   env_vars(KubernetesParser.Kube.Container-0) ==
+   KubernetesParser.Kube.Container-0/env_vars)
+
+Or(Not(RULE-70),
+   value(KubernetesParser.Kube.Container-0/env_vars,
+         DB_HOST) ==
+   my-release-redis-master)
+
+Or(Not(RULE-71),
+   _meta_attr_fn__value__c__Config.Value(KubernetesParser.Kube.Container-0/env_vars,
+                                        DB_HOST) ==
+   COMMON.NONE)
+
+Or(Not(RULE-72),
+   env_vars(KubernetesParser.Kube.Container-0) ==
+   KubernetesParser.Kube.Container-0/env_vars)
+
+Or(Not(RULE-73),
+   referenced_secret_name(KubernetesParser.Kube.Container-0/env_vars,
+                          DB_PASSWORD) ==
+   node-app2-secret)
+
+Or(Not(RULE-74),
+   referenced_secret_key(KubernetesParser.Kube.Container-0/env_vars,
+                         DB_PASSWORD) ==
+   db_password)
+
+Or(Not(RULE-75),
+   env_vars(KubernetesParser.Kube.Container-0) ==
+   KubernetesParser.Kube.Container-0/env_vars)
+
+Or(Not(RULE-76),
+   value(KubernetesParser.Kube.Container-0/env_vars,
+         NODE_ENV) ==
+   production)
+
+Or(Not(RULE-77),
+   _meta_attr_fn__value__c__Config.Value(KubernetesParser.Kube.Container-0/env_vars,
+                                        NODE_ENV) ==
+   COMMON.NONE)
+
+Or(_EMatch.marked(KubernetesParser.Kube.Container-1/env_vars),
+   Not(RULE-78))
+
+Or(Not(RULE-79),
+   env_vars(KubernetesParser.Kube.Container-1) ==
+   KubernetesParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-80),
+   value(KubernetesParser.Kube.Container-1/env_vars,
+         DB_PORT) ==
+   6379)
+
+Or(Not(RULE-81),
+   _meta_attr_fn__value__c__Config.Value(KubernetesParser.Kube.Container-1/env_vars,
+                                        DB_PORT) ==
+   COMMON.NONE)
+
+Or(Not(RULE-82),
+   env_vars(KubernetesParser.Kube.Container-1) ==
+   KubernetesParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-83),
+   value(KubernetesParser.Kube.Container-1/env_vars, PORT) ==
+   8080)
+
+Or(Not(RULE-84),
+   _meta_attr_fn__value__c__Config.Value(KubernetesParser.Kube.Container-1/env_vars,
+                                        PORT) ==
+   COMMON.NONE)
+
+Or(Not(RULE-85),
+   env_vars(KubernetesParser.Kube.Container-1) ==
+   KubernetesParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-86),
+   value(KubernetesParser.Kube.Container-1/env_vars,
+         DB_HOST) ==
+   my-release-redis-master)
+
+Or(Not(RULE-87),
+   _meta_attr_fn__value__c__Config.Value(KubernetesParser.Kube.Container-1/env_vars,
+                                        DB_HOST) ==
+   COMMON.NONE)
+
+Or(Not(RULE-88),
+   env_vars(KubernetesParser.Kube.Container-1) ==
+   KubernetesParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-89),
+   referenced_secret_name(KubernetesParser.Kube.Container-1/env_vars,
+                          DB_PASSWORD) ==
+   node-app1-secret)
+
+Or(Not(RULE-90),
+   referenced_secret_key(KubernetesParser.Kube.Container-1/env_vars,
+                         DB_PASSWORD) ==
+   db_password)
+
+Or(Not(RULE-91),
+   env_vars(KubernetesParser.Kube.Container-1) ==
+   KubernetesParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-92),
+   value(KubernetesParser.Kube.Container-1/env_vars,
+         NODE_ENV) ==
+   production)
+
+Or(Not(RULE-93),
+   _meta_attr_fn__value__c__Config.Value(KubernetesParser.Kube.Container-1/env_vars,
+                                        NODE_ENV) ==
+   COMMON.NONE)
+
+Or(_EMatch.marked(HelmParser.Kube.Container-0/env_vars),
+   Not(RULE-94))
+
+Or(Not(RULE-95),
+   env_vars(HelmParser.Kube.Container-0) ==
+   HelmParser.Kube.Container-0/env_vars)
+
+Or(Not(RULE-96),
+   value(HelmParser.Kube.Container-0/env_vars,
+         ALLOW_EMPTY_PASSWORD) ==
+   no)
+
+Or(Not(RULE-97),
+   _meta_attr_fn__value__c__Config.Value(HelmParser.Kube.Container-0/env_vars,
+                                        ALLOW_EMPTY_PASSWORD) ==
+   COMMON.NONE)
+
+Or(Not(RULE-98),
+   env_vars(HelmParser.Kube.Container-0) ==
+   HelmParser.Kube.Container-0/env_vars)
+
+Or(Not(RULE-99),
+   referenced_secret_name(HelmParser.Kube.Container-0/env_vars,
+                          REDIS_PASSWORD) ==
+   redis)
+
+Or(Not(RULE-100),
+   referenced_secret_key(HelmParser.Kube.Container-0/env_vars,
+                         REDIS_PASSWORD) ==
+   redis-password)
+
+Or(Not(RULE-101),
+   env_vars(HelmParser.Kube.Container-0) ==
+   HelmParser.Kube.Container-0/env_vars)
+
+Or(Not(RULE-102),
+   value(HelmParser.Kube.Container-0/env_vars,
+         BITNAMI_DEBUG) ==
+   false)
+
+Or(Not(RULE-103),
+   _meta_attr_fn__value__c__Config.Value(HelmParser.Kube.Container-0/env_vars,
+                                        BITNAMI_DEBUG) ==
+   COMMON.NONE)
+
+Or(Not(RULE-104),
+   env_vars(HelmParser.Kube.Container-0) ==
+   HelmParser.Kube.Container-0/env_vars)
+
+Or(Not(RULE-105),
+   value(HelmParser.Kube.Container-0/env_vars, REDIS_PORT) ==
+   6379)
+
+Or(Not(RULE-106),
+   And(_meta_attr_fn__value__c__Config.Value(HelmParser.Kube.Container-0/env_vars,
+                                        REDIS_PORT) ==
+       HelmParser.Helm.Chart.Release.Values-0,
+       _meta_attr_fn__value__a__Config.Value(HelmParser.Kube.Container-0/env_vars,
+                                        REDIS_PORT) ==
+       value,
+       _meta_attr_fn__value__k__Config.Value(HelmParser.Kube.Container-0/env_vars,
+                                        REDIS_PORT) ==
+       master.containerPort))
+
+Or(Not(RULE-107),
+   env_vars(HelmParser.Kube.Container-0) ==
+   HelmParser.Kube.Container-0/env_vars)
+
+Or(Not(RULE-108),
+   value(HelmParser.Kube.Container-0/env_vars,
+         REDIS_TLS_ENABLED) ==
+   no)
+
+Or(Not(RULE-109),
+   _meta_attr_fn__value__c__Config.Value(HelmParser.Kube.Container-0/env_vars,
+                                        REDIS_TLS_ENABLED) ==
+   COMMON.NONE)
+
+Or(Not(RULE-110),
+   env_vars(HelmParser.Kube.Container-0) ==
+   HelmParser.Kube.Container-0/env_vars)
+
+Or(Not(RULE-111),
+   value(HelmParser.Kube.Container-0/env_vars,
+         REDIS_REPLICATION_MODE) ==
+   master)
+
+Or(Not(RULE-112),
+   _meta_attr_fn__value__c__Config.Value(HelmParser.Kube.Container-0/env_vars,
+                                        REDIS_REPLICATION_MODE) ==
+   COMMON.NONE)
+
+Or(_EMatch.marked(HelmParser.Kube.Container-1/env_vars),
+   Not(RULE-113))
+
+Or(Not(RULE-114),
+   env_vars(HelmParser.Kube.Container-1) ==
+   HelmParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-115),
+   value(HelmParser.Kube.Container-1/env_vars,
+         ALLOW_EMPTY_PASSWORD) ==
+   no)
+
+Or(Not(RULE-116),
+   _meta_attr_fn__value__c__Config.Value(HelmParser.Kube.Container-1/env_vars,
+                                        ALLOW_EMPTY_PASSWORD) ==
+   COMMON.NONE)
+
+Or(Not(RULE-117),
+   env_vars(HelmParser.Kube.Container-1) ==
+   HelmParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-118),
+   referenced_secret_name(HelmParser.Kube.Container-1/env_vars,
+                          REDIS_PASSWORD) ==
+   redis)
+
+Or(Not(RULE-119),
+   referenced_secret_key(HelmParser.Kube.Container-1/env_vars,
+                         REDIS_PASSWORD) ==
+   redis-password)
+
+Or(Not(RULE-120),
+   env_vars(HelmParser.Kube.Container-1) ==
+   HelmParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-121),
+   value(HelmParser.Kube.Container-1/env_vars,
+         REDIS_MASTER_PORT_NUMBER) ==
+   6379)
+
+Or(Not(RULE-122),
+   And(_meta_attr_fn__value__c__Config.Value(HelmParser.Kube.Container-1/env_vars,
+                                        REDIS_MASTER_PORT_NUMBER) ==
+       HelmParser.Helm.Chart.Release.Values-0,
+       _meta_attr_fn__value__a__Config.Value(HelmParser.Kube.Container-1/env_vars,
+                                        REDIS_MASTER_PORT_NUMBER) ==
+       value,
+       _meta_attr_fn__value__k__Config.Value(HelmParser.Kube.Container-1/env_vars,
+                                        REDIS_MASTER_PORT_NUMBER) ==
+       master.service.port))
+
+Or(Not(RULE-123),
+   env_vars(HelmParser.Kube.Container-1) ==
+   HelmParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-124),
+   referenced_secret_name(HelmParser.Kube.Container-1/env_vars,
+                          REDIS_MASTER_PASSWORD) ==
+   redis)
+
+Or(Not(RULE-125),
+   referenced_secret_key(HelmParser.Kube.Container-1/env_vars,
+                         REDIS_MASTER_PASSWORD) ==
+   redis-password)
+
+Or(Not(RULE-126),
+   env_vars(HelmParser.Kube.Container-1) ==
+   HelmParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-127),
+   value(HelmParser.Kube.Container-1/env_vars,
+         BITNAMI_DEBUG) ==
+   false)
+
+Or(Not(RULE-128),
+   _meta_attr_fn__value__c__Config.Value(HelmParser.Kube.Container-1/env_vars,
+                                        BITNAMI_DEBUG) ==
+   COMMON.NONE)
+
+Or(Not(RULE-129),
+   env_vars(HelmParser.Kube.Container-1) ==
+   HelmParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-130),
+   value(HelmParser.Kube.Container-1/env_vars,
+         REDIS_MASTER_HOST) ==
+   redis-master-0.redis-headless.default.svc.cluster.local)
+
+Or(Not(RULE-131),
+   _meta_attr_fn__value__c__Config.Value(HelmParser.Kube.Container-1/env_vars,
+                                        REDIS_MASTER_HOST) ==
+   COMMON.NONE)
+
+Or(Not(RULE-132),
+   env_vars(HelmParser.Kube.Container-1) ==
+   HelmParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-133),
+   value(HelmParser.Kube.Container-1/env_vars, REDIS_PORT) ==
+   6379)
+
+Or(Not(RULE-134),
+   _meta_attr_fn__value__c__Config.Value(HelmParser.Kube.Container-1/env_vars,
+                                        REDIS_PORT) ==
+   COMMON.NONE)
+
+Or(Not(RULE-135),
+   env_vars(HelmParser.Kube.Container-1) ==
+   HelmParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-136),
+   value(HelmParser.Kube.Container-1/env_vars,
+         REDIS_TLS_ENABLED) ==
+   no)
+
+Or(Not(RULE-137),
+   _meta_attr_fn__value__c__Config.Value(HelmParser.Kube.Container-1/env_vars,
+                                        REDIS_TLS_ENABLED) ==
+   COMMON.NONE)
+
+Or(Not(RULE-138),
+   env_vars(HelmParser.Kube.Container-1) ==
+   HelmParser.Kube.Container-1/env_vars)
+
+Or(Not(RULE-139),
+   value(HelmParser.Kube.Container-1/env_vars,
+         REDIS_REPLICATION_MODE) ==
+   slave)
+
+Or(Not(RULE-140),
+   _meta_attr_fn__value__c__Config.Value(HelmParser.Kube.Container-1/env_vars,
+                                        REDIS_REPLICATION_MODE) ==
+   COMMON.NONE)
+
+Or(Not(RULE-141),
+   ForAll([?kube.container.envvars,
+           ?kube.container.envvarname,
+           ?kube.secret],
+          Or(Not(name(?kube.secret) ==
+                 referenced_secret_name(?kube.container.envvars,
+                                        ?kube.container.envvarname)),
+             linked_kube_secret(?kube.container.envvars,
+                                ?kube.container.envvarname,
+                                ?kube.secret))))
+
+Or(Not(RULE-142),
+   ForAll([?kube.container.envvars,
+           ?kube.container.envvarname,
+           ?kube.secret],
+          Or(Not(linked_kube_secret(?kube.container.envvars,
+                                    ?kube.container.envvarname,
+                                    ?kube.secret)),
+             And(secret_value(?kube.container.envvars,
+                              ?kube.container.envvarname) ==
+                 secret_value(keys(?kube.secret),
+                              referenced_secret_key(?kube.container.envvars,
+                                        ?kube.container.envvarname)),
+                 _meta_attr_fn__secret_value__c__Any.Secret(?kube.container.envvars,
+                                        ?kube.container.envvarname) ==
+                 keys(?kube.secret),
+                 _meta_attr_fn__secret_value__a__Any.Secret(?kube.container.envvars,
+                                        ?kube.container.envvarname) ==
+                 secret_value,
+                 _meta_attr_fn__secret_value__k__Any.Secret(?kube.container.envvars,
+                                        ?kube.container.envvarname) ==
+                 referenced_secret_key(?kube.container.envvars,
+                                       ?kube.container.envvarname)))))
+
+Or(_EMatch.marked(HelmParser.Kube.Secret-0/keys),
+   Not(RULE-143))
+
+Or(Not(RULE-144),
+   keys(HelmParser.Kube.Secret-0) ==
+   HelmParser.Kube.Secret-0/keys)
+
+Or(_EMatch.marked(KubernetesParser.Kube.Secret-0/keys),
+   Not(RULE-145))
+
+Or(Not(RULE-146),
+   keys(KubernetesParser.Kube.Secret-0) ==
+   KubernetesParser.Kube.Secret-0/keys)
+
+Or(_EMatch.marked(KubernetesParser.Kube.Secret-1/keys),
+   Not(RULE-147))
+
+Or(Not(RULE-148),
+   keys(KubernetesParser.Kube.Secret-1) ==
+   KubernetesParser.Kube.Secret-1/keys)
+
+Or(_EMatch.marked(secret(redis, redis-password:Kube.Secret.Key)),
+   Not(RULE-149))
+
+Or(_EMatch.marked(secret(node-app2-secret, db_password:Kube.Secret.Key)),
+   Not(RULE-152))
+
+Or(_EMatch.marked(secret(node-app1-secret, db_password:Kube.Secret.Key)),
+   Not(RULE-155))
+
+Or(_EMatch.marked(default), Not(RULE-158))
+
+Or(Not(RULE-159), member(default, HelmParser.Kube.Secret-0))
+
+Or(_EMatch.marked(${Config.ManifestSet.Instantiation-0.namespace}),
+   Not(RULE-160))
+
+Or(Not(RULE-161),
+   member(${Config.ManifestSet.Instantiation-0.namespace},
+          KubernetesParser.Kube.Secret-1))
+
+Or(Not(RULE-162),
+   ForAll(?kube.ingress.class,
+          (If(has_key(annotations(?kube.ingress.class),
+                      ingressclass.kubernetes.io/is-default-class),
+              value(annotations(?kube.ingress.class),
+                    ingressclass.kubernetes.io/is-default-class),
+              no_match_value) ==
+           true) ==
+          is_default_class(?kube.ingress.class)))
+
+Or(Not(RULE-163),
+   ForAll([?kube.ingress, ?kube.ingress.class],
+          Or(Not(ingress_class_name(?kube.ingress) ==
+                 name(?kube.ingress.class)),
+             _partial_matching_ingress_class(?kube.ingress) ==
+             ?kube.ingress.class)))
+
+Or(Not(RULE-164),
+   ForAll(?kube.ingress.class,
+          Not(is_default_class(?kube.ingress.class)) ==
+          is_not_default_class(?kube.ingress.class)))
+
+Or(Not(RULE-165),
+   ForAll(?kube.ingress.rule.httppath.backend,
+          Or(host_pattern_link(?kube.ingress.rule.httppath.backend) ==
+             host_pattern(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube.ingress.rule.httppath.backend))),
+             host(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube.ingress.rule.httppath.backend))) ==
+             COMMON.NONE)))
+
+Or(_EMatch.marked(KubernetesParser.Kube.Ingress-2/default_backend),
+   Not(RULE-168))
+
+Or(Not(RULE-169),
+   default_backend(KubernetesParser.Kube.Ingress-2) ==
+   KubernetesParser.Kube.Ingress-2/default_backend)
+
+Or(_shadow_component(KubernetesParser.Kube.Ingress-2/default_backend),
+   Not(RULE-170))
+
+Or(Not(RULE-172),
+   ForAll([?kube.ingress.defaultbackend, ?service],
+          Or(Not(And(name(?service) ==
+                     name(service(?kube.ingress.defaultbackend)),
+                     namespace(?service) ==
+                     namespace(parent(?kube.ingress.defaultbackend)))),
+             _matching_kube_service(?kube.ingress.defaultbackend,
+                                    ?service))))
+
+Or(Not(RULE-173),
+   ForAll([?kube.ingress.rule.httppath.backend, ?service],
+          Or(Not(And(name(?service) ==
+                     name(service(?kube.ingress.rule.httppath.backend)),
+                     namespace(?service) ==
+                     namespace(_parent.Kube.Ingress(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube.ingress.rule.httppath.backend)))))),
+             _matching_kube_service(?kube.ingress.rule.httppath.backend,
+                                    ?service))))
+
+Or(Not(RULE-174),
+   ForAll(?kube.ingress.rule.httppath.backend,
+          Or(host_pattern_link(?kube.ingress.rule.httppath.backend) ==
+             host_pattern(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube.ingress.rule.httppath.backend))),
+             host(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube.ingress.rule.httppath.backend))) ==
+             COMMON.NONE)))
+
+Or(Not(RULE-178),
+   ForAll(?kube.ingress,
+          rewrite_target(?kube.ingress,
+                         If(has_key(annotations(?kube.ingress),
+                                    nginx.ingress.kubernetes.io/rewrite-target),
+                            value(annotations(?kube.ingress),
+                                  nginx.ingress.kubernetes.io/rewrite-target),
+                            no_match_value))))
+
+Or(Not(RULE-179),
+   ForAll(?kube.ingress.rule.httppath.backend,
+          path_pattern(network_topology_http_route(?kube.ingress.rule.httppath.backend)) ==
+          path(_parent.Kube.Ingress.Rule.HttpPath(?kube.ingress.rule.httppath.backend))))
+
+Or(Not(RULE-180),
+   ForAll(?kube.ingress.rule.httppath.backend,
+          host_pattern(network_topology_http_route(?kube.ingress.rule.httppath.backend)) ==
+          If(host(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube.ingress.rule.httppath.backend))) ==
+             COMMON.NONE,
+             *,
+             host(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube.ingress.rule.httppath.backend))))))
+
+Or(Not(RULE-181),
+   ForAll([?app.kubeingresscontroller, ?kube.ingress],
+          Or(Not(watch_ingress_without_class(params(?app.kubeingresscontroller))),
+             _kube_ingress_modal(?app.kubeingresscontroller,
+                                 ?kube.ingress,
+                                 DoesHold))))
+
+Or(Not(RULE-182),
+   ForAll([?app.kubeingresscontroller,
+           ?kube.ingress,
+           ?kube.ingress.class],
+          Or(Not(And(kube_ingress_class(?app.kubeingresscontroller,
+                                        ?kube.ingress.class),
+                     ingress_class(?kube.ingress) ==
+                     ?kube.ingress.class)),
+             _kube_ingress_modal(?app.kubeingresscontroller,
+                                 ?kube.ingress,
+                                 DoesHold))))
+
+Or(Not(RULE-183),
+   ForAll([?app.kubeingresscontroller, ?kube.ingress.class],
+          Or(Not(controller_class(params(?app.kubeingresscontroller)) ==
+                 controller(?kube.ingress.class)),
+             kube_ingress_class(?app.kubeingresscontroller,
+                                ?kube.ingress.class))))
+
+Or(Not(RULE-184),
+   ForAll(?sts,
+          And(stable_network_id_url(?sts) ==
+              url(stable_network_id(?sts)),
+              _meta_attr_fn__stable_network_id_url__c__Any.String(?sts) ==
+              stable_network_id(?sts),
+              _meta_attr_fn__stable_network_id_url__a__Any.String(?sts) ==
+              url)))
+
+Or(_EMatch.marked(HelmParser.Kube.StatefulSet-0/stable_network_id),
+   Not(RULE-185))
+
+Or(Not(RULE-186),
+   stable_network_id(HelmParser.Kube.StatefulSet-0) ==
+   HelmParser.Kube.StatefulSet-0/stable_network_id)
+
+Or(_EMatch.marked(HelmParser.Kube.StatefulSet-1/stable_network_id),
+   Not(RULE-192))
+
+Or(Not(RULE-193),
+   stable_network_id(HelmParser.Kube.StatefulSet-1) ==
+   HelmParser.Kube.StatefulSet-1/stable_network_id)
+
+Or(Not(RULE-199),
+   ForAll([?kube.stablenetworkref, ?kube.stablenetworkid],
+          Or(Not(matches_network_id(?kube.stablenetworkref,
+                                    ?kube.stablenetworkid)),
+             And(hostname(?kube.stablenetworkref) ==
+                 hostname(?kube.stablenetworkid),
+                 Not(replica_count(?kube.stablenetworkid) +
+                     -1*index(?kube.stablenetworkref) <=
+                     0),
+                 service(?kube.stablenetworkref) ==
+                 service(?kube.stablenetworkid),
+                 namespace(?kube.stablenetworkref) ==
+                 namespace(?kube.stablenetworkid),
+                 cluster_domain_name(?kube.stablenetworkref) ==
+                 cluster_domain_name(?kube.stablenetworkid)))))
+
+Or(Not(RULE-200),
+   ForAll([?kube.stablenetworkref, ?kube.stablenetworkid],
+          debug_matches_network_id(?kube.stablenetworkref,
+                                   ?kube.stablenetworkid) ==
+          Not(replica_count(?kube.stablenetworkid) +
+              -1*index(?kube.stablenetworkref) <=
+              0)))
+
+Or(Not(RULE-201),
+   ForAll([?sts, ?container],
+          Or(Not(Kube.Pod.Template.containers(Kube.StatefulSet.template(?sts),
+                                        ?container)),
+             workload(?container) ==
+             _parent.Kube.Workload(?sts))))
+
+Or(Not(RULE-202),
+   ForAll(?sts,
+          And(kind(_parent.Kube.Workload(?sts)) ==
+              StatefulSet,
+              namespace(_parent.Kube.Workload(?sts)) ==
+              namespace(?sts),
+              name(_parent.Kube.Workload(?sts)) ==
+              name(?sts),
+              annotations(_parent.Kube.Workload(?sts)) ==
+              annotations(?sts),
+              labels(_parent.Kube.Workload(?sts)) ==
+              labels(?sts))))
+
+Or(Not(RULE-203),
+   ForAll([?deployment, ?container],
+          Or(Not(Kube.Pod.Template.containers(Kube.Deployment.template(?deployment),
+                                        ?container)),
+             workload(?container) ==
+             _parent.Kube.Workload(?deployment))))
+
+Or(Not(RULE-204),
+   ForAll(?deployment,
+          And(kind(_parent.Kube.Workload(?deployment)) ==
+              Deployment,
+              namespace(_parent.Kube.Workload(?deployment)) ==
+              namespace(?deployment),
+              name(_parent.Kube.Workload(?deployment)) ==
+              name(?deployment),
+              annotations(_parent.Kube.Workload(?deployment)) ==
+              annotations(?deployment),
+              labels(_parent.Kube.Workload(?deployment)) ==
+              labels(?deployment))))
+
+Or(_EMatch.marked(KubeCluster-0), Not(RULE-205))
+
+Or(_EMatch.marked(8081), Not(RULE-219))
+
+Or(_EMatch.marked(80), Not(RULE-228))
+
+Or(_EMatch.marked(8080), Not(RULE-235))
+
+Or(_EMatch.marked(31112), Not(RULE-238))
+
+Or(Not(RULE-242),
+   ForAll(?config.manifestset.instantiation,
+          kube_cluster_domain_name(?config.manifestset.instantiation) ==
+          cluster_domain_name(kube_cluster(?config.manifestset.instantiation))))
+
+Or(Not(RULE-243),
+   ForAll([?slave_app.redis,
+           ?master_app.redis,
+           ?app.redis.cluster],
+          Or(Not(And(redis_replication_mode(params(?slave_app.redis)) ==
+                     slave,
+                     redis_replication_mode(params(?master_app.redis)) ==
+                     master,
+                     slave_replicas(?app.redis.cluster,
+                                    ?slave_app.redis),
+                     master(?app.redis.cluster,
+                            ?master_app.redis))),
+             connects_to_master(?slave_app.redis,
+                                ?master_app.redis,
+                                ShouldHold))))
+
+Or(Not(RULE-244),
+   ForAll([?slave_app.redis, ?master_app.redis],
+          Or(Not(And(connects_to_master(?slave_app.redis,
+                                        ?master_app.redis,
+                                        ShouldHold),
+                     Not(connects_to_master(?slave_app.redis,
+                                        ?master_app.redis,
+                                        DoesHold)))),
+             connects_to_master_violation(?slave_app.redis,
+                                        ?master_app.redis))))
+
+Or(Not(RULE-245),
+   ForAll([?sts, ?master_app.redis],
+          Or(Not(And(_parent.Kube.Workload(?sts) ==
+                     workload(kube_container(?master_app.redis)),
+                     redis_replication_mode(params(?master_app.redis)) ==
+                     master)),
+             stable_network_id_on_master(?master_app.redis) ==
+             stable_network_id(?sts))))
+
+Or(Not(RULE-246),
+   ForAll([?slave_app.redis, ?master_app.redis],
+          Or(Not(connects_to_master(?slave_app.redis,
+                                    ?master_app.redis,
+                                    DoesHold)),
+             And(redis_master_port(params(?slave_app.redis)) ==
+                 redis_port_number(params(?master_app.redis)),
+                 matches_network_id(redis_master_stable_network_ref(?slave_app.redis),
+                                    stable_network_id_on_master(?master_app.redis))))))
+
+Or(_EMatch.marked(default), Not(RULE-247))
+
+Or(_EMatch.marked(default/member[0]), Not(RULE-248))
+
+Or(Not(RULE-249), member(default, default/member[0]))
+
+Or(Not(RULE-250),
+   kube_ref(default/member[0], HelmParser.Kube.Secret-0))
+
+Or(_EMatch.marked(default/member[1]), Not(RULE-251))
+
+Or(Not(RULE-252), member(default, default/member[1]))
+
+Or(Not(RULE-253),
+   kube_ref(default/member[1],
+            KubernetesParser.Kube.Secret-0))
+
+Or(_EMatch.marked(default/member[2]), Not(RULE-254))
+
+Or(Not(RULE-255), member(default, default/member[2]))
+
+Or(Not(RULE-256),
+   kube_ref(default/member[2],
+            KubernetesParser.Kube.Secret-1))
+
+Or(Not(RULE-257),
+   ForAll([?secret.store, ?kube.secret-1],
+          Or(And(?secret.store == default,
+                 ?kube.secret-1 == HelmParser.Kube.Secret-0),
+             And(?secret.store == default,
+                 ?kube.secret-1 ==
+                 KubernetesParser.Kube.Secret-0),
+             And(?secret.store == default,
+                 ?kube.secret-1 ==
+                 KubernetesParser.Kube.Secret-1)) ==
+          kube_secret(?secret.store, ?kube.secret-1)))
+
+
+If(apps_created(default), True, False) == True
+
+
+If(apps_created(default), True, False) == True
+
+_kube_ingress_modal(shadow-ingress-controller,
+                    KubernetesParser.Kube.Ingress-2,
+                    DoesHold)
+
+_kube_ingress_modal(shadow-ingress-controller,
+                    KubernetesParser.Kube.Ingress-0,
+                    DoesHold)
+
+_kube_ingress_modal(shadow-ingress-controller,
+                    KubernetesParser.Kube.Ingress-1,
+                    DoesHold)
+
+
+Or(ingress_class(KubernetesParser.Kube.Ingress-2) ==
+   ShadowIngressClass)
+
+Or(ingress_class(KubernetesParser.Kube.Ingress-0) ==
+   ShadowIngressClass)
+
+Or(ingress_class(KubernetesParser.Kube.Ingress-1) ==
+   ShadowIngressClass)
+
+
+KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service !=
+HelmParser.Kube.Service-0
+
+KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service !=
+KubernetesParser.Kube.Service-1
+
+KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service !=
+KubernetesParser.Kube.Service-0
+
+KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service !=
+HelmParser.Kube.Service-1
+
+KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service !=
+HelmParser.Kube.Service-2
+
+_shadow_component(KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service)
+
+kube_service(KubernetesParser.Kube.Ingress.DefaultBackend-0) ==
+KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service
+
+namespace(KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service) ==
+default
+
+name(KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service) ==
+nginx-ingress-controller
+
+KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service !=
+HelmParser.Kube.Service-0
+
+KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service !=
+KubernetesParser.Kube.Service-1
+
+KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service !=
+KubernetesParser.Kube.Service-0
+
+KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service !=
+HelmParser.Kube.Service-1
+
+KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service !=
+HelmParser.Kube.Service-2
+
+_shadow_component(KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service)
+
+kube_service(KubernetesParser.Kube.Ingress.DefaultBackend-1) ==
+KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service
+
+namespace(KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service) ==
+namespace(Config.ManifestSet.Instantiation-0)
+
+name(KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service) ==
+test2
+
+KubernetesParser.Kube.Ingress-2/default_backend/kube_service !=
+HelmParser.Kube.Service-0
+
+KubernetesParser.Kube.Ingress-2/default_backend/kube_service !=
+KubernetesParser.Kube.Service-1
+
+KubernetesParser.Kube.Ingress-2/default_backend/kube_service !=
+KubernetesParser.Kube.Service-0
+
+KubernetesParser.Kube.Ingress-2/default_backend/kube_service !=
+HelmParser.Kube.Service-1
+
+KubernetesParser.Kube.Ingress-2/default_backend/kube_service !=
+HelmParser.Kube.Service-2
+
+_shadow_component(KubernetesParser.Kube.Ingress-2/default_backend/kube_service)
+
+kube_service(KubernetesParser.Kube.Ingress-2/default_backend) ==
+KubernetesParser.Kube.Ingress-2/default_backend/kube_service
+
+namespace(KubernetesParser.Kube.Ingress-2/default_backend/kube_service) ==
+namespace(Config.ManifestSet.Instantiation-0)
+
+kube_service(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3) ==
+KubernetesParser.Kube.Service-0
+
+kube_service(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2) ==
+KubernetesParser.Kube.Service-1
+
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service !=
+HelmParser.Kube.Service-0
+
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service !=
+KubernetesParser.Kube.Service-1
+
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service !=
+KubernetesParser.Kube.Service-0
+
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service !=
+HelmParser.Kube.Service-1
+
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service !=
+HelmParser.Kube.Service-2
+
+_shadow_component(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service)
+
+kube_service(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service
+
+namespace(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service) ==
+namespace(Config.ManifestSet.Instantiation-0)
+
+name(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service) ==
+node-app-svc
+
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service !=
+HelmParser.Kube.Service-0
+
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service !=
+KubernetesParser.Kube.Service-1
+
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service !=
+KubernetesParser.Kube.Service-0
+
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service !=
+HelmParser.Kube.Service-1
+
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service !=
+HelmParser.Kube.Service-2
+
+_shadow_component(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service)
+
+kube_service(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service
+
+namespace(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service) ==
+default
+
+name(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service) ==
+node-app1-svc
+
+

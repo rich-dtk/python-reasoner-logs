@@ -1,0 +1,407 @@
+logical_id: Source.Reasoner-0
+type: Source.Reasoner
+attributes:
+  name:
+    value: ai-reasoner
+    type: Any.String
+
+---
+logical_id: shadow-ingress-controller
+type: App.KubeIngressController
+attributes:
+  controller_type:
+    value: or(other,nginx)
+    type: App.KubeIngressController.Type
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+  kube_ingress:
+    endpoint_type: Kube.Ingress
+    endpoints:
+    - KubernetesParser.Kube.Ingress-0
+    - KubernetesParser.Kube.Ingress-2
+    - KubernetesParser.Kube.Ingress-1
+
+---
+logical_id: redis-14.4.0/redis/redis_cluster
+type: App.Redis.Cluster
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+components:
+  master:
+  - logical_id: redis-14.4.0/redis/redis_cluster/master[0]
+    type: App.Redis
+    links:
+      _source:
+        endpoint_type: Source.Reasoner
+        endpoints:
+        - Source.Reasoner-0
+      implemented_by__kube_service:
+        endpoint_type: Kube.Service
+        endpoints:
+        - HelmParser.Kube.Service-0
+        - HelmParser.Kube.Service-1
+      implemented_by__kube_statefulset:
+        endpoint_type: Kube.StatefulSet
+        endpoints:
+        - HelmParser.Kube.StatefulSet-0
+      kube_container:
+        endpoint_type: Kube.Container
+        endpoints:
+        - HelmParser.Kube.Container-0
+    components:
+      service_endpoints:
+      - logical_id: redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints
+        type: Service.Endpoint
+        links:
+          _source:
+            endpoint_type: Source.Reasoner
+            endpoints:
+            - Source.Reasoner-0
+      params:
+      - logical_id: redis-14.4.0/redis/redis_cluster/master[0]/params
+        type: App.Redis.Params
+        links:
+          _source:
+            endpoint_type: Source.Reasoner
+            endpoints:
+            - Source.Reasoner-0
+  slave_replicas:
+  - logical_id: redis-14.4.0/redis/redis_cluster/slave_replicas[0]
+    type: App.Redis
+    attributes:
+      connects_to_master:
+        value:
+        - redis_master: redis-14.4.0/redis/redis_cluster/master[0]
+          modality: ShouldHold
+        type:
+          struct:
+            redis_master: App.Redis
+            modality: Meta.Modality
+    links:
+      _source:
+        endpoint_type: Source.Reasoner
+        endpoints:
+        - Source.Reasoner-0
+      implemented_by__kube_service:
+        endpoint_type: Kube.Service
+        endpoints:
+        - HelmParser.Kube.Service-2
+        - HelmParser.Kube.Service-0
+      implemented_by__kube_statefulset:
+        endpoint_type: Kube.StatefulSet
+        endpoints:
+        - HelmParser.Kube.StatefulSet-1
+      kube_container:
+        endpoint_type: Kube.Container
+        endpoints:
+        - HelmParser.Kube.Container-1
+    components:
+      service_endpoints:
+      - logical_id: redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints
+        type: Service.Endpoint
+        links:
+          _source:
+            endpoint_type: Source.Reasoner
+            endpoints:
+            - Source.Reasoner-0
+      params:
+      - logical_id: redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params
+        type: App.Redis.Params
+        links:
+          _source:
+            endpoint_type: Source.Reasoner
+            endpoints:
+            - Source.Reasoner-0
+      redis_master_stable_network_ref:
+      - logical_id: redis-14.4.0/redis/redis_cluster/slave_replicas[0]/redis_master_stable_network_ref
+        type: Kube.StableNetworkRef
+        links:
+          _source:
+            endpoint_type: Source.Reasoner
+            endpoints:
+            - Source.Reasoner-0
+
+---
+logical_id: redis-14.4.0/redis/redis_cluster/master[0]
+type: App.Redis
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+components:
+  params:
+  - logical_id: redis-14.4.0/redis/redis_cluster/master[0]/params
+    type: App.Redis.Params
+    attributes:
+      redis_replication_mode:
+        value: master
+        type: App.Redis.ReplicationMode
+      redis_tls_enabled:
+        value: 'no'
+        type: Any.String
+      default_redis_port_number:
+        value: '6379'
+        type: Network.Port.Number
+      redis_password:
+        value: secret_value(env_vars(HelmParser.Kube.Container-0),REDIS_PASSWORD)
+        type: Any.Secret
+    links:
+      _source:
+        endpoint_type: Source.Reasoner
+        endpoints:
+        - Source.Reasoner-0
+  service_endpoints:
+  - logical_id: redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints
+    type: Service.Endpoint
+    attributes:
+      service_type:
+        value: redis
+        type: Service.Type
+      port:
+        value: '6379'
+        attribute_links:
+        - encoding: attribute_link
+          encoded_function:
+            attribute_name: default_redis_port_number
+            attribute_type: Network.Port.Number
+            base_component:
+              name: redis-14.4.0/redis/redis_cluster/master[0]/params
+              type: App.Redis.Params
+          user_friendly_form: null
+        type: Network.Port.Number
+      protocol:
+        value: http
+        type: Network.Protocol
+    links:
+      _source:
+        endpoint_type: Source.Reasoner
+        endpoints:
+        - Source.Reasoner-0
+
+---
+logical_id: redis-14.4.0/redis/redis_cluster/slave_replicas[0]
+type: App.Redis
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+components:
+  params:
+  - logical_id: redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params
+    type: App.Redis.Params
+    attributes:
+      redis_replication_mode:
+        value: slave
+        type: App.Redis.ReplicationMode
+      redis_tls_enabled:
+        value: 'no'
+        type: Any.String
+      default_redis_port_number:
+        value: '6379'
+        type: Network.Port.Number
+      redis_master_port:
+        value: '6379'
+        type: Network.Port.Number
+      redis_master_host:
+        value: redis-master-0.redis-headless.default.svc.cluster.local
+        type: Network.Address
+      redis_password:
+        value: secret_value(env_vars(HelmParser.Kube.Container-1),REDIS_PASSWORD)
+        type: Any.Secret
+      redis_master_password:
+        value: secret_value(env_vars(HelmParser.Kube.Container-1),REDIS_MASTER_PASSWORD)
+        type: Any.Secret
+    links:
+      _source:
+        endpoint_type: Source.Reasoner
+        endpoints:
+        - Source.Reasoner-0
+  service_endpoints:
+  - logical_id: redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints
+    type: Service.Endpoint
+    attributes:
+      service_type:
+        value: redis
+        type: Service.Type
+      port:
+        value: '6379'
+        attribute_links:
+        - encoding: attribute_link
+          encoded_function:
+            attribute_name: default_redis_port_number
+            attribute_type: Network.Port.Number
+            base_component:
+              name: redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params
+              type: App.Redis.Params
+          user_friendly_form: null
+        type: Network.Port.Number
+      protocol:
+        value: http
+        type: Network.Protocol
+    links:
+      _source:
+        endpoint_type: Source.Reasoner
+        endpoints:
+        - Source.Reasoner-0
+  redis_master_stable_network_ref:
+  - logical_id: redis-14.4.0/redis/redis_cluster/slave_replicas[0]/redis_master_stable_network_ref
+    type: Kube.StableNetworkRef
+    links:
+      _source:
+        endpoint_type: Source.Reasoner
+        endpoints:
+        - Source.Reasoner-0
+
+---
+logical_id: HelmParser.Kube.Service-2
+type: Kube.Service
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-11
+
+---
+logical_id: HelmParser.Kube.Service-0
+type: Kube.Service
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-9
+
+---
+logical_id: HelmParser.Kube.Service-1
+type: Kube.Service
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-10
+
+---
+logical_id: HelmParser.Kube.StatefulSet-1
+type: Kube.StatefulSet
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-13
+components:
+  template:
+  - logical_id: HelmParser.Kube.Pod.Template-1
+    type: Kube.Pod.Template
+    components:
+      containers:
+      - logical_id: HelmParser.Kube.Container-1
+        type: Kube.Container
+
+---
+logical_id: HelmParser.Kube.StatefulSet-0
+type: Kube.StatefulSet
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-12
+components:
+  template:
+  - logical_id: HelmParser.Kube.Pod.Template-0
+    type: Kube.Pod.Template
+    components:
+      containers:
+      - logical_id: HelmParser.Kube.Container-0
+        type: Kube.Container
+
+---
+logical_id: KubernetesParser.Kube.Ingress-0
+type: Kube.Ingress
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-4
+
+---
+logical_id: KubernetesParser.Kube.Ingress-2
+type: Kube.Ingress
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-4
+
+---
+logical_id: KubernetesParser.Kube.Ingress-1
+type: Kube.Ingress
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-4
+
+---
+logical_id: KubernetesParser.Kube.Container-0
+type: Kube.Container
+attributes:
+  _image_name:
+    value: getdtk/graph-example2-app
+    type: Container.Image.Name
+  _image_tag:
+    value: latest
+    type: Container.Tag.Name
+  image_name_and_tag:
+    value: getdtk/graph-example2-app:latest
+    type: Container.NameAndTag.Name
+
+---
+logical_id: KubernetesParser.Kube.Container-1
+type: Kube.Container
+attributes:
+  _image_name:
+    value: getdtk/graph-example1-app
+    type: Container.Image.Name
+  _image_tag:
+    value: latest
+    type: Container.Tag.Name
+  image_name_and_tag:
+    value: getdtk/graph-example1-app:latest
+    type: Container.NameAndTag.Name
+
+---
+logical_id: HelmParser.Kube.Container-0
+type: Kube.Container
+attributes:
+  _image_name:
+    value: docker.io/bitnami/redis
+    type: Container.Image.Name
+  _image_tag:
+    value: 6.2.4-debian-10-r13
+    type: Container.Tag.Name
+  image_name_and_tag:
+    value: docker.io/bitnami/redis:6.2.4-debian-10-r13
+    type: Container.NameAndTag.Name
+
+---
+logical_id: HelmParser.Kube.Container-1
+type: Kube.Container
+attributes:
+  _image_name:
+    value: docker.io/bitnami/redis
+    type: Container.Image.Name
+  _image_tag:
+    value: 6.2.4-debian-10-r13
+    type: Container.Tag.Name
+  image_name_and_tag:
+    value: docker.io/bitnami/redis:6.2.4-debian-10-r13
+    type: Container.NameAndTag.Name
+
+---

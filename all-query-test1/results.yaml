@@ -1,0 +1,199 @@
+type: Config.ManifestSet.Instantiation
+top_component_ref:
+  resource_type: reasoner
+  sort_name: Config.ManifestSet.Instantiation
+  logical_id: Config.ManifestSet.Instantiation-0
+logical_id: Config.ManifestSet.Instantiation-0
+links:
+- link_name: kube_cluster
+  endpoint_type: KubeCluster
+  endpoints:
+  - component_ref:
+      logical_id: KubeCluster-0
+
+---
+type: Kube.NamespaceSecrets
+top_component_ref:
+  resource_type: reasoner
+  sort_name: Kube.NamespaceSecrets
+  logical_id: default
+logical_id: default
+links:
+- link_name: _source
+  endpoint_type: Source.Reasoner
+  endpoints:
+  - component_ref:
+      logical_id: Source.Reasoner-0
+- link_name: member
+  endpoint_type: Kube.Secret
+  endpoints:
+  - component_ref:
+      logical_id: KubeParser.Kube.Secret-1
+
+---
+type: Kube.Secret
+top_component_ref:
+  resource_type: reasoner
+  sort_name: Kube.Secret
+  logical_id: KubeParser.Kube.Secret-1
+logical_id: KubeParser.Kube.Secret-1
+components:
+- type: Kube.Secret.Keys
+  fqdn:
+    internal_path: keys
+    external_path: keys
+  logical_id: KubeParser.Kube.Secret-1/keys
+  link_name: keys
+  links:
+  - link_name: _source
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - component_ref:
+        logical_id: Source.Reasoner-0
+links:
+- link_name: _source
+  endpoint_type: Source.FilePath
+  endpoints:
+  - component_ref:
+      logical_id: Source.FilePath-1
+
+---
+type: Kube.Service
+top_component_ref:
+  resource_type: reasoner
+  sort_name: Kube.Service
+  logical_id: KubeParser.Kube.Service-1
+logical_id: KubeParser.Kube.Service-1
+components:
+- type: Kube.Service.ServicePort
+  fqdn:
+    internal_path: ports
+    external_path: ports
+  logical_id: KubeParser.Kube.Service.ServicePort-1
+  link_name: ports
+  attributes:
+  - debug_cross_namespace_endpoints_user:
+      value:
+      - release-name-redis-headless
+      type:
+        array: Kube.Name
+links:
+- link_name: _source
+  endpoint_type: Source.FilePath
+  endpoints:
+  - component_ref:
+      logical_id: Source.FilePath-1
+
+---
+type: Kube.Service
+top_component_ref:
+  resource_type: reasoner
+  sort_name: Kube.Service
+  logical_id: KubeParser.Kube.Service-2
+logical_id: KubeParser.Kube.Service-2
+components:
+- type: Kube.Service.ServicePort
+  fqdn:
+    internal_path: ports
+    external_path: ports
+  logical_id: KubeParser.Kube.Service.ServicePort-2
+  link_name: ports
+  attributes:
+  - debug_cross_namespace_endpoints_user:
+      value:
+      - release-name-redis-master
+      type:
+        array: Kube.Name
+links:
+- link_name: _source
+  endpoint_type: Source.FilePath
+  endpoints:
+  - component_ref:
+      logical_id: Source.FilePath-1
+
+---
+type: Kube.Service
+top_component_ref:
+  resource_type: reasoner
+  sort_name: Kube.Service
+  logical_id: KubeParser.Kube.Service-3
+logical_id: KubeParser.Kube.Service-3
+components:
+- type: Kube.Service.ServicePort
+  fqdn:
+    internal_path: ports
+    external_path: ports
+  logical_id: KubeParser.Kube.Service.ServicePort-3
+  link_name: ports
+  attributes:
+  - debug_cross_namespace_endpoints_user:
+      value:
+      - release-name-redis-replicas
+      type:
+        array: Kube.Name
+links:
+- link_name: _source
+  endpoint_type: Source.FilePath
+  endpoints:
+  - component_ref:
+      logical_id: Source.FilePath-1
+
+---
+type: KubeCluster
+top_component_ref:
+  resource_type: reasoner
+  sort_name: KubeCluster
+  logical_id: KubeCluster-0
+logical_id: KubeCluster-0
+attributes:
+- cluster_domain_name:
+    value: null
+    type: KubeCluster.DomainName
+links:
+- link_name: _source
+  endpoint_type: Source.Reasoner
+  endpoints:
+  - component_ref:
+      logical_id: Source.Reasoner-0
+
+---
+type: Secret.Store
+top_component_ref:
+  resource_type: reasoner
+  sort_name: Secret.Store
+  logical_id: default
+logical_id: default
+components:
+- type: Secret
+  fqdn:
+    internal_path: member[0]
+    external_path: member[0]
+  logical_id: default/member[0]
+  link_name: member
+  links:
+  - link_name: _source
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - component_ref:
+        logical_id: Source.Reasoner-0
+links:
+- link_name: _source
+  endpoint_type: Source.Reasoner
+  endpoints:
+  - component_ref:
+      logical_id: Source.Reasoner-0
+- link_name: kube_secret
+  endpoint_type: Kube.Secret
+  endpoints:
+  - component_ref:
+      logical_id: KubeParser.Kube.Secret-1
+
+---
+type: Source.Reasoner
+logical_id: Source.Reasoner-0
+attributes:
+- name:
+    value: ai-reasoner
+    type: Any.String
+
+---

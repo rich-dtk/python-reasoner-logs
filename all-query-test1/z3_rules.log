@@ -1,0 +1,353 @@
+_parent.Kube.Workload(KubeParser.Kube.StatefulSet-2) ==
+KubeParser.Kube.StatefulSet-2
+
+_parent.Kube.Workload(KubeParser.Kube.StatefulSet-1) ==
+KubeParser.Kube.StatefulSet-1
+
+Or(Not(RULE-2),
+   ForAll([?sts, ?service],
+          Or(Not(manifest_set(?service) ==
+                 manifest_set(?sts)),
+             same_manifest_set(?service,
+                               _parent.Kube.Workload(?sts)))))
+
+Or(Not(RULE-3),
+   ForAll(?sts,
+          manifest_set(?sts) ==
+          manifest_set(_parent.Kube.Workload(?sts))))
+
+Or(Not(RULE-4),
+   ForAll([?kube.workload-1, ?kube.workload-2],
+          Or(Not(manifest_set(?kube.workload-1) ==
+                 manifest_set(?kube.workload-2)),
+             same_manifest_set(?kube.workload-1,
+                               ?kube.workload-2))))
+
+Or(Not(RULE-5),
+   ForAll(?service,
+          (If(has_key(labels(?service),
+                      app.kubernetes.io/managed-by),
+              value(labels(?service),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?service)))
+
+Or(Not(RULE-6),
+   ForAll(?service,
+          _managed_by_helm_helper(?service,
+                                  If(managed_by_helm(?service),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-7),
+   ForAll(?kube.secret,
+          (If(has_key(labels(?kube.secret),
+                      app.kubernetes.io/managed-by),
+              value(labels(?kube.secret),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?kube.secret)))
+
+Or(Not(RULE-8),
+   ForAll(?kube.secret,
+          _managed_by_helm_helper(?kube.secret,
+                                  If(managed_by_helm(?kube.secret),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-9),
+   ForAll(?sts,
+          (If(has_key(labels(?sts),
+                      app.kubernetes.io/managed-by),
+              value(labels(?sts),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?sts)))
+
+Or(Not(RULE-10),
+   ForAll(?sts,
+          _managed_by_helm_helper(?sts,
+                                  If(managed_by_helm(?sts),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-11),
+   ForAll(?service,
+          (If(has_key(labels(?service),
+                      app.kubernetes.io/managed-by),
+              value(labels(?service),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?service)))
+
+Or(Not(RULE-12),
+   ForAll(?service,
+          _managed_by_helm_helper(?service,
+                                  If(managed_by_helm(?service),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-13),
+   ForAll(?kube.ingress.class,
+          (If(has_key(labels(?kube.ingress.class),
+                      app.kubernetes.io/managed-by),
+              value(labels(?kube.ingress.class),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?kube.ingress.class)))
+
+Or(Not(RULE-14),
+   ForAll(?kube.ingress.class,
+          _managed_by_helm_helper(?kube.ingress.class,
+                                  If(managed_by_helm(?kube.ingress.class),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-15),
+   ForAll([?kube.namespace-1, ?kube.namespace-2],
+          matching_namespace(?kube.namespace-1,
+                             ?kube.namespace-2) ==
+          And(Not(?kube.namespace-1 == COMMON.NONE),
+              ?kube.namespace-1 == ?kube.namespace-2)))
+
+Or(Not(RULE-16),
+   ForAll([?service, ?kube.workload],
+          namespace_match(?service, ?kube.workload) ==
+          matching_namespace(namespace(?service),
+                             namespace(?kube.workload))))
+
+Or(Not(RULE-17),
+   ForAll(?sts,
+          namespace(?sts) ==
+          namespace(_parent.Kube.Workload(?sts))))
+
+Or(Not(RULE-18),
+   ForAll([?service, ?service_port],
+          Or(Not(ports(?service, ?service_port)),
+             cross_namespace_endpoints(?service_port,
+                                       name(?service),
+                                       namespace(?service),
+                                       cluster_domain_name(kube_cluster(manifest_set(?service))),
+                                       target_port(?service_port)))))
+
+Or(Not(RULE-19),
+   ForAll([?service_port,
+           ?kube.name,
+           ?kube.namespace,
+           ?kubecluster.domainname,
+           ?port],
+          Or(Not(cross_namespace_endpoints(?service_port,
+                                        ?kube.name,
+                                        ?kube.namespace,
+                                        ?kubecluster.domainname,
+                                        ?port)),
+             debug_cross_namespace_endpoints_user(?service_port,
+                                        ?kube.name))))
+
+Or(Not(RULE-20),
+   ForAll(?service_port,
+          target_port(?service_port) ==
+          debug_target_port(?service_port)))
+
+Or(Not(RULE-21),
+   ForAll([?service_port, ?kube.workload, ?service],
+          Or(Not(ports(?service, ?service_port)),
+             pod_obj_link(?service_port, ?kube.workload) ==
+             And(namespace_match(?service, ?kube.workload),
+                 label_subset(?service, ?kube.workload)))))
+
+Or(Not(RULE-22),
+   ForAll([?sts, ?service],
+          Or(Not(And(namespace(?sts) == namespace(?service),
+                     service_label_match(?sts, ?service))),
+             connected_by_service(?sts, ?service))))
+
+Or(Not(RULE-23),
+   ForAll([?kube.container.envvars,
+           ?kube.container.envvarname,
+           ?kube.secret],
+          Or(Not(name(?kube.secret) ==
+                 referenced_secret_name(?kube.container.envvars,
+                                        ?kube.container.envvarname)),
+             linked_kube_secret(?kube.container.envvars,
+                                ?kube.container.envvarname,
+                                ?kube.secret))))
+
+Or(Not(RULE-24),
+   ForAll([?kube.container.envvars,
+           ?kube.container.envvarname,
+           ?kube.secret],
+          Or(Not(linked_kube_secret(?kube.container.envvars,
+                                    ?kube.container.envvarname,
+                                    ?kube.secret)),
+             And(secret_value(?kube.container.envvars,
+                              ?kube.container.envvarname) ==
+                 secret_value(keys(?kube.secret),
+                              referenced_secret_key(?kube.container.envvars,
+                                        ?kube.container.envvarname)),
+                 _meta_attr_fn__secret_value__c__Any.Secret(?kube.container.envvars,
+                                        ?kube.container.envvarname) ==
+                 keys(?kube.secret),
+                 _meta_attr_fn__secret_value__a__Any.Secret(?kube.container.envvars,
+                                        ?kube.container.envvarname) ==
+                 secret_value,
+                 _meta_attr_fn__secret_value__k__Any.Secret(?kube.container.envvars,
+                                        ?kube.container.envvarname) ==
+                 referenced_secret_key(?kube.container.envvars,
+                                       ?kube.container.envvarname)))))
+
+Or(Not(RULE-25),
+   ForAll(?kube.ingress.class,
+          (If(has_key(annotations(?kube.ingress.class),
+                      ingressclass.kubernetes.io/is-default-class),
+              value(annotations(?kube.ingress.class),
+                    ingressclass.kubernetes.io/is-default-class),
+              no_match_value) ==
+           true) ==
+          is_default_class(?kube.ingress.class)))
+
+Or(Not(RULE-26),
+   ForAll(?kube.ingress.class,
+          Not(is_default_class(?kube.ingress.class) ==
+              is_not_default_class(?kube.ingress.class))))
+
+Or(Not(RULE-27),
+   ForAll([?app.kubeingresscontroller, ?kube.ingress.class],
+          Or(Not(controller_class(params(?app.kubeingresscontroller)) ==
+                 controller(?kube.ingress.class)),
+             kube_ingress_class(?app.kubeingresscontroller,
+                                ?kube.ingress.class))))
+
+Or(Not(RULE-28),
+   ForAll(?sts,
+          And(stable_network_id_url(?sts) ==
+              url(stable_network_id(?sts)),
+              _meta_attr_fn__stable_network_id_url__c__Any.String(?sts) ==
+              stable_network_id(?sts),
+              _meta_attr_fn__stable_network_id_url__a__Any.String(?sts) ==
+              url)))
+
+Or(_EMatch.marked(KubeParser.Kube.StatefulSet-2/stable_network_id),
+   Not(RULE-29))
+
+Or(Not(RULE-30),
+   stable_network_id(KubeParser.Kube.StatefulSet-2) ==
+   KubeParser.Kube.StatefulSet-2/stable_network_id)
+
+Or(_EMatch.marked(KubeParser.Kube.StatefulSet-1/stable_network_id),
+   Not(RULE-36))
+
+Or(Not(RULE-37),
+   stable_network_id(KubeParser.Kube.StatefulSet-1) ==
+   KubeParser.Kube.StatefulSet-1/stable_network_id)
+
+Or(Not(RULE-43),
+   ForAll([?kube.stablenetworkref, ?kube.stablenetworkid],
+          Or(Not(matches_network_id(?kube.stablenetworkref,
+                                    ?kube.stablenetworkid)),
+             And(hostname(?kube.stablenetworkref) ==
+                 hostname(?kube.stablenetworkid),
+                 Not(replica_count(?kube.stablenetworkid) +
+                     -1*index(?kube.stablenetworkref) <=
+                     0),
+                 service(?kube.stablenetworkref) ==
+                 service(?kube.stablenetworkid),
+                 namespace(?kube.stablenetworkref) ==
+                 namespace(?kube.stablenetworkid),
+                 cluster_domain_name(?kube.stablenetworkref) ==
+                 cluster_domain_name(?kube.stablenetworkid)))))
+
+Or(Not(RULE-44),
+   ForAll([?kube.stablenetworkref, ?kube.stablenetworkid],
+          Not((replica_count(?kube.stablenetworkid) +
+               -1*index(?kube.stablenetworkref) <=
+               0) ==
+              debug_matches_network_id(?kube.stablenetworkref,
+                                       ?kube.stablenetworkid))))
+
+Or(Not(RULE-45),
+   ForAll(?sts,
+          And(kind(_parent.Kube.Workload(?sts)) ==
+              StatefulSet,
+              namespace(_parent.Kube.Workload(?sts)) ==
+              namespace(?sts),
+              name(_parent.Kube.Workload(?sts)) ==
+              name(?sts),
+              annotations(_parent.Kube.Workload(?sts)) ==
+              annotations(?sts),
+              labels(_parent.Kube.Workload(?sts)) ==
+              labels(?sts))))
+
+Or(_EMatch.marked(KubeCluster-0), Not(RULE-46))
+
+Or(_EMatch.marked(6379), Not(RULE-56))
+
+Or(Not(RULE-59),
+   ForAll(?config.manifestset.instantiation,
+          kube_cluster_domain_name(?config.manifestset.instantiation) ==
+          cluster_domain_name(kube_cluster(?config.manifestset.instantiation))))
+
+Or(Not(RULE-60),
+   ForAll([?slave_app.redis,
+           ?master_app.redis,
+           ?app.redis.cluster],
+          Or(Not(And(redis_replication_mode(params(?slave_app.redis)) ==
+                     slave,
+                     redis_replication_mode(params(?master_app.redis)) ==
+                     master,
+                     slave_replicas(?app.redis.cluster,
+                                    ?slave_app.redis),
+                     master(?app.redis.cluster,
+                            ?master_app.redis))),
+             connects_to_master(?slave_app.redis,
+                                ?master_app.redis,
+                                ShouldHold))))
+
+Or(Not(RULE-61),
+   ForAll([?slave_app.redis, ?master_app.redis],
+          Or(Not(And(connects_to_master(?slave_app.redis,
+                                        ?master_app.redis,
+                                        ShouldHold),
+                     Not(connects_to_master(?slave_app.redis,
+                                        ?master_app.redis,
+                                        DoesHold)))),
+             connects_to_master_violation(?slave_app.redis,
+                                        ?master_app.redis))))
+
+Or(Not(RULE-62),
+   ForAll([?slave_app.redis, ?master_app.redis],
+          Or(Not(connects_to_master(?slave_app.redis,
+                                    ?master_app.redis,
+                                    DoesHold)),
+             And(redis_master_port(params(?slave_app.redis)) ==
+                 redis_port_number(params(?master_app.redis)),
+                 matches_network_id(redis_master_stable_network_ref(?slave_app.redis),
+                                    stable_network_id_on_master(?master_app.redis))))))
+
+Or(_EMatch.marked(default), Not(RULE-63))
+
+Or(_EMatch.marked(default/member[0]), Not(RULE-64))
+
+Or(Not(RULE-65), member(default, default/member[0]))
+
+Or(Not(RULE-66),
+   kube_ref(default/member[0], KubeParser.Kube.Secret-1))
+
+Or(Not(RULE-67),
+   ForAll([?secret.store, ?kube.secret-1],
+          And(?secret.store == default,
+              ?kube.secret-1 == KubeParser.Kube.Secret-1) ==
+          kube_secret(?secret.store, ?kube.secret-1)))
+
+
+keys(KubeParser.Kube.Secret-1) ==
+KubeParser.Kube.Secret-1/keys
+
+member(default, KubeParser.Kube.Secret-1)
+
+

@@ -1,0 +1,2334 @@
+Throwing out App.Redis.implemented_by because error
+Non-existant domain sort name 'DomainSort'
+Throwing out App.KubeIngressController.implemented_by because error
+Non-existant domain sort name 'DomainSort'
+dynamic_rule.adding.always_fires: rule=add_container_image_attributes
+dynamic_rule.scheduling_static_preconditions: rule=update_meta_stage_to_apps_created, preconditions=[Kube.Container.container_image,Container.Image.name,Kube.Container.helm_chart_release]
+dynamic_rule.adding.for_effects: rule=update_meta_stage_to_apps_created, effects=[Meta.Stage.apps_can_be_created]
+dynamic_rule.scheduling_static_preconditions: rule=update_meta_stage_to_apps_can_be_create, preconditions=[Meta.Stage.apps_can_be_created]
+dynamic_rule.adding.for_effects: rule=update_meta_stage_to_apps_can_be_create, effects=[Meta.Stage.apps_created]
+dynamic_rule.pruning.effects_not_in_queries: rule=network_port_number_violation, effects=[Kube.Container.PortItem.network_port_number_violation]
+dynamic_rule.adding.always_fires: rule=label_subset
+dynamic_rule.pruning.effects_not_in_queries: rule=env_vars, effects=[Kube.Container.EnvVars._meta_term_component,Kube.Container.EnvVars._meta_term_key,Kube.Container.EnvVars._meta_attribute_function__component,Kube.Container.EnvVars._meta_attribute_function__attribute,Kube.Container.EnvVars._meta_attribute_function__key,Kube.Container.EnvVars._meta_dict_attribute_function__component,Kube.Container.EnvVars._meta_dict_attribute_function__attribute,Kube.Container.EnvVars._meta_dict_attribute_function__key,Kube.Container.EnvVars.deployment_state,Kube.Container.EnvVars.source_type_is_file_based,Kube.Container.EnvVars.value,Kube.Container.EnvVars.secret_value,Kube.Container.EnvVars.referenced_secret_name,Kube.Container.EnvVars.referenced_secret_key,Kube.Container.EnvVars.linked_kube_secret]
+dynamic_rule.pruning.effects_not_in_queries: rule=populate_secret_info, effects=[Kube.Secret.Keys._meta_term_component,Kube.Secret.Keys._meta_term_key,Kube.Secret.Keys._meta_attribute_function__component,Kube.Secret.Keys._meta_attribute_function__attribute,Kube.Secret.Keys._meta_attribute_function__key,Kube.Secret.Keys._meta_dict_attribute_function__component,Kube.Secret.Keys._meta_dict_attribute_function__attribute,Kube.Secret.Keys._meta_dict_attribute_function__key,Kube.Secret.Keys.deployment_state,Kube.Secret.Keys.source_type_is_file_based,Kube.Secret.Keys.secret_value,Kube.Secret.Keys._meta_term_component,Kube.Secret.Keys._meta_term_key,Kube.Secret.Keys._meta_attribute_function__component,Kube.Secret.Keys._meta_attribute_function__attribute,Kube.Secret.Keys._meta_attribute_function__key,Kube.Secret.Keys._meta_dict_attribute_function__component,Kube.Secret.Keys._meta_dict_attribute_function__attribute,Kube.Secret.Keys._meta_dict_attribute_function__key,Kube.Secret.Keys.deployment_state,Kube.Secret.Keys.source_type_is_file_based,Kube.Secret.Keys.secret_value,Kube.NamespaceSecrets._meta_term_component,Kube.NamespaceSecrets._meta_term_key,Kube.NamespaceSecrets._meta_attribute_function__component,Kube.NamespaceSecrets._meta_attribute_function__attribute,Kube.NamespaceSecrets._meta_attribute_function__key,Kube.NamespaceSecrets._meta_dict_attribute_function__component,Kube.NamespaceSecrets._meta_dict_attribute_function__attribute,Kube.NamespaceSecrets._meta_dict_attribute_function__key,Kube.NamespaceSecrets.deployment_state,Kube.NamespaceSecrets.source_type_is_file_based,Kube.NamespaceSecrets.member]
+dynamic_rule.scheduling_dynamic_preconditions: rule=matching_ingress_class, preconditions=[Kube.Ingress.Class.is_default_class]
+dynamic_rule.pruning.effects_not_in_queries: rule=computed_default_backend, effects=[Kube.Ingress.default_backend,Kube.Ingress.DefaultBackend.parent]
+dynamic_rule.pruning.effects_not_in_queries: rule=connects_to_service, effects=[Kube.Ingress.DefaultBackend.kube_service]
+dynamic_rule.pruning.effects_not_in_queries: rule=path_backend_host_pattern, effects=[Kube.Ingress.Rule.HttpPath.Backend.host_pattern_link]
+dynamic_rule.pruning.effects_not_in_queries: rule=network_port_number_violation, effects=[Kube.Ingress.DefaultBackend.no_matching_services_violation]
+dynamic_rule.pruning.effects_not_in_queries: rule=network_topology_routing_node_and_routes, effects=[Kube.Ingress.network_topology_node,Network.Topology.Node.http_routes,Network.Topology.Node.HttpRoute.path_pattern,Network.Topology.Node.HttpRoute.host_pattern]
+dynamic_rule.pruning.effects_not_in_queries: rule=compute_stable_network_id_details, effects=[Kube.StatefulSet.stable_network_id,Kube.StableNetworkId._meta_term_component,Kube.StableNetworkId._meta_term_key,Kube.StableNetworkId._meta_attribute_function__component,Kube.StableNetworkId._meta_attribute_function__attribute,Kube.StableNetworkId._meta_attribute_function__key,Kube.StableNetworkId._meta_dict_attribute_function__component,Kube.StableNetworkId._meta_dict_attribute_function__attribute,Kube.StableNetworkId._meta_dict_attribute_function__key,Kube.StableNetworkId.hostname,Kube.StableNetworkId.namespace,Kube.StableNetworkId.cluster_domain_name,Kube.StableNetworkId.service,Kube.StableNetworkId.replica_count,Kube.StableNetworkId.url]
+dynamic_rule.pruning.effects_not_in_queries: rule=compute_stable_network_id_url, effects=[Kube.StableNetworkId.url,Kube.StatefulSet.stable_network_id_url]
+dynamic_rule.pruning.effects_not_in_queries: rule=conditionally_cast_to_port_number, effects=[Network.Port.conditionally_cast_to_port_number]
+dynamic_rule.pruning.effects_not_in_queries: rule=cast_port_number_to_port, effects=[Network.Port.Number.cast_to_port]
+dynamic_rule.scheduling_static_preconditions: rule=discover_ingress_controllers, preconditions=[Kube.Container.container_image,Container.Image.name,Kube.Container.helm_chart_release]
+dynamic_rule.scheduling_dynamic_preconditions: rule=discover_ingress_controllers, preconditions=[Kube.Container.container_image]
+dynamic_rule.scheduling_static_preconditions: rule=create_redis_components, preconditions=[Kube.Container.container_image,Container.Image.name,Kube.Container.helm_chart_release]
+dynamic_rule.scheduling_dynamic_preconditions: rule=create_redis_components, preconditions=[Kube.Container.container_image]
+dynamic_rule.pruning.effects_not_in_queries: rule=populate_secret_store, effects=[Secret.Store._meta_term_component,Secret.Store._meta_term_key,Secret.Store._meta_attribute_function__component,Secret.Store._meta_attribute_function__attribute,Secret.Store._meta_attribute_function__key,Secret.Store._meta_dict_attribute_function__component,Secret.Store._meta_dict_attribute_function__attribute,Secret.Store._meta_dict_attribute_function__key,Secret.Store.kube_secret,Secret.Store.member,Secret._meta_term_component,Secret._meta_term_key,Secret._meta_attribute_function__component,Secret._meta_attribute_function__attribute,Secret._meta_attribute_function__key,Secret._meta_dict_attribute_function__component,Secret._meta_dict_attribute_function__attribute,Secret._meta_dict_attribute_function__key,Secret.kube_ref]
+unknown
+solver.check: 0.0105
+unknown
+solver.check: 0.0082
+unknown
+solver.check: 0.0091
+Check sat for model checking
+sat
+solver.check: 0.1687
+===================
+preconditions for App.Redis.implemented_by__kube_deployment
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.implemented_by__kube_secret
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.implemented_by__kube_service
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.implemented_by__kube_statefulset
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.kube_container
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.service_endpoints
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.debug_service_endpoint
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.params
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.redis_master_stable_network_ref
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.stable_network_id_on_master
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.connects_to_master
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.not_connects_to_master
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.connects_to_master_violation
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.Params.redis_replication_mode
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.Params.redis_password
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.Params.redis_master_password
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.Params.redis_tls_enabled
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.Params.redis_port_number
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.Params.default_redis_port_number
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.Params.redis_master_port
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.Redis.Params.redis_master_host
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.Params.config_map
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.Params.election_id
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.Params.default_backend_service
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.Params.pod_name
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.Params.pod_namespace
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.Params.controller_class
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.Params.watch_ingress_without_class
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for Meta.Term.ComponentType.not_dynamically_created
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.implemented_by__kube_deployment
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.implemented_by__kube_secret
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.implemented_by__kube_service
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.implemented_by__kube_statefulset
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.kube_container
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.service_endpoints
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.debug_service_endpoint
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.default_backend_namespace
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.default_backend_name
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.is_not_discovered
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.kube_ingress_class
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.kube_ingress
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+   FunctionPrecondition(Kube.Ingress.Class.is_default_class); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.controller_type
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.params
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for Meta.Stage.apps_can_be_created
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+===================
+===================
+preconditions for Meta.Stage.apps_created
+   FunctionPrecondition(Meta.Stage.apps_can_be_created); is_met=False
+===================
+=====================================================================
+=====================================================================
+query results for stage 1
+
+===============================
+Processing query container_image(Kube.Container):Container.Image:
+
+unsat_solver: unsat; timing=0.002466440200805664
+unsat_solver: unsat; timing=0.002680540084838867
+unsat_solver: unsat; timing=0.0020322799682617188
+unsat_solver: unsat; timing=0.0003924369812011719
+unsat_solver: unsat; timing=0.00040340423583984375
+unsat_solver: unsat; timing=0.0002067089080810547
+unsat_solver: unsat; timing=0.002252340316772461
+unsat_solver: unsat; timing=0.0019731521606445312
+unsat_solver: unsat; timing=0.0020322799682617188
+unsat_solver: unsat; timing=0.002101421356201172
+unsat_solver: unsat; timing=0.0023970603942871094
+unsat_solver: unsat; timing=0.0028138160705566406
+unsat_solver: unsat; timing=0.002140522003173828
+unsat_solver: unsat; timing=0.0021321773529052734
+unsat_solver: unsat; timing=0.0020437240600585938
+unsat_solver: unsat; timing=0.00028634071350097656
+unsat_solver: unsat; timing=0.00019407272338867188
+unsat_solver: unsat; timing=0.0001723766326904297
+DEBUG: for container_image, last_else_value
+Container.Image!val!4
+
+
+
+For container_image need to process else value, which maps to: KubernetesParser.Container.Image-0
+existing assignments
+HelmParser.Kube.Container-1 -> docker.io/bitnami/redis:6.2.4-debian-10-r13
+HelmParser.Kube.Container-0 -> docker.io/bitnami/redis:6.2.4-debian-10-r13
+KubernetesParser.Kube.Container-0 -> getdtk/graph-example2-app:latest
+unsat_solver: unsat; timing=0.00031113624572753906
+adding
+[KubernetesParser.Kube.Container-1]
+KubernetesParser.Container.Image-0
+unknown
+solver.check: 0.0094
+Check sat for model checking
+sat
+solver.check: 0.2000
+
+Results:
+
+timing=0.0108
+{'query': 'container_image(Kube.Container):Container.Image',
+ 'function_results': [{'arg1': KubernetesParser.Kube.Container-0,
+                       'arg2': getdtk/graph-example2-app:latest},
+                      {'arg1': HelmParser.Kube.Container-0,
+                       'arg2': docker.io/bitnami/redis:6.2.4-debian-10-r13},
+                      {'arg1': HelmParser.Kube.Container-1,
+                       'arg2': docker.io/bitnami/redis:6.2.4-debian-10-r13},
+                      {'arg1': KubernetesParser.Kube.Container-1,
+                       'arg2': KubernetesParser.Container.Image-0}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Container-1 -> '
+                                           'docker.io/bitnami/redis:6.2.4-debian-10-r13',
+                                           'HelmParser.Kube.Container-0 -> '
+                                           'docker.io/bitnami/redis:6.2.4-debian-10-r13',
+                                           'KubernetesParser.Kube.Container-0 '
+                                           '-> '
+                                           'getdtk/graph-example2-app:latest',
+                                           'KubernetesParser.Kube.Container-1 '
+                                           '-> '
+                                           'KubernetesParser.Container.Image-0'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query name(Container.Image):Container.Image.Name:
+
+unsat_solver: unsat; timing=0.002884387969970703
+unsat_solver: unsat; timing=0.002145528793334961
+DEBUG: for name, last_else_value
+Container.Image.Name!val!1
+
+
+
+For name need to process else value, which maps to: getdtk/graph-example1-app
+existing assignments
+getdtk/graph-example2-app:latest -> getdtk/graph-example2-app
+docker.io/bitnami/redis:6.2.4-debian-10-r13 -> docker.io/bitnami/redis
+unsat_solver: unsat; timing=0.00029754638671875
+adding
+[KubernetesParser.Container.Image-0]
+getdtk/graph-example1-app
+
+Results:
+
+timing=0.0106
+{'query': 'name(Container.Image):Container.Image.Name',
+ 'function_results': [{'input': [KubernetesParser.Container.Image-0],
+                       'output': ScalarSingleValue(z3_value=getdtk/graph-example1-app)},
+                      {'input': [getdtk/graph-example2-app:latest],
+                       'output': ScalarSingleValue(z3_value=getdtk/graph-example2-app)},
+                      {'input': [docker.io/bitnami/redis:6.2.4-debian-10-r13],
+                       'output': ScalarSingleValue(z3_value=docker.io/bitnami/redis)}],
+ 'model_results': {'tuples': {'elements': ['getdtk/graph-example2-app:latest '
+                                           '-> getdtk/graph-example2-app',
+                                           'docker.io/bitnami/redis:6.2.4-debian-10-r13 '
+                                           '-> docker.io/bitnami/redis',
+                                           'KubernetesParser.Container.Image-0 '
+                                           '-> getdtk/graph-example1-app'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query helm_chart_release(Kube.Container, Helm.Chart.Release):BuiltinSort.Bool:
+
+DEBUG: for helm_chart_release, last_else_value
+True
+
+
+
+For helm_chart_release need to process else value, which maps to: True
+existing assignments
+
+unsat_solver: unsat; timing=0.0027816295623779297
+unsat_solver: unsat; timing=0.0032329559326171875
+unsat_solver: unsat; timing=0.0022916793823242188
+adding
+[HelmParser.Kube.Container-0, redis-14.4.0/redis]
+True
+unsat_solver: unknown; timing=0.00860452651977539
+ignoring
+[KubernetesParser.Kube.Container-1, redis-14.4.0/redis]
+unsat_solver: unsat; timing=0.0037827491760253906
+unsat_solver: unknown; timing=0.017046451568603516
+ignoring
+[KubernetesParser.Kube.Container-0, redis-14.4.0/redis]
+unsat_solver: unsat; timing=0.002886056900024414
+adding
+[HelmParser.Kube.Container-1, redis-14.4.0/redis]
+True
+
+Results:
+
+timing=0.0219
+{'query': 'helm_chart_release(Kube.Container, '
+          'Helm.Chart.Release):BuiltinSort.Bool',
+ 'function_results': [{'arg1': HelmParser.Kube.Container-1,
+                       'arg2': redis-14.4.0/redis},
+                      {'arg1': HelmParser.Kube.Container-0,
+                       'arg2': redis-14.4.0/redis}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Container-0, '
+                                           'redis-14.4.0/redis -> True',
+                                           'HelmParser.Kube.Container-1, '
+                                           'redis-14.4.0/redis -> True'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query is_default_class(Kube.Ingress.Class):BuiltinSort.Bool:
+
+In process_else_value processor 'AndExpr', not processing: value(annotations(Var(0)), Config.Name!val!23) ==
+Config.Value!val!27
+DEBUG: for is_default_class, last_else_value
+And(value(annotations(Var(0)), Config.Name!val!23) ==
+    Config.Value!val!27,
+    has_key(annotations(Var(0)), Config.Name!val!23))
+
+
+
+For is_default_class need to process else value, which maps to: And(value(annotations(Var(0)), Config.Name!val!23) ==
+    Config.Value!val!27,
+    has_key(annotations(Var(0)), Config.Name!val!23))
+existing assignments
+
+
+Results:
+
+timing=0.0160
+{'query': 'is_default_class(Kube.Ingress.Class):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+For 'kube_container' on redis-14.4.0/redis/redis_cluster/master[0]:App.Redis add_component_link should be used in dynamic rule
+For 'kube_container' on redis-14.4.0/redis/redis_cluster/slave_replicas[0]:App.Redis add_component_link should be used in dynamic rule
+dynamic_rule.adding.for_effects: rule=create_redis_components, effects=[App.Redis._meta_term_component,App.Redis._meta_term_key,App.Redis._meta_attribute_function__component,App.Redis._meta_attribute_function__attribute,App.Redis._meta_attribute_function__key,App.Redis._meta_dict_attribute_function__component,App.Redis._meta_dict_attribute_function__attribute,App.Redis._meta_dict_attribute_function__key,App.Redis.secret,App.Redis.implemented_by,App.Redis.implemented_by__kube_deployment,App.Redis.implemented_by__kube_secret,App.Redis.implemented_by__kube_service,App.Redis.implemented_by__kube_statefulset,App.Redis.kube_container,App.Redis.service_endpoints,App.Redis.debug_service_endpoint,App.Redis.params,App.Redis.redis_master_stable_network_ref,App.Redis.stable_network_id_on_master,App.Redis.connects_to_master,App.Redis.not_connects_to_master,App.Redis.connects_to_master_violation,App.Redis.Params._meta_term_component,App.Redis.Params._meta_term_key,App.Redis.Params._meta_attribute_function__component,App.Redis.Params._meta_attribute_function__attribute,App.Redis.Params._meta_attribute_function__key,App.Redis.Params._meta_dict_attribute_function__component,App.Redis.Params._meta_dict_attribute_function__attribute,App.Redis.Params._meta_dict_attribute_function__key,App.Redis.Params.redis_replication_mode,App.Redis.Params.redis_password,App.Redis.Params.redis_master_password,App.Redis.Params.redis_tls_enabled,App.Redis.Params.redis_port_number,App.Redis.Params.default_redis_port_number,App.Redis.Params.redis_master_port,App.Redis.Params.redis_master_host,App.Redis.Cluster._is_shadow_component,App.Redis.Cluster._possible_shadow_component,App.Redis.Cluster._meta_term_component,App.Redis.Cluster._meta_term_key,App.Redis.Cluster._meta_attribute_function__component,App.Redis.Cluster._meta_attribute_function__attribute,App.Redis.Cluster._meta_attribute_function__key,App.Redis.Cluster._meta_dict_attribute_function__component,App.Redis.Cluster._meta_dict_attribute_function__attribute,App.Redis.Cluster._meta_dict_attribute_function__key,App.Redis.Cluster.deployment_state,App.Redis.Cluster.source_type_is_file_based,App.Redis.Cluster.name,App.Redis.Cluster.slave_replicas,App.Redis.Cluster.master,App.Redis.Cluster.helm_chart_release,Kube.StableNetworkRef._meta_term_component,Kube.StableNetworkRef._meta_term_key,Kube.StableNetworkRef._meta_attribute_function__component,Kube.StableNetworkRef._meta_attribute_function__attribute,Kube.StableNetworkRef._meta_attribute_function__key,Kube.StableNetworkRef._meta_dict_attribute_function__component,Kube.StableNetworkRef._meta_dict_attribute_function__attribute,Kube.StableNetworkRef._meta_dict_attribute_function__key,Kube.StableNetworkRef.hostname,Kube.StableNetworkRef.namespace,Kube.StableNetworkRef.cluster_domain_name,Kube.StableNetworkRef.service,Kube.StableNetworkRef.index,Kube.StableNetworkRef.matches_network_id,Kube.StableNetworkRef.debug_matches_network_id,Service.Endpoint._meta_term_component,Service.Endpoint._meta_term_key,Service.Endpoint._meta_attribute_function__component,Service.Endpoint._meta_attribute_function__attribute,Service.Endpoint._meta_attribute_function__key,Service.Endpoint._meta_dict_attribute_function__component,Service.Endpoint._meta_dict_attribute_function__attribute,Service.Endpoint._meta_dict_attribute_function__key,Service.Endpoint.service_endpoints,Service.Endpoint.service_type,Service.Endpoint.port,Service.Endpoint.protocol]
+dynamic_rule.adding.for_effects: rule=discover_ingress_controllers, effects=[App.KubeIngressController._meta_term_component,App.KubeIngressController._meta_term_key,App.KubeIngressController._meta_attribute_function__component,App.KubeIngressController._meta_attribute_function__attribute,App.KubeIngressController._meta_attribute_function__key,App.KubeIngressController._meta_dict_attribute_function__component,App.KubeIngressController._meta_dict_attribute_function__attribute,App.KubeIngressController._meta_dict_attribute_function__key,App.KubeIngressController.secret,App.KubeIngressController.implemented_by,App.KubeIngressController.implemented_by__kube_deployment,App.KubeIngressController.implemented_by__kube_secret,App.KubeIngressController.implemented_by__kube_service,App.KubeIngressController.implemented_by__kube_statefulset,App.KubeIngressController.kube_container,App.KubeIngressController.service_endpoints,App.KubeIngressController.debug_service_endpoint,App.KubeIngressController.default_backend_namespace,App.KubeIngressController.default_backend_name,App.KubeIngressController.is_not_discovered,App.KubeIngressController.kube_ingress_class,App.KubeIngressController._kube_ingress_modal,App.KubeIngressController.kube_ingress,App.KubeIngressController.controller_type,App.KubeIngressController.params,App.KubeIngressController.Params._meta_term_component,App.KubeIngressController.Params._meta_term_key,App.KubeIngressController.Params._meta_attribute_function__component,App.KubeIngressController.Params._meta_attribute_function__attribute,App.KubeIngressController.Params._meta_attribute_function__key,App.KubeIngressController.Params._meta_dict_attribute_function__component,App.KubeIngressController.Params._meta_dict_attribute_function__attribute,App.KubeIngressController.Params._meta_dict_attribute_function__key,App.KubeIngressController.Params.config_map,App.KubeIngressController.Params.election_id,App.KubeIngressController.Params.default_backend_service,App.KubeIngressController.Params.pod_name,App.KubeIngressController.Params.pod_namespace,App.KubeIngressController.Params.controller_class,App.KubeIngressController.Params.watch_ingress_without_class,Meta.Term.ComponentType._meta_term_component,Meta.Term.ComponentType._meta_term_key,Meta.Term.ComponentType._meta_attribute_function__component,Meta.Term.ComponentType._meta_attribute_function__attribute,Meta.Term.ComponentType._meta_attribute_function__key,Meta.Term.ComponentType._meta_dict_attribute_function__component,Meta.Term.ComponentType._meta_dict_attribute_function__attribute,Meta.Term.ComponentType._meta_dict_attribute_function__key,Meta.Term.ComponentType.not_dynamically_created]
+dynamic_rule.scheduling_dynamic_preconditions: rule=matching_ingress_class, preconditions=[App.KubeIngressController.Params.watch_ingress_without_class]
+unknown
+solver.check: 0.0162
+Check sat for model checking
+sat
+solver.check: 0.1263
+===================
+preconditions for App.Redis.implemented_by__kube_deployment
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.implemented_by__kube_secret
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.implemented_by__kube_service
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.implemented_by__kube_statefulset
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.kube_container
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.service_endpoints
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.debug_service_endpoint
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.params
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.redis_master_stable_network_ref
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.stable_network_id_on_master
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.connects_to_master
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.not_connects_to_master
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.connects_to_master_violation
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.Params.redis_replication_mode
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.Params.redis_password
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.Params.redis_master_password
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.Params.redis_tls_enabled
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.Params.redis_port_number
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.Params.default_redis_port_number
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.Params.redis_master_port
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.Redis.Params.redis_master_host
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.Params.config_map
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.Params.election_id
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.Params.default_backend_service
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.Params.pod_name
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.Params.pod_namespace
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.Params.controller_class
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.Params.watch_ingress_without_class
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for Meta.Term.ComponentType.not_dynamically_created
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.implemented_by__kube_deployment
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.implemented_by__kube_secret
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.implemented_by__kube_service
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.implemented_by__kube_statefulset
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.kube_container
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.service_endpoints
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.debug_service_endpoint
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.default_backend_namespace
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.default_backend_name
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.is_not_discovered
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.kube_ingress_class
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.kube_ingress
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+   FunctionPrecondition(Kube.Ingress.Class.is_default_class); is_met=True
+   FunctionPrecondition(App.KubeIngressController.Params.watch_ingress_without_class); is_met=False
+===================
+===================
+preconditions for App.KubeIngressController.controller_type
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.params
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for Meta.Stage.apps_can_be_created
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+===================
+===================
+preconditions for Meta.Stage.apps_created
+   FunctionPrecondition(Meta.Stage.apps_can_be_created); is_met=False
+===================
+=====================================================================
+=====================================================================
+query results for stage 2
+
+===============================
+Processing query implemented_by__kube_deployment(App.Redis, Kube.Deployment):BuiltinSort.Bool:
+
+DEBUG: for implemented_by__kube_deployment, last_else_value
+False
+
+
+
+For implemented_by__kube_deployment need to process else value, which maps to: False
+existing assignments
+
+unsat_solver: unknown; timing=0.016702890396118164
+ignoring
+[redis-14.4.0/redis/redis_cluster/master[0], KubernetesParser.Kube.Deployment-1]
+[redis-14.4.0/redis/redis_cluster/master[0], KubernetesParser.Kube.Deployment-0]
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], KubernetesParser.Kube.Deployment-0]
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], KubernetesParser.Kube.Deployment-1]
+
+Results:
+
+timing=0.0172
+{'query': 'implemented_by__kube_deployment(App.Redis, '
+          'Kube.Deployment):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query implemented_by__kube_secret(App.Redis, Kube.Secret):BuiltinSort.Bool:
+
+Skipping model solver for 'App.Redis.implemented_by__kube_secret' because this function is not in model
+
+Results:
+
+timing=0.0162
+{'query': 'implemented_by__kube_secret(App.Redis, '
+          'Kube.Secret):BuiltinSort.Bool',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query implemented_by__kube_service(App.Redis, Kube.Service):BuiltinSort.Bool:
+
+DEBUG: for implemented_by__kube_service, last_else_value
+True
+
+
+
+For implemented_by__kube_service need to process else value, which maps to: True
+existing assignments
+
+unsat_solver: unsat; timing=0.003150463104248047
+unsat_solver: unsat; timing=0.004786491394042969
+unsat_solver: unsat; timing=0.0031707286834716797
+unsat_solver: unsat; timing=0.0027070045471191406
+adding
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], HelmParser.Kube.Service-0]
+True
+unsat_solver: unknown; timing=0.01595616340637207
+ignoring
+[redis-14.4.0/redis/redis_cluster/master[0], KubernetesParser.Kube.Service-0]
+unsat_solver: unknown; timing=0.014495134353637695
+ignoring
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], KubernetesParser.Kube.Service-1]
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], HelmParser.Kube.Service-1]
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], KubernetesParser.Kube.Service-0]
+unsat_solver: unsat; timing=0.0035915374755859375
+unsat_solver: unsat; timing=0.003926515579223633
+unsat_solver: unsat; timing=0.002752065658569336
+adding
+[redis-14.4.0/redis/redis_cluster/master[0], HelmParser.Kube.Service-1]
+True
+unsat_solver: unsat; timing=0.002818584442138672
+adding
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], HelmParser.Kube.Service-2]
+True
+unsat_solver: unsat; timing=0.0028448104858398438
+unsat_solver: unsat; timing=0.0029730796813964844
+unsat_solver: unsat; timing=0.003218412399291992
+adding
+[redis-14.4.0/redis/redis_cluster/master[0], HelmParser.Kube.Service-0]
+True
+unsat_solver: unknown; timing=0.015567302703857422
+ignoring
+[redis-14.4.0/redis/redis_cluster/master[0], KubernetesParser.Kube.Service-1]
+unsat_solver: unknown; timing=0.013502359390258789
+ignoring
+[redis-14.4.0/redis/redis_cluster/master[0], HelmParser.Kube.Service-2]
+
+Results:
+
+timing=0.0334
+{'query': 'implemented_by__kube_service(App.Redis, '
+          'Kube.Service):BuiltinSort.Bool',
+ 'function_results': [{'arg1': redis-14.4.0/redis/redis_cluster/slave_replicas[0],
+                       'arg2': HelmParser.Kube.Service-2},
+                      {'arg1': redis-14.4.0/redis/redis_cluster/slave_replicas[0],
+                       'arg2': HelmParser.Kube.Service-0},
+                      {'arg1': redis-14.4.0/redis/redis_cluster/master[0],
+                       'arg2': HelmParser.Kube.Service-0},
+                      {'arg1': redis-14.4.0/redis/redis_cluster/master[0],
+                       'arg2': HelmParser.Kube.Service-1}],
+ 'model_results': {'tuples': {'elements': ['redis-14.4.0/redis/redis_cluster/slave_replicas[0], '
+                                           'HelmParser.Kube.Service-0 -> True',
+                                           'redis-14.4.0/redis/redis_cluster/master[0], '
+                                           'HelmParser.Kube.Service-1 -> True',
+                                           'redis-14.4.0/redis/redis_cluster/slave_replicas[0], '
+                                           'HelmParser.Kube.Service-2 -> True',
+                                           'redis-14.4.0/redis/redis_cluster/master[0], '
+                                           'HelmParser.Kube.Service-0 -> True'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query implemented_by__kube_statefulset(App.Redis, Kube.StatefulSet):BuiltinSort.Bool:
+
+In process_else_value processor 'AndExpr', not processing: Not(Var(0) == App.Redis!val!1)
+DEBUG: for implemented_by__kube_statefulset, last_else_value
+Or(And(Not(Var(0) == App.Redis!val!1),
+       Var(1) == HelmParser.Kube.StatefulSet-0),
+   And(Var(0) == App.Redis!val!1,
+       Var(1) == HelmParser.Kube.StatefulSet-1))
+
+
+
+For implemented_by__kube_statefulset need to process else value, which maps to: Or(And(Not(Var(0) == App.Redis!val!1),
+       Var(1) == HelmParser.Kube.StatefulSet-0),
+   And(Var(0) == App.Redis!val!1,
+       Var(1) == HelmParser.Kube.StatefulSet-1))
+existing assignments
+
+unsat_solver: unsat; timing=0.004079341888427734
+unsat_solver: unsat; timing=0.0028030872344970703
+unsat_solver: unknown; timing=0.01332712173461914
+ignoring
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], HelmParser.Kube.StatefulSet-0]
+unsat_solver: unsat; timing=0.003485441207885742
+adding
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], HelmParser.Kube.StatefulSet-1]
+True
+unsat_solver: unsat; timing=0.002825498580932617
+unsat_solver: unsat; timing=0.002721548080444336
+adding
+[redis-14.4.0/redis/redis_cluster/master[0], HelmParser.Kube.StatefulSet-0]
+True
+unsat_solver: unknown; timing=0.013223409652709961
+ignoring
+[redis-14.4.0/redis/redis_cluster/master[0], HelmParser.Kube.StatefulSet-1]
+
+Results:
+
+timing=0.0229
+{'query': 'implemented_by__kube_statefulset(App.Redis, '
+          'Kube.StatefulSet):BuiltinSort.Bool',
+ 'function_results': [{'arg1': redis-14.4.0/redis/redis_cluster/slave_replicas[0],
+                       'arg2': HelmParser.Kube.StatefulSet-1},
+                      {'arg1': redis-14.4.0/redis/redis_cluster/master[0],
+                       'arg2': HelmParser.Kube.StatefulSet-0}],
+ 'model_results': {'tuples': {'elements': ['redis-14.4.0/redis/redis_cluster/slave_replicas[0], '
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'True',
+                                           'redis-14.4.0/redis/redis_cluster/master[0], '
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'True'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query kube_container(App.Redis):Kube.Container:
+
+unsat_solver: unsat; timing=0.00038504600524902344
+DEBUG: for kube_container, last_else_value
+HelmParser.Kube.Container-0
+
+
+
+For kube_container need to process else value, which maps to: HelmParser.Kube.Container-0
+existing assignments
+redis-14.4.0/redis/redis_cluster/slave_replicas[0] -> HelmParser.Kube.Container-1
+unsat_solver: unsat; timing=0.00028514862060546875
+adding
+[redis-14.4.0/redis/redis_cluster/master[0]]
+HelmParser.Kube.Container-0
+
+Results:
+
+timing=0.0085
+{'query': 'kube_container(App.Redis):Kube.Container',
+ 'function_results': [{'arg1': redis-14.4.0/redis/redis_cluster/master[0],
+                       'arg2': HelmParser.Kube.Container-0},
+                      {'arg1': redis-14.4.0/redis/redis_cluster/slave_replicas[0],
+                       'arg2': HelmParser.Kube.Container-1}],
+ 'model_results': {'tuples': {'elements': ['redis-14.4.0/redis/redis_cluster/slave_replicas[0] '
+                                           '-> HelmParser.Kube.Container-1',
+                                           'redis-14.4.0/redis/redis_cluster/master[0] '
+                                           '-> HelmParser.Kube.Container-0'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query service_endpoints(App.Redis, Service.Endpoint):BuiltinSort.Bool:
+
+DEBUG: for service_endpoints, last_else_value
+True
+
+
+
+For service_endpoints need to process else value, which maps to: True
+existing assignments
+
+unsat_solver: unsat; timing=0.0004277229309082031
+unsat_solver: unsat; timing=0.00032901763916015625
+unsat_solver: unsat; timing=0.00021076202392578125
+adding
+[redis-14.4.0/redis/redis_cluster/master[0], redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints]
+True
+unsat_solver: unsat; timing=0.0002090930938720703
+adding
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints]
+True
+unsat_solver: unknown; timing=0.011663198471069336
+ignoring
+[redis-14.4.0/redis/redis_cluster/master[0], redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints]
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints]
+
+Results:
+
+timing=0.0221
+{'query': 'service_endpoints(App.Redis, Service.Endpoint):BuiltinSort.Bool',
+ 'function_results': [{'arg1': redis-14.4.0/redis/redis_cluster/master[0],
+                       'arg2': redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints},
+                      {'arg1': redis-14.4.0/redis/redis_cluster/slave_replicas[0],
+                       'arg2': redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints}],
+ 'model_results': {'tuples': {'elements': ['redis-14.4.0/redis/redis_cluster/master[0], '
+                                           'redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints '
+                                           '-> True',
+                                           'redis-14.4.0/redis/redis_cluster/slave_replicas[0], '
+                                           'redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints '
+                                           '-> True'],
+                              'results_complete': True}}}
+
+Added detail:
+{'query': 'service_type(Service.Endpoint):Service.Type',
+ 'function_results': [{'input': [redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints],
+                       'output': ScalarSingleValue(z3_value=redis)},
+                      {'input': [redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints],
+                       'output': ScalarSingleValue(z3_value=redis)}]}
+{'query': 'port(Service.Endpoint):Network.Port.Number',
+ 'function_results': [{'input': [redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints],
+                       'output': ScalarSingleValue(z3_value=6379)},
+                      {'input': [redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints],
+                       'output': ScalarSingleValue(z3_value=6379)}],
+ 'attribute_links': ['redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints#port '
+                     '-> '
+                     'redis-14.4.0/redis/redis_cluster/master[0]/params#default_redis_port_number',
+                     'redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints#port '
+                     '-> '
+                     'redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params#default_redis_port_number']}
+{'query': 'protocol(Service.Endpoint):Network.Protocol',
+ 'function_results': [{'input': [redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints],
+                       'output': ScalarSingleValue(z3_value=http)},
+                      {'input': [redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints],
+                       'output': ScalarSingleValue(z3_value=http)}]}
+===============================
+
+===============================
+Processing query debug_service_endpoint(App.Redis):Service.Endpoint:
+
+Skipping model solver for 'App.Redis.debug_service_endpoint' because this function is not in model
+
+Results:
+
+timing=0.0128
+{'query': 'debug_service_endpoint(App.Redis):Service.Endpoint',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query params(App.Redis):App.Redis.Params:
+
+unsat_solver: unsat; timing=0.0003943443298339844
+DEBUG: for params, last_else_value
+App.Redis.Params!val!0
+
+
+
+For params need to process else value, which maps to: redis-14.4.0/redis/redis_cluster/master[0]/params
+existing assignments
+redis-14.4.0/redis/redis_cluster/slave_replicas[0] -> redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params
+unsat_solver: unsat; timing=0.00029087066650390625
+adding
+[redis-14.4.0/redis/redis_cluster/master[0]]
+redis-14.4.0/redis/redis_cluster/master[0]/params
+
+Results:
+
+timing=0.0092
+{'query': 'params(App.Redis):App.Redis.Params',
+ 'function_results': [{'arg1': redis-14.4.0/redis/redis_cluster/master[0],
+                       'arg2': redis-14.4.0/redis/redis_cluster/master[0]/params},
+                      {'arg1': redis-14.4.0/redis/redis_cluster/slave_replicas[0],
+                       'arg2': redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params}],
+ 'model_results': {'tuples': {'elements': ['redis-14.4.0/redis/redis_cluster/slave_replicas[0] '
+                                           '-> '
+                                           'redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params',
+                                           'redis-14.4.0/redis/redis_cluster/master[0] '
+                                           '-> '
+                                           'redis-14.4.0/redis/redis_cluster/master[0]/params'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query redis_master_stable_network_ref(App.Redis):Kube.StableNetworkRef:
+
+unsat_solver: unsat; timing=0.0004353523254394531
+DEBUG: for redis_master_stable_network_ref, last_else_value
+Kube.StableNetworkRef!val!1
+
+
+
+For redis_master_stable_network_ref do not need to process else value, which does not map to any constants
+
+Results:
+
+timing=0.0171
+{'query': 'redis_master_stable_network_ref(App.Redis):Kube.StableNetworkRef',
+ 'function_results': [{'arg1': redis-14.4.0/redis/redis_cluster/slave_replicas[0],
+                       'arg2': redis-14.4.0/redis/redis_cluster/slave_replicas[0]/redis_master_stable_network_ref}],
+ 'model_results': {'tuples': {'elements': ['redis-14.4.0/redis/redis_cluster/slave_replicas[0] '
+                                           '-> '
+                                           'redis-14.4.0/redis/redis_cluster/slave_replicas[0]/redis_master_stable_network_ref'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query stable_network_id_on_master(App.Redis):Kube.StableNetworkId:
+
+DEBUG: for stable_network_id_on_master, last_else_value
+Kube.StableNetworkId!val!1
+
+
+
+For stable_network_id_on_master do not need to process else value, which does not map to any constants
+
+Results:
+
+timing=0.0137
+{'query': 'stable_network_id_on_master(App.Redis):Kube.StableNetworkId',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query connects_to_master(App.Redis, App.Redis, Meta.Modality):BuiltinSort.Bool:
+
+In process_else_value processor 'AndExpr', not processing: Not(And(Var(0) == App.Redis!val!1,
+        Var(1) == App.Redis!val!1,
+        Var(2) == ShouldHold))
+DEBUG: for connects_to_master, last_else_value
+And(Not(And(Var(0) == App.Redis!val!1,
+            Var(1) == App.Redis!val!1,
+            Var(2) == ShouldHold)),
+    Not(And(Var(0) == App.Redis!val!1,
+            Var(1) == App.Redis!val!1,
+            Var(2) == DoesHold)),
+    Not(And(Not(Var(0) == App.Redis!val!1),
+            Var(1) == App.Redis!val!1,
+            Var(2) == ShouldHold)),
+    Not(And(Not(Var(0) == App.Redis!val!1),
+            Not(Var(1) == App.Redis!val!1),
+            Var(2) == ShouldHold)),
+    Not(And(Not(Var(0) == App.Redis!val!1),
+            Not(Var(1) == App.Redis!val!1),
+            Var(2) == DoesHold)))
+
+
+
+For connects_to_master need to process else value, which maps to: And(Not(And(Var(0) == App.Redis!val!1,
+            Var(1) == App.Redis!val!1,
+            Var(2) == ShouldHold)),
+    Not(And(Var(0) == App.Redis!val!1,
+            Var(1) == App.Redis!val!1,
+            Var(2) == DoesHold)),
+    Not(And(Not(Var(0) == App.Redis!val!1),
+            Var(1) == App.Redis!val!1,
+            Var(2) == ShouldHold)),
+    Not(And(Not(Var(0) == App.Redis!val!1),
+            Not(Var(1) == App.Redis!val!1),
+            Var(2) == ShouldHold)),
+    Not(And(Not(Var(0) == App.Redis!val!1),
+            Not(Var(1) == App.Redis!val!1),
+            Var(2) == DoesHold)))
+existing assignments
+
+unsat_solver: unsat; timing=0.0035407543182373047
+unsat_solver: unknown; timing=0.012022018432617188
+ignoring
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], redis-14.4.0/redis/redis_cluster/master[0], DoesHold]
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], redis-14.4.0/redis/redis_cluster/slave_replicas[0], ShouldHold]
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], redis-14.4.0/redis/redis_cluster/slave_replicas[0], DoesHold]
+[redis-14.4.0/redis/redis_cluster/master[0], redis-14.4.0/redis/redis_cluster/master[0], DoesHold]
+unsat_solver: unsat; timing=0.0038552284240722656
+unsat_solver: unsat; timing=0.0027887821197509766
+unsat_solver: unknown; timing=0.012079477310180664
+ignoring
+[redis-14.4.0/redis/redis_cluster/master[0], redis-14.4.0/redis/redis_cluster/slave_replicas[0], ShouldHold]
+unsat_solver: unsat; timing=0.0036623477935791016
+adding
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], redis-14.4.0/redis/redis_cluster/master[0], ShouldHold]
+True
+unsat_solver: unknown; timing=0.011860370635986328
+ignoring
+[redis-14.4.0/redis/redis_cluster/master[0], redis-14.4.0/redis/redis_cluster/slave_replicas[0], DoesHold]
+[redis-14.4.0/redis/redis_cluster/master[0], redis-14.4.0/redis/redis_cluster/master[0], ShouldHold]
+
+Results:
+
+timing=0.0177
+{'query': 'connects_to_master(App.Redis, App.Redis, '
+          'Meta.Modality):BuiltinSort.Bool',
+ 'function_results': [{'input': [redis-14.4.0/redis/redis_cluster/slave_replicas[0],
+                                 redis-14.4.0/redis/redis_cluster/master[0],
+                                 ShouldHold],
+                       'output': ScalarSingleValue(z3_value=True)}],
+ 'model_results': {'tuples': {'elements': ['redis-14.4.0/redis/redis_cluster/slave_replicas[0], '
+                                           'redis-14.4.0/redis/redis_cluster/master[0], '
+                                           'ShouldHold -> True'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query not_connects_to_master(App.Redis, App.Redis):BuiltinSort.Bool:
+
+
+Results:
+
+timing=0.0127
+{'query': 'not_connects_to_master(App.Redis, App.Redis):BuiltinSort.Bool',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query connects_to_master_violation(App.Redis, App.Redis):BuiltinSort.Bool:
+
+DEBUG: for connects_to_master_violation, last_else_value
+True
+
+
+
+For connects_to_master_violation need to process else value, which maps to: True
+existing assignments
+
+unsat_solver: unknown; timing=0.012045145034790039
+ignoring
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], redis-14.4.0/redis/redis_cluster/master[0]]
+[redis-14.4.0/redis/redis_cluster/master[0], redis-14.4.0/redis/redis_cluster/slave_replicas[0]]
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0], redis-14.4.0/redis/redis_cluster/slave_replicas[0]]
+[redis-14.4.0/redis/redis_cluster/master[0], redis-14.4.0/redis/redis_cluster/master[0]]
+
+Results:
+
+timing=0.0123
+{'query': 'connects_to_master_violation(App.Redis, App.Redis):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query redis_replication_mode(App.Redis.Params):App.Redis.ReplicationMode:
+
+unsat_solver: unsat; timing=0.0003871917724609375
+DEBUG: for redis_replication_mode, last_else_value
+master
+
+
+
+For redis_replication_mode need to process else value, which maps to: master
+existing assignments
+redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params -> slave
+unsat_solver: unsat; timing=0.00029921531677246094
+adding
+[redis-14.4.0/redis/redis_cluster/master[0]/params]
+master
+
+Results:
+
+timing=0.0091
+{'query': 'redis_replication_mode(App.Redis.Params):App.Redis.ReplicationMode',
+ 'function_results': [{'input': [redis-14.4.0/redis/redis_cluster/master[0]/params],
+                       'output': ScalarSingleValue(z3_value=master)},
+                      {'input': [redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params],
+                       'output': ScalarSingleValue(z3_value=slave)}],
+ 'model_results': {'tuples': {'elements': ['redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params '
+                                           '-> slave',
+                                           'redis-14.4.0/redis/redis_cluster/master[0]/params '
+                                           '-> master'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query redis_password(App.Redis.Params):Any.Secret:
+
+unsat_solver: unknown; timing=0.011441707611083984
+DEBUG: for redis_password, last_else_value
+Any.Secret!val!0
+
+
+
+For redis_password do not need to process else value, which does not map to any constants
+
+Results:
+
+timing=0.0132
+{'query': 'redis_password(App.Redis.Params):Any.Secret',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query redis_master_password(App.Redis.Params):Any.Secret:
+
+DEBUG: for redis_master_password, last_else_value
+Any.Secret!val!2
+
+
+
+For redis_master_password do not need to process else value, which does not map to any constants
+
+Results:
+
+timing=0.0132
+{'query': 'redis_master_password(App.Redis.Params):Any.Secret',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query redis_tls_enabled(App.Redis.Params):Any.String:
+
+DEBUG: for redis_tls_enabled, last_else_value
+Any.String!val!26
+
+
+
+For redis_tls_enabled need to process else value, which maps to: no
+existing assignments
+
+unsat_solver: unsat; timing=0.0004069805145263672
+unsat_solver: unsat; timing=0.00027108192443847656
+adding
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params]
+no
+unsat_solver: unsat; timing=0.0002162456512451172
+adding
+[redis-14.4.0/redis/redis_cluster/master[0]/params]
+no
+
+Results:
+
+timing=0.0085
+{'query': 'redis_tls_enabled(App.Redis.Params):Any.String',
+ 'function_results': [{'input': [redis-14.4.0/redis/redis_cluster/master[0]/params],
+                       'output': ScalarSingleValue(z3_value=no)},
+                      {'input': [redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params],
+                       'output': ScalarSingleValue(z3_value=no)}],
+ 'model_results': {'tuples': {'elements': ['redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params '
+                                           '-> no',
+                                           'redis-14.4.0/redis/redis_cluster/master[0]/params '
+                                           '-> no'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query redis_port_number(App.Redis.Params):Network.Port.Number:
+
+unsat_solver: unknown; timing=0.011609792709350586
+DEBUG: for redis_port_number, last_else_value
+Network.Port.Number!val!1
+
+
+
+For redis_port_number need to process else value, which maps to: 6379
+existing assignments
+
+unsat_solver: unknown; timing=0.011833429336547852
+ignoring
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params]
+[redis-14.4.0/redis/redis_cluster/master[0]/params]
+
+Results:
+
+timing=0.0115
+{'query': 'redis_port_number(App.Redis.Params):Network.Port.Number',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query default_redis_port_number(App.Redis.Params):Network.Port.Number:
+
+DEBUG: for default_redis_port_number, last_else_value
+Network.Port.Number!val!1
+
+
+
+For default_redis_port_number need to process else value, which maps to: 6379
+existing assignments
+
+unsat_solver: unsat; timing=0.00040030479431152344
+unsat_solver: unsat; timing=0.0002777576446533203
+adding
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params]
+6379
+unsat_solver: unsat; timing=0.0003886222839355469
+adding
+[redis-14.4.0/redis/redis_cluster/master[0]/params]
+6379
+
+Results:
+
+timing=0.0078
+{'query': 'default_redis_port_number(App.Redis.Params):Network.Port.Number',
+ 'function_results': [{'input': [redis-14.4.0/redis/redis_cluster/master[0]/params],
+                       'output': ScalarSingleValue(z3_value=6379)},
+                      {'input': [redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params],
+                       'output': ScalarSingleValue(z3_value=6379)}],
+ 'model_results': {'tuples': {'elements': ['redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params '
+                                           '-> 6379',
+                                           'redis-14.4.0/redis/redis_cluster/master[0]/params '
+                                           '-> 6379'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query redis_master_port(App.Redis.Params):Network.Port.Number:
+
+unsat_solver: unknown; timing=0.010457992553710938
+DEBUG: for redis_master_port, last_else_value
+Network.Port.Number!val!1
+
+
+
+For redis_master_port need to process else value, which maps to: 6379
+existing assignments
+
+unsat_solver: unsat; timing=0.0013880729675292969
+unsat_solver: unsat; timing=0.00035881996154785156
+adding
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params]
+6379
+unsat_solver: unknown; timing=0.010509729385375977
+ignoring
+[redis-14.4.0/redis/redis_cluster/master[0]/params]
+
+Results:
+
+timing=0.0164
+{'query': 'redis_master_port(App.Redis.Params):Network.Port.Number',
+ 'function_results': [{'input': [redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params],
+                       'output': ScalarSingleValue(z3_value=6379)}],
+ 'model_results': {'tuples': {'elements': ['redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params '
+                                           '-> 6379'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query redis_master_host(App.Redis.Params):Network.Address:
+
+DEBUG: for redis_master_host, last_else_value
+Network.Address!val!23
+
+
+
+For redis_master_host need to process else value, which maps to: redis-master-0.redis-headless.default.svc.cluster.local
+existing assignments
+
+unsat_solver: unsat; timing=0.0004258155822753906
+unsat_solver: unsat; timing=0.00028443336486816406
+adding
+[redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params]
+redis-master-0.redis-headless.default.svc.cluster.local
+unsat_solver: unknown; timing=0.011524677276611328
+ignoring
+[redis-14.4.0/redis/redis_cluster/master[0]/params]
+
+Results:
+
+timing=0.0170
+{'query': 'redis_master_host(App.Redis.Params):Network.Address',
+ 'function_results': [{'input': [redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params],
+                       'output': ScalarSingleValue(z3_value=redis-master-0.redis-headless.default.svc.cluster.local)}],
+ 'model_results': {'tuples': {'elements': ['redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params '
+                                           '-> '
+                                           'redis-master-0.redis-headless.default.svc.cluster.local'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query config_map(App.KubeIngressController.Params):Kube.NamespaceAndName:
+
+Skipping model solver for 'App.KubeIngressController.Params.config_map' because this function is not in model
+
+Results:
+
+timing=0.0124
+{'query': 'config_map(App.KubeIngressController.Params):Kube.NamespaceAndName',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query election_id(App.KubeIngressController.Params):Any.String:
+
+Skipping model solver for 'App.KubeIngressController.Params.election_id' because this function is not in model
+
+Results:
+
+timing=0.0121
+{'query': 'election_id(App.KubeIngressController.Params):Any.String',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query default_backend_service(App.KubeIngressController.Params):Kube.NamespaceAndName:
+
+Skipping model solver for 'App.KubeIngressController.Params.default_backend_service' because this function is not in model
+
+Results:
+
+timing=0.0118
+{'query': 'default_backend_service(App.KubeIngressController.Params):Kube.NamespaceAndName',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query pod_name(App.KubeIngressController.Params):Kube.Name:
+
+Skipping model solver for 'App.KubeIngressController.Params.pod_name' because this function is not in model
+
+Results:
+
+timing=0.0119
+{'query': 'pod_name(App.KubeIngressController.Params):Kube.Name',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query pod_namespace(App.KubeIngressController.Params):Kube.Namespace:
+
+Skipping model solver for 'App.KubeIngressController.Params.pod_namespace' because this function is not in model
+
+Results:
+
+timing=0.0108
+{'query': 'pod_namespace(App.KubeIngressController.Params):Kube.Namespace',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query controller_class(App.KubeIngressController.Params):Kube.Ingress.ControllerClass:
+
+DEBUG: for controller_class, last_else_value
+Kube.Ingress.ControllerClass!val!2
+
+
+
+For controller_class do not need to process else value, which does not map to any constants
+
+Results:
+
+timing=0.0120
+{'query': 'controller_class(App.KubeIngressController.Params):Kube.Ingress.ControllerClass',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query watch_ingress_without_class(App.KubeIngressController.Params):BuiltinSort.Bool:
+
+DEBUG: for watch_ingress_without_class, last_else_value
+True
+
+
+
+For watch_ingress_without_class need to process else value, which maps to: True
+existing assignments
+
+
+Results:
+
+timing=0.0108
+{'query': 'watch_ingress_without_class(App.KubeIngressController.Params):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query not_dynamically_created(Meta.Term.ComponentType):BuiltinSort.Bool:
+
+DEBUG: for not_dynamically_created, last_else_value
+True
+
+
+
+For not_dynamically_created need to process else value, which maps to: True
+existing assignments
+
+unsat_solver: unsat; timing=0.0014698505401611328
+unsat_solver: unknown; timing=0.010702133178710938
+ignoring
+[Kube.Service.ClusterIp]
+[Meta.Term]
+[Kube.Container.EnvVarItem]
+[Kube.Volume.Projected.Source]
+[Source.FilePath]
+[Kube.Container.EnvValueFromConfigMapKeyRef]
+[Network.Topology.Node]
+[Kube.Secret]
+[App.Attribute.Mapping]
+[Kube.ConfigMap.BinaryData]
+[Source.Type]
+[Helm.Chart.ValuesFile]
+[Kube.Container.ReadinessProbe]
+[Kube.Container.EnvValueFromResourceFieldRef]
+[Service.Type]
+[Kube.Container.SecurityContext]
+[Deployment.Environment]
+[Kube.ActiveDeadlineSeconds]
+[App]
+[Kube]
+[Kube.Volume.DownwardApi.Item.FieldRef]
+[App.AttributeName]
+[Kube.Ingress.Class]
+[Kube.Volume.DownwardApi.Item.ResourceFieldRef]
+[Kube.Volume.GitRepo]
+[App.KubeIngressController.Type]
+[Kube.Secret.Immutable]
+[Kube.Container.LivenessProbe.SuccessThreshold]
+[Kube.Volume.Projected.Source.ServiceAccountToken]
+[Helm.Chart.Release.Values]
+[Helm.Chart]
+[Kube.ApiVersion]
+[Kube.Affinity.LabelSelector.MatchLabels.Value]
+[Kube.Container.ReadinessProbe.InitialDelaySeconds]
+[Kube.Container.ReadinessProbe.TimeoutSeconds]
+[Kube.Volume.Projected.Source.ConfigMap]
+[Kube.Selector.Name]
+[Kube.Ingress.DefaultBackend]
+[Service.Endpoint]
+[Kube.Container.EnvFromSourceItem]
+[Kube.Volume.AwsElasticBlockStore]
+[Kube.Volume.DownwardApi]
+[Kube.Secret.Key]
+[Kube.BackOffLimit]
+[Kube.Container.ExecAction]
+[Kube.Affinity.NodeAffinityPreferedSchedulingItemPreference]
+[BuiltinSort.Bool]
+[Kube.Container.EnvFromSecretRefItem]
+[Kube.ObjectRef]
+[Kube.Container.StartupProbe.FailureThreshold]
+[Kube.EphemeralContainer]
+[Network.Port.Number]
+[Service.Endpoint.Name]
+[Kube.Affinity.LabelSelectorMatchExpressionItem]
+[Kube.Node.Selector]
+[Kube.PersistentVolumeClaim.StorageClassName]
+[Kube.Configmap.DataName]
+[App.Redis.ReplicationMode]
+[Kube.Node.AddressItem]
+[Kube.ConfigMap]
+[BuiltinSort.Z3String]
+[Kube.Container.HttpGetAction]
+[Meta.Term.Attribute]
+[App.KubeIngressController.Params]
+[Kube.Labels]
+[Kube.Service.ServicePort.Name]
+[Helm.Chart.Release]
+[Kube.Container.LivenessProbe]
+[Kube.Container.LifecycleHandler]
+[Kube.Volume.Ephemeral]
+[Container.Image.Name]
+[Kube.Ingress.Rule.HttpPath]
+[Kube.Volume.Secret]
+[Kube.Container.EnvFromConfigMapRefItem]
+[Kube.Volume]
+[Kube.Container.ReadinessProbe.PeriodSeconds]
+[Service.Conn]
+[Kube.Ingress.Rule]
+[Kube.Cluster.EKSInfo]
+[Kube.Container.Lifecycle]
+[Network.Topology]
+[Kube.Ingress.Tls.Host]
+[Kube.PersistentVolumeClaim.DataSource]
+[Kube.Container.ReadinessProbe.FailureThreshold]
+[Kube.Node]
+[Kube.Affinity.NodeAffinityRequiredScheduling]
+[Kube.Container.EnvVarsConfig]
+[Kube.Volume.ConfigMap]
+[Kube.Affinity.PodAffinitySchedulingItem]
+[Kube.Container.StartupProbe]
+[Meta.Term.Component]
+[Constraint.Value]
+[Kube.Node.TaintItem]
+[Kube.Affinity.PodAntiAffinity]
+[Helm.Chart.Instance.Values]
+[Kube.PersistentVolumeClaim.AccessMode.Item]
+[Network.Http]
+[Kube.Service.ServicePort]
+[Network.Address]
+[Any.String]
+[App.EnvVar.Name]
+[Kube.Ingress.Rule.HttpPath.Backend]
+[Network.Port]
+[Container.Tag]
+[Kube.Container.EnvValueFromSecretKeyRef]
+[Kube.PersistentVolumeClaim.VolumeMode]
+[App.Params]
+[Kube.Volume.Secret.Item]
+[Kube.Cluster.Type]
+[Container.NameAndTag]
+[Deployment.State]
+[Container.Tag.Name]
+[Kube.Daemonset.Update.Strategy.Rolling.Update]
+[Network.Http.HostPattern]
+[Kube.Ingress.Backend.Service]
+[Kube.TtlSecondsAfterFinished]
+[Kube.Volume.Nfs]
+[Network.Protocol]
+[Kube.Service.Type]
+[Kube.Selector.Value]
+[Kube.Affinity.NodeAffinityPreferedSchedulingItem]
+[Config.Name]
+[Kube.Affinity.LabelSelector]
+[Kube.Deployment.Strategy]
+[Helm.Template]
+[Kube.Selector]
+[Kube.Volume.Projected.Source.Secret]
+[Kube.ConfigMap.Immutable]
+[App.Container.Base]
+[Kube.PersistentVolumeClaim.Resources]
+[Network.Http.PathPattern]
+[Service.Conn.Name]
+[Kube.Secret.DataValue]
+[Kube.Volume.DownwardApi.Item]
+[Kube.Container.ResourcesRequests]
+[Source.GitRepo]
+[Any.Json]
+[Kube.Affinity.LabelSelector.MatchLabels.Name]
+[Kube.PersistentVolumeClaim.ResourcesRequests]
+[Config]
+[Kube.Ingress.Backend.Resource.Kind]
+[Helm.Template.Condition]
+[Kube.Ingress.Tls.SecretName]
+[Builtin]
+unsat_solver: unsat; timing=0.0018458366394042969
+unsat_solver: unsat; timing=0.0004966259002685547
+unsat_solver: unsat; timing=0.00034308433532714844
+unsat_solver: unsat; timing=0.00029969215393066406
+unsat_solver: unsat; timing=0.0002551078796386719
+unsat_solver: unknown; timing=0.010627269744873047
+ignoring
+[Kube.Volume.Name]
+[Kube.Name]
+[Any.Integer]
+[Meta.Stage]
+unsat_solver: unsat; timing=0.0010216236114501953
+unsat_solver: unknown; timing=0.010021448135375977
+ignoring
+[Kube.Volume.PersistentVolumeClaim]
+[App.Service.Conn]
+unsat_solver: unsat; timing=0.0008490085601806641
+unsat_solver: unsat; timing=0.0002560615539550781
+unsat_solver: unknown; timing=0.010445833206176758
+ignoring
+[Kube.StatefulSet.Update.Strategy.Rolling.Update]
+unsat_solver: unsat; timing=0.0008234977722167969
+adding
+[App.KubeIngressController]
+True
+unsat_solver: unknown; timing=0.01033782958984375
+ignoring
+[Kube.Container.EnvVarName]
+unsat_solver: unknown; timing=0.010110616683959961
+ignoring
+[Kube.Daemonset]
+[Kube.Secret.ParsedData]
+[Kube.NamespaceAndName]
+[Source]
+[Kube.Affinity.PodAffinitySchedulingItemPodAffinityTerm]
+[Kube.Cluster]
+[App.Service.Endpoint]
+[Kube.Ingress.Backend]
+[Network.Topology.Node.HttpRoute]
+unsat_solver: unknown; timing=0.01116037368774414
+ignoring
+[Kube.Container.EnvVars]
+[Kube.Container.StartupProbe.PeriodSeconds]
+[Kube.Affinity.NodeAffinity]
+[Service.EndpointNestedDatatype]
+[Kube.Container.StartupProbe.SuccessThreshold]
+[Kube.Container.PortItem]
+[Kube.Deployment.Strategy.Rolling.Update]
+[Kube.Container.ReadinessProbe.SuccessThreshold]
+[Kube.Secret.Keys]
+[Kube.Service.ServicePort.Protocol]
+[Kube.Container.LivenessProbe.PeriodSeconds]
+[Secret]
+[Service]
+[Config.ManifestSet.Instantiation]
+[Kube.PersistentVolumeClaim.VolumeName]
+[Kube.Container.EnvValueFromFieldRef]
+[Kube.Volume.Projected]
+[Base]
+unsat_solver: unknown; timing=0.011721134185791016
+ignoring
+[Container]
+[Kube.Container.ResourcesLimits]
+[Helm.Chart.ValuesFile.RelativePath]
+[Constraint]
+[Kube.Container.HttpGetActionHeaderItem]
+[Kube.Affinity.PodAffinity]
+[Meta.Modality]
+[Kube.Container.VolumeMountItem]
+[App.Nginx]
+[Kube.Namespace]
+[Kube.NamespaceSecrets]
+[Kube.Deployment]
+[Kube.Ref]
+[Kube.PersistentVolumeClaim.ResourcesLimits]
+[Kube.Min.Ready.Seconds]
+[Kube.Completions]
+[Container.Image]
+[Kube.Container.ImageRef]
+[Kube.Daemonset.Update.Strategy]
+[Kube.Node.Capacity]
+[Kube.Volume.Projected.Source.DownwardApi]
+[Kube.Ingress.Tls]
+[App.Nginx.Type]
+[Kube.Ingress.Backend.Service.Port]
+[Kube.ManualSelector]
+[Container.NameAndTag.Name]
+[Kube.Pod.SecurityContext]
+[Network.Context]
+[Meta.Term.Key]
+[App.Redis.Cluster]
+[Kube.Node.Info]
+[Kube.Node.Allocatable]
+[Kube.ConfigMap.Data]
+[App.Redis.Params]
+[Kube.StableNetworkId]
+[Any.Secret]
+unsat_solver: unknown; timing=0.011633872985839844
+ignoring
+[Kube.Pod]
+[Kube.Ingress.Backend.Resource]
+[Kube.Replicas]
+[Kube.Container.TcpSocketAction]
+[App.Type]
+[Kube.Ingress]
+[Kube.Secret.StringData.Parsed]
+[Kube.StatefulSet]
+[Kube.ServiceMonitor]
+[Kube.Kind]
+[Kube.Progress.Deadline.Seconds]
+[Kube.Volume.ConfigMap.Item]
+[Kube.Volume.EmptyDir]
+[Kube.Container.VolumeDeviceItem]
+[Kube.Secret.Type]
+[Kube.Affinity]
+[Kube.Container.EnvVarConfig]
+[Common.Boolean]
+[Kube.Service.Account.Name]
+[Kube.Service]
+[Kube.Container.EnvValueFrom]
+[Kube.Container.StartupProbe.TimeoutSeconds]
+[Kube.Container.EnvVar]
+[Kube.Container.LivenessProbe.FailureThreshold]
+[Container.TaggedImage]
+[Kube.Configmap.DataValue]
+[Kube.Namespace.Ref]
+[Kube.Revision.History.Limit]
+[KubeCluster.DomainName]
+[Kube.InitContainer]
+[App.Redis]
+[Meta]
+[Kube.Volume.HostPath]
+[Kube.Ingress.ControllerClass]
+[BuiltinSort.Z3Integer]
+[Kube.Pod.Template]
+[Kube.Container]
+[Secret.Store]
+[Kube.Parallelism]
+[Config.Value]
+[Kube.StatefulSet.Update.Strategy]
+[Kube.Cluster.Reference]
+[Kube.Container.LivenessProbe.InitialDelaySeconds]
+[Kube.Deployment.Paused]
+[Kube.StableNetworkRef]
+[Kube.Container.LivenessProbe.TimeoutSeconds]
+[Network]
+[Kube.WorkloadDomainSort]
+[Meta.Term.ComponentType]
+[Deployment]
+[App.Nginx.Params]
+[Kube.Container.StartupProbe.InitialDelaySeconds]
+[Kube.StatefulSet.Pod.Management.Policy]
+[Kube.Image.Pull.Secret]
+[Kube.Affinity.NodeAffinityRequiredSchedulingNodeSelectorTermsItem]
+[Kube.NetworkPolicy]
+[Kube.Ingress.Backend.Resource.ApiGroup]
+[Helm]
+[Any.Concat]
+[Kube.Restart.Policy]
+[Kube.Toleration]
+[Kube.Node.Name]
+[TopLevelKubeObj]
+[Kube.Affinity.NodeAffinityMatchItem]
+[Kube.PersistentVolumeClaim]
+[Kube.Job]
+[Kube.Ingress.Rule.HttpPath.PathType]
+[Kube.Container.Resources]
+[Network.URL]
+[Kube.Annotations]
+[KubeCluster]
+[Kube.Container.ImagePullPolicy]
+[App.Base]
+
+Results:
+
+timing=0.0626
+{'query': 'not_dynamically_created(Meta.Term.ComponentType):BuiltinSort.Bool',
+ 'function_results': [{'input': [App.KubeIngressController],
+                       'output': ScalarSingleValue(z3_value=True)}],
+ 'model_results': {'tuples': {'elements': ['App.KubeIngressController -> True'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query implemented_by__kube_deployment(App.KubeIngressController, Kube.Deployment):BuiltinSort.Bool:
+
+DEBUG: for implemented_by__kube_deployment, last_else_value
+True
+
+
+
+For implemented_by__kube_deployment need to process else value, which maps to: True
+existing assignments
+
+unsat_solver: unknown; timing=0.012669563293457031
+ignoring
+[shadow-ingress-controller, KubernetesParser.Kube.Deployment-1]
+[shadow-ingress-controller, KubernetesParser.Kube.Deployment-0]
+
+Results:
+
+timing=0.0124
+{'query': 'implemented_by__kube_deployment(App.KubeIngressController, '
+          'Kube.Deployment):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query implemented_by__kube_secret(App.KubeIngressController, Kube.Secret):BuiltinSort.Bool:
+
+Skipping model solver for 'App.KubeIngressController.implemented_by__kube_secret' because this function is not in model
+
+Results:
+
+timing=0.0118
+{'query': 'implemented_by__kube_secret(App.KubeIngressController, '
+          'Kube.Secret):BuiltinSort.Bool',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query implemented_by__kube_service(App.KubeIngressController, Kube.Service):BuiltinSort.Bool:
+
+DEBUG: for implemented_by__kube_service, last_else_value
+True
+
+
+
+For implemented_by__kube_service need to process else value, which maps to: True
+existing assignments
+
+unsat_solver: unknown; timing=0.010004997253417969
+ignoring
+[shadow-ingress-controller, KubernetesParser.Kube.Service-1]
+[shadow-ingress-controller, KubernetesParser.Kube.Service-0]
+[shadow-ingress-controller, HelmParser.Kube.Service-2]
+[shadow-ingress-controller, HelmParser.Kube.Service-0]
+[shadow-ingress-controller, HelmParser.Kube.Service-1]
+
+Results:
+
+timing=0.0126
+{'query': 'implemented_by__kube_service(App.KubeIngressController, '
+          'Kube.Service):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query implemented_by__kube_statefulset(App.KubeIngressController, Kube.StatefulSet):BuiltinSort.Bool:
+
+In process_else_value processor 'AndExpr', not processing: Not(Var(1) == HelmParser.Kube.StatefulSet-0)
+DEBUG: for implemented_by__kube_statefulset, last_else_value
+And(Not(Var(1) == HelmParser.Kube.StatefulSet-0),
+    Not(Var(1) == HelmParser.Kube.StatefulSet-1))
+
+
+
+For implemented_by__kube_statefulset need to process else value, which maps to: And(Not(Var(1) == HelmParser.Kube.StatefulSet-0),
+    Not(Var(1) == HelmParser.Kube.StatefulSet-1))
+existing assignments
+
+unsat_solver: unknown; timing=0.010787248611450195
+ignoring
+[shadow-ingress-controller, HelmParser.Kube.StatefulSet-1]
+[shadow-ingress-controller, HelmParser.Kube.StatefulSet-0]
+
+Results:
+
+timing=0.0119
+{'query': 'implemented_by__kube_statefulset(App.KubeIngressController, '
+          'Kube.StatefulSet):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query kube_container(App.KubeIngressController):Kube.Container:
+
+DEBUG: for kube_container, last_else_value
+KubernetesParser.Kube.Container-1
+
+
+
+For kube_container need to process else value, which maps to: KubernetesParser.Kube.Container-1
+existing assignments
+
+unsat_solver: unknown; timing=0.010836601257324219
+ignoring
+[shadow-ingress-controller]
+===== Searching for disjunctive permutations
+unknown
+solver.check: 0.0103
+timing=0.0109
+unknown
+solver.check: 0.0110
+timing=0.0118
+unknown
+solver.check: 0.0096
+timing=0.0103
+unknown
+solver.check: 0.0109
+timing=0.0116
+
+Results:
+
+timing=0.0515
+{'query': 'kube_container(App.KubeIngressController):Kube.Container',
+ 'function_results': [{'arg1': shadow-ingress-controller,
+                       'arg2': or(KubernetesParser.Kube.Container-1,HelmParser.Kube.Container-1,HelmParser.Kube.Container-0,KubernetesParser.Kube.Container-0)}],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query service_endpoints(App.KubeIngressController, Service.Endpoint):BuiltinSort.Bool:
+
+Skipping model solver for 'App.KubeIngressController.service_endpoints' because this function is not in model
+
+Results:
+
+timing=0.0113
+{'query': 'service_endpoints(App.KubeIngressController, '
+          'Service.Endpoint):BuiltinSort.Bool',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query debug_service_endpoint(App.KubeIngressController):Service.Endpoint:
+
+Skipping model solver for 'App.KubeIngressController.debug_service_endpoint' because this function is not in model
+
+Results:
+
+timing=0.0119
+{'query': 'debug_service_endpoint(App.KubeIngressController):Service.Endpoint',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query default_backend_namespace(App.KubeIngressController):Kube.Namespace:
+
+Skipping model solver for 'App.KubeIngressController.default_backend_namespace' because this function is not in model
+
+Results:
+
+timing=0.0116
+{'query': 'default_backend_namespace(App.KubeIngressController):Kube.Namespace',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query default_backend_name(App.KubeIngressController):Kube.Name:
+
+Skipping model solver for 'App.KubeIngressController.default_backend_name' because this function is not in model
+
+Results:
+
+timing=0.0117
+{'query': 'default_backend_name(App.KubeIngressController):Kube.Name',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query is_not_discovered(App.KubeIngressController):BuiltinSort.Bool:
+
+Skipping model solver for 'App.KubeIngressController.is_not_discovered' because this function is not in model
+
+Results:
+
+timing=0.0120
+{'query': 'is_not_discovered(App.KubeIngressController):BuiltinSort.Bool',
+ 'function_results': []}
+===============================
+
+===============================
+Processing query kube_ingress_class(App.KubeIngressController, Kube.Ingress.Class):BuiltinSort.Bool:
+
+DEBUG: for kube_ingress_class, last_else_value
+True
+
+
+
+For kube_ingress_class need to process else value, which maps to: True
+existing assignments
+
+
+Results:
+
+timing=0.0112
+{'query': 'kube_ingress_class(App.KubeIngressController, '
+          'Kube.Ingress.Class):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query controller_type(App.KubeIngressController):App.KubeIngressController.Type:
+
+Skipping model solver for 'App.KubeIngressController.controller_type' because this function is not in model
+===== Searching for disjunctive permutations
+unknown
+solver.check: 0.0094
+timing=0.0100
+unknown
+solver.check: 0.0102
+timing=0.0109
+
+Results:
+
+timing=0.0280
+{'query': 'controller_type(App.KubeIngressController):App.KubeIngressController.Type',
+ 'function_results': [{'input': [shadow-ingress-controller],
+                       'output': SingleValueDisjunction(z3_value=or(other,nginx),
+                                                        z3_disjuncts=[other,
+                                                                      nginx])}]}
+===============================
+
+===============================
+Processing query params(App.KubeIngressController):App.KubeIngressController.Params:
+
+DEBUG: for params, last_else_value
+App.KubeIngressController.Params!val!0
+
+
+
+For params do not need to process else value, which does not map to any constants
+
+Results:
+
+timing=0.0112
+{'query': 'params(App.KubeIngressController):App.KubeIngressController.Params',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+===============================
+Processing query apps_can_be_created(Meta.Stage):BuiltinSort.Bool:
+
+Skipping model solver for 'Meta.Stage.apps_can_be_created' because this function is not in model
+
+Results:
+
+timing=0.0107
+{'query': 'apps_can_be_created(Meta.Stage):BuiltinSort.Bool',
+ 'function_results': []}
+===============================
+
+dynamic_rule.scheduling_dynamic_preconditions: rule=matching_ingress_class, preconditions=[Kube.Ingress._partial_matching_ingress_class]
+unknown
+solver.check: 0.0097
+Check sat for model checking
+sat
+solver.check: 0.1638
+===================
+preconditions for App.KubeIngressController.kube_ingress
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Ingress._partial_matching_ingress_class); is_met=False
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+   FunctionPrecondition(Kube.Ingress.Class.is_default_class); is_met=True
+   FunctionPrecondition(App.KubeIngressController.Params.watch_ingress_without_class); is_met=True
+===================
+===================
+preconditions for Meta.Stage.apps_created
+   FunctionPrecondition(Meta.Stage.apps_can_be_created); is_met=True
+===================
+=====================================================================
+=====================================================================
+query results for stage 3
+
+===============================
+Processing query apps_created(Meta.Stage):BuiltinSort.Bool:
+
+DEBUG: for apps_created, last_else_value
+True
+
+
+
+For apps_created need to process else value, which maps to: True
+existing assignments
+
+unsat_solver: unsat; timing=0.00040721893310546875
+adding
+[default]
+True
+
+Results:
+
+timing=0.0051
+{'query': 'apps_created(Meta.Stage):BuiltinSort.Bool',
+ 'function_results': [{'input': [default],
+                       'output': ScalarSingleValue(z3_value=True)}],
+ 'model_results': {'tuples': {'elements': ['default -> True'],
+                              'results_complete': True}}}
+===============================
+
+===============================
+Processing query _partial_matching_ingress_class(Kube.Ingress):Kube.Ingress.Class:
+
+DEBUG: for _partial_matching_ingress_class, last_else_value
+Kube.Ingress.Class!val!0
+
+
+
+For _partial_matching_ingress_class do not need to process else value, which does not map to any constants
+
+Results:
+
+timing=0.0121
+{'query': '_partial_matching_ingress_class(Kube.Ingress):Kube.Ingress.Class',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+dynamic_rule.adding.for_effects: rule=matching_ingress_class, effects=[Kube.Ingress.ingress_class,App.KubeIngressController._kube_ingress_modal,App.KubeIngressController.kube_ingress]
+unknown
+solver.check: 0.0108
+Check sat for model checking
+sat
+solver.check: 0.2052
+===================
+preconditions for App.KubeIngressController.kube_ingress
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Ingress._partial_matching_ingress_class); is_met=True
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+   FunctionPrecondition(Kube.Ingress.Class.is_default_class); is_met=True
+   FunctionPrecondition(App.KubeIngressController.Params.watch_ingress_without_class); is_met=True
+===================
+=====================================================================
+=====================================================================
+query results for stage 4
+
+===============================
+Processing query kube_ingress(App.KubeIngressController, Kube.Ingress):BuiltinSort.Bool:
+
+
+Results:
+
+timing=0.0139
+{'query': 'kube_ingress(App.KubeIngressController, '
+          'Kube.Ingress):BuiltinSort.Bool',
+ 'function_results': [{'arg1': shadow-ingress-controller,
+                       'arg2': KubernetesParser.Kube.Ingress-0},
+                      {'arg1': shadow-ingress-controller,
+                       'arg2': KubernetesParser.Kube.Ingress-2},
+                      {'arg1': shadow-ingress-controller,
+                       'arg2': KubernetesParser.Kube.Ingress-1}]}
+===============================
+
+Ignoring query result with subject 'App.KubeIngressController', which is not a component
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/master[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/master[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/master[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/master[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/master[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/master[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/master[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/master[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/master[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+cannot find a child name for redis-14.4.0/redis/redis_cluster/slave_replicas[0] under redis-14.4.0/redis/redis_cluster
+Error: issues/63:
+Child component 'redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints' does not have a link_name
+Error: issues/63:
+Child component 'redis-14.4.0/redis/redis_cluster/master[0]/params' does not have a link_name
+Error: issues/63:
+Child component 'redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints' does not have a link_name
+Error: issues/63:
+Child component 'redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params' does not have a link_name
+Error: issues/63:
+Child component 'redis-14.4.0/redis/redis_cluster/master[0]/params' does not have a link_name
+Error: issues/63:
+Child component 'redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints' does not have a link_name
+Error: issues/63:
+Child component 'redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params' does not have a link_name
+Error: issues/63:
+Child component 'redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints' does not have a link_name

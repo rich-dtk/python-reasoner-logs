@@ -1,0 +1,75 @@
+Or(Not(DYNAMIC_ATTRIBUTE-27),
+   name(getdtk/graph-example1-app:latest) ==
+   getdtk/graph-example1-app)
+
+Or(Not(DYNAMIC_ATTRIBUTE-28),
+   tag(getdtk/graph-example1-app:latest) == latest)
+
+Or(Not(DYNAMIC_ATTRIBUTE-31),
+   name(getdtk/graph-example2-app:latest) ==
+   getdtk/graph-example2-app)
+
+Or(Not(DYNAMIC_ATTRIBUTE-32),
+   tag(getdtk/graph-example2-app:latest) == latest)
+
+Or(Not(DYNAMIC_ATTRIBUTE-35),
+   name(docker.io/bitnami/redis:6.2.4-debian-10-r13) ==
+   docker.io/bitnami/redis)
+
+Or(Not(DYNAMIC_ATTRIBUTE-36),
+   tag(docker.io/bitnami/redis:6.2.4-debian-10-r13) ==
+   6.2.4-debian-10-r13)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-47),
+   parent(KubernetesParser.Kube.Ingress.DefaultBackend-0) ==
+   KubernetesParser.Kube.Ingress-0)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-48),
+   parent(KubernetesParser.Kube.Ingress.DefaultBackend-1) ==
+   KubernetesParser.Kube.Ingress-1)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-52),
+   parent(KubernetesParser.Kube.Ingress-2/default_backend) ==
+   KubernetesParser.Kube.Ingress-2)
+
+Or(Not(DYNAMIC_ATTRIBUTE-65),
+   replica_count(HelmParser.Kube.StatefulSet-0/stable_network_id) ==
+   replicas(HelmParser.Kube.StatefulSet-0))
+
+Or(Not(DYNAMIC_ATTRIBUTE-66),
+   hostname(HelmParser.Kube.StatefulSet-0/stable_network_id) ==
+   name(HelmParser.Kube.StatefulSet-0))
+
+Or(Not(DYNAMIC_ATTRIBUTE-67),
+   namespace(HelmParser.Kube.StatefulSet-0/stable_network_id) ==
+   namespace(HelmParser.Kube.StatefulSet-0))
+
+Or(Not(DYNAMIC_ATTRIBUTE-68),
+   service(HelmParser.Kube.StatefulSet-0/stable_network_id) ==
+   service_name(HelmParser.Kube.StatefulSet-0))
+
+Or(Not(DYNAMIC_ATTRIBUTE-69),
+   cluster_domain_name(HelmParser.Kube.StatefulSet-0/stable_network_id) ==
+   cluster_domain_name(kube_cluster(manifest_set(HelmParser.Kube.StatefulSet-0))))
+
+Or(Not(DYNAMIC_ATTRIBUTE-72),
+   replica_count(HelmParser.Kube.StatefulSet-1/stable_network_id) ==
+   replicas(HelmParser.Kube.StatefulSet-1))
+
+Or(Not(DYNAMIC_ATTRIBUTE-73),
+   hostname(HelmParser.Kube.StatefulSet-1/stable_network_id) ==
+   name(HelmParser.Kube.StatefulSet-1))
+
+Or(Not(DYNAMIC_ATTRIBUTE-74),
+   namespace(HelmParser.Kube.StatefulSet-1/stable_network_id) ==
+   namespace(HelmParser.Kube.StatefulSet-1))
+
+Or(Not(DYNAMIC_ATTRIBUTE-75),
+   service(HelmParser.Kube.StatefulSet-1/stable_network_id) ==
+   service_name(HelmParser.Kube.StatefulSet-1))
+
+Or(Not(DYNAMIC_ATTRIBUTE-76),
+   cluster_domain_name(HelmParser.Kube.StatefulSet-1/stable_network_id) ==
+   cluster_domain_name(kube_cluster(manifest_set(HelmParser.Kube.StatefulSet-1))))
+
+

@@ -1,0 +1,545 @@
+Kube.Secret:
+- KubeParser.Kube.Secret-1
+Kube.Name:
+- release-name-redis-master
+- release-name-redis
+- release-name-redis-headless
+- release-name-redis-replicas
+- COMMON.NONE
+Kube.Namespace:
+- default
+- COMMON.NONE
+Kube.Labels:
+- Reasoner.Kube.Labels-2
+- Reasoner.Kube.Labels-4
+- Reasoner.Kube.Labels-1
+- Reasoner.Kube.Labels-5
+- Reasoner.Kube.Labels-3
+- Reasoner.Kube.Labels-6
+- COMMON.NONE
+Config.Name:
+- app.kubernetes.io/instance
+- app.kubernetes.io/name
+- app.kubernetes.io/component
+- app.kubernetes.io/managed-by
+- helm.sh/chart
+- ingressclass.kubernetes.io/is-default-class
+Config.Value:
+- replica
+- COMMON.NONE
+- no_match_value
+- master
+- Helm
+- release-name
+- redis
+- redis-14.4.0
+- 'true'
+Kube.Service:
+- KubeParser.Kube.Service-2
+- KubeParser.Kube.Service-3
+- KubeParser.Kube.Service-1
+Kube.Service.ServicePort:
+- KubeParser.Kube.Service.ServicePort-3
+- KubeParser.Kube.Service.ServicePort-2
+- KubeParser.Kube.Service.ServicePort-1
+Network.Port.Number:
+- '|6379|'
+- COMMON.NONE
+Kube.Selector.Name:
+- app.kubernetes.io/name
+- app.kubernetes.io/instance
+- app.kubernetes.io/component
+Kube.Selector.Value:
+- redis
+- master
+- release-name
+- replica
+Kube.StatefulSet:
+- KubeParser.Kube.StatefulSet-2
+- KubeParser.Kube.StatefulSet-1
+Meta.Modality:
+- ShouldHold
+- DoesHold
+Meta.Stage:
+- default
+KubeCluster.DomainName:
+- cluster.local
+- (cluster_domain_name KubeCluster-0)
+Kube.Ingress.ControllerClass:
+- Debug2
+- Debug1
+Kube.Ingress.Rule.HttpPath.PathType:
+- Prefix
+Kube.Service.Type:
+- LoadBalancer
+- COMMON.INVALID_TYPE_CAST
+- ExternalName
+- ClusterIP
+- NodePort
+- COMMON.NONE
+Constraint.Value:
+- holds
+- fails
+- undefined
+Service.Type:
+- ingress_controller
+- redis
+Config.ManifestSet.Instantiation:
+- Config.ManifestSet.Instantiation-0
+Network.Port:
+- replica
+- redis-14.4.0
+- no_match_value
+- master
+- Helm
+- release-name
+- redis
+- COMMON.NONE
+- '|6379|'
+Network.Http.HostPattern:
+- '*'
+- COMMON.NONE
+App.Redis.ReplicationMode:
+- COMMON.NONE
+- master
+- slave
+Kube.StableNetworkId:
+- COMMON.NONE
+- KubeParser.Kube.StatefulSet-2/stable_network_id
+- KubeParser.Kube.StatefulSet-1/stable_network_id
+BuiltinSort.SemanticType:
+- TopLevelKubeObj
+- Network
+- Kube.Cluster.Reference
+- Kube.Container.ResourcesRequests
+- Kube.Container.EnvValueFromSecretKeyRef
+- Source
+- Kube.Container.VolumeDeviceItem
+- Service
+- Kube.Cluster.EKSInfo
+- Kube.Node
+- Kube.Job
+- Kube.Completions
+- Kube.StableNetworkRef
+- Kube.Secret.Key
+- Kube.Label.Value
+- Network.Protocol
+- Kube.StatefulSet
+- Network.Topology
+- Meta.Term
+- Network.Port.Number
+- Config.Name
+- Kube.Pod
+- App.Redis
+- Kube.Selector
+- App
+- Kube.Configmap.DataValue
+- Kube.Volume.Projected.Source.Secret
+- DomainSort
+- Kube.Ingress.Rule.HttpPath
+- App.Base
+- Helm.Chart.Instance.Values
+- Kube.Container.EnvValueFromConfigMapKeyRef
+- Kube.ConfigMap.Data
+- Kube.Volume.HostPath
+- Kube.EphemeralContainer
+- Kube.Secret.DataValue
+- Kube.Daemonset.Update.Strategy.Rolling.Update
+- Kube.Node.Info
+- Kube.Daemonset.Update.Strategy
+- Meta.Stage
+- Kube.Container.VolumeMountItem
+- Kube.ApiVersion
+- Kube.Ingress.Rule.HttpPath.PathType
+- Kube.Secret.ParsedData
+- Kube.Container.HttpGetActionHeaderItem
+- Service.Endpoint
+- Kube.Namespace
+- Kube.PersistentVolumeClaim.VolumeName
+- Kube.Ingress.Backend
+- Network.Http
+- App.Attribute.Mapping
+- Kube.Ingress.Class
+- Kube.Volume.Secret
+- Kube.Restart.Policy
+- Kube.Daemonset
+- Kube.Container.StartupProbe.FailureThreshold
+- Kube.Affinity.LabelSelector.MatchLabels.Value
+- App.Container.Base
+- Kube.ServiceMonitor
+- Kube.ManualSelector
+- Kube.Volume
+- Source.FilePath
+- Kube.Deployment.Strategy
+- Kube.Node.Allocatable
+- Kube.Affinity.PodAntiAffinity
+- Kube.PersistentVolumeClaim.ResourcesLimits
+- App.Service.Endpoint
+- Kube.BackOffLimit
+- Kube.Container.StartupProbe.PeriodSeconds
+- Kube.Container.TcpSocketAction
+- Service.Conn.Name
+- Kube.Volume.Projected.Source.ServiceAccountToken
+- Kube.Name
+- Kube.Container.EnvVar
+- Kube.Container.LivenessProbe.SuccessThreshold
+- Network.Address
+- Container.TaggedImage
+- Kube.Workload
+- Kube.Volume.AwsElasticBlockStore
+- Kube.Secret.Type
+- Source.GitRepo
+- Kube.Container.ReadinessProbe.PeriodSeconds
+- Kube.NamespaceAndName
+- Kube.Ingress.Tls.Host
+- Kube.Affinity
+- KubeCluster
+- Kube.Min.Ready.Seconds
+- Kube.Service.ServicePort.Name
+- Kube.ObjectRef
+- App.Redis.Params
+- Kube.Container.StartupProbe.InitialDelaySeconds
+- Secret
+- Helm.Chart
+- Meta.Term.Component
+- Kube.Ingress.Rule
+- Kube.Container.StartupProbe.TimeoutSeconds
+- Kube.ConfigMap.BinaryData
+- Kube.Container.LivenessProbe.InitialDelaySeconds
+- Kube.Annotations
+- Kube.Service.Account.Name
+- Kube
+- Kube.Container.Lifecycle
+- Kube.Secret.Immutable
+- Network.Context
+- Kube.Container.EnvVarConfig
+- Config.ManifestSet.Instantiation
+- COMMON.NONE
+- Kube.Volume.ConfigMap
+- Kube.Deployment.Paused
+- App.Service.Conn
+- Kube.Cluster
+- Config.ManifestSet
+- Kube.Labels
+- Kube.Affinity.PodAffinitySchedulingItemPodAffinityTerm
+- Kube.Volume.PersistentVolumeClaim
+- Kube.Deployment.Strategy.Rolling.Update
+- Kube.StatefulSet.Pod.Management.Policy
+- Any.Json
+- Kube.Label.Name
+- Kube.NetworkPolicy
+- Kube.Ingress.Tls.SecretName
+- Kube.Container.ExecAction
+- App.KubeIngressController.Type
+- Kube.Ingress.Backend.Service
+- Kube.Affinity.NodeAffinityMatchItem
+- Kube.Container.PortItem
+- App.Type
+- Kube.Affinity.LabelSelector.MatchLabels.Name
+- Kube.Cluster.Type
+- Container.Tag.Name
+- Kube.Service
+- Kube.Container.LifecycleHandler
+- Kube.Affinity.PodAffinity
+- Kube.Namespace.Ref
+- Kube.Kind
+- Kube.Label
+- Kube.Container.LivenessProbe.TimeoutSeconds
+- App.Nginx.Type
+- App.KubeIngressController.Params
+- Kube.Affinity.NodeAffinity
+- Network.Http.PathPattern
+- App.Params
+- BuiltinSort.Z3String
+- Kube.Container.ReadinessProbe.TimeoutSeconds
+- Kube.StatefulSet.Update.Strategy
+- Kube.Node.TaintItem
+- Kube.Affinity.NodeAffinityRequiredScheduling
+- Kube.StatefulSet.Update.Strategy.Rolling.Update
+- Service.Type
+- App.AttributeName
+- Kube.Container.ResourcesLimits
+- Kube.Volume.Projected.Source.ConfigMap
+- Kube.Container.SecurityContext
+- Any.String
+- Kube.Affinity.LabelSelectorMatchExpressionItem
+- Kube.ConfigMap.Immutable
+- Container.Image
+- Kube.Volume.Projected.Source
+- Network.URL
+- Helm.Chart.Release.Values
+- App.Nginx.Params
+- Kube.Volume.DownwardApi.Item.ResourceFieldRef
+- Kube.Volume.Projected.Source.DownwardApi
+- Kube.Ingress.ControllerClass
+- Kube.Ingress
+- Kube.Container.EnvFromSecretRefItem
+- Kube.PersistentVolumeClaim.AccessMode.Item
+- Kube.Container.EnvVarName
+- Kube.Affinity.LabelSelector
+- Kube.Volume.GitRepo
+- Service.Conn
+- Kube.Container.EnvValueFrom
+- App.KubeIngressController
+- Kube.Container.ReadinessProbe.FailureThreshold
+- Kube.Image.Pull.Secret
+- Kube.Secret.Keys
+- Kube.Volume.ConfigMap.Item
+- Kube.Service.ServicePort.Protocol
+- Kube.Volume.Projected
+- Helm.Template
+- Any.Secret
+- Network.Http.HostPattern
+- Kube.Container.EnvVarsConfig
+- Kube.Ref
+- Kube.Container.EnvFromConfigMapRefItem
+- Kube.Ingress.Backend.Service.Port
+- Kube.Container.ReadinessProbe.InitialDelaySeconds
+- Kube.Service.ServicePort
+- Kube.Node.Name
+- Kube.Container.EnvValueFromFieldRef
+- Kube.Ingress.Rule.HttpPath.Backend
+- Kube.Container.ImageRef
+- Kube.Affinity.NodeAffinityPreferedSchedulingItemPreference
+- Kube.Selector.Value
+- Meta
+- Common.Boolean
+- Kube.Progress.Deadline.Seconds
+- Kube.PersistentVolumeClaim.DataSource
+- Kube.Ingress.Backend.Resource.ApiGroup
+- Kube.Replicas
+- Kube.Node.Capacity
+- Kube.PersistentVolumeClaim.Resources
+- Kube.Container.ReadinessProbe.SuccessThreshold
+- Kube.Secret
+- BuiltinSort.Z3Integer
+- Kube.Ingress.Tls
+- Kube.TtlSecondsAfterFinished
+- Kube.Ingress.Backend.Resource.Kind
+- Kube.Volume.DownwardApi.Item.FieldRef
+- Kube.PersistentVolumeClaim.StorageClassName
+- Kube.Container.LivenessProbe.PeriodSeconds
+- Service.EndpointNestedDatatype
+- Helm.Chart.ValuesFile
+- Kube.PersistentVolumeClaim.VolumeMode
+- App.Redis.Cluster
+- Network.Topology.Node.HttpRoute
+- Network.Topology.Node
+- Container.Image.Name
+- Any.Concat
+- Kube.Volume.Name
+- Kube.Container.LivenessProbe
+- Kube.Service.ClusterIp
+- Kube.Container.EnvVarItem
+- Helm.Template.Condition
+- Container.Tag
+- Kube.Container.ImagePullPolicy
+- Kube.Affinity.PodAffinitySchedulingItem
+- Kube.Configmap.DataName
+- Kube.Volume.EmptyDir
+- BuiltinSort.SemanticType
+- Any.Integer
+- Kube.Container.LivenessProbe.FailureThreshold
+- Kube.Container.HttpGetAction
+- Network.Port
+- Kube.Parallelism
+- Kube.Container.Resources
+- Kube.Container.EnvFromSourceItem
+- Kube.Service.Type
+- Kube.PersistentVolumeClaim
+- Kube.Pod.Template
+- Kube.Ingress.DefaultBackend
+- Container
+- Secret.Store
+- Kube.Container.EnvValueFromResourceFieldRef
+- Service.Endpoint.Name
+- Constraint
+- Kube.Ingress.Backend.Resource
+- Kube.Selector.Name
+- Kube.StableNetworkId
+- Kube.Revision.History.Limit
+- Kube.InitContainer
+- Kube.ActiveDeadlineSeconds
+- App.Redis.ReplicationMode
+- Kube.NamespaceSecrets
+- Kube.Container.StartupProbe
+- Kube.ConfigMap
+- Kube.Volume.DownwardApi
+- Kube.Node.AddressItem
+- Kube.Toleration
+- App.EnvVar.Name
+- Kube.Volume.Secret.Item
+- Kube.PersistentVolumeClaim.ResourcesRequests
+- Kube.Volume.DownwardApi.Item
+- App.Nginx
+- Kube.Pod.SecurityContext
+- Kube.Secret.StringData.Parsed
+- Kube.Container.StartupProbe.SuccessThreshold
+- Meta.Modality
+- Meta.Term.Attribute
+- Helm.Chart.Release
+- Config.Value
+- Kube.Affinity.NodeAffinityRequiredSchedulingNodeSelectorTermsItem
+- Kube.Container.EnvVars
+- Kube.Node.Selector
+- Kube.Affinity.NodeAffinityPreferedSchedulingItem
+- Kube.Volume.Ephemeral
+- Config
+- Kube.Container.ReadinessProbe
+- Helm.Chart.ValuesFile.RelativePath
+- Kube.Deployment
+- Kube.Container
+- BuiltinSort.Bool
+- Meta.Term.Key
+- Helm
+- Kube.Volume.Nfs
+- KubeCluster.DomainName
+- Constraint.Value
+BuiltinSort.Bool:
+- 'False'
+- 'True'
+- COMMON.NONE
+App.KubeIngressController.Type:
+- nginx
+- other
+Network.Protocol:
+- scp
+- udp
+- http
+- https
+- tcp
+App.Nginx.Type:
+- nginx
+- other
+Kube.Kind:
+- StatefulSet
+- Secret
+- Deployment
+Secret:
+- '|default/member[0]|'
+KubeCluster:
+- KubeCluster-0
+Network.Address:
+- replica
+- redis-14.4.0
+- no_match_value
+- master
+- Helm
+- release-name
+- redis
+- COMMON.NONE
+Secret.Store:
+- default
+Kube.Workload:
+- KubeParser.Kube.StatefulSet-2
+- KubeParser.Kube.StatefulSet-1
+Kube.Namespace.Ref:
+- (namespace_of KubeParser.Kube.StatefulSet-2)
+- (namespace_of KubeParser.Kube.StatefulSet-1)
+- (namespace default)
+- (namespace COMMON.NONE)
+Kube.Ref:
+- "(kube_ref StatefulSet\n          release-name-redis-master\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-2))"
+- "(kube_ref StatefulSet\n          release-name-redis-master\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-1))"
+- (kube_ref StatefulSet release-name-redis-master (namespace default))
+- (kube_ref StatefulSet release-name-redis-master (namespace COMMON.NONE))
+- "(kube_ref StatefulSet\n          release-name-redis\n          (namespace_of KubeParser.Kube.StatefulSet-2))"
+- "(kube_ref StatefulSet\n          release-name-redis\n          (namespace_of KubeParser.Kube.StatefulSet-1))"
+- (kube_ref StatefulSet release-name-redis (namespace default))
+- (kube_ref StatefulSet release-name-redis (namespace COMMON.NONE))
+- "(kube_ref StatefulSet\n          release-name-redis-headless\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-2))"
+- "(kube_ref StatefulSet\n          release-name-redis-headless\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-1))"
+- (kube_ref StatefulSet release-name-redis-headless (namespace default))
+- (kube_ref StatefulSet release-name-redis-headless (namespace COMMON.NONE))
+- "(kube_ref StatefulSet\n          release-name-redis-replicas\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-2))"
+- "(kube_ref StatefulSet\n          release-name-redis-replicas\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-1))"
+- (kube_ref StatefulSet release-name-redis-replicas (namespace default))
+- (kube_ref StatefulSet release-name-redis-replicas (namespace COMMON.NONE))
+- (kube_ref StatefulSet COMMON.NONE (namespace_of KubeParser.Kube.StatefulSet-2))
+- (kube_ref StatefulSet COMMON.NONE (namespace_of KubeParser.Kube.StatefulSet-1))
+- (kube_ref StatefulSet COMMON.NONE (namespace default))
+- (kube_ref StatefulSet COMMON.NONE (namespace COMMON.NONE))
+- "(kube_ref Secret\n          release-name-redis-master\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-2))"
+- "(kube_ref Secret\n          release-name-redis-master\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-1))"
+- (kube_ref Secret release-name-redis-master (namespace default))
+- (kube_ref Secret release-name-redis-master (namespace COMMON.NONE))
+- "(kube_ref Secret\n          release-name-redis\n          (namespace_of KubeParser.Kube.StatefulSet-2))"
+- "(kube_ref Secret\n          release-name-redis\n          (namespace_of KubeParser.Kube.StatefulSet-1))"
+- (kube_ref Secret release-name-redis (namespace default))
+- (kube_ref Secret release-name-redis (namespace COMMON.NONE))
+- "(kube_ref Secret\n          release-name-redis-headless\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-2))"
+- "(kube_ref Secret\n          release-name-redis-headless\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-1))"
+- (kube_ref Secret release-name-redis-headless (namespace default))
+- (kube_ref Secret release-name-redis-headless (namespace COMMON.NONE))
+- "(kube_ref Secret\n          release-name-redis-replicas\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-2))"
+- "(kube_ref Secret\n          release-name-redis-replicas\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-1))"
+- (kube_ref Secret release-name-redis-replicas (namespace default))
+- (kube_ref Secret release-name-redis-replicas (namespace COMMON.NONE))
+- (kube_ref Secret COMMON.NONE (namespace_of KubeParser.Kube.StatefulSet-2))
+- (kube_ref Secret COMMON.NONE (namespace_of KubeParser.Kube.StatefulSet-1))
+- (kube_ref Secret COMMON.NONE (namespace default))
+- (kube_ref Secret COMMON.NONE (namespace COMMON.NONE))
+- "(kube_ref Deployment\n          release-name-redis-master\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-2))"
+- "(kube_ref Deployment\n          release-name-redis-master\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-1))"
+- (kube_ref Deployment release-name-redis-master (namespace default))
+- (kube_ref Deployment release-name-redis-master (namespace COMMON.NONE))
+- "(kube_ref Deployment\n          release-name-redis\n          (namespace_of KubeParser.Kube.StatefulSet-2))"
+- "(kube_ref Deployment\n          release-name-redis\n          (namespace_of KubeParser.Kube.StatefulSet-1))"
+- (kube_ref Deployment release-name-redis (namespace default))
+- (kube_ref Deployment release-name-redis (namespace COMMON.NONE))
+- "(kube_ref Deployment\n          release-name-redis-headless\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-2))"
+- "(kube_ref Deployment\n          release-name-redis-headless\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-1))"
+- (kube_ref Deployment release-name-redis-headless (namespace default))
+- (kube_ref Deployment release-name-redis-headless (namespace COMMON.NONE))
+- "(kube_ref Deployment\n          release-name-redis-replicas\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-2))"
+- "(kube_ref Deployment\n          release-name-redis-replicas\n          (namespace_of\
+  \ KubeParser.Kube.StatefulSet-1))"
+- (kube_ref Deployment release-name-redis-replicas (namespace default))
+- (kube_ref Deployment release-name-redis-replicas (namespace COMMON.NONE))
+- (kube_ref Deployment COMMON.NONE (namespace_of KubeParser.Kube.StatefulSet-2))
+- (kube_ref Deployment COMMON.NONE (namespace_of KubeParser.Kube.StatefulSet-1))
+- (kube_ref Deployment COMMON.NONE (namespace default))
+- (kube_ref Deployment COMMON.NONE (namespace COMMON.NONE))
+Service.EndpointNestedDatatype:
+- (service_endpoint ingress_controller |6379| scp)
+- (service_endpoint ingress_controller |6379| udp)
+- (service_endpoint ingress_controller |6379| http)
+- (service_endpoint ingress_controller |6379| https)
+- (service_endpoint ingress_controller |6379| tcp)
+- (service_endpoint ingress_controller COMMON.NONE scp)
+- (service_endpoint ingress_controller COMMON.NONE udp)
+- (service_endpoint ingress_controller COMMON.NONE http)
+- (service_endpoint ingress_controller COMMON.NONE https)
+- (service_endpoint ingress_controller COMMON.NONE tcp)
+- (service_endpoint redis |6379| scp)
+- (service_endpoint redis |6379| udp)
+- (service_endpoint redis |6379| http)
+- (service_endpoint redis |6379| https)
+- (service_endpoint redis |6379| tcp)
+- (service_endpoint redis COMMON.NONE scp)
+- (service_endpoint redis COMMON.NONE udp)
+- (service_endpoint redis COMMON.NONE http)
+- (service_endpoint redis COMMON.NONE https)
+- (service_endpoint redis COMMON.NONE tcp)
+_meta_attr_fn__secret_value__a__Any.Secret__sort:
+- secret_value
+_meta_attr_fn__stable_network_id_url__a__Any.String__sort:
+- url
+

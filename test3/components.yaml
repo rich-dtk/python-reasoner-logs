@@ -1,0 +1,3634 @@
+logical_id: KubernetesParser.Container.Image-0
+type: Container.Image
+attributes:
+  name:
+    value: getdtk/graph-example1-app
+    type: Container.Image.Name
+  tag:
+    value: latest
+    type: Container.Tag.Name
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-14
+
+---
+type: App
+logical_id: KubernetesParser.App-0
+attributes:
+  name:
+    value: example-node-app
+    type: Kube.Name
+  namespace:
+    value: null
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: namespace(Config.ManifestSet.Instantiation-0)
+  image_name:
+    type: Container.Image.Name
+    value: COMMON.NONE
+  image_tag:
+    type: Container.Tag.Name
+    value: COMMON.NONE
+components:
+  service_conns:
+  - type: App.Service.Conn
+    logical_id: KubernetesParser.App.Service.Conn-0
+    attributes:
+      name:
+        value: redis_endpoint
+        type: Service.Conn.Name
+      service_type:
+        value: Redis
+        type: Service.Type
+  service_endpoints:
+  - type: App.Service.Endpoint
+    logical_id: KubernetesParser.App.Service.Endpoint-0
+    attributes:
+      name:
+        value: http_endpoint
+        type: Service.Endpoint.Name
+      service_type:
+        value: MyApp
+        type: Service.Type
+  attribute_mappings:
+  - type: App.Attribute.Mapping
+    logical_id: KubernetesParser.App.Attribute.Mapping-0
+    attributes:
+      name:
+        value: http_endpoint
+        type: BuiltinSort.Z3String
+      semantic_type:
+        value: Service.Endpoint
+        type: BuiltinSort.SemanticType
+      value:
+        value: '{"protocol": {"_value": "http", "_semantic_type": "Network.Protocol"},
+          "port": {"_value": {"_env": "PORT"}, "_semantic_type": "Network.Port", "_default":
+          "8080"}, "service_type": {"_value": "MyApp", "_semantic_type": "Service.Type"}}'
+        type: Any.Json
+  - type: App.Attribute.Mapping
+    logical_id: KubernetesParser.App.Attribute.Mapping-1
+    attributes:
+      name:
+        value: node_env
+        type: BuiltinSort.Z3String
+      semantic_type:
+        value: COMMON.NONE
+        type: BuiltinSort.SemanticType
+      value:
+        value: '{"_value": "_env NODE_ENV", "_type": "string"}'
+        type: Any.Json
+  - type: App.Attribute.Mapping
+    logical_id: KubernetesParser.App.Attribute.Mapping-2
+    attributes:
+      name:
+        value: redis_endpoint
+        type: BuiltinSort.Z3String
+      semantic_type:
+        value: Service.Conn
+        type: BuiltinSort.SemanticType
+      value:
+        value: '{"service_type": {"_value": "Redis", "_semantic_type": "Service.Type"},
+          "protocol": {"_value": "tcp", "_semantic_type": "Network.Protocol"}, "port":
+          {"_semantic_type": "Network.Port", "_value": {"_env": "DB_PORT"}, "_default":
+          "6379"}, "host_address": {"_semantic_type": "Network.Address", "_value":
+          {"_env": "DB_HOST"}}, "password": {"_value": {"_env": "DB_PASSWORD"}, "_secret":
+          "true"}}'
+        type: Any.Json
+  - type: App.Attribute.Mapping
+    logical_id: KubernetesParser.App.Attribute.Mapping-3
+    attributes:
+      name:
+        value: config_var_example
+        type: BuiltinSort.Z3String
+      semantic_type:
+        value: Foo.Type
+        type: BuiltinSort.SemanticType
+      value:
+        value: '{"_config_attr_ref": {"_file_ref": "etc_app_conf", "_path": "top_key/bar"}}'
+        type: Any.Json
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-0
+
+---
+type: App
+logical_id: KubernetesParser.App-1
+attributes:
+  name:
+    value: redis
+    type: Kube.Name
+  namespace:
+    value: null
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: namespace(Config.ManifestSet.Instantiation-0)
+  image_name:
+    type: Container.Image.Name
+    value: COMMON.NONE
+  image_tag:
+    type: Container.Tag.Name
+    value: COMMON.NONE
+components:
+  service_endpoints:
+  - type: App.Service.Endpoint
+    logical_id: KubernetesParser.App.Service.Endpoint-1
+    attributes:
+      name:
+        value: endpoint
+        type: Service.Endpoint.Name
+      service_type:
+        value: Redis
+        type: Service.Type
+  attribute_mappings:
+  - type: App.Attribute.Mapping
+    logical_id: KubernetesParser.App.Attribute.Mapping-4
+    attributes:
+      name:
+        value: endpoint
+        type: BuiltinSort.Z3String
+      semantic_type:
+        value: Service.Endpoint
+        type: BuiltinSort.SemanticType
+      value:
+        value: '{"protocol": {"_value": "http", "_semantic_type": "Network.Protocol"},
+          "port": {"_value": {"_env": "REDIS_PORT"}, "_semantic_type": "Network.Port",
+          "_default": "6379"}, "service_type": {"_value": "Redis", "_semantic_type":
+          "Service.Type"}}'
+        type: Any.Json
+  - type: App.Attribute.Mapping
+    logical_id: KubernetesParser.App.Attribute.Mapping-5
+    attributes:
+      name:
+        value: replication_mode
+        type: BuiltinSort.Z3String
+      semantic_type:
+        value: COMMON.NONE
+        type: BuiltinSort.SemanticType
+      value:
+        value: '{"_value": "_env REDIS_REPLICATION_MODE", "_type": "string"}'
+        type: Any.Json
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-1
+
+---
+type: Config.ManifestSet.Instantiation
+logical_id: Config.ManifestSet.Instantiation-0
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - HelmParser.Source.FilePath-0
+
+---
+type: Helm.Chart
+logical_id: redis-4.4.0
+attributes:
+  name:
+    value: redis
+    type: Helm.Name
+  name_with_version:
+    value: redis-14.4.0
+    type: Config.Value
+components:
+  release:
+  - type: Helm.Chart.Release
+    logical_id: redis-14.4.0/redis
+    attributes:
+      override_values:
+        value:
+          networkPolicy.enabled: false
+          master.service.type: ExternalName
+          master.service.port: 6379
+          master.containerPort: 6379
+          metrics.isEnabled: false
+          metrics.useServiceMonitor: false
+          image.repository: bitnami/redis
+          image.tag: 6.2.4-debian-10-r13
+          image.pullPolicy: IfNotPresent
+          image.pullSecrets: []
+          image.debug: false
+        type:
+          Helm.Chart.Release.Values:
+            map:
+            - Config.Name
+            - Config.Value
+      release_name:
+        value: redis
+        type: Config.Value
+      manifest_set:
+        value: Config.ManifestSet.Instantiation-0
+        type: Config.ManifestSet.Instantiation
+    components: {}
+  condition:
+  - type: Helm.Template
+    logical_id: HelmParser.Helm.Template-0
+    attributes:
+      path:
+        value: redis/templates/networkpolicy.yaml
+        type: Any.String
+    components:
+      condition:
+      - type: Helm.Template.Condition
+        logical_id: HelmParser.Helm.Template.Condition-0
+        attributes:
+          exists_kube_networkpolicy:
+            type: BuiltinSort.Bool
+            function:
+              encoding: tuple_encoding
+              encoded_function:
+                _fn:
+                - default_manifest_value
+                - Config.Value
+                - _const:
+                  - networkPolicy.enabled
+                  - Config.Name
+                - _range_value: false
+              user_friendly_form: default_manifest_value(networkPolicy.enabled)
+    links:
+      _source:
+        endpoint_type: Source.FilePath
+        endpoints:
+        - HelmParser.Source.FilePath-1
+  - type: Helm.Template
+    logical_id: HelmParser.Helm.Template-1
+    attributes:
+      path:
+        value: redis/templates/servicemonitor.yaml
+        type: Any.String
+    components:
+      condition:
+      - type: Helm.Template.Condition
+        logical_id: HelmParser.Helm.Template.Condition-1
+        attributes:
+          exists_kube_servicemonitor:
+            type: BuiltinSort.Bool
+            function:
+              encoding: tuple_encoding
+              encoded_function:
+                _fn:
+                - __and
+                - BuiltinSort.Bool
+                - _fn:
+                  - default_manifest_value
+                  - Config.Value
+                  - _const:
+                    - metrics.isEnabled
+                    - Config.Name
+                  - _range_value: false
+                - _fn:
+                  - __not
+                  - BuiltinSort.Bool
+                  - _fn:
+                    - default_manifest_value
+                    - Config.Value
+                    - _const:
+                      - metrics.useServiceMonitor
+                      - Config.Name
+                    - _range_value: false
+                  - _range_value: true
+                - _range_value: false
+              user_friendly_form: __and(default_manifest_value(metrics.isEnabled),
+                __not(default_manifest_value(metrics.useServiceMonitor)))
+    links:
+      _source:
+        endpoint_type: Source.FilePath
+        endpoints:
+        - HelmParser.Source.FilePath-2
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - HelmParser.Source.FilePath-0
+
+---
+type: Kube.ConfigMap
+logical_id: HelmParser.Kube.ConfigMap-0
+attributes:
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/managed-by: Helm
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: redis-configuration
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  immutable:
+    value: COMMON.NONE
+    type: Kube.ConfigMap.Immutable
+  api_version:
+    value: v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  binary_data:
+    type: Kube.ConfigMap.BinaryData
+    value: COMMON.NONE
+components: {}
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-6
+
+---
+type: Kube.ConfigMap
+logical_id: HelmParser.Kube.ConfigMap-1
+attributes:
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/managed-by: Helm
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: redis-health
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  immutable:
+    value: COMMON.NONE
+    type: Kube.ConfigMap.Immutable
+  api_version:
+    value: v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  binary_data:
+    type: Kube.ConfigMap.BinaryData
+    value: COMMON.NONE
+components: {}
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-7
+
+---
+type: Kube.ConfigMap
+logical_id: HelmParser.Kube.ConfigMap-2
+attributes:
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/managed-by: Helm
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: redis-scripts
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  immutable:
+    value: COMMON.NONE
+    type: Kube.ConfigMap.Immutable
+  api_version:
+    value: v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  binary_data:
+    type: Kube.ConfigMap.BinaryData
+    value: COMMON.NONE
+components: {}
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-8
+
+---
+type: Kube.Deployment
+logical_id: KubernetesParser.Kube.Deployment-0
+attributes:
+  labels:
+    value:
+      app: node
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: node-app2-dep
+    type: Kube.Name
+  namespace:
+    value: null
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: namespace(Config.ManifestSet.Instantiation-0)
+  min_ready_seconds:
+    value: COMMON.NONE
+    type: Kube.Min.Ready.Seconds
+  paused:
+    value: COMMON.NONE
+    type: Kube.Deployment.Paused
+  progress_deadline_seconds:
+    value: COMMON.NONE
+    type: Kube.Progress.Deadline.Seconds
+  replicas:
+    value: '1'
+    type: Kube.Replicas
+  revision_history_limit:
+    value: COMMON.NONE
+    type: Kube.Revision.History.Limit
+  manifest_set:
+    type: Config.ManifestSet.Instantiation
+    value: Config.ManifestSet.Instantiation-0
+  api_version:
+    value: apps/v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  match_labels:
+    value:
+      app: node-app2
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+components:
+  template:
+  - type: Kube.Pod.Template
+    logical_id: KubernetesParser.Kube.Pod.Template-0
+    attributes:
+      labels:
+        value:
+          app: node-app2
+        type:
+          Kube.Labels:
+            map:
+            - Config.Name
+            - Config.Value
+      name:
+        value: COMMON.NONE
+        type: Kube.Name
+      namespace:
+        value: COMMON.NONE
+        type: Kube.Namespace
+      node_name:
+        value: COMMON.NONE
+        type: Kube.Node.Name
+      restart_policy:
+        value: COMMON.NONE
+        type: Kube.Restart.Policy
+      service_account_name:
+        value: COMMON.NONE
+        type: Kube.Service.Account.Name
+      annotations:
+        type: Kube.Annotations
+        value: COMMON.NONE
+      affinity:
+        type: Kube.Affinity
+        value: COMMON.NONE
+      node_selector:
+        type: Kube.Node.Selector
+        value: COMMON.NONE
+      security_context:
+        type: Kube.Pod.SecurityContext
+        value: COMMON.NONE
+    components:
+      containers:
+      - type: Kube.Container
+        logical_id: KubernetesParser.Kube.Container-0
+        attributes:
+          env_vars_config:
+            value:
+              NODE_ENV:
+                value: production
+              PORT:
+                value: '8080'
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: node-app2-secret
+                    key: db_password
+              DB_HOST:
+                value: my-release-redis-master
+              DB_PORT:
+                value: '6379'
+            type:
+              Kube.Container.EnvVarsConfig:
+                map:
+                - Kube.Container.EnvVarName
+                - Kube.Container.EnvVarConfig
+          image:
+            value: getdtk/graph-example2-app
+            type: Kube.Container.ImageRef
+          image_pull_policy:
+            value: COMMON.NONE
+            type: Kube.Container.ImagePullPolicy
+          name:
+            value: node
+            type: BuiltinSort.Z3String
+          args:
+            value: COMMON.NONE
+            type: Any.Json
+          command:
+            type: Any.Json
+            value: COMMON.NONE
+          lifecycle:
+            type: Kube.Container.Lifecycle
+            value: COMMON.NONE
+          liveness_probe:
+            type: Kube.Container.LivenessProbe
+            value: COMMON.NONE
+          readiness_probe:
+            type: Kube.Container.ReadinessProbe
+            value: COMMON.NONE
+          security_context:
+            type: Kube.Container.SecurityContext
+            value: COMMON.NONE
+          startup_probe:
+            type: Kube.Container.StartupProbe
+            value: COMMON.NONE
+        components:
+          resources:
+          - type: Kube.Container.Resources
+            logical_id: KubernetesParser.Kube.Container.Resources-0
+            components:
+              limits:
+              - type: Kube.Container.ResourcesLimits
+                logical_id: KubernetesParser.Kube.Container.ResourcesLimits-0
+                attributes:
+                  cpu:
+                    value: 200m
+                    type: BuiltinSort.Z3String
+                  memory:
+                    value: 200Mi
+                    type: BuiltinSort.Z3String
+              requests:
+              - type: Kube.Container.ResourcesRequests
+                logical_id: KubernetesParser.Kube.Container.ResourcesRequests-0
+                attributes:
+                  cpu:
+                    value: 100m
+                    type: BuiltinSort.Z3String
+                  memory:
+                    value: 100Mi
+                    type: BuiltinSort.Z3String
+          ports:
+          - type: Kube.Container.PortItem
+            logical_id: KubernetesParser.Kube.Container.PortItem-0
+            attributes:
+              container_port:
+                value: '8080'
+                type: Network.Port.Number
+              host_ip:
+                value: COMMON.NONE
+                type: Network.Address
+              host_port:
+                value: COMMON.NONE
+                type: Network.Port.Number
+              name:
+                value: COMMON.NONE
+                type: Network.Port
+              protocol:
+                value: COMMON.NONE
+                type: Network.Protocol
+  strategy:
+  - type: Kube.Deployment.Strategy
+    logical_id: KubernetesParser.Kube.Deployment.Strategy-0
+    attributes:
+      type:
+        value: RollingUpdate
+        type: BuiltinSort.Z3String
+    components:
+      rolling_update:
+      - type: Kube.Deployment.Strategy.Rolling.Update
+        logical_id: KubernetesParser.Kube.Deployment.Strategy.Rolling.Update-0
+        attributes:
+          max_surge:
+            value: '1'
+            type: BuiltinSort.Z3String
+          max_unavailable:
+            value: '0'
+            type: BuiltinSort.Z3String
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-2
+
+---
+type: Kube.Deployment
+logical_id: KubernetesParser.Kube.Deployment-1
+attributes:
+  labels:
+    value:
+      app: node-app1
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: node-app1-dep
+    type: Kube.Name
+  namespace:
+    value: null
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: namespace(Config.ManifestSet.Instantiation-0)
+  min_ready_seconds:
+    value: COMMON.NONE
+    type: Kube.Min.Ready.Seconds
+  paused:
+    value: COMMON.NONE
+    type: Kube.Deployment.Paused
+  progress_deadline_seconds:
+    value: COMMON.NONE
+    type: Kube.Progress.Deadline.Seconds
+  replicas:
+    value: '1'
+    type: Kube.Replicas
+  revision_history_limit:
+    value: COMMON.NONE
+    type: Kube.Revision.History.Limit
+  manifest_set:
+    type: Config.ManifestSet.Instantiation
+    value: Config.ManifestSet.Instantiation-0
+  api_version:
+    value: apps/v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  match_labels:
+    value:
+      app: node-app1
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+components:
+  template:
+  - type: Kube.Pod.Template
+    logical_id: KubernetesParser.Kube.Pod.Template-1
+    attributes:
+      labels:
+        value:
+          app: node-app1
+        type:
+          Kube.Labels:
+            map:
+            - Config.Name
+            - Config.Value
+      name:
+        value: COMMON.NONE
+        type: Kube.Name
+      namespace:
+        value: COMMON.NONE
+        type: Kube.Namespace
+      node_name:
+        value: COMMON.NONE
+        type: Kube.Node.Name
+      restart_policy:
+        value: COMMON.NONE
+        type: Kube.Restart.Policy
+      service_account_name:
+        value: COMMON.NONE
+        type: Kube.Service.Account.Name
+      annotations:
+        type: Kube.Annotations
+        value: COMMON.NONE
+      affinity:
+        type: Kube.Affinity
+        value: COMMON.NONE
+      node_selector:
+        type: Kube.Node.Selector
+        value: COMMON.NONE
+      security_context:
+        type: Kube.Pod.SecurityContext
+        value: COMMON.NONE
+    components:
+      containers:
+      - type: Kube.Container
+        logical_id: KubernetesParser.Kube.Container-1
+        attributes:
+          env_vars_config:
+            value:
+              NODE_ENV:
+                value: production
+              PORT:
+                value: '8080'
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: node-app1-secret
+                    key: db_password
+              DB_HOST:
+                value: my-release-redis-master
+              DB_PORT:
+                value: '6379'
+            type:
+              Kube.Container.EnvVarsConfig:
+                map:
+                - Kube.Container.EnvVarName
+                - Kube.Container.EnvVarConfig
+          image:
+            value: getdtk/graph-example1-app
+            type: Kube.Container.ImageRef
+          image_pull_policy:
+            value: COMMON.NONE
+            type: Kube.Container.ImagePullPolicy
+          name:
+            value: node
+            type: BuiltinSort.Z3String
+          args:
+            value: COMMON.NONE
+            type: Any.Json
+          command:
+            type: Any.Json
+            value: COMMON.NONE
+          lifecycle:
+            type: Kube.Container.Lifecycle
+            value: COMMON.NONE
+          liveness_probe:
+            type: Kube.Container.LivenessProbe
+            value: COMMON.NONE
+          readiness_probe:
+            type: Kube.Container.ReadinessProbe
+            value: COMMON.NONE
+          security_context:
+            type: Kube.Container.SecurityContext
+            value: COMMON.NONE
+          startup_probe:
+            type: Kube.Container.StartupProbe
+            value: COMMON.NONE
+        components:
+          resources:
+          - type: Kube.Container.Resources
+            logical_id: KubernetesParser.Kube.Container.Resources-1
+            components:
+              limits:
+              - type: Kube.Container.ResourcesLimits
+                logical_id: KubernetesParser.Kube.Container.ResourcesLimits-1
+                attributes:
+                  cpu:
+                    value: 200m
+                    type: BuiltinSort.Z3String
+                  memory:
+                    value: 200Mi
+                    type: BuiltinSort.Z3String
+              requests:
+              - type: Kube.Container.ResourcesRequests
+                logical_id: KubernetesParser.Kube.Container.ResourcesRequests-1
+                attributes:
+                  cpu:
+                    value: 100m
+                    type: BuiltinSort.Z3String
+                  memory:
+                    value: 100Mi
+                    type: BuiltinSort.Z3String
+          ports:
+          - type: Kube.Container.PortItem
+            logical_id: KubernetesParser.Kube.Container.PortItem-1
+            attributes:
+              container_port:
+                value: '8080'
+                type: Network.Port.Number
+              host_ip:
+                value: COMMON.NONE
+                type: Network.Address
+              host_port:
+                value: COMMON.NONE
+                type: Network.Port.Number
+              name:
+                value: COMMON.NONE
+                type: Network.Port
+              protocol:
+                value: COMMON.NONE
+                type: Network.Protocol
+  strategy:
+  - type: Kube.Deployment.Strategy
+    logical_id: KubernetesParser.Kube.Deployment.Strategy-1
+    attributes:
+      type:
+        value: RollingUpdate
+        type: BuiltinSort.Z3String
+    components:
+      rolling_update:
+      - type: Kube.Deployment.Strategy.Rolling.Update
+        logical_id: KubernetesParser.Kube.Deployment.Strategy.Rolling.Update-1
+        attributes:
+          max_surge:
+            value: '1'
+            type: BuiltinSort.Z3String
+          max_unavailable:
+            value: '0'
+            type: BuiltinSort.Z3String
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-3
+
+---
+type: Kube.Ingress
+logical_id: KubernetesParser.Kube.Ingress-0
+attributes:
+  annotations:
+    value:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    type:
+      Kube.Annotations:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: ingress1-matches-app1-with-default
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  ingress_class_name:
+    value: nginx
+    type: Kube.Name
+  api_version:
+    value: networking.k8s.io/v1
+    type: Kube.ApiVersion
+  labels:
+    type: Kube.Labels
+    value: COMMON.NONE
+components:
+  rules:
+  - type: Kube.Ingress.Rule
+    logical_id: KubernetesParser.Kube.Ingress.Rule-0
+    attributes:
+      host:
+        value: COMMON.NONE
+        type: Network.Http.HostPattern
+    components:
+      paths:
+      - type: Kube.Ingress.Rule.HttpPath
+        logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath-0
+        attributes:
+          path:
+            value: /testpath
+            type: Network.Http.PathPattern
+          path_type:
+            value: Prefix
+            type: Kube.Ingress.Rule.HttpPath.PathType
+        components:
+          backend:
+          - type: Kube.Ingress.Rule.HttpPath.Backend
+            logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0
+            attributes:
+              resource:
+                value: COMMON.NONE
+                type: Kube.Ingress.Backend.Resource
+            components:
+              service:
+              - type: Kube.Ingress.Backend.Service
+                logical_id: KubernetesParser.Kube.Ingress.Backend.Service-1
+                attributes:
+                  name:
+                    value: node-app1-svc
+                    type: Kube.Name
+                components:
+                  port:
+                  - type: Kube.Ingress.Backend.Service.Port
+                    logical_id: KubernetesParser.Kube.Ingress.Backend.Service.Port-1
+                    attributes:
+                      name:
+                        value: COMMON.NONE
+                        type: BuiltinSort.Z3String
+                      number:
+                        value: '80'
+                        type: Network.Port
+  default_backend:
+  - type: Kube.Ingress.DefaultBackend
+    logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-0
+    attributes:
+      resource:
+        value: COMMON.NONE
+        type: Kube.Ingress.Backend.Resource
+    components:
+      service:
+      - type: Kube.Ingress.Backend.Service
+        logical_id: KubernetesParser.Kube.Ingress.Backend.Service-0
+        attributes:
+          name:
+            value: nginx-ingress-controller
+            type: Kube.Name
+        components:
+          port:
+          - type: Kube.Ingress.Backend.Service.Port
+            logical_id: KubernetesParser.Kube.Ingress.Backend.Service.Port-0
+            attributes:
+              name:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              number:
+                value: '80'
+                type: Network.Port
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-4
+
+---
+type: Kube.Ingress
+logical_id: KubernetesParser.Kube.Ingress-1
+attributes:
+  annotations:
+    value:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    type:
+      Kube.Annotations:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: ingress2-simple-service-bad-default
+    type: Kube.Name
+  namespace:
+    value: null
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: namespace(Config.ManifestSet.Instantiation-0)
+  ingress_class_name:
+    value: COMMON.NONE
+    type: Kube.Name
+  api_version:
+    value: networking.k8s.io/v1
+    type: Kube.ApiVersion
+  labels:
+    type: Kube.Labels
+    value: COMMON.NONE
+components:
+  rules:
+  - type: Kube.Ingress.Rule
+    logical_id: KubernetesParser.Kube.Ingress.Rule-1
+    attributes:
+      host:
+        value: COMMON.NONE
+        type: Network.Http.HostPattern
+    components:
+      paths:
+      - type: Kube.Ingress.Rule.HttpPath
+        logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath-1
+        attributes:
+          path:
+            value: /testpath
+            type: Network.Http.PathPattern
+          path_type:
+            value: Prefix
+            type: Kube.Ingress.Rule.HttpPath.PathType
+        components:
+          backend:
+          - type: Kube.Ingress.Rule.HttpPath.Backend
+            logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1
+            attributes:
+              resource:
+                value: COMMON.NONE
+                type: Kube.Ingress.Backend.Resource
+            components:
+              service:
+              - type: Kube.Ingress.Backend.Service
+                logical_id: KubernetesParser.Kube.Ingress.Backend.Service-3
+                attributes:
+                  name:
+                    value: node-app-svc
+                    type: Kube.Name
+                components:
+                  port:
+                  - type: Kube.Ingress.Backend.Service.Port
+                    logical_id: KubernetesParser.Kube.Ingress.Backend.Service.Port-3
+                    attributes:
+                      name:
+                        value: COMMON.NONE
+                        type: BuiltinSort.Z3String
+                      number:
+                        value: '80'
+                        type: Network.Port
+  default_backend:
+  - type: Kube.Ingress.DefaultBackend
+    logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-1
+    attributes:
+      resource:
+        value: COMMON.NONE
+        type: Kube.Ingress.Backend.Resource
+    components:
+      service:
+      - type: Kube.Ingress.Backend.Service
+        logical_id: KubernetesParser.Kube.Ingress.Backend.Service-2
+        attributes:
+          name:
+            value: test2
+            type: Kube.Name
+        components:
+          port:
+          - type: Kube.Ingress.Backend.Service.Port
+            logical_id: KubernetesParser.Kube.Ingress.Backend.Service.Port-2
+            attributes:
+              name:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              number:
+                value: '80'
+                type: Network.Port
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-4
+
+---
+type: Kube.Ingress
+logical_id: KubernetesParser.Kube.Ingress-2
+attributes:
+  annotations:
+    value:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    type:
+      Kube.Annotations:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: ingress3-simple-fanout
+    type: Kube.Name
+  namespace:
+    value: null
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: namespace(Config.ManifestSet.Instantiation-0)
+  ingress_class_name:
+    value: COMMON.NONE
+    type: Kube.Name
+  api_version:
+    value: networking.k8s.io/v1
+    type: Kube.ApiVersion
+  labels:
+    type: Kube.Labels
+    value: COMMON.NONE
+  default_backend:
+    type: Kube.Ingress.DefaultBackend
+    value: COMMON.NONE
+components:
+  rules:
+  - type: Kube.Ingress.Rule
+    logical_id: KubernetesParser.Kube.Ingress.Rule-2
+    attributes:
+      host:
+        value: foo.bar.com
+        type: Network.Http.HostPattern
+    components:
+      paths:
+      - type: Kube.Ingress.Rule.HttpPath
+        logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath-2
+        attributes:
+          path:
+            value: /app1
+            type: Network.Http.PathPattern
+          path_type:
+            value: Prefix
+            type: Kube.Ingress.Rule.HttpPath.PathType
+        components:
+          backend:
+          - type: Kube.Ingress.Rule.HttpPath.Backend
+            logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2
+            attributes:
+              resource:
+                value: COMMON.NONE
+                type: Kube.Ingress.Backend.Resource
+            components:
+              service:
+              - type: Kube.Ingress.Backend.Service
+                logical_id: KubernetesParser.Kube.Ingress.Backend.Service-4
+                attributes:
+                  name:
+                    value: node-app1-svc
+                    type: Kube.Name
+                components:
+                  port:
+                  - type: Kube.Ingress.Backend.Service.Port
+                    logical_id: KubernetesParser.Kube.Ingress.Backend.Service.Port-4
+                    attributes:
+                      name:
+                        value: COMMON.NONE
+                        type: BuiltinSort.Z3String
+                      number:
+                        value: '80'
+                        type: Network.Port
+      - type: Kube.Ingress.Rule.HttpPath
+        logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath-3
+        attributes:
+          path:
+            value: /app2
+            type: Network.Http.PathPattern
+          path_type:
+            value: Prefix
+            type: Kube.Ingress.Rule.HttpPath.PathType
+        components:
+          backend:
+          - type: Kube.Ingress.Rule.HttpPath.Backend
+            logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3
+            attributes:
+              resource:
+                value: COMMON.NONE
+                type: Kube.Ingress.Backend.Resource
+            components:
+              service:
+              - type: Kube.Ingress.Backend.Service
+                logical_id: KubernetesParser.Kube.Ingress.Backend.Service-5
+                attributes:
+                  name:
+                    value: node-app2-svc
+                    type: Kube.Name
+                components:
+                  port:
+                  - type: Kube.Ingress.Backend.Service.Port
+                    logical_id: KubernetesParser.Kube.Ingress.Backend.Service.Port-5
+                    attributes:
+                      name:
+                        value: COMMON.NONE
+                        type: BuiltinSort.Z3String
+                      number:
+                        value: '80'
+                        type: Network.Port
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-4
+
+---
+type: Kube.NetworkPolicy
+logical_id: HelmParser.Kube.NetworkPolicy-0
+attributes:
+  _exists:
+    type: BuiltinSort.Bool
+    function:
+      encoding: tuple_encoding
+      encoded_function:
+        _fn:
+        - exists_kube_networkpolicy
+        - Config.Value
+        - _const:
+          - HelmParser.Helm.Template.Condition-0
+          - Helm.Template.Condition
+        - _range_value: false
+      user_friendly_form: exists_kube_networkpolicy(HelmParser.Helm.Template.Condition-0)
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - HelmParser.Source.FilePath-1
+
+---
+type: Kube.Secret
+logical_id: HelmParser.Kube.Secret-0
+attributes:
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/managed-by: Helm
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: redis
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  immutable:
+    value: COMMON.NONE
+    type: Kube.Secret.Immutable
+  type:
+    value: Opaque
+    type: Kube.Secret.Type
+  api_version:
+    value: v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  key_names:
+    type: Kube.Secret.Key
+    value:
+    - redis-password
+  string_data_key:
+    type: Kube.Secret.Key
+    value: COMMON.NONE
+  manifest_set:
+    type: Config.ManifestSet.Instantiation
+    value: Config.ManifestSet.Instantiation-0
+components: {}
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-5
+
+---
+type: Kube.Secret
+logical_id: KubernetesParser.Kube.Secret-0
+attributes:
+  name:
+    value: node-app2-secret
+    type: Kube.Name
+  namespace:
+    value: null
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: namespace(Config.ManifestSet.Instantiation-0)
+  immutable:
+    value: COMMON.NONE
+    type: Kube.Secret.Immutable
+  type:
+    value: COMMON.NONE
+    type: Kube.Secret.Type
+  api_version:
+    value: v1
+    type: Kube.ApiVersion
+  labels:
+    type: Kube.Labels
+    value: COMMON.NONE
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  key_names:
+    type: Kube.Secret.Key
+    value:
+    - db_password
+  string_data_key:
+    type: Kube.Secret.Key
+    value: COMMON.NONE
+  manifest_set:
+    type: Config.ManifestSet.Instantiation
+    value: Config.ManifestSet.Instantiation-0
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-2
+
+---
+type: Kube.Secret
+logical_id: KubernetesParser.Kube.Secret-1
+attributes:
+  name:
+    value: node-app1-secret
+    type: Kube.Name
+  namespace:
+    value: null
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: namespace(Config.ManifestSet.Instantiation-0)
+  immutable:
+    value: COMMON.NONE
+    type: Kube.Secret.Immutable
+  type:
+    value: COMMON.NONE
+    type: Kube.Secret.Type
+  api_version:
+    value: v1
+    type: Kube.ApiVersion
+  labels:
+    type: Kube.Labels
+    value: COMMON.NONE
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  key_names:
+    type: Kube.Secret.Key
+    value:
+    - db_password
+  string_data_key:
+    type: Kube.Secret.Key
+    value: COMMON.NONE
+  manifest_set:
+    type: Config.ManifestSet.Instantiation
+    value: Config.ManifestSet.Instantiation-0
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-3
+
+---
+type: Kube.ServiceMonitor
+logical_id: HelmParser.Kube.ServiceMonitor-0
+attributes:
+  _exists:
+    type: BuiltinSort.Bool
+    function:
+      encoding: tuple_encoding
+      encoded_function:
+        _fn:
+        - exists_kube_servicemonitor
+        - Config.Value
+        - _const:
+          - HelmParser.Helm.Template.Condition-1
+          - Helm.Template.Condition
+        - _range_value: false
+      user_friendly_form: exists_kube_servicemonitor(HelmParser.Helm.Template.Condition-1)
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - HelmParser.Source.FilePath-2
+
+---
+type: Kube.Service
+logical_id: HelmParser.Kube.Service-0
+attributes:
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/managed-by: Helm
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: redis-headless
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  cluster_ip:
+    value: COMMON.NONE
+    type: Kube.Service.ClusterIp
+  manifest_set:
+    type: Config.ManifestSet.Instantiation
+    value: Config.ManifestSet.Instantiation-0
+  api_version:
+    value: v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  type:
+    type: Kube.Service.Type
+    value: ClusterIP
+  selector:
+    value:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: redis
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+components:
+  ports:
+  - type: Kube.Service.ServicePort
+    logical_id: HelmParser.Kube.Service.ServicePort-0
+    attributes:
+      app_protocol:
+        value: COMMON.NONE
+        type: Kube.Service.ServicePort.Protocol
+      name:
+        value: tcp-redis
+        type: BuiltinSort.Z3String
+      node_port:
+        value: COMMON.NONE
+        type: Network.Port.Number
+      port:
+        value: '6379'
+        type: Network.Port.Number
+        function:
+          encoding: attribute_link
+          encoded_function:
+            attribute_name: value
+            attribute_type: Config.Value
+            base_component:
+              name: HelmParser.Helm.Chart.Release.Values-0
+              type: Helm.Chart.Release.Values
+            key:
+              name: master.service.port
+              type: Config.Name
+          user_friendly_form: Helm.Chart[redis-4.4.0]/release[0]/values/master.service.port
+      protocol:
+        value: COMMON.NONE
+        type: Kube.Service.ServicePort.Protocol
+      target_port:
+        value: redis
+        type: Network.Port
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-9
+
+---
+type: Kube.Service
+logical_id: HelmParser.Kube.Service-1
+attributes:
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/component: master
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: redis-master
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  cluster_ip:
+    value: COMMON.NONE
+    type: Kube.Service.ClusterIp
+  manifest_set:
+    type: Config.ManifestSet.Instantiation
+    value: Config.ManifestSet.Instantiation-0
+  api_version:
+    value: v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  type:
+    type: Kube.Service.Type
+    value: ExternalName
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: value
+        attribute_type: Config.Value
+        base_component:
+          name: HelmParser.Helm.Chart.Release.Values-0
+          type: Helm.Chart.Release.Values
+        key:
+          name: master.service.type
+          type: Config.Name
+      user_friendly_form: Helm.Chart[redis-4.4.0]/release[0]/values/master.service.type
+  selector:
+    value:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/component: master
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+components:
+  ports:
+  - type: Kube.Service.ServicePort
+    logical_id: HelmParser.Kube.Service.ServicePort-1
+    attributes:
+      app_protocol:
+        value: COMMON.NONE
+        type: Kube.Service.ServicePort.Protocol
+      name:
+        value: tcp-redis
+        type: BuiltinSort.Z3String
+      node_port:
+        value: COMMON.NONE
+        type: Network.Port.Number
+      port:
+        value: '6379'
+        type: Network.Port.Number
+        function:
+          encoding: attribute_link
+          encoded_function:
+            attribute_name: value
+            attribute_type: Config.Value
+            base_component:
+              name: HelmParser.Helm.Chart.Release.Values-0
+              type: Helm.Chart.Release.Values
+            key:
+              name: master.service.port
+              type: Config.Name
+          user_friendly_form: Helm.Chart[redis-4.4.0]/release[0]/values/master.service.port
+      protocol:
+        value: COMMON.NONE
+        type: Kube.Service.ServicePort.Protocol
+      target_port:
+        value: redis
+        type: Network.Port
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-10
+
+---
+type: Kube.Service
+logical_id: HelmParser.Kube.Service-2
+attributes:
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/component: replica
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: redis-replicas
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  cluster_ip:
+    value: COMMON.NONE
+    type: Kube.Service.ClusterIp
+  manifest_set:
+    type: Config.ManifestSet.Instantiation
+    value: Config.ManifestSet.Instantiation-0
+  api_version:
+    value: v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  type:
+    type: Kube.Service.Type
+    value: ClusterIP
+  selector:
+    value:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/component: replica
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+components:
+  ports:
+  - type: Kube.Service.ServicePort
+    logical_id: HelmParser.Kube.Service.ServicePort-2
+    attributes:
+      app_protocol:
+        value: COMMON.NONE
+        type: Kube.Service.ServicePort.Protocol
+      name:
+        value: tcp-redis
+        type: BuiltinSort.Z3String
+      node_port:
+        value: COMMON.NONE
+        type: Network.Port.Number
+      port:
+        value: 6379
+        type: Network.Port.Number
+      protocol:
+        value: COMMON.NONE
+        type: Kube.Service.ServicePort.Protocol
+      target_port:
+        value: redis
+        type: Network.Port
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-11
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Service-0
+attributes:
+  labels:
+    value:
+      app: node
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: node-app2-svc
+    type: Kube.Name
+  namespace:
+    value: null
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: namespace(Config.ManifestSet.Instantiation-0)
+  cluster_ip:
+    value: COMMON.NONE
+    type: Kube.Service.ClusterIp
+  manifest_set:
+    type: Config.ManifestSet.Instantiation
+    value: Config.ManifestSet.Instantiation-0
+  api_version:
+    value: v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  type:
+    type: Kube.Service.Type
+    value: NodePort
+  selector:
+    value:
+      app: node-app2
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+components:
+  ports:
+  - type: Kube.Service.ServicePort
+    logical_id: KubernetesParser.Kube.Service.ServicePort-0
+    attributes:
+      app_protocol:
+        value: COMMON.NONE
+        type: Kube.Service.ServicePort.Protocol
+      name:
+        value: COMMON.NONE
+        type: BuiltinSort.Z3String
+      node_port:
+        value: '31112'
+        type: Network.Port.Number
+      port:
+        value: '8080'
+        type: Network.Port.Number
+      protocol:
+        value: COMMON.NONE
+        type: Kube.Service.ServicePort.Protocol
+      target_port:
+        value: '8081'
+        type: Network.Port
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-2
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Service-1
+attributes:
+  labels:
+    value:
+      app: node
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: node-app1-svc
+    type: Kube.Name
+  namespace:
+    value: null
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: namespace(Config.ManifestSet.Instantiation-0)
+  cluster_ip:
+    value: COMMON.NONE
+    type: Kube.Service.ClusterIp
+  manifest_set:
+    type: Config.ManifestSet.Instantiation
+    value: Config.ManifestSet.Instantiation-0
+  api_version:
+    value: v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  type:
+    type: Kube.Service.Type
+    value: NodePort
+  selector:
+    value:
+      app: node
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+components:
+  ports:
+  - type: Kube.Service.ServicePort
+    logical_id: KubernetesParser.Kube.Service.ServicePort-1
+    attributes:
+      app_protocol:
+        value: COMMON.NONE
+        type: Kube.Service.ServicePort.Protocol
+      name:
+        value: COMMON.NONE
+        type: BuiltinSort.Z3String
+      node_port:
+        value: '31112'
+        type: Network.Port.Number
+      port:
+        value: '8080'
+        type: Network.Port.Number
+      protocol:
+        value: COMMON.NONE
+        type: Kube.Service.ServicePort.Protocol
+      target_port:
+        value: '8081'
+        type: Network.Port
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-3
+
+---
+type: Kube.StatefulSet
+logical_id: HelmParser.Kube.StatefulSet-0
+attributes:
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/component: master
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: redis-master
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  pod_management_policy:
+    value: COMMON.NONE
+    type: Kube.StatefulSet.Pod.Management.Policy
+  replicas:
+    value: 1
+    type: BuiltinSort.Z3Integer
+  revision_history_limit:
+    value: COMMON.NONE
+    type: Kube.Revision.History.Limit
+  service_name:
+    value: redis-headless
+    type: Kube.Name
+  manifest_set:
+    value: COMMON.NONE
+    type: Config.ManifestSet.Instantiation
+  api_version:
+    value: apps/v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  match_labels:
+    value:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/component: master
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+components:
+  volume_claim_templates:
+  - type: Kube.PersistentVolumeClaim
+    logical_id: HelmParser.Kube.PersistentVolumeClaim-0
+    attributes:
+      labels:
+        value:
+          app.kubernetes.io/name: redis
+          app.kubernetes.io/instance: redis
+          app.kubernetes.io/component: master
+        type:
+          Kube.Labels:
+            map:
+            - Config.Name
+            - Config.Value
+      name:
+        value: redis-data
+        type: Kube.Name
+      namespace:
+        value: COMMON.NONE
+        type: Kube.Namespace
+      storage_class_name:
+        value: COMMON.NONE
+        type: Kube.PersistentVolumeClaim.StorageClassName
+      volume_mode:
+        value: COMMON.NONE
+        type: Kube.PersistentVolumeClaim.VolumeMode
+      volume_name:
+        value: COMMON.NONE
+        type: Kube.PersistentVolumeClaim.VolumeName
+      api_version:
+        value: COMMON.NONE
+        type: Kube.ApiVersion
+      annotations:
+        type: Kube.Annotations
+        value: COMMON.NONE
+      access_modes:
+        type: Kube.PersistentVolumeClaim.AccessMode.Item
+        value:
+        - ReadWriteOnce
+      data_source:
+        type: Kube.PersistentVolumeClaim.DataSource
+        value: COMMON.NONE
+    components:
+      resources:
+      - type: Kube.PersistentVolumeClaim.Resources
+        logical_id: HelmParser.Kube.PersistentVolumeClaim.Resources-0
+        attributes:
+          limits:
+            value: COMMON.NONE
+            type: Kube.PersistentVolumeClaim.ResourcesLimits
+        components:
+          requests:
+          - type: Kube.PersistentVolumeClaim.ResourcesRequests
+            logical_id: HelmParser.Kube.PersistentVolumeClaim.ResourcesRequests-0
+            attributes:
+              storage:
+                value: 8Gi
+                type: BuiltinSort.Z3String
+  update_strategy:
+  - type: Kube.StatefulSet.Update.Strategy
+    logical_id: HelmParser.Kube.StatefulSet.Update.Strategy-0
+    attributes:
+      type:
+        value: RollingUpdate
+        type: BuiltinSort.Z3String
+    components:
+      rolling_update:
+      - type: Kube.StatefulSet.Update.Strategy.Rolling.Update
+        logical_id: HelmParser.Kube.StatefulSet.Update.Strategy.Rolling.Update-0
+        attributes:
+          partition:
+            value: COMMON.NONE
+            type: BuiltinSort.Z3String
+  template:
+  - type: Kube.Pod.Template
+    logical_id: HelmParser.Kube.Pod.Template-0
+    attributes:
+      annotations:
+        value:
+          checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+          checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+          checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+          checksum/secret: ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86
+        type:
+          Kube.Annotations:
+            map:
+            - Config.Name
+            - Config.Value
+      labels:
+        value:
+          app.kubernetes.io/name: redis
+          helm.sh/chart: redis-14.4.0
+          app.kubernetes.io/instance: redis
+          app.kubernetes.io/managed-by: Helm
+          app.kubernetes.io/component: master
+        type:
+          Kube.Labels:
+            map:
+            - Config.Name
+            - Config.Value
+      name:
+        value: COMMON.NONE
+        type: Kube.Name
+      namespace:
+        value: COMMON.NONE
+        type: Kube.Namespace
+      node_name:
+        value: COMMON.NONE
+        type: Kube.Node.Name
+      restart_policy:
+        value: COMMON.NONE
+        type: Kube.Restart.Policy
+      service_account_name:
+        value: redis
+        type: Kube.Service.Account.Name
+      node_selector:
+        type: Kube.Node.Selector
+        value: COMMON.NONE
+    components:
+      volumes:
+      - type: Kube.Volume
+        logical_id: HelmParser.Kube.Volume-0
+        attributes:
+          name:
+            value: start-scripts
+            type: Kube.Volume.Name
+          aws_elastic_block_store:
+            type: Kube.Volume.AwsElasticBlockStore
+            value: COMMON.NONE
+          downward_api:
+            type: Kube.Volume.DownwardApi
+            value: COMMON.NONE
+          empty_dir:
+            type: Kube.Volume.EmptyDir
+            value: COMMON.NONE
+          ephemeral:
+            type: Kube.Volume.Ephemeral
+            value: COMMON.NONE
+          git_repo:
+            type: Kube.Volume.GitRepo
+            value: COMMON.NONE
+          host_path:
+            type: Kube.Volume.HostPath
+            value: COMMON.NONE
+          nfs:
+            type: Kube.Volume.Nfs
+            value: COMMON.NONE
+          persistent_volume_claim:
+            type: Kube.Volume.PersistentVolumeClaim
+            value: COMMON.NONE
+          projected:
+            type: Kube.Volume.Projected
+            value: COMMON.NONE
+          secret:
+            type: Kube.Volume.Secret
+            value: COMMON.NONE
+        components:
+          config_map:
+          - type: Kube.Volume.ConfigMap
+            logical_id: HelmParser.Kube.Volume.ConfigMap-0
+            attributes:
+              default_mode:
+                value: 493
+                type: Any.Integer
+              items:
+                value: COMMON.NONE
+                type: Kube.Volume.ConfigMap.Item
+              name:
+                value: redis-scripts
+                type: BuiltinSort.Z3String
+              optional:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+      - type: Kube.Volume
+        logical_id: HelmParser.Kube.Volume-1
+        attributes:
+          name:
+            value: health
+            type: Kube.Volume.Name
+          aws_elastic_block_store:
+            type: Kube.Volume.AwsElasticBlockStore
+            value: COMMON.NONE
+          downward_api:
+            type: Kube.Volume.DownwardApi
+            value: COMMON.NONE
+          empty_dir:
+            type: Kube.Volume.EmptyDir
+            value: COMMON.NONE
+          ephemeral:
+            type: Kube.Volume.Ephemeral
+            value: COMMON.NONE
+          git_repo:
+            type: Kube.Volume.GitRepo
+            value: COMMON.NONE
+          host_path:
+            type: Kube.Volume.HostPath
+            value: COMMON.NONE
+          nfs:
+            type: Kube.Volume.Nfs
+            value: COMMON.NONE
+          persistent_volume_claim:
+            type: Kube.Volume.PersistentVolumeClaim
+            value: COMMON.NONE
+          projected:
+            type: Kube.Volume.Projected
+            value: COMMON.NONE
+          secret:
+            type: Kube.Volume.Secret
+            value: COMMON.NONE
+        components:
+          config_map:
+          - type: Kube.Volume.ConfigMap
+            logical_id: HelmParser.Kube.Volume.ConfigMap-1
+            attributes:
+              default_mode:
+                value: 493
+                type: Any.Integer
+              items:
+                value: COMMON.NONE
+                type: Kube.Volume.ConfigMap.Item
+              name:
+                value: redis-health
+                type: BuiltinSort.Z3String
+              optional:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+      - type: Kube.Volume
+        logical_id: HelmParser.Kube.Volume-2
+        attributes:
+          name:
+            value: config
+            type: Kube.Volume.Name
+          aws_elastic_block_store:
+            type: Kube.Volume.AwsElasticBlockStore
+            value: COMMON.NONE
+          downward_api:
+            type: Kube.Volume.DownwardApi
+            value: COMMON.NONE
+          empty_dir:
+            type: Kube.Volume.EmptyDir
+            value: COMMON.NONE
+          ephemeral:
+            type: Kube.Volume.Ephemeral
+            value: COMMON.NONE
+          git_repo:
+            type: Kube.Volume.GitRepo
+            value: COMMON.NONE
+          host_path:
+            type: Kube.Volume.HostPath
+            value: COMMON.NONE
+          nfs:
+            type: Kube.Volume.Nfs
+            value: COMMON.NONE
+          persistent_volume_claim:
+            type: Kube.Volume.PersistentVolumeClaim
+            value: COMMON.NONE
+          projected:
+            type: Kube.Volume.Projected
+            value: COMMON.NONE
+          secret:
+            type: Kube.Volume.Secret
+            value: COMMON.NONE
+        components:
+          config_map:
+          - type: Kube.Volume.ConfigMap
+            logical_id: HelmParser.Kube.Volume.ConfigMap-2
+            attributes:
+              default_mode:
+                value: COMMON.NONE
+                type: Any.Integer
+              items:
+                value: COMMON.NONE
+                type: Kube.Volume.ConfigMap.Item
+              name:
+                value: redis-configuration
+                type: BuiltinSort.Z3String
+              optional:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+      - type: Kube.Volume
+        logical_id: HelmParser.Kube.Volume-3
+        attributes:
+          name:
+            value: redis-tmp-conf
+            type: Kube.Volume.Name
+          aws_elastic_block_store:
+            type: Kube.Volume.AwsElasticBlockStore
+            value: COMMON.NONE
+          config_map:
+            type: Kube.Volume.ConfigMap
+            value: COMMON.NONE
+          downward_api:
+            type: Kube.Volume.DownwardApi
+            value: COMMON.NONE
+          ephemeral:
+            type: Kube.Volume.Ephemeral
+            value: COMMON.NONE
+          git_repo:
+            type: Kube.Volume.GitRepo
+            value: COMMON.NONE
+          host_path:
+            type: Kube.Volume.HostPath
+            value: COMMON.NONE
+          nfs:
+            type: Kube.Volume.Nfs
+            value: COMMON.NONE
+          persistent_volume_claim:
+            type: Kube.Volume.PersistentVolumeClaim
+            value: COMMON.NONE
+          projected:
+            type: Kube.Volume.Projected
+            value: COMMON.NONE
+          secret:
+            type: Kube.Volume.Secret
+            value: COMMON.NONE
+        components:
+          empty_dir:
+          - type: Kube.Volume.EmptyDir
+            logical_id: HelmParser.Kube.Volume.EmptyDir-0
+            attributes:
+              medium:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              size_limit:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+      - type: Kube.Volume
+        logical_id: HelmParser.Kube.Volume-4
+        attributes:
+          name:
+            value: tmp
+            type: Kube.Volume.Name
+          aws_elastic_block_store:
+            type: Kube.Volume.AwsElasticBlockStore
+            value: COMMON.NONE
+          config_map:
+            type: Kube.Volume.ConfigMap
+            value: COMMON.NONE
+          downward_api:
+            type: Kube.Volume.DownwardApi
+            value: COMMON.NONE
+          ephemeral:
+            type: Kube.Volume.Ephemeral
+            value: COMMON.NONE
+          git_repo:
+            type: Kube.Volume.GitRepo
+            value: COMMON.NONE
+          host_path:
+            type: Kube.Volume.HostPath
+            value: COMMON.NONE
+          nfs:
+            type: Kube.Volume.Nfs
+            value: COMMON.NONE
+          persistent_volume_claim:
+            type: Kube.Volume.PersistentVolumeClaim
+            value: COMMON.NONE
+          projected:
+            type: Kube.Volume.Projected
+            value: COMMON.NONE
+          secret:
+            type: Kube.Volume.Secret
+            value: COMMON.NONE
+        components:
+          empty_dir:
+          - type: Kube.Volume.EmptyDir
+            logical_id: HelmParser.Kube.Volume.EmptyDir-1
+            attributes:
+              medium:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              size_limit:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+      security_context:
+      - type: Kube.Pod.SecurityContext
+        logical_id: HelmParser.Kube.Pod.SecurityContext-0
+        attributes:
+          fs_group:
+            value: 1001
+            type: Any.Integer
+          fs_group_change_policy:
+            value: COMMON.NONE
+            type: BuiltinSort.Z3String
+          run_as_group:
+            value: COMMON.NONE
+            type: Any.Integer
+          run_as_non_root:
+            value: COMMON.NONE
+            type: BuiltinSort.Bool
+          run_as_user:
+            value: COMMON.NONE
+            type: Any.Integer
+      containers:
+      - type: Kube.Container
+        logical_id: HelmParser.Kube.Container-0
+        attributes:
+          env_vars_config:
+            value:
+              BITNAMI_DEBUG:
+                value: 'false'
+              REDIS_REPLICATION_MODE:
+                value: master
+              ALLOW_EMPTY_PASSWORD:
+                value: 'no'
+              REDIS_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: redis
+                    key: redis-password
+              REDIS_TLS_ENABLED:
+                value: 'no'
+              REDIS_PORT:
+                value: '6379'
+            type:
+              Kube.Container.EnvVarsConfig:
+                map:
+                - Kube.Container.EnvVarName
+                - Kube.Container.EnvVarConfig
+          image:
+            value: docker.io/bitnami/redis:6.2.4-debian-10-r13
+            type: Kube.Container.ImageRef
+            function:
+              encoding: tuple_encoding
+              encoded_function:
+                _fn:
+                - __concat
+                - Any.Concat
+                - _const:
+                  - docker.io/
+                  - Any.String
+                - _fn:
+                  - helm_name_value_info
+                  - Any.Json
+                  - _const:
+                    - redis
+                    - Any.String
+                  - _const:
+                    - image.repository
+                    - Config.Name
+                  - _const:
+                    - bitnami/redis
+                    - Config.Value
+                  - _range_value: bitnami/redis
+                - _const:
+                  - ':'
+                  - Any.String
+                - _fn:
+                  - helm_name_value_info
+                  - Any.Json
+                  - _const:
+                    - redis
+                    - Any.String
+                  - _const:
+                    - image.tag
+                    - Config.Name
+                  - _const:
+                    - 6.2.4-debian-10-r13
+                    - Config.Value
+                  - _range_value: 6.2.4-debian-10-r13
+                - _range_value: docker.io/bitnami/redis:6.2.4-debian-10-r13
+              user_friendly_form: __concat(docker.io/, helm_name_value_info(redis,
+                image.repository, bitnami/redis), :, helm_name_value_info(redis, image.tag,
+                6.2.4-debian-10-r13))
+          image_pull_policy:
+            value: IfNotPresent
+            type: Kube.Container.ImagePullPolicy
+            function:
+              encoding: attribute_link
+              encoded_function:
+                attribute_name: value
+                attribute_type: Config.Value
+                base_component:
+                  name: HelmParser.Helm.Chart.Release.Values-0
+                  type: Helm.Chart.Release.Values
+                key:
+                  name: image.pullPolicy
+                  type: Config.Name
+              user_friendly_form: Helm.Chart[redis-4.4.0]/release[0]/values/image.pullPolicy
+          name:
+            value: redis
+            type: BuiltinSort.Z3String
+          args:
+            value: '["-c", "/opt/bitnami/scripts/start-scripts/start-master.sh"]'
+            type: Any.Json
+          command:
+            type: Any.Json
+            value: '["/bin/bash"]'
+          lifecycle:
+            type: Kube.Container.Lifecycle
+            value: COMMON.NONE
+          startup_probe:
+            type: Kube.Container.StartupProbe
+            value: COMMON.NONE
+        components:
+          volume_mounts:
+          - type: Kube.Container.VolumeMountItem
+            logical_id: HelmParser.Kube.Container.VolumeMountItem-0
+            attributes:
+              mount_path:
+                value: /opt/bitnami/scripts/start-scripts
+                type: BuiltinSort.Z3String
+              mount_propagation:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              name:
+                value: start-scripts
+                type: BuiltinSort.Z3String
+              read_only:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              sub_path:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              sub_path_expr:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+          - type: Kube.Container.VolumeMountItem
+            logical_id: HelmParser.Kube.Container.VolumeMountItem-1
+            attributes:
+              mount_path:
+                value: /health
+                type: BuiltinSort.Z3String
+              mount_propagation:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              name:
+                value: health
+                type: BuiltinSort.Z3String
+              read_only:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              sub_path:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              sub_path_expr:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+          - type: Kube.Container.VolumeMountItem
+            logical_id: HelmParser.Kube.Container.VolumeMountItem-2
+            attributes:
+              mount_path:
+                value: /data
+                type: BuiltinSort.Z3String
+              mount_propagation:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              name:
+                value: redis-data
+                type: BuiltinSort.Z3String
+              read_only:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              sub_path:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              sub_path_expr:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+          - type: Kube.Container.VolumeMountItem
+            logical_id: HelmParser.Kube.Container.VolumeMountItem-3
+            attributes:
+              mount_path:
+                value: /opt/bitnami/redis/mounted-etc
+                type: BuiltinSort.Z3String
+              mount_propagation:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              name:
+                value: config
+                type: BuiltinSort.Z3String
+              read_only:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              sub_path:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              sub_path_expr:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+          - type: Kube.Container.VolumeMountItem
+            logical_id: HelmParser.Kube.Container.VolumeMountItem-4
+            attributes:
+              mount_path:
+                value: /opt/bitnami/redis/etc/
+                type: BuiltinSort.Z3String
+              mount_propagation:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              name:
+                value: redis-tmp-conf
+                type: BuiltinSort.Z3String
+              read_only:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              sub_path:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              sub_path_expr:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+          - type: Kube.Container.VolumeMountItem
+            logical_id: HelmParser.Kube.Container.VolumeMountItem-5
+            attributes:
+              mount_path:
+                value: /tmp
+                type: BuiltinSort.Z3String
+              mount_propagation:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              name:
+                value: tmp
+                type: BuiltinSort.Z3String
+              read_only:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              sub_path:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              sub_path_expr:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+          security_context:
+          - type: Kube.Container.SecurityContext
+            logical_id: HelmParser.Kube.Container.SecurityContext-0
+            attributes:
+              fs_group:
+                value: COMMON.NONE
+                type: Any.Integer
+              fs_group_change_policy:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              run_as_group:
+                value: COMMON.NONE
+                type: Any.Integer
+              run_as_non_root:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              run_as_user:
+                value: 1001
+                type: Any.Integer
+          resources:
+          - type: Kube.Container.Resources
+            logical_id: HelmParser.Kube.Container.Resources-0
+            components:
+              limits:
+              - type: Kube.Container.ResourcesLimits
+                logical_id: HelmParser.Kube.Container.ResourcesLimits-0
+                attributes:
+                  cpu:
+                    value: COMMON.NONE
+                    type: BuiltinSort.Z3String
+                  memory:
+                    value: COMMON.NONE
+                    type: BuiltinSort.Z3String
+              requests:
+              - type: Kube.Container.ResourcesRequests
+                logical_id: HelmParser.Kube.Container.ResourcesRequests-0
+                attributes:
+                  cpu:
+                    value: COMMON.NONE
+                    type: BuiltinSort.Z3String
+                  memory:
+                    value: COMMON.NONE
+                    type: BuiltinSort.Z3String
+          readiness_probe:
+          - type: Kube.Container.ReadinessProbe
+            logical_id: HelmParser.Kube.Container.ReadinessProbe-0
+            attributes:
+              failure_threshold:
+                value: 5
+                type: Kube.Container.ReadinessProbe.FailureThreshold
+              http_get:
+                value: COMMON.NONE
+                type: Kube.Container.HttpGetAction
+              initial_delay_seconds:
+                value: 5
+                type: Kube.Container.ReadinessProbe.InitialDelaySeconds
+              period_seconds:
+                value: 5
+                type: Kube.Container.ReadinessProbe.PeriodSeconds
+              success_threshold:
+                value: 1
+                type: Kube.Container.ReadinessProbe.SuccessThreshold
+              tcp_socket:
+                value: COMMON.NONE
+                type: Kube.Container.TcpSocketAction
+              timeout_seconds:
+                value: 2
+                type: Kube.Container.ReadinessProbe.TimeoutSeconds
+            components:
+              exec:
+              - type: Kube.Container.ExecAction
+                logical_id: HelmParser.Kube.Container.ExecAction-1
+                attributes:
+                  command:
+                    value: '["sh", "-c", "/health/ping_readiness_local.sh 1"]'
+                    type: Any.Json
+          ports:
+          - type: Kube.Container.PortItem
+            logical_id: HelmParser.Kube.Container.PortItem-0
+            attributes:
+              container_port:
+                value: '6379'
+                type: Network.Port.Number
+                function:
+                  encoding: attribute_link
+                  encoded_function:
+                    attribute_name: value
+                    attribute_type: Config.Value
+                    base_component:
+                      name: HelmParser.Helm.Chart.Release.Values-0
+                      type: Helm.Chart.Release.Values
+                    key:
+                      name: master.containerPort
+                      type: Config.Name
+                  user_friendly_form: Helm.Chart[redis-4.4.0]/release[0]/values/master.containerPort
+              host_ip:
+                value: COMMON.NONE
+                type: Network.Address
+              host_port:
+                value: COMMON.NONE
+                type: Network.Port.Number
+              name:
+                value: redis
+                type: Network.Port
+              protocol:
+                value: COMMON.NONE
+                type: Network.Protocol
+          liveness_probe:
+          - type: Kube.Container.LivenessProbe
+            logical_id: HelmParser.Kube.Container.LivenessProbe-0
+            attributes:
+              failure_threshold:
+                value: 5
+                type: Kube.Container.LivenessProbe.FailureThreshold
+              http_get:
+                value: COMMON.NONE
+                type: Kube.Container.HttpGetAction
+              initial_delay_seconds:
+                value: 5
+                type: Kube.Container.LivenessProbe.InitialDelaySeconds
+              period_seconds:
+                value: 5
+                type: Kube.Container.LivenessProbe.PeriodSeconds
+              success_threshold:
+                value: 1
+                type: Kube.Container.LivenessProbe.SuccessThreshold
+              tcp_socket:
+                value: COMMON.NONE
+                type: Kube.Container.TcpSocketAction
+              timeout_seconds:
+                value: 6
+                type: Kube.Container.LivenessProbe.TimeoutSeconds
+            components:
+              exec:
+              - type: Kube.Container.ExecAction
+                logical_id: HelmParser.Kube.Container.ExecAction-0
+                attributes:
+                  command:
+                    value: '["sh", "-c", "/health/ping_liveness_local.sh 5"]'
+                    type: Any.Json
+      affinity:
+      - type: Kube.Affinity
+        logical_id: HelmParser.Kube.Affinity-0
+        attributes:
+          node_affinity:
+            type: Kube.Affinity.NodeAffinity
+            value: COMMON.NONE
+          pod_affinity:
+            type: Kube.Affinity.PodAffinity
+            value: COMMON.NONE
+        components:
+          pod_anti_affinity:
+          - type: Kube.Affinity.PodAntiAffinity
+            logical_id: HelmParser.Kube.Affinity.PodAntiAffinity-0
+            components:
+              preferred_during_scheduling_ignored_during_execution:
+              - type: Kube.Affinity.PodAffinitySchedulingItem
+                logical_id: HelmParser.Kube.Affinity.PodAffinitySchedulingItem-0
+                attributes:
+                  weight:
+                    value: 1
+                    type: Any.Integer
+                components:
+                  pod_affinity_term:
+                  - type: Kube.Affinity.PodAffinitySchedulingItemPodAffinityTerm
+                    logical_id: HelmParser.Kube.Affinity.PodAffinitySchedulingItemPodAffinityTerm-0
+                    attributes:
+                      namespaces:
+                        value:
+                        - default
+                        type: BuiltinSort.Z3String
+                      topology_key:
+                        value: kubernetes.io/hostname
+                        type: BuiltinSort.Z3String
+                    components:
+                      label_selector:
+                      - type: Kube.Affinity.LabelSelector
+                        logical_id: HelmParser.Kube.Affinity.LabelSelector-0
+                        attributes: {}
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-12
+
+---
+type: Kube.StatefulSet
+logical_id: HelmParser.Kube.StatefulSet-1
+attributes:
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/component: replica
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: redis-replicas
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  pod_management_policy:
+    value: COMMON.NONE
+    type: Kube.StatefulSet.Pod.Management.Policy
+  replicas:
+    value: 3
+    type: BuiltinSort.Z3Integer
+  revision_history_limit:
+    value: COMMON.NONE
+    type: Kube.Revision.History.Limit
+  service_name:
+    value: redis-headless
+    type: Kube.Name
+  manifest_set:
+    value: COMMON.NONE
+    type: Config.ManifestSet.Instantiation
+  api_version:
+    value: apps/v1
+    type: Kube.ApiVersion
+  annotations:
+    type: Kube.Annotations
+    value: COMMON.NONE
+  match_labels:
+    value:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/component: replica
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+components:
+  volume_claim_templates:
+  - type: Kube.PersistentVolumeClaim
+    logical_id: HelmParser.Kube.PersistentVolumeClaim-1
+    attributes:
+      labels:
+        value:
+          app.kubernetes.io/name: redis
+          app.kubernetes.io/instance: redis
+          app.kubernetes.io/component: replica
+        type:
+          Kube.Labels:
+            map:
+            - Config.Name
+            - Config.Value
+      name:
+        value: redis-data
+        type: Kube.Name
+      namespace:
+        value: COMMON.NONE
+        type: Kube.Namespace
+      storage_class_name:
+        value: COMMON.NONE
+        type: Kube.PersistentVolumeClaim.StorageClassName
+      volume_mode:
+        value: COMMON.NONE
+        type: Kube.PersistentVolumeClaim.VolumeMode
+      volume_name:
+        value: COMMON.NONE
+        type: Kube.PersistentVolumeClaim.VolumeName
+      api_version:
+        value: COMMON.NONE
+        type: Kube.ApiVersion
+      annotations:
+        type: Kube.Annotations
+        value: COMMON.NONE
+      access_modes:
+        type: Kube.PersistentVolumeClaim.AccessMode.Item
+        value:
+        - ReadWriteOnce
+      data_source:
+        type: Kube.PersistentVolumeClaim.DataSource
+        value: COMMON.NONE
+    components:
+      resources:
+      - type: Kube.PersistentVolumeClaim.Resources
+        logical_id: HelmParser.Kube.PersistentVolumeClaim.Resources-1
+        attributes:
+          limits:
+            value: COMMON.NONE
+            type: Kube.PersistentVolumeClaim.ResourcesLimits
+        components:
+          requests:
+          - type: Kube.PersistentVolumeClaim.ResourcesRequests
+            logical_id: HelmParser.Kube.PersistentVolumeClaim.ResourcesRequests-1
+            attributes:
+              storage:
+                value: 8Gi
+                type: BuiltinSort.Z3String
+  update_strategy:
+  - type: Kube.StatefulSet.Update.Strategy
+    logical_id: HelmParser.Kube.StatefulSet.Update.Strategy-1
+    attributes:
+      type:
+        value: RollingUpdate
+        type: BuiltinSort.Z3String
+    components:
+      rolling_update:
+      - type: Kube.StatefulSet.Update.Strategy.Rolling.Update
+        logical_id: HelmParser.Kube.StatefulSet.Update.Strategy.Rolling.Update-1
+        attributes:
+          partition:
+            value: COMMON.NONE
+            type: BuiltinSort.Z3String
+  template:
+  - type: Kube.Pod.Template
+    logical_id: HelmParser.Kube.Pod.Template-1
+    attributes:
+      annotations:
+        value:
+          checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+          checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+          checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+          checksum/secret: 58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58
+        type:
+          Kube.Annotations:
+            map:
+            - Config.Name
+            - Config.Value
+      labels:
+        value:
+          app.kubernetes.io/name: redis
+          helm.sh/chart: redis-14.4.0
+          app.kubernetes.io/instance: redis
+          app.kubernetes.io/managed-by: Helm
+          app.kubernetes.io/component: replica
+        type:
+          Kube.Labels:
+            map:
+            - Config.Name
+            - Config.Value
+      name:
+        value: COMMON.NONE
+        type: Kube.Name
+      namespace:
+        value: COMMON.NONE
+        type: Kube.Namespace
+      node_name:
+        value: COMMON.NONE
+        type: Kube.Node.Name
+      restart_policy:
+        value: COMMON.NONE
+        type: Kube.Restart.Policy
+      service_account_name:
+        value: redis
+        type: Kube.Service.Account.Name
+      node_selector:
+        type: Kube.Node.Selector
+        value: COMMON.NONE
+    components:
+      volumes:
+      - type: Kube.Volume
+        logical_id: HelmParser.Kube.Volume-5
+        attributes:
+          name:
+            value: start-scripts
+            type: Kube.Volume.Name
+          aws_elastic_block_store:
+            type: Kube.Volume.AwsElasticBlockStore
+            value: COMMON.NONE
+          downward_api:
+            type: Kube.Volume.DownwardApi
+            value: COMMON.NONE
+          empty_dir:
+            type: Kube.Volume.EmptyDir
+            value: COMMON.NONE
+          ephemeral:
+            type: Kube.Volume.Ephemeral
+            value: COMMON.NONE
+          git_repo:
+            type: Kube.Volume.GitRepo
+            value: COMMON.NONE
+          host_path:
+            type: Kube.Volume.HostPath
+            value: COMMON.NONE
+          nfs:
+            type: Kube.Volume.Nfs
+            value: COMMON.NONE
+          persistent_volume_claim:
+            type: Kube.Volume.PersistentVolumeClaim
+            value: COMMON.NONE
+          projected:
+            type: Kube.Volume.Projected
+            value: COMMON.NONE
+          secret:
+            type: Kube.Volume.Secret
+            value: COMMON.NONE
+        components:
+          config_map:
+          - type: Kube.Volume.ConfigMap
+            logical_id: HelmParser.Kube.Volume.ConfigMap-3
+            attributes:
+              default_mode:
+                value: 493
+                type: Any.Integer
+              items:
+                value: COMMON.NONE
+                type: Kube.Volume.ConfigMap.Item
+              name:
+                value: redis-scripts
+                type: BuiltinSort.Z3String
+              optional:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+      - type: Kube.Volume
+        logical_id: HelmParser.Kube.Volume-6
+        attributes:
+          name:
+            value: health
+            type: Kube.Volume.Name
+          aws_elastic_block_store:
+            type: Kube.Volume.AwsElasticBlockStore
+            value: COMMON.NONE
+          downward_api:
+            type: Kube.Volume.DownwardApi
+            value: COMMON.NONE
+          empty_dir:
+            type: Kube.Volume.EmptyDir
+            value: COMMON.NONE
+          ephemeral:
+            type: Kube.Volume.Ephemeral
+            value: COMMON.NONE
+          git_repo:
+            type: Kube.Volume.GitRepo
+            value: COMMON.NONE
+          host_path:
+            type: Kube.Volume.HostPath
+            value: COMMON.NONE
+          nfs:
+            type: Kube.Volume.Nfs
+            value: COMMON.NONE
+          persistent_volume_claim:
+            type: Kube.Volume.PersistentVolumeClaim
+            value: COMMON.NONE
+          projected:
+            type: Kube.Volume.Projected
+            value: COMMON.NONE
+          secret:
+            type: Kube.Volume.Secret
+            value: COMMON.NONE
+        components:
+          config_map:
+          - type: Kube.Volume.ConfigMap
+            logical_id: HelmParser.Kube.Volume.ConfigMap-4
+            attributes:
+              default_mode:
+                value: 493
+                type: Any.Integer
+              items:
+                value: COMMON.NONE
+                type: Kube.Volume.ConfigMap.Item
+              name:
+                value: redis-health
+                type: BuiltinSort.Z3String
+              optional:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+      - type: Kube.Volume
+        logical_id: HelmParser.Kube.Volume-7
+        attributes:
+          name:
+            value: config
+            type: Kube.Volume.Name
+          aws_elastic_block_store:
+            type: Kube.Volume.AwsElasticBlockStore
+            value: COMMON.NONE
+          downward_api:
+            type: Kube.Volume.DownwardApi
+            value: COMMON.NONE
+          empty_dir:
+            type: Kube.Volume.EmptyDir
+            value: COMMON.NONE
+          ephemeral:
+            type: Kube.Volume.Ephemeral
+            value: COMMON.NONE
+          git_repo:
+            type: Kube.Volume.GitRepo
+            value: COMMON.NONE
+          host_path:
+            type: Kube.Volume.HostPath
+            value: COMMON.NONE
+          nfs:
+            type: Kube.Volume.Nfs
+            value: COMMON.NONE
+          persistent_volume_claim:
+            type: Kube.Volume.PersistentVolumeClaim
+            value: COMMON.NONE
+          projected:
+            type: Kube.Volume.Projected
+            value: COMMON.NONE
+          secret:
+            type: Kube.Volume.Secret
+            value: COMMON.NONE
+        components:
+          config_map:
+          - type: Kube.Volume.ConfigMap
+            logical_id: HelmParser.Kube.Volume.ConfigMap-5
+            attributes:
+              default_mode:
+                value: COMMON.NONE
+                type: Any.Integer
+              items:
+                value: COMMON.NONE
+                type: Kube.Volume.ConfigMap.Item
+              name:
+                value: redis-configuration
+                type: BuiltinSort.Z3String
+              optional:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+      - type: Kube.Volume
+        logical_id: HelmParser.Kube.Volume-8
+        attributes:
+          name:
+            value: redis-tmp-conf
+            type: Kube.Volume.Name
+          aws_elastic_block_store:
+            type: Kube.Volume.AwsElasticBlockStore
+            value: COMMON.NONE
+          config_map:
+            type: Kube.Volume.ConfigMap
+            value: COMMON.NONE
+          downward_api:
+            type: Kube.Volume.DownwardApi
+            value: COMMON.NONE
+          ephemeral:
+            type: Kube.Volume.Ephemeral
+            value: COMMON.NONE
+          git_repo:
+            type: Kube.Volume.GitRepo
+            value: COMMON.NONE
+          host_path:
+            type: Kube.Volume.HostPath
+            value: COMMON.NONE
+          nfs:
+            type: Kube.Volume.Nfs
+            value: COMMON.NONE
+          persistent_volume_claim:
+            type: Kube.Volume.PersistentVolumeClaim
+            value: COMMON.NONE
+          projected:
+            type: Kube.Volume.Projected
+            value: COMMON.NONE
+          secret:
+            type: Kube.Volume.Secret
+            value: COMMON.NONE
+        components:
+          empty_dir:
+          - type: Kube.Volume.EmptyDir
+            logical_id: HelmParser.Kube.Volume.EmptyDir-2
+            attributes:
+              medium:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              size_limit:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+      security_context:
+      - type: Kube.Pod.SecurityContext
+        logical_id: HelmParser.Kube.Pod.SecurityContext-1
+        attributes:
+          fs_group:
+            value: 1001
+            type: Any.Integer
+          fs_group_change_policy:
+            value: COMMON.NONE
+            type: BuiltinSort.Z3String
+          run_as_group:
+            value: COMMON.NONE
+            type: Any.Integer
+          run_as_non_root:
+            value: COMMON.NONE
+            type: BuiltinSort.Bool
+          run_as_user:
+            value: COMMON.NONE
+            type: Any.Integer
+      containers:
+      - type: Kube.Container
+        logical_id: HelmParser.Kube.Container-1
+        attributes:
+          env_vars_config:
+            value:
+              BITNAMI_DEBUG:
+                value: 'false'
+              REDIS_REPLICATION_MODE:
+                value: slave
+              REDIS_MASTER_HOST:
+                value: redis-master-0.redis-headless.default.svc.cluster.local
+              REDIS_MASTER_PORT_NUMBER:
+                value: '6379'
+              ALLOW_EMPTY_PASSWORD:
+                value: 'no'
+              REDIS_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: redis
+                    key: redis-password
+              REDIS_MASTER_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: redis
+                    key: redis-password
+              REDIS_TLS_ENABLED:
+                value: 'no'
+              REDIS_PORT:
+                value: '6379'
+            type:
+              Kube.Container.EnvVarsConfig:
+                map:
+                - Kube.Container.EnvVarName
+                - Kube.Container.EnvVarConfig
+          image:
+            value: docker.io/bitnami/redis:6.2.4-debian-10-r13
+            type: Kube.Container.ImageRef
+            function:
+              encoding: tuple_encoding
+              encoded_function:
+                _fn:
+                - __concat
+                - Any.Concat
+                - _const:
+                  - docker.io/
+                  - Any.String
+                - _fn:
+                  - helm_name_value_info
+                  - Any.Json
+                  - _const:
+                    - redis
+                    - Any.String
+                  - _const:
+                    - image.repository
+                    - Config.Name
+                  - _const:
+                    - bitnami/redis
+                    - Config.Value
+                  - _range_value: bitnami/redis
+                - _const:
+                  - ':'
+                  - Any.String
+                - _fn:
+                  - helm_name_value_info
+                  - Any.Json
+                  - _const:
+                    - redis
+                    - Any.String
+                  - _const:
+                    - image.tag
+                    - Config.Name
+                  - _const:
+                    - 6.2.4-debian-10-r13
+                    - Config.Value
+                  - _range_value: 6.2.4-debian-10-r13
+                - _range_value: docker.io/bitnami/redis:6.2.4-debian-10-r13
+              user_friendly_form: __concat(docker.io/, helm_name_value_info(redis,
+                image.repository, bitnami/redis), :, helm_name_value_info(redis, image.tag,
+                6.2.4-debian-10-r13))
+          image_pull_policy:
+            value: IfNotPresent
+            type: Kube.Container.ImagePullPolicy
+            function:
+              encoding: attribute_link
+              encoded_function:
+                attribute_name: value
+                attribute_type: Config.Value
+                base_component:
+                  name: HelmParser.Helm.Chart.Release.Values-0
+                  type: Helm.Chart.Release.Values
+                key:
+                  name: image.pullPolicy
+                  type: Config.Name
+              user_friendly_form: Helm.Chart[redis-4.4.0]/release[0]/values/image.pullPolicy
+          name:
+            value: redis
+            type: BuiltinSort.Z3String
+          args:
+            value: '["-c", "/opt/bitnami/scripts/start-scripts/start-replica.sh"]'
+            type: Any.Json
+          command:
+            type: Any.Json
+            value: '["/bin/bash"]'
+          lifecycle:
+            type: Kube.Container.Lifecycle
+            value: COMMON.NONE
+          startup_probe:
+            type: Kube.Container.StartupProbe
+            value: COMMON.NONE
+        components:
+          volume_mounts:
+          - type: Kube.Container.VolumeMountItem
+            logical_id: HelmParser.Kube.Container.VolumeMountItem-6
+            attributes:
+              mount_path:
+                value: /opt/bitnami/scripts/start-scripts
+                type: BuiltinSort.Z3String
+              mount_propagation:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              name:
+                value: start-scripts
+                type: BuiltinSort.Z3String
+              read_only:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              sub_path:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              sub_path_expr:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+          - type: Kube.Container.VolumeMountItem
+            logical_id: HelmParser.Kube.Container.VolumeMountItem-7
+            attributes:
+              mount_path:
+                value: /health
+                type: BuiltinSort.Z3String
+              mount_propagation:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              name:
+                value: health
+                type: BuiltinSort.Z3String
+              read_only:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              sub_path:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              sub_path_expr:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+          - type: Kube.Container.VolumeMountItem
+            logical_id: HelmParser.Kube.Container.VolumeMountItem-8
+            attributes:
+              mount_path:
+                value: /data
+                type: BuiltinSort.Z3String
+              mount_propagation:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              name:
+                value: redis-data
+                type: BuiltinSort.Z3String
+              read_only:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              sub_path:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              sub_path_expr:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+          - type: Kube.Container.VolumeMountItem
+            logical_id: HelmParser.Kube.Container.VolumeMountItem-9
+            attributes:
+              mount_path:
+                value: /opt/bitnami/redis/mounted-etc
+                type: BuiltinSort.Z3String
+              mount_propagation:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              name:
+                value: config
+                type: BuiltinSort.Z3String
+              read_only:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              sub_path:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              sub_path_expr:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+          - type: Kube.Container.VolumeMountItem
+            logical_id: HelmParser.Kube.Container.VolumeMountItem-10
+            attributes:
+              mount_path:
+                value: /opt/bitnami/redis/etc
+                type: BuiltinSort.Z3String
+              mount_propagation:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              name:
+                value: redis-tmp-conf
+                type: BuiltinSort.Z3String
+              read_only:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              sub_path:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              sub_path_expr:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+          security_context:
+          - type: Kube.Container.SecurityContext
+            logical_id: HelmParser.Kube.Container.SecurityContext-1
+            attributes:
+              fs_group:
+                value: COMMON.NONE
+                type: Any.Integer
+              fs_group_change_policy:
+                value: COMMON.NONE
+                type: BuiltinSort.Z3String
+              run_as_group:
+                value: COMMON.NONE
+                type: Any.Integer
+              run_as_non_root:
+                value: COMMON.NONE
+                type: BuiltinSort.Bool
+              run_as_user:
+                value: 1001
+                type: Any.Integer
+          resources:
+          - type: Kube.Container.Resources
+            logical_id: HelmParser.Kube.Container.Resources-1
+            components:
+              limits:
+              - type: Kube.Container.ResourcesLimits
+                logical_id: HelmParser.Kube.Container.ResourcesLimits-1
+                attributes:
+                  cpu:
+                    value: COMMON.NONE
+                    type: BuiltinSort.Z3String
+                  memory:
+                    value: COMMON.NONE
+                    type: BuiltinSort.Z3String
+              requests:
+              - type: Kube.Container.ResourcesRequests
+                logical_id: HelmParser.Kube.Container.ResourcesRequests-1
+                attributes:
+                  cpu:
+                    value: COMMON.NONE
+                    type: BuiltinSort.Z3String
+                  memory:
+                    value: COMMON.NONE
+                    type: BuiltinSort.Z3String
+          readiness_probe:
+          - type: Kube.Container.ReadinessProbe
+            logical_id: HelmParser.Kube.Container.ReadinessProbe-1
+            attributes:
+              failure_threshold:
+                value: 5
+                type: Kube.Container.ReadinessProbe.FailureThreshold
+              http_get:
+                value: COMMON.NONE
+                type: Kube.Container.HttpGetAction
+              initial_delay_seconds:
+                value: 5
+                type: Kube.Container.ReadinessProbe.InitialDelaySeconds
+              period_seconds:
+                value: 5
+                type: Kube.Container.ReadinessProbe.PeriodSeconds
+              success_threshold:
+                value: 1
+                type: Kube.Container.ReadinessProbe.SuccessThreshold
+              tcp_socket:
+                value: COMMON.NONE
+                type: Kube.Container.TcpSocketAction
+              timeout_seconds:
+                value: 2
+                type: Kube.Container.ReadinessProbe.TimeoutSeconds
+            components:
+              exec:
+              - type: Kube.Container.ExecAction
+                logical_id: HelmParser.Kube.Container.ExecAction-3
+                attributes:
+                  command:
+                    value: '["sh", "-c", "/health/ping_readiness_local_and_master.sh
+                      1"]'
+                    type: Any.Json
+          ports:
+          - type: Kube.Container.PortItem
+            logical_id: HelmParser.Kube.Container.PortItem-1
+            attributes:
+              container_port:
+                value: 6379
+                type: Network.Port.Number
+              host_ip:
+                value: COMMON.NONE
+                type: Network.Address
+              host_port:
+                value: COMMON.NONE
+                type: Network.Port.Number
+              name:
+                value: redis
+                type: Network.Port
+              protocol:
+                value: COMMON.NONE
+                type: Network.Protocol
+          liveness_probe:
+          - type: Kube.Container.LivenessProbe
+            logical_id: HelmParser.Kube.Container.LivenessProbe-1
+            attributes:
+              failure_threshold:
+                value: 5
+                type: Kube.Container.LivenessProbe.FailureThreshold
+              http_get:
+                value: COMMON.NONE
+                type: Kube.Container.HttpGetAction
+              initial_delay_seconds:
+                value: 5
+                type: Kube.Container.LivenessProbe.InitialDelaySeconds
+              period_seconds:
+                value: 5
+                type: Kube.Container.LivenessProbe.PeriodSeconds
+              success_threshold:
+                value: 1
+                type: Kube.Container.LivenessProbe.SuccessThreshold
+              tcp_socket:
+                value: COMMON.NONE
+                type: Kube.Container.TcpSocketAction
+              timeout_seconds:
+                value: 6
+                type: Kube.Container.LivenessProbe.TimeoutSeconds
+            components:
+              exec:
+              - type: Kube.Container.ExecAction
+                logical_id: HelmParser.Kube.Container.ExecAction-2
+                attributes:
+                  command:
+                    value: '["sh", "-c", "/health/ping_liveness_local_and_master.sh
+                      5"]'
+                    type: Any.Json
+      affinity:
+      - type: Kube.Affinity
+        logical_id: HelmParser.Kube.Affinity-1
+        attributes:
+          node_affinity:
+            type: Kube.Affinity.NodeAffinity
+            value: COMMON.NONE
+          pod_affinity:
+            type: Kube.Affinity.PodAffinity
+            value: COMMON.NONE
+        components:
+          pod_anti_affinity:
+          - type: Kube.Affinity.PodAntiAffinity
+            logical_id: HelmParser.Kube.Affinity.PodAntiAffinity-1
+            components:
+              preferred_during_scheduling_ignored_during_execution:
+              - type: Kube.Affinity.PodAffinitySchedulingItem
+                logical_id: HelmParser.Kube.Affinity.PodAffinitySchedulingItem-1
+                attributes:
+                  weight:
+                    value: 1
+                    type: Any.Integer
+                components:
+                  pod_affinity_term:
+                  - type: Kube.Affinity.PodAffinitySchedulingItemPodAffinityTerm
+                    logical_id: HelmParser.Kube.Affinity.PodAffinitySchedulingItemPodAffinityTerm-1
+                    attributes:
+                      namespaces:
+                        value:
+                        - default
+                        type: BuiltinSort.Z3String
+                      topology_key:
+                        value: kubernetes.io/hostname
+                        type: BuiltinSort.Z3String
+                    components:
+                      label_selector:
+                      - type: Kube.Affinity.LabelSelector
+                        logical_id: HelmParser.Kube.Affinity.LabelSelector-1
+                        attributes: {}
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-13
+
+---
+type: Source.FilePath
+logical_id: HelmParser.Source.FilePath-0
+attributes:
+  Source.FilePath:
+    value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests
+    type: Any.String
+
+---
+type: Source.FilePath
+logical_id: HelmParser.Source.FilePath-1
+attributes:
+  Source.FilePath:
+    value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/networkpolicy.yaml
+    type: Any.String
+
+---
+type: Source.FilePath
+logical_id: HelmParser.Source.FilePath-2
+attributes:
+  Source.FilePath:
+    value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/servicemonitor.yaml
+    type: Any.String
+
+---
+type: Source.GitRepo
+logical_id: Source.GitRepo-0
+attributes:
+  url:
+    type: Any.String
+    value: https://github.com/dtk/ai-reasoner.git
+  public:
+    type: BuiltinSort.Bool
+    value: 'true'
+  provider:
+    type: Any.String
+    value: github.com
+  branch:
+    type: Any.String
+    value: rich_sprint44
+components:
+  _file_path:
+  - type: Source.FilePath
+    logical_id: Source.FilePath-0
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/app.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-1
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/redis.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-2
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app2.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-3
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-4
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/ingress/ingress-examples.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-5
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/secret.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-6
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/configmap.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-7
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/health-configmap.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-8
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/scripts-configmap.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-9
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/headless-svc.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-10
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/service.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-11
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/service.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-12
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/statefulset.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-13
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/statefulset.yaml
+  - type: Source.FilePath
+    logical_id: Source.FilePath-14
+    attributes:
+      path:
+        type: Any.String
+        value: /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1-image.yaml
+
+---

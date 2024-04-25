@@ -1,0 +1,4789 @@
+The path(s)'spec/image/name' is/are not in resource
+apiVersion: dtk.io/v1alpha1
+kind: App
+metadata:
+  name: example-node-app
+spec:
+  image: getdtk/graph-example1-app
+  deployment_info:
+    stateful: 'false'
+    scalable: 'true'
+  configFiles:
+  - name: etc_app_conf
+    path: /etc/app.yaml
+    encoding: yaml
+  serviceEndpoints:
+  - name: http_endpoint
+    serviceType: MyApp
+  serviceConns:
+  - name: redis_endpoint
+    service_type: Redis
+  attributeMappings:
+  - name: http_endpoint
+    semantic_type: Service.Endpoint
+    value:
+      protocol:
+        _value: http
+        _semantic_type: Network.Protocol
+      port:
+        _value:
+          _env: PORT
+        _semantic_type: Network.Port
+        _default: '8080'
+      service_type:
+        _value: MyApp
+        _semantic_type: Service.Type
+  - name: node_env
+    value:
+      _value: _env NODE_ENV
+      _type: string
+  - name: redis_endpoint
+    semantic_type: Service.Conn
+    value:
+      service_type:
+        _value: Redis
+        _semantic_type: Service.Type
+      protocol:
+        _value: tcp
+        _semantic_type: Network.Protocol
+      port:
+        _semantic_type: Network.Port
+        _value:
+          _env: DB_PORT
+        _default: '6379'
+      host_address:
+        _semantic_type: Network.Address
+        _value:
+          _env: DB_HOST
+      password:
+        _value:
+          _env: DB_PASSWORD
+        _secret: 'true'
+  - name: config_var_example
+    semantic_type: Foo.Type
+    value:
+      _config_attr_ref:
+        _file_ref: etc_app_conf
+        _path: top_key/bar
+
+The path(s)'spec/image/tag' is/are not in resource
+apiVersion: dtk.io/v1alpha1
+kind: App
+metadata:
+  name: example-node-app
+spec:
+  image: getdtk/graph-example1-app
+  deployment_info:
+    stateful: 'false'
+    scalable: 'true'
+  configFiles:
+  - name: etc_app_conf
+    path: /etc/app.yaml
+    encoding: yaml
+  serviceEndpoints:
+  - name: http_endpoint
+    serviceType: MyApp
+  serviceConns:
+  - name: redis_endpoint
+    service_type: Redis
+  attributeMappings:
+  - name: http_endpoint
+    semantic_type: Service.Endpoint
+    value:
+      protocol:
+        _value: http
+        _semantic_type: Network.Protocol
+      port:
+        _value:
+          _env: PORT
+        _semantic_type: Network.Port
+        _default: '8080'
+      service_type:
+        _value: MyApp
+        _semantic_type: Service.Type
+  - name: node_env
+    value:
+      _value: _env NODE_ENV
+      _type: string
+  - name: redis_endpoint
+    semantic_type: Service.Conn
+    value:
+      service_type:
+        _value: Redis
+        _semantic_type: Service.Type
+      protocol:
+        _value: tcp
+        _semantic_type: Network.Protocol
+      port:
+        _semantic_type: Network.Port
+        _value:
+          _env: DB_PORT
+        _default: '6379'
+      host_address:
+        _semantic_type: Network.Address
+        _value:
+          _env: DB_HOST
+      password:
+        _value:
+          _env: DB_PASSWORD
+        _secret: 'true'
+  - name: config_var_example
+    semantic_type: Foo.Type
+    value:
+      _config_attr_ref:
+        _file_ref: etc_app_conf
+        _path: top_key/bar
+
+The path(s)'spec/image/name' is/are not in resource
+apiVersion: dtk.io/v1alpha1
+kind: App
+metadata:
+  name: redis
+spec:
+  deployment_info:
+    stateful: 'true'
+    scalable: 'true'
+  serviceEndpoints:
+  - name: endpoint
+    serviceType: Redis
+  attributeMappings:
+  - name: endpoint
+    semantic_type: Service.Endpoint
+    value:
+      protocol:
+        _value: http
+        _semantic_type: Network.Protocol
+      port:
+        _value:
+          _env: REDIS_PORT
+        _semantic_type: Network.Port
+        _default: '6379'
+      service_type:
+        _value: Redis
+        _semantic_type: Service.Type
+  - name: replication_mode
+    value:
+      _value: _env REDIS_REPLICATION_MODE
+      _type: string
+
+The path(s)'spec/image/tag' is/are not in resource
+apiVersion: dtk.io/v1alpha1
+kind: App
+metadata:
+  name: redis
+spec:
+  deployment_info:
+    stateful: 'true'
+    scalable: 'true'
+  serviceEndpoints:
+  - name: endpoint
+    serviceType: Redis
+  attributeMappings:
+  - name: endpoint
+    semantic_type: Service.Endpoint
+    value:
+      protocol:
+        _value: http
+        _semantic_type: Network.Protocol
+      port:
+        _value:
+          _env: REDIS_PORT
+        _semantic_type: Network.Port
+        _default: '6379'
+      service_type:
+        _value: Redis
+        _semantic_type: Service.Type
+  - name: replication_mode
+    value:
+      _value: _env REDIS_REPLICATION_MODE
+      _type: string
+
+The path(s)'spec/serviceConns,spec/service_conns' is/are not in resource
+apiVersion: dtk.io/v1alpha1
+kind: App
+metadata:
+  name: redis
+spec:
+  deployment_info:
+    stateful: 'true'
+    scalable: 'true'
+  serviceEndpoints:
+  - name: endpoint
+    serviceType: Redis
+  attributeMappings:
+  - name: endpoint
+    semantic_type: Service.Endpoint
+    value:
+      protocol:
+        _value: http
+        _semantic_type: Network.Protocol
+      port:
+        _value:
+          _env: REDIS_PORT
+        _semantic_type: Network.Port
+        _default: '6379'
+      service_type:
+        _value: Redis
+        _semantic_type: Service.Type
+  - name: replication_mode
+    value:
+      _value: _env REDIS_REPLICATION_MODE
+      _type: string
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-app2-svc
+  labels:
+    app: node
+spec:
+  type: NodePort
+  ports:
+  - port: '8080'
+    targetPort: '8081'
+    nodePort: '31112'
+  selector:
+    app: node-app2
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app2-dep
+  labels:
+    app: node
+spec:
+  selector:
+    matchLabels:
+      app: node-app2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: '1'
+      maxUnavailable: '0'
+  replicas: '1'
+  template:
+    metadata:
+      labels:
+        app: node-app2
+    spec:
+      containers:
+      - name: node
+        image: getdtk/graph-example2-app
+        env:
+        - name: NODE_ENV
+          value: production
+        - name: PORT
+          value: '8080'
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: node-app2-secret
+              key: db_password
+        - name: DB_HOST
+          value: my-release-redis-master
+        - name: DB_PORT
+          value: '6379'
+        ports:
+        - containerPort: '8080'
+        resources:
+          requests:
+            memory: 100Mi
+            cpu: 100m
+          limits:
+            memory: 200Mi
+            cpu: 200m
+
+The path(s)'metadata/annotations' is/are not in resource
+metadata:
+  labels:
+    app: node-app2
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example2-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app2-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/affinity' is/are not in resource
+metadata:
+  labels:
+    app: node-app2
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example2-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app2-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'command' is/are not in resource
+name: node
+image: getdtk/graph-example2-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app2-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'envFrom,env_from' is/are not in resource
+name: node
+image: getdtk/graph-example2-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app2-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'lifecycle' is/are not in resource
+name: node
+image: getdtk/graph-example2-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app2-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'livenessProbe,liveness_probe' is/are not in resource
+name: node
+image: getdtk/graph-example2-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app2-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'readinessProbe,readiness_probe' is/are not in resource
+name: node
+image: getdtk/graph-example2-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app2-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'securityContext,security_context' is/are not in resource
+name: node
+image: getdtk/graph-example2-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app2-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'startupProbe,startup_probe' is/are not in resource
+name: node
+image: getdtk/graph-example2-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app2-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'volumeDevices,volume_devices' is/are not in resource
+name: node
+image: getdtk/graph-example2-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app2-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'volumeMounts,volume_mounts' is/are not in resource
+name: node
+image: getdtk/graph-example2-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app2-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'spec/ephemeralContainers,spec/ephemeral_containers' is/are not in resource
+metadata:
+  labels:
+    app: node-app2
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example2-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app2-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/initContainers,spec/init_containers' is/are not in resource
+metadata:
+  labels:
+    app: node-app2
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example2-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app2-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/imagePullSecrets,spec/image_pull_secrets' is/are not in resource
+metadata:
+  labels:
+    app: node-app2
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example2-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app2-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/nodeSelector,spec/node_selector' is/are not in resource
+metadata:
+  labels:
+    app: node-app2
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example2-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app2-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/tolerations' is/are not in resource
+metadata:
+  labels:
+    app: node-app2
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example2-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app2-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/securityContext,spec/security_context' is/are not in resource
+metadata:
+  labels:
+    app: node-app2
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example2-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app2-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/volumes' is/are not in resource
+metadata:
+  labels:
+    app: node-app2
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example2-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app2-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'metadata/labels' is/are not in resource
+apiVersion: v1
+kind: Secret
+metadata:
+  name: node-app2-secret
+data:
+  db_password: <REDIS_PASSWORD>
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: v1
+kind: Secret
+metadata:
+  name: node-app2-secret
+data:
+  db_password: <REDIS_PASSWORD>
+
+The path(s)'stringData,string_data' is/are not in resource
+apiVersion: v1
+kind: Secret
+metadata:
+  name: node-app2-secret
+data:
+  db_password: <REDIS_PASSWORD>
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-app1-svc
+  labels:
+    app: node
+spec:
+  type: NodePort
+  ports:
+  - port: '8080'
+    targetPort: '8081'
+    nodePort: '31112'
+  selector:
+    app: node
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app1-dep
+  labels:
+    app: node-app1
+spec:
+  selector:
+    matchLabels:
+      app: node-app1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: '1'
+      maxUnavailable: '0'
+  replicas: '1'
+  template:
+    metadata:
+      labels:
+        app: node-app1
+    spec:
+      containers:
+      - name: node
+        image: getdtk/graph-example1-app
+        env:
+        - name: NODE_ENV
+          value: production
+        - name: PORT
+          value: '8080'
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: node-app1-secret
+              key: db_password
+        - name: DB_HOST
+          value: my-release-redis-master
+        - name: DB_PORT
+          value: '6379'
+        ports:
+        - containerPort: '8080'
+        resources:
+          requests:
+            memory: 100Mi
+            cpu: 100m
+          limits:
+            memory: 200Mi
+            cpu: 200m
+
+The path(s)'metadata/annotations' is/are not in resource
+metadata:
+  labels:
+    app: node-app1
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example1-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app1-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/affinity' is/are not in resource
+metadata:
+  labels:
+    app: node-app1
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example1-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app1-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'command' is/are not in resource
+name: node
+image: getdtk/graph-example1-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app1-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'envFrom,env_from' is/are not in resource
+name: node
+image: getdtk/graph-example1-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app1-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'lifecycle' is/are not in resource
+name: node
+image: getdtk/graph-example1-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app1-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'livenessProbe,liveness_probe' is/are not in resource
+name: node
+image: getdtk/graph-example1-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app1-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'readinessProbe,readiness_probe' is/are not in resource
+name: node
+image: getdtk/graph-example1-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app1-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'securityContext,security_context' is/are not in resource
+name: node
+image: getdtk/graph-example1-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app1-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'startupProbe,startup_probe' is/are not in resource
+name: node
+image: getdtk/graph-example1-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app1-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'volumeDevices,volume_devices' is/are not in resource
+name: node
+image: getdtk/graph-example1-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app1-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'volumeMounts,volume_mounts' is/are not in resource
+name: node
+image: getdtk/graph-example1-app
+env:
+- name: NODE_ENV
+  value: production
+- name: PORT
+  value: '8080'
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: node-app1-secret
+      key: db_password
+- name: DB_HOST
+  value: my-release-redis-master
+- name: DB_PORT
+  value: '6379'
+ports:
+- containerPort: '8080'
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 100m
+  limits:
+    memory: 200Mi
+    cpu: 200m
+
+The path(s)'spec/ephemeralContainers,spec/ephemeral_containers' is/are not in resource
+metadata:
+  labels:
+    app: node-app1
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example1-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app1-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/initContainers,spec/init_containers' is/are not in resource
+metadata:
+  labels:
+    app: node-app1
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example1-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app1-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/imagePullSecrets,spec/image_pull_secrets' is/are not in resource
+metadata:
+  labels:
+    app: node-app1
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example1-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app1-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/nodeSelector,spec/node_selector' is/are not in resource
+metadata:
+  labels:
+    app: node-app1
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example1-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app1-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/tolerations' is/are not in resource
+metadata:
+  labels:
+    app: node-app1
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example1-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app1-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/securityContext,spec/security_context' is/are not in resource
+metadata:
+  labels:
+    app: node-app1
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example1-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app1-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'spec/volumes' is/are not in resource
+metadata:
+  labels:
+    app: node-app1
+spec:
+  containers:
+  - name: node
+    image: getdtk/graph-example1-app
+    env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: '8080'
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: node-app1-secret
+          key: db_password
+    - name: DB_HOST
+      value: my-release-redis-master
+    - name: DB_PORT
+      value: '6379'
+    ports:
+    - containerPort: '8080'
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 200Mi
+        cpu: 200m
+
+The path(s)'metadata/labels' is/are not in resource
+apiVersion: v1
+kind: Secret
+metadata:
+  name: node-app1-secret
+data:
+  db_password: <REDIS_PASSWORD>
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: v1
+kind: Secret
+metadata:
+  name: node-app1-secret
+data:
+  db_password: <REDIS_PASSWORD>
+
+The path(s)'stringData,string_data' is/are not in resource
+apiVersion: v1
+kind: Secret
+metadata:
+  name: node-app1-secret
+data:
+  db_password: <REDIS_PASSWORD>
+
+The path(s)'metadata/labels' is/are not in resource
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress1-matches-app1-with-default
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: nginx-ingress-controller
+      port:
+        number: '80'
+  rules:
+  - http:
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
+          service:
+            name: node-app1-svc
+            port:
+              number: '80'
+
+The path(s)'spec/tls' is/are not in resource
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress1-matches-app1-with-default
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: nginx-ingress-controller
+      port:
+        number: '80'
+  rules:
+  - http:
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
+          service:
+            name: node-app1-svc
+            port:
+              number: '80'
+
+The path(s)'metadata/labels' is/are not in resource
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress2-simple-service-bad-default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  defaultBackend:
+    service:
+      name: test2
+      port:
+        number: '80'
+  rules:
+  - http:
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
+          service:
+            name: node-app-svc
+            port:
+              number: '80'
+
+The path(s)'spec/tls' is/are not in resource
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress2-simple-service-bad-default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  defaultBackend:
+    service:
+      name: test2
+      port:
+        number: '80'
+  rules:
+  - http:
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
+          service:
+            name: node-app-svc
+            port:
+              number: '80'
+
+The path(s)'metadata/labels' is/are not in resource
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress3-simple-fanout
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: foo.bar.com
+    http:
+      paths:
+      - path: /app1
+        pathType: Prefix
+        backend:
+          service:
+            name: node-app1-svc
+            port:
+              number: '80'
+      - path: /app2
+        pathType: Prefix
+        backend:
+          service:
+            name: node-app2-svc
+            port:
+              number: '80'
+
+The path(s)'spec/defaultBackend,spec/default_backend' is/are not in resource
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress3-simple-fanout
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: foo.bar.com
+    http:
+      paths:
+      - path: /app1
+        pathType: Prefix
+        backend:
+          service:
+            name: node-app1-svc
+            port:
+              number: '80'
+      - path: /app2
+        pathType: Prefix
+        backend:
+          service:
+            name: node-app2-svc
+            port:
+              number: '80'
+
+The path(s)'spec/tls' is/are not in resource
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress3-simple-fanout
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: foo.bar.com
+    http:
+      paths:
+      - path: /app1
+        pathType: Prefix
+        backend:
+          service:
+            name: node-app1-svc
+            port:
+              number: '80'
+      - path: /app2
+        pathType: Prefix
+        backend:
+          service:
+            name: node-app2-svc
+            port:
+              number: '80'
+
+The following resource is currently not supported:
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: redis
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: v1
+kind: Secret
+metadata:
+  name: redis
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+type: Opaque
+data:
+  redis-password: U1ZQTnhqbzgxeQ==
+
+The path(s)'stringData,string_data' is/are not in resource
+apiVersion: v1
+kind: Secret
+metadata:
+  name: redis
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+type: Opaque
+data:
+  redis-password: U1ZQTnhqbzgxeQ==
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-configuration
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+data:
+  redis.conf: '# User-supplied common configuration:
+
+    # Enable AOF https://redis.io/topics/persistence#append-only-file
+
+    appendonly yes
+
+    # Disable RDB persistence, AOF persistence already enabled.
+
+    save ""
+
+    # End of common configuration'
+  master.conf: 'dir /data
+
+    # User-supplied master configuration:
+
+    rename-command FLUSHDB ""
+
+    rename-command FLUSHALL ""
+
+    # End of master configuration'
+  replica.conf: 'dir /data
+
+    slave-read-only yes
+
+    # User-supplied replica configuration:
+
+    rename-command FLUSHDB ""
+
+    rename-command FLUSHALL ""
+
+    # End of replica configuration'
+
+The path(s)'binaryData,binary_data' is/are not in resource
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-configuration
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+data:
+  redis.conf: '# User-supplied common configuration:
+
+    # Enable AOF https://redis.io/topics/persistence#append-only-file
+
+    appendonly yes
+
+    # Disable RDB persistence, AOF persistence already enabled.
+
+    save ""
+
+    # End of common configuration'
+  master.conf: 'dir /data
+
+    # User-supplied master configuration:
+
+    rename-command FLUSHDB ""
+
+    rename-command FLUSHALL ""
+
+    # End of master configuration'
+  replica.conf: 'dir /data
+
+    slave-read-only yes
+
+    # User-supplied replica configuration:
+
+    rename-command FLUSHDB ""
+
+    rename-command FLUSHALL ""
+
+    # End of replica configuration'
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-health
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+data:
+  ping_readiness_local.sh: "#!/bin/bash\n\n[[ -f $REDIS_PASSWORD_FILE ]] && export\
+    \ REDIS_PASSWORD=\"$(< \"${REDIS_PASSWORD_FILE}\")\"\nexport REDISCLI_AUTH=\"\
+    $REDIS_PASSWORD\"\nresponse=$(\n  timeout -s 3 $1 \\\n  redis-cli \\\n    -h localhost\
+    \ \\\n    -p $REDIS_PORT \\\n    ping\n)\nif [ \"$response\" != \"PONG\" ]; then\n\
+    \  echo \"$response\"\n  exit 1\nfi"
+  ping_liveness_local.sh: "#!/bin/bash\n\n[[ -f $REDIS_PASSWORD_FILE ]] && export\
+    \ REDIS_PASSWORD=\"$(< \"${REDIS_PASSWORD_FILE}\")\"\nexport REDISCLI_AUTH=\"\
+    $REDIS_PASSWORD\"\nresponse=$(\n  timeout -s 3 $1 \\\n  redis-cli \\\n    -h localhost\
+    \ \\\n    -p $REDIS_PORT \\\n    ping\n)\nif [ \"$response\" != \"PONG\" ] &&\
+    \ [ \"$response\" != \"LOADING Redis is loading the dataset in memory\" ]; then\n\
+    \  echo \"$response\"\n  exit 1\nfi"
+  ping_readiness_master.sh: "#!/bin/bash\n\n[[ -f $REDIS_MASTER_PASSWORD_FILE ]] &&\
+    \ export REDIS_MASTER_PASSWORD=\"$(< \"${REDIS_MASTER_PASSWORD_FILE}\")\"\nexport\
+    \ REDISCLI_AUTH=\"$REDIS_MASTER_PASSWORD\"\nresponse=$(\n  timeout -s 3 $1 \\\n\
+    \  redis-cli \\\n    -h $REDIS_MASTER_HOST \\\n    -p $REDIS_MASTER_PORT_NUMBER\
+    \ \\\n    ping\n)\nif [ \"$response\" != \"PONG\" ]; then\n  echo \"$response\"\
+    \n  exit 1\nfi"
+  ping_liveness_master.sh: "#!/bin/bash\n\n[[ -f $REDIS_MASTER_PASSWORD_FILE ]] &&\
+    \ export REDIS_MASTER_PASSWORD=\"$(< \"${REDIS_MASTER_PASSWORD_FILE}\")\"\nexport\
+    \ REDISCLI_AUTH=\"$REDIS_MASTER_PASSWORD\"\nresponse=$(\n  timeout -s 3 $1 \\\n\
+    \  redis-cli \\\n    -h $REDIS_MASTER_HOST \\\n    -p $REDIS_MASTER_PORT_NUMBER\
+    \ \\\n    ping\n)\nif [ \"$response\" != \"PONG\" ] && [ \"$response\" != \"LOADING\
+    \ Redis is loading the dataset in memory\" ]; then\n  echo \"$response\"\n  exit\
+    \ 1\nfi"
+  ping_readiness_local_and_master.sh: 'script_dir="$(dirname "$0")"
+
+    exit_status=0
+
+    "$script_dir/ping_readiness_local.sh" $1 || exit_status=$?
+
+    "$script_dir/ping_readiness_master.sh" $1 || exit_status=$?
+
+    exit $exit_status'
+  ping_liveness_local_and_master.sh: 'script_dir="$(dirname "$0")"
+
+    exit_status=0
+
+    "$script_dir/ping_liveness_local.sh" $1 || exit_status=$?
+
+    "$script_dir/ping_liveness_master.sh" $1 || exit_status=$?
+
+    exit $exit_status'
+
+The path(s)'binaryData,binary_data' is/are not in resource
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-health
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+data:
+  ping_readiness_local.sh: "#!/bin/bash\n\n[[ -f $REDIS_PASSWORD_FILE ]] && export\
+    \ REDIS_PASSWORD=\"$(< \"${REDIS_PASSWORD_FILE}\")\"\nexport REDISCLI_AUTH=\"\
+    $REDIS_PASSWORD\"\nresponse=$(\n  timeout -s 3 $1 \\\n  redis-cli \\\n    -h localhost\
+    \ \\\n    -p $REDIS_PORT \\\n    ping\n)\nif [ \"$response\" != \"PONG\" ]; then\n\
+    \  echo \"$response\"\n  exit 1\nfi"
+  ping_liveness_local.sh: "#!/bin/bash\n\n[[ -f $REDIS_PASSWORD_FILE ]] && export\
+    \ REDIS_PASSWORD=\"$(< \"${REDIS_PASSWORD_FILE}\")\"\nexport REDISCLI_AUTH=\"\
+    $REDIS_PASSWORD\"\nresponse=$(\n  timeout -s 3 $1 \\\n  redis-cli \\\n    -h localhost\
+    \ \\\n    -p $REDIS_PORT \\\n    ping\n)\nif [ \"$response\" != \"PONG\" ] &&\
+    \ [ \"$response\" != \"LOADING Redis is loading the dataset in memory\" ]; then\n\
+    \  echo \"$response\"\n  exit 1\nfi"
+  ping_readiness_master.sh: "#!/bin/bash\n\n[[ -f $REDIS_MASTER_PASSWORD_FILE ]] &&\
+    \ export REDIS_MASTER_PASSWORD=\"$(< \"${REDIS_MASTER_PASSWORD_FILE}\")\"\nexport\
+    \ REDISCLI_AUTH=\"$REDIS_MASTER_PASSWORD\"\nresponse=$(\n  timeout -s 3 $1 \\\n\
+    \  redis-cli \\\n    -h $REDIS_MASTER_HOST \\\n    -p $REDIS_MASTER_PORT_NUMBER\
+    \ \\\n    ping\n)\nif [ \"$response\" != \"PONG\" ]; then\n  echo \"$response\"\
+    \n  exit 1\nfi"
+  ping_liveness_master.sh: "#!/bin/bash\n\n[[ -f $REDIS_MASTER_PASSWORD_FILE ]] &&\
+    \ export REDIS_MASTER_PASSWORD=\"$(< \"${REDIS_MASTER_PASSWORD_FILE}\")\"\nexport\
+    \ REDISCLI_AUTH=\"$REDIS_MASTER_PASSWORD\"\nresponse=$(\n  timeout -s 3 $1 \\\n\
+    \  redis-cli \\\n    -h $REDIS_MASTER_HOST \\\n    -p $REDIS_MASTER_PORT_NUMBER\
+    \ \\\n    ping\n)\nif [ \"$response\" != \"PONG\" ] && [ \"$response\" != \"LOADING\
+    \ Redis is loading the dataset in memory\" ]; then\n  echo \"$response\"\n  exit\
+    \ 1\nfi"
+  ping_readiness_local_and_master.sh: 'script_dir="$(dirname "$0")"
+
+    exit_status=0
+
+    "$script_dir/ping_readiness_local.sh" $1 || exit_status=$?
+
+    "$script_dir/ping_readiness_master.sh" $1 || exit_status=$?
+
+    exit $exit_status'
+  ping_liveness_local_and_master.sh: 'script_dir="$(dirname "$0")"
+
+    exit_status=0
+
+    "$script_dir/ping_liveness_local.sh" $1 || exit_status=$?
+
+    "$script_dir/ping_liveness_master.sh" $1 || exit_status=$?
+
+    exit $exit_status'
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-scripts
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+data:
+  start-master.sh: "#!/bin/bash\n\n[[ -f $REDIS_PASSWORD_FILE ]] && export REDIS_PASSWORD=\"\
+    $(< \"${REDIS_PASSWORD_FILE}\")\"\nif [[ ! -f /opt/bitnami/redis/etc/master.conf\
+    \ ]];then\n    cp /opt/bitnami/redis/mounted-etc/master.conf /opt/bitnami/redis/etc/master.conf\n\
+    fi\nif [[ ! -f /opt/bitnami/redis/etc/redis.conf ]];then\n    cp /opt/bitnami/redis/mounted-etc/redis.conf\
+    \ /opt/bitnami/redis/etc/redis.conf\nfi\nARGS=(\"--port\" \"${REDIS_PORT}\")\n\
+    ARGS+=(\"--requirepass\" \"${REDIS_PASSWORD}\")\nARGS+=(\"--masterauth\" \"${REDIS_PASSWORD}\"\
+    )\nARGS+=(\"--include\" \"/opt/bitnami/redis/etc/redis.conf\")\nARGS+=(\"--include\"\
+    \ \"/opt/bitnami/redis/etc/master.conf\")\nexec redis-server \"${ARGS[@]}\"\n"
+  start-replica.sh: "#!/bin/bash\n\n[[ -f $REDIS_PASSWORD_FILE ]] && export REDIS_PASSWORD=\"\
+    $(< \"${REDIS_PASSWORD_FILE}\")\"\n[[ -f $REDIS_MASTER_PASSWORD_FILE ]] && export\
+    \ REDIS_MASTER_PASSWORD=\"$(< \"${REDIS_MASTER_PASSWORD_FILE}\")\"\nif [[ ! -f\
+    \ /opt/bitnami/redis/etc/replica.conf ]];then\n    cp /opt/bitnami/redis/mounted-etc/replica.conf\
+    \ /opt/bitnami/redis/etc/replica.conf\nfi\nif [[ ! -f /opt/bitnami/redis/etc/redis.conf\
+    \ ]];then\n    cp /opt/bitnami/redis/mounted-etc/redis.conf /opt/bitnami/redis/etc/redis.conf\n\
+    fi\nARGS=(\"--port\" \"${REDIS_PORT}\")\nARGS+=(\"--slaveof\" \"${REDIS_MASTER_HOST}\"\
+    \ \"${REDIS_MASTER_PORT_NUMBER}\")\nARGS+=(\"--requirepass\" \"${REDIS_PASSWORD}\"\
+    )\nARGS+=(\"--masterauth\" \"${REDIS_MASTER_PASSWORD}\")\nARGS+=(\"--include\"\
+    \ \"/opt/bitnami/redis/etc/redis.conf\")\nARGS+=(\"--include\" \"/opt/bitnami/redis/etc/replica.conf\"\
+    )\nexec redis-server \"${ARGS[@]}\"\n"
+
+The path(s)'binaryData,binary_data' is/are not in resource
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-scripts
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+data:
+  start-master.sh: "#!/bin/bash\n\n[[ -f $REDIS_PASSWORD_FILE ]] && export REDIS_PASSWORD=\"\
+    $(< \"${REDIS_PASSWORD_FILE}\")\"\nif [[ ! -f /opt/bitnami/redis/etc/master.conf\
+    \ ]];then\n    cp /opt/bitnami/redis/mounted-etc/master.conf /opt/bitnami/redis/etc/master.conf\n\
+    fi\nif [[ ! -f /opt/bitnami/redis/etc/redis.conf ]];then\n    cp /opt/bitnami/redis/mounted-etc/redis.conf\
+    \ /opt/bitnami/redis/etc/redis.conf\nfi\nARGS=(\"--port\" \"${REDIS_PORT}\")\n\
+    ARGS+=(\"--requirepass\" \"${REDIS_PASSWORD}\")\nARGS+=(\"--masterauth\" \"${REDIS_PASSWORD}\"\
+    )\nARGS+=(\"--include\" \"/opt/bitnami/redis/etc/redis.conf\")\nARGS+=(\"--include\"\
+    \ \"/opt/bitnami/redis/etc/master.conf\")\nexec redis-server \"${ARGS[@]}\"\n"
+  start-replica.sh: "#!/bin/bash\n\n[[ -f $REDIS_PASSWORD_FILE ]] && export REDIS_PASSWORD=\"\
+    $(< \"${REDIS_PASSWORD_FILE}\")\"\n[[ -f $REDIS_MASTER_PASSWORD_FILE ]] && export\
+    \ REDIS_MASTER_PASSWORD=\"$(< \"${REDIS_MASTER_PASSWORD_FILE}\")\"\nif [[ ! -f\
+    \ /opt/bitnami/redis/etc/replica.conf ]];then\n    cp /opt/bitnami/redis/mounted-etc/replica.conf\
+    \ /opt/bitnami/redis/etc/replica.conf\nfi\nif [[ ! -f /opt/bitnami/redis/etc/redis.conf\
+    \ ]];then\n    cp /opt/bitnami/redis/mounted-etc/redis.conf /opt/bitnami/redis/etc/redis.conf\n\
+    fi\nARGS=(\"--port\" \"${REDIS_PORT}\")\nARGS+=(\"--slaveof\" \"${REDIS_MASTER_HOST}\"\
+    \ \"${REDIS_MASTER_PORT_NUMBER}\")\nARGS+=(\"--requirepass\" \"${REDIS_PASSWORD}\"\
+    )\nARGS+=(\"--masterauth\" \"${REDIS_MASTER_PASSWORD}\")\nARGS+=(\"--include\"\
+    \ \"/opt/bitnami/redis/etc/redis.conf\")\nARGS+=(\"--include\" \"/opt/bitnami/redis/etc/replica.conf\"\
+    )\nexec redis-server \"${ARGS[@]}\"\n"
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-headless
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+  - name: tcp-redis
+    port: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS5wb3J0IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFs2Mzc5LCAiQ29uZmlnLlZhbHVlIl19LCB7Il9yYW5nZV92YWx1ZSI6IDYzNzl9XX0=___end___
+    targetPort: redis
+  selector:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: redis
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-master
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: master
+spec:
+  type: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS50eXBlIiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiRXh0ZXJuYWxOYW1lIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiRXh0ZXJuYWxOYW1lIn1dfQ==___end___
+  ports:
+  - name: tcp-redis
+    port: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS5wb3J0IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFs2Mzc5LCAiQ29uZmlnLlZhbHVlIl19LCB7Il9yYW5nZV92YWx1ZSI6IDYzNzl9XX0=___end___
+    targetPort: redis
+  selector:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/component: master
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-replicas
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: replica
+spec:
+  type: ClusterIP
+  ports:
+  - name: tcp-redis
+    port: 6379
+    targetPort: redis
+    nodePort: null
+  selector:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/component: replica
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis-master
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: master
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/component: master
+  serviceName: redis-headless
+  updateStrategy:
+    rollingUpdate: {}
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: redis
+        helm.sh/chart: redis-14.4.0
+        app.kubernetes.io/instance: redis
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: master
+      annotations:
+        checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+        checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+        checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+        checksum/secret: 8679d9a94a8356d93113a80b6b831c94387f2b72e1c0688249d3327275c32b7d
+    spec:
+      securityContext:
+        fsGroup: 1001
+      serviceAccountName: redis
+      affinity:
+        podAffinity: null
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: redis
+                  app.kubernetes.io/instance: redis
+                  app.kubernetes.io/component: master
+              namespaces:
+              - default
+              topologyKey: kubernetes.io/hostname
+            weight: 1
+        nodeAffinity: null
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: redis
+        image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+        imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+        securityContext:
+          runAsUser: 1001
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - /opt/bitnami/scripts/start-scripts/start-master.sh
+        env:
+        - name: BITNAMI_DEBUG
+          value: 'false'
+        - name: REDIS_REPLICATION_MODE
+          value: master
+        - name: ALLOW_EMPTY_PASSWORD
+          value: 'no'
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: redis
+              key: redis-password
+        - name: REDIS_TLS_ENABLED
+          value: 'no'
+        - name: REDIS_PORT
+          value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___'''
+        ports:
+        - name: redis
+          containerPort: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___
+        livenessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 6
+          successThreshold: 1
+          failureThreshold: 5
+          exec:
+            command:
+            - sh
+            - -c
+            - /health/ping_liveness_local.sh 5
+        readinessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 2
+          successThreshold: 1
+          failureThreshold: 5
+          exec:
+            command:
+            - sh
+            - -c
+            - /health/ping_readiness_local.sh 1
+        resources:
+          limits: {}
+          requests: {}
+        volumeMounts:
+        - name: start-scripts
+          mountPath: /opt/bitnami/scripts/start-scripts
+        - name: health
+          mountPath: /health
+        - name: redis-data
+          mountPath: /data
+          subPath: null
+        - name: config
+          mountPath: /opt/bitnami/redis/mounted-etc
+        - name: redis-tmp-conf
+          mountPath: /opt/bitnami/redis/etc/
+        - name: tmp
+          mountPath: /tmp
+      volumes:
+      - name: start-scripts
+        configMap:
+          name: redis-scripts
+          defaultMode: 493
+      - name: health
+        configMap:
+          name: redis-health
+          defaultMode: 493
+      - name: config
+        configMap:
+          name: redis-configuration
+      - name: redis-tmp-conf
+        emptyDir: {}
+      - name: tmp
+        emptyDir: {}
+  volumeClaimTemplates:
+  - metadata:
+      name: redis-data
+      labels:
+        app.kubernetes.io/name: redis
+        app.kubernetes.io/instance: redis
+        app.kubernetes.io/component: master
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 8Gi
+
+The path(s)'nodeAffinity,node_affinity' is/are not in resource
+podAffinity: null
+podAntiAffinity:
+  preferredDuringSchedulingIgnoredDuringExecution:
+  - podAffinityTerm:
+      labelSelector:
+        matchLabels:
+          app.kubernetes.io/name: redis
+          app.kubernetes.io/instance: redis
+          app.kubernetes.io/component: master
+      namespaces:
+      - default
+      topologyKey: kubernetes.io/hostname
+    weight: 1
+nodeAffinity: null
+
+The path(s)'podAffinity,pod_affinity' is/are not in resource
+podAffinity: null
+podAntiAffinity:
+  preferredDuringSchedulingIgnoredDuringExecution:
+  - podAffinityTerm:
+      labelSelector:
+        matchLabels:
+          app.kubernetes.io/name: redis
+          app.kubernetes.io/instance: redis
+          app.kubernetes.io/component: master
+      namespaces:
+      - default
+      topologyKey: kubernetes.io/hostname
+    weight: 1
+nodeAffinity: null
+
+The path(s)'matchExpressions,match_expressions' is/are not in resource
+matchLabels:
+  app.kubernetes.io/name: redis
+  app.kubernetes.io/instance: redis
+  app.kubernetes.io/component: master
+
+The path(s)'requiredDuringSchedulingIgnoredDuringExecution,required_during_scheduling_ignored_during_execution' is/are not in resource
+preferredDuringSchedulingIgnoredDuringExecution:
+- podAffinityTerm:
+    labelSelector:
+      matchLabels:
+        app.kubernetes.io/name: redis
+        app.kubernetes.io/instance: redis
+        app.kubernetes.io/component: master
+    namespaces:
+    - default
+    topologyKey: kubernetes.io/hostname
+  weight: 1
+
+The path(s)'envFrom,env_from' is/are not in resource
+name: redis
+image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+securityContext:
+  runAsUser: 1001
+command:
+- /bin/bash
+args:
+- -c
+- /opt/bitnami/scripts/start-scripts/start-master.sh
+env:
+- name: BITNAMI_DEBUG
+  value: 'false'
+- name: REDIS_REPLICATION_MODE
+  value: master
+- name: ALLOW_EMPTY_PASSWORD
+  value: 'no'
+- name: REDIS_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: redis
+      key: redis-password
+- name: REDIS_TLS_ENABLED
+  value: 'no'
+- name: REDIS_PORT
+  value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___'''
+ports:
+- name: redis
+  containerPort: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___
+livenessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 6
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_liveness_local.sh 5
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_readiness_local.sh 1
+resources:
+  limits: {}
+  requests: {}
+volumeMounts:
+- name: start-scripts
+  mountPath: /opt/bitnami/scripts/start-scripts
+- name: health
+  mountPath: /health
+- name: redis-data
+  mountPath: /data
+  subPath: null
+- name: config
+  mountPath: /opt/bitnami/redis/mounted-etc
+- name: redis-tmp-conf
+  mountPath: /opt/bitnami/redis/etc/
+- name: tmp
+  mountPath: /tmp
+
+The path(s)'lifecycle' is/are not in resource
+name: redis
+image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+securityContext:
+  runAsUser: 1001
+command:
+- /bin/bash
+args:
+- -c
+- /opt/bitnami/scripts/start-scripts/start-master.sh
+env:
+- name: BITNAMI_DEBUG
+  value: 'false'
+- name: REDIS_REPLICATION_MODE
+  value: master
+- name: ALLOW_EMPTY_PASSWORD
+  value: 'no'
+- name: REDIS_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: redis
+      key: redis-password
+- name: REDIS_TLS_ENABLED
+  value: 'no'
+- name: REDIS_PORT
+  value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___'''
+ports:
+- name: redis
+  containerPort: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___
+livenessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 6
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_liveness_local.sh 5
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_readiness_local.sh 1
+resources:
+  limits: {}
+  requests: {}
+volumeMounts:
+- name: start-scripts
+  mountPath: /opt/bitnami/scripts/start-scripts
+- name: health
+  mountPath: /health
+- name: redis-data
+  mountPath: /data
+  subPath: null
+- name: config
+  mountPath: /opt/bitnami/redis/mounted-etc
+- name: redis-tmp-conf
+  mountPath: /opt/bitnami/redis/etc/
+- name: tmp
+  mountPath: /tmp
+
+The path(s)'startupProbe,startup_probe' is/are not in resource
+name: redis
+image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+securityContext:
+  runAsUser: 1001
+command:
+- /bin/bash
+args:
+- -c
+- /opt/bitnami/scripts/start-scripts/start-master.sh
+env:
+- name: BITNAMI_DEBUG
+  value: 'false'
+- name: REDIS_REPLICATION_MODE
+  value: master
+- name: ALLOW_EMPTY_PASSWORD
+  value: 'no'
+- name: REDIS_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: redis
+      key: redis-password
+- name: REDIS_TLS_ENABLED
+  value: 'no'
+- name: REDIS_PORT
+  value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___'''
+ports:
+- name: redis
+  containerPort: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___
+livenessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 6
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_liveness_local.sh 5
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_readiness_local.sh 1
+resources:
+  limits: {}
+  requests: {}
+volumeMounts:
+- name: start-scripts
+  mountPath: /opt/bitnami/scripts/start-scripts
+- name: health
+  mountPath: /health
+- name: redis-data
+  mountPath: /data
+  subPath: null
+- name: config
+  mountPath: /opt/bitnami/redis/mounted-etc
+- name: redis-tmp-conf
+  mountPath: /opt/bitnami/redis/etc/
+- name: tmp
+  mountPath: /tmp
+
+The path(s)'volumeDevices,volume_devices' is/are not in resource
+name: redis
+image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+securityContext:
+  runAsUser: 1001
+command:
+- /bin/bash
+args:
+- -c
+- /opt/bitnami/scripts/start-scripts/start-master.sh
+env:
+- name: BITNAMI_DEBUG
+  value: 'false'
+- name: REDIS_REPLICATION_MODE
+  value: master
+- name: ALLOW_EMPTY_PASSWORD
+  value: 'no'
+- name: REDIS_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: redis
+      key: redis-password
+- name: REDIS_TLS_ENABLED
+  value: 'no'
+- name: REDIS_PORT
+  value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___'''
+ports:
+- name: redis
+  containerPort: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___
+livenessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 6
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_liveness_local.sh 5
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_readiness_local.sh 1
+resources:
+  limits: {}
+  requests: {}
+volumeMounts:
+- name: start-scripts
+  mountPath: /opt/bitnami/scripts/start-scripts
+- name: health
+  mountPath: /health
+- name: redis-data
+  mountPath: /data
+  subPath: null
+- name: config
+  mountPath: /opt/bitnami/redis/mounted-etc
+- name: redis-tmp-conf
+  mountPath: /opt/bitnami/redis/etc/
+- name: tmp
+  mountPath: /tmp
+
+The path(s)'spec/ephemeralContainers,spec/ephemeral_containers' is/are not in resource
+metadata:
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: master
+  annotations:
+    checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+    checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+    checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+    checksum/secret: 8679d9a94a8356d93113a80b6b831c94387f2b72e1c0688249d3327275c32b7d
+spec:
+  securityContext:
+    fsGroup: 1001
+  serviceAccountName: redis
+  affinity:
+    podAffinity: null
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/instance: redis
+              app.kubernetes.io/component: master
+          namespaces:
+          - default
+          topologyKey: kubernetes.io/hostname
+        weight: 1
+    nodeAffinity: null
+  terminationGracePeriodSeconds: 30
+  containers:
+  - name: redis
+    image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+    imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+    securityContext:
+      runAsUser: 1001
+    command:
+    - /bin/bash
+    args:
+    - -c
+    - /opt/bitnami/scripts/start-scripts/start-master.sh
+    env:
+    - name: BITNAMI_DEBUG
+      value: 'false'
+    - name: REDIS_REPLICATION_MODE
+      value: master
+    - name: ALLOW_EMPTY_PASSWORD
+      value: 'no'
+    - name: REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_TLS_ENABLED
+      value: 'no'
+    - name: REDIS_PORT
+      value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___'''
+    ports:
+    - name: redis
+      containerPort: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___
+    livenessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 6
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_liveness_local.sh 5
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 2
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_readiness_local.sh 1
+    resources:
+      limits: {}
+      requests: {}
+    volumeMounts:
+    - name: start-scripts
+      mountPath: /opt/bitnami/scripts/start-scripts
+    - name: health
+      mountPath: /health
+    - name: redis-data
+      mountPath: /data
+      subPath: null
+    - name: config
+      mountPath: /opt/bitnami/redis/mounted-etc
+    - name: redis-tmp-conf
+      mountPath: /opt/bitnami/redis/etc/
+    - name: tmp
+      mountPath: /tmp
+  volumes:
+  - name: start-scripts
+    configMap:
+      name: redis-scripts
+      defaultMode: 493
+  - name: health
+    configMap:
+      name: redis-health
+      defaultMode: 493
+  - name: config
+    configMap:
+      name: redis-configuration
+  - name: redis-tmp-conf
+    emptyDir: {}
+  - name: tmp
+    emptyDir: {}
+
+The path(s)'spec/initContainers,spec/init_containers' is/are not in resource
+metadata:
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: master
+  annotations:
+    checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+    checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+    checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+    checksum/secret: 8679d9a94a8356d93113a80b6b831c94387f2b72e1c0688249d3327275c32b7d
+spec:
+  securityContext:
+    fsGroup: 1001
+  serviceAccountName: redis
+  affinity:
+    podAffinity: null
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/instance: redis
+              app.kubernetes.io/component: master
+          namespaces:
+          - default
+          topologyKey: kubernetes.io/hostname
+        weight: 1
+    nodeAffinity: null
+  terminationGracePeriodSeconds: 30
+  containers:
+  - name: redis
+    image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+    imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+    securityContext:
+      runAsUser: 1001
+    command:
+    - /bin/bash
+    args:
+    - -c
+    - /opt/bitnami/scripts/start-scripts/start-master.sh
+    env:
+    - name: BITNAMI_DEBUG
+      value: 'false'
+    - name: REDIS_REPLICATION_MODE
+      value: master
+    - name: ALLOW_EMPTY_PASSWORD
+      value: 'no'
+    - name: REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_TLS_ENABLED
+      value: 'no'
+    - name: REDIS_PORT
+      value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___'''
+    ports:
+    - name: redis
+      containerPort: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___
+    livenessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 6
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_liveness_local.sh 5
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 2
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_readiness_local.sh 1
+    resources:
+      limits: {}
+      requests: {}
+    volumeMounts:
+    - name: start-scripts
+      mountPath: /opt/bitnami/scripts/start-scripts
+    - name: health
+      mountPath: /health
+    - name: redis-data
+      mountPath: /data
+      subPath: null
+    - name: config
+      mountPath: /opt/bitnami/redis/mounted-etc
+    - name: redis-tmp-conf
+      mountPath: /opt/bitnami/redis/etc/
+    - name: tmp
+      mountPath: /tmp
+  volumes:
+  - name: start-scripts
+    configMap:
+      name: redis-scripts
+      defaultMode: 493
+  - name: health
+    configMap:
+      name: redis-health
+      defaultMode: 493
+  - name: config
+    configMap:
+      name: redis-configuration
+  - name: redis-tmp-conf
+    emptyDir: {}
+  - name: tmp
+    emptyDir: {}
+
+The path(s)'spec/imagePullSecrets,spec/image_pull_secrets' is/are not in resource
+metadata:
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: master
+  annotations:
+    checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+    checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+    checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+    checksum/secret: 8679d9a94a8356d93113a80b6b831c94387f2b72e1c0688249d3327275c32b7d
+spec:
+  securityContext:
+    fsGroup: 1001
+  serviceAccountName: redis
+  affinity:
+    podAffinity: null
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/instance: redis
+              app.kubernetes.io/component: master
+          namespaces:
+          - default
+          topologyKey: kubernetes.io/hostname
+        weight: 1
+    nodeAffinity: null
+  terminationGracePeriodSeconds: 30
+  containers:
+  - name: redis
+    image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+    imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+    securityContext:
+      runAsUser: 1001
+    command:
+    - /bin/bash
+    args:
+    - -c
+    - /opt/bitnami/scripts/start-scripts/start-master.sh
+    env:
+    - name: BITNAMI_DEBUG
+      value: 'false'
+    - name: REDIS_REPLICATION_MODE
+      value: master
+    - name: ALLOW_EMPTY_PASSWORD
+      value: 'no'
+    - name: REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_TLS_ENABLED
+      value: 'no'
+    - name: REDIS_PORT
+      value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___'''
+    ports:
+    - name: redis
+      containerPort: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___
+    livenessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 6
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_liveness_local.sh 5
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 2
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_readiness_local.sh 1
+    resources:
+      limits: {}
+      requests: {}
+    volumeMounts:
+    - name: start-scripts
+      mountPath: /opt/bitnami/scripts/start-scripts
+    - name: health
+      mountPath: /health
+    - name: redis-data
+      mountPath: /data
+      subPath: null
+    - name: config
+      mountPath: /opt/bitnami/redis/mounted-etc
+    - name: redis-tmp-conf
+      mountPath: /opt/bitnami/redis/etc/
+    - name: tmp
+      mountPath: /tmp
+  volumes:
+  - name: start-scripts
+    configMap:
+      name: redis-scripts
+      defaultMode: 493
+  - name: health
+    configMap:
+      name: redis-health
+      defaultMode: 493
+  - name: config
+    configMap:
+      name: redis-configuration
+  - name: redis-tmp-conf
+    emptyDir: {}
+  - name: tmp
+    emptyDir: {}
+
+The path(s)'spec/nodeSelector,spec/node_selector' is/are not in resource
+metadata:
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: master
+  annotations:
+    checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+    checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+    checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+    checksum/secret: 8679d9a94a8356d93113a80b6b831c94387f2b72e1c0688249d3327275c32b7d
+spec:
+  securityContext:
+    fsGroup: 1001
+  serviceAccountName: redis
+  affinity:
+    podAffinity: null
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/instance: redis
+              app.kubernetes.io/component: master
+          namespaces:
+          - default
+          topologyKey: kubernetes.io/hostname
+        weight: 1
+    nodeAffinity: null
+  terminationGracePeriodSeconds: 30
+  containers:
+  - name: redis
+    image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+    imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+    securityContext:
+      runAsUser: 1001
+    command:
+    - /bin/bash
+    args:
+    - -c
+    - /opt/bitnami/scripts/start-scripts/start-master.sh
+    env:
+    - name: BITNAMI_DEBUG
+      value: 'false'
+    - name: REDIS_REPLICATION_MODE
+      value: master
+    - name: ALLOW_EMPTY_PASSWORD
+      value: 'no'
+    - name: REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_TLS_ENABLED
+      value: 'no'
+    - name: REDIS_PORT
+      value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___'''
+    ports:
+    - name: redis
+      containerPort: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___
+    livenessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 6
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_liveness_local.sh 5
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 2
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_readiness_local.sh 1
+    resources:
+      limits: {}
+      requests: {}
+    volumeMounts:
+    - name: start-scripts
+      mountPath: /opt/bitnami/scripts/start-scripts
+    - name: health
+      mountPath: /health
+    - name: redis-data
+      mountPath: /data
+      subPath: null
+    - name: config
+      mountPath: /opt/bitnami/redis/mounted-etc
+    - name: redis-tmp-conf
+      mountPath: /opt/bitnami/redis/etc/
+    - name: tmp
+      mountPath: /tmp
+  volumes:
+  - name: start-scripts
+    configMap:
+      name: redis-scripts
+      defaultMode: 493
+  - name: health
+    configMap:
+      name: redis-health
+      defaultMode: 493
+  - name: config
+    configMap:
+      name: redis-configuration
+  - name: redis-tmp-conf
+    emptyDir: {}
+  - name: tmp
+    emptyDir: {}
+
+The path(s)'spec/tolerations' is/are not in resource
+metadata:
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: master
+  annotations:
+    checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+    checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+    checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+    checksum/secret: 8679d9a94a8356d93113a80b6b831c94387f2b72e1c0688249d3327275c32b7d
+spec:
+  securityContext:
+    fsGroup: 1001
+  serviceAccountName: redis
+  affinity:
+    podAffinity: null
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/instance: redis
+              app.kubernetes.io/component: master
+          namespaces:
+          - default
+          topologyKey: kubernetes.io/hostname
+        weight: 1
+    nodeAffinity: null
+  terminationGracePeriodSeconds: 30
+  containers:
+  - name: redis
+    image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+    imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+    securityContext:
+      runAsUser: 1001
+    command:
+    - /bin/bash
+    args:
+    - -c
+    - /opt/bitnami/scripts/start-scripts/start-master.sh
+    env:
+    - name: BITNAMI_DEBUG
+      value: 'false'
+    - name: REDIS_REPLICATION_MODE
+      value: master
+    - name: ALLOW_EMPTY_PASSWORD
+      value: 'no'
+    - name: REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_TLS_ENABLED
+      value: 'no'
+    - name: REDIS_PORT
+      value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___'''
+    ports:
+    - name: redis
+      containerPort: ___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuY29udGFpbmVyUG9ydCIsICJDb25maWcuTmFtZSJdfSwgeyJfY29uc3QiOiBbNjM3OSwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiA2Mzc5fV19___end___
+    livenessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 6
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_liveness_local.sh 5
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 2
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_readiness_local.sh 1
+    resources:
+      limits: {}
+      requests: {}
+    volumeMounts:
+    - name: start-scripts
+      mountPath: /opt/bitnami/scripts/start-scripts
+    - name: health
+      mountPath: /health
+    - name: redis-data
+      mountPath: /data
+      subPath: null
+    - name: config
+      mountPath: /opt/bitnami/redis/mounted-etc
+    - name: redis-tmp-conf
+      mountPath: /opt/bitnami/redis/etc/
+    - name: tmp
+      mountPath: /tmp
+  volumes:
+  - name: start-scripts
+    configMap:
+      name: redis-scripts
+      defaultMode: 493
+  - name: health
+    configMap:
+      name: redis-health
+      defaultMode: 493
+  - name: config
+    configMap:
+      name: redis-configuration
+  - name: redis-tmp-conf
+    emptyDir: {}
+  - name: tmp
+    emptyDir: {}
+
+The path(s)'awsElasticBlockStore,aws_elastic_block_store' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'downwardApi,downward_api' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'emptyDir,empty_dir' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'ephemeral' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'gitRepo,git_repo' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'hostPath,host_path' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'nfs' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'persistentVolumeClaim,persistent_volume_claim' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'projected' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'secret' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'awsElasticBlockStore,aws_elastic_block_store' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'downwardApi,downward_api' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'emptyDir,empty_dir' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'ephemeral' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'gitRepo,git_repo' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'hostPath,host_path' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'nfs' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'persistentVolumeClaim,persistent_volume_claim' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'projected' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'secret' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'awsElasticBlockStore,aws_elastic_block_store' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'downwardApi,downward_api' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'emptyDir,empty_dir' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'ephemeral' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'gitRepo,git_repo' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'hostPath,host_path' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'nfs' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'persistentVolumeClaim,persistent_volume_claim' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'projected' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'secret' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'awsElasticBlockStore,aws_elastic_block_store' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'configMap,config_map' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'downwardApi,downward_api' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'ephemeral' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'gitRepo,git_repo' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'hostPath,host_path' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'nfs' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'persistentVolumeClaim,persistent_volume_claim' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'projected' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'secret' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'awsElasticBlockStore,aws_elastic_block_store' is/are not in resource
+name: tmp
+emptyDir: {}
+
+The path(s)'configMap,config_map' is/are not in resource
+name: tmp
+emptyDir: {}
+
+The path(s)'downwardApi,downward_api' is/are not in resource
+name: tmp
+emptyDir: {}
+
+The path(s)'ephemeral' is/are not in resource
+name: tmp
+emptyDir: {}
+
+The path(s)'gitRepo,git_repo' is/are not in resource
+name: tmp
+emptyDir: {}
+
+The path(s)'hostPath,host_path' is/are not in resource
+name: tmp
+emptyDir: {}
+
+The path(s)'nfs' is/are not in resource
+name: tmp
+emptyDir: {}
+
+The path(s)'persistentVolumeClaim,persistent_volume_claim' is/are not in resource
+name: tmp
+emptyDir: {}
+
+The path(s)'projected' is/are not in resource
+name: tmp
+emptyDir: {}
+
+The path(s)'secret' is/are not in resource
+name: tmp
+emptyDir: {}
+
+The path(s)'metadata/annotations' is/are not in resource
+metadata:
+  name: redis-data
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/component: master
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+
+The path(s)'spec/selector/matchLabels,spec/selector/match_labels' is/are not in resource
+metadata:
+  name: redis-data
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/component: master
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+
+The path(s)'spec/dataSource,spec/data_source' is/are not in resource
+metadata:
+  name: redis-data
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/component: master
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+
+The path(s)'metadata/annotations' is/are not in resource
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis-replicas
+  namespace: default
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: replica
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/component: replica
+  serviceName: redis-headless
+  updateStrategy:
+    rollingUpdate: {}
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: redis
+        helm.sh/chart: redis-14.4.0
+        app.kubernetes.io/instance: redis
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: replica
+      annotations:
+        checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+        checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+        checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+        checksum/secret: ca4e8e130aadab2c76b7dbc7707864e4bddd395ff1b4a01265d442d879a9f5d9
+    spec:
+      securityContext:
+        fsGroup: 1001
+      serviceAccountName: redis
+      affinity:
+        podAffinity: null
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: redis
+                  app.kubernetes.io/instance: redis
+                  app.kubernetes.io/component: replica
+              namespaces:
+              - default
+              topologyKey: kubernetes.io/hostname
+            weight: 1
+        nodeAffinity: null
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: redis
+        image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+        imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+        securityContext:
+          runAsUser: 1001
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - /opt/bitnami/scripts/start-scripts/start-replica.sh
+        env:
+        - name: BITNAMI_DEBUG
+          value: 'false'
+        - name: REDIS_REPLICATION_MODE
+          value: slave
+        - name: REDIS_MASTER_HOST
+          value: redis-master-0.redis-headless.default.svc.cluster.local
+        - name: REDIS_MASTER_PORT_NUMBER
+          value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS5wb3J0IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFs2Mzc5LCAiQ29uZmlnLlZhbHVlIl19LCB7Il9yYW5nZV92YWx1ZSI6IDYzNzl9XX0=___end___'''
+        - name: ALLOW_EMPTY_PASSWORD
+          value: 'no'
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: redis
+              key: redis-password
+        - name: REDIS_MASTER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: redis
+              key: redis-password
+        - name: REDIS_TLS_ENABLED
+          value: 'no'
+        - name: REDIS_PORT
+          value: '6379'
+        ports:
+        - name: redis
+          containerPort: 6379
+        livenessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 6
+          successThreshold: 1
+          failureThreshold: 5
+          exec:
+            command:
+            - sh
+            - -c
+            - /health/ping_liveness_local_and_master.sh 5
+        readinessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 2
+          successThreshold: 1
+          failureThreshold: 5
+          exec:
+            command:
+            - sh
+            - -c
+            - /health/ping_readiness_local_and_master.sh 1
+        resources:
+          limits: {}
+          requests: {}
+        volumeMounts:
+        - name: start-scripts
+          mountPath: /opt/bitnami/scripts/start-scripts
+        - name: health
+          mountPath: /health
+        - name: redis-data
+          mountPath: /data
+          subPath: null
+        - name: config
+          mountPath: /opt/bitnami/redis/mounted-etc
+        - name: redis-tmp-conf
+          mountPath: /opt/bitnami/redis/etc
+      volumes:
+      - name: start-scripts
+        configMap:
+          name: redis-scripts
+          defaultMode: 493
+      - name: health
+        configMap:
+          name: redis-health
+          defaultMode: 493
+      - name: config
+        configMap:
+          name: redis-configuration
+      - name: redis-tmp-conf
+        emptyDir: {}
+  volumeClaimTemplates:
+  - metadata:
+      name: redis-data
+      labels:
+        app.kubernetes.io/name: redis
+        app.kubernetes.io/instance: redis
+        app.kubernetes.io/component: replica
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 8Gi
+
+The path(s)'nodeAffinity,node_affinity' is/are not in resource
+podAffinity: null
+podAntiAffinity:
+  preferredDuringSchedulingIgnoredDuringExecution:
+  - podAffinityTerm:
+      labelSelector:
+        matchLabels:
+          app.kubernetes.io/name: redis
+          app.kubernetes.io/instance: redis
+          app.kubernetes.io/component: replica
+      namespaces:
+      - default
+      topologyKey: kubernetes.io/hostname
+    weight: 1
+nodeAffinity: null
+
+The path(s)'podAffinity,pod_affinity' is/are not in resource
+podAffinity: null
+podAntiAffinity:
+  preferredDuringSchedulingIgnoredDuringExecution:
+  - podAffinityTerm:
+      labelSelector:
+        matchLabels:
+          app.kubernetes.io/name: redis
+          app.kubernetes.io/instance: redis
+          app.kubernetes.io/component: replica
+      namespaces:
+      - default
+      topologyKey: kubernetes.io/hostname
+    weight: 1
+nodeAffinity: null
+
+The path(s)'matchExpressions,match_expressions' is/are not in resource
+matchLabels:
+  app.kubernetes.io/name: redis
+  app.kubernetes.io/instance: redis
+  app.kubernetes.io/component: replica
+
+The path(s)'requiredDuringSchedulingIgnoredDuringExecution,required_during_scheduling_ignored_during_execution' is/are not in resource
+preferredDuringSchedulingIgnoredDuringExecution:
+- podAffinityTerm:
+    labelSelector:
+      matchLabels:
+        app.kubernetes.io/name: redis
+        app.kubernetes.io/instance: redis
+        app.kubernetes.io/component: replica
+    namespaces:
+    - default
+    topologyKey: kubernetes.io/hostname
+  weight: 1
+
+The path(s)'envFrom,env_from' is/are not in resource
+name: redis
+image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+securityContext:
+  runAsUser: 1001
+command:
+- /bin/bash
+args:
+- -c
+- /opt/bitnami/scripts/start-scripts/start-replica.sh
+env:
+- name: BITNAMI_DEBUG
+  value: 'false'
+- name: REDIS_REPLICATION_MODE
+  value: slave
+- name: REDIS_MASTER_HOST
+  value: redis-master-0.redis-headless.default.svc.cluster.local
+- name: REDIS_MASTER_PORT_NUMBER
+  value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS5wb3J0IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFs2Mzc5LCAiQ29uZmlnLlZhbHVlIl19LCB7Il9yYW5nZV92YWx1ZSI6IDYzNzl9XX0=___end___'''
+- name: ALLOW_EMPTY_PASSWORD
+  value: 'no'
+- name: REDIS_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: redis
+      key: redis-password
+- name: REDIS_MASTER_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: redis
+      key: redis-password
+- name: REDIS_TLS_ENABLED
+  value: 'no'
+- name: REDIS_PORT
+  value: '6379'
+ports:
+- name: redis
+  containerPort: 6379
+livenessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 6
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_liveness_local_and_master.sh 5
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_readiness_local_and_master.sh 1
+resources:
+  limits: {}
+  requests: {}
+volumeMounts:
+- name: start-scripts
+  mountPath: /opt/bitnami/scripts/start-scripts
+- name: health
+  mountPath: /health
+- name: redis-data
+  mountPath: /data
+  subPath: null
+- name: config
+  mountPath: /opt/bitnami/redis/mounted-etc
+- name: redis-tmp-conf
+  mountPath: /opt/bitnami/redis/etc
+
+The path(s)'lifecycle' is/are not in resource
+name: redis
+image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+securityContext:
+  runAsUser: 1001
+command:
+- /bin/bash
+args:
+- -c
+- /opt/bitnami/scripts/start-scripts/start-replica.sh
+env:
+- name: BITNAMI_DEBUG
+  value: 'false'
+- name: REDIS_REPLICATION_MODE
+  value: slave
+- name: REDIS_MASTER_HOST
+  value: redis-master-0.redis-headless.default.svc.cluster.local
+- name: REDIS_MASTER_PORT_NUMBER
+  value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS5wb3J0IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFs2Mzc5LCAiQ29uZmlnLlZhbHVlIl19LCB7Il9yYW5nZV92YWx1ZSI6IDYzNzl9XX0=___end___'''
+- name: ALLOW_EMPTY_PASSWORD
+  value: 'no'
+- name: REDIS_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: redis
+      key: redis-password
+- name: REDIS_MASTER_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: redis
+      key: redis-password
+- name: REDIS_TLS_ENABLED
+  value: 'no'
+- name: REDIS_PORT
+  value: '6379'
+ports:
+- name: redis
+  containerPort: 6379
+livenessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 6
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_liveness_local_and_master.sh 5
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_readiness_local_and_master.sh 1
+resources:
+  limits: {}
+  requests: {}
+volumeMounts:
+- name: start-scripts
+  mountPath: /opt/bitnami/scripts/start-scripts
+- name: health
+  mountPath: /health
+- name: redis-data
+  mountPath: /data
+  subPath: null
+- name: config
+  mountPath: /opt/bitnami/redis/mounted-etc
+- name: redis-tmp-conf
+  mountPath: /opt/bitnami/redis/etc
+
+The path(s)'startupProbe,startup_probe' is/are not in resource
+name: redis
+image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+securityContext:
+  runAsUser: 1001
+command:
+- /bin/bash
+args:
+- -c
+- /opt/bitnami/scripts/start-scripts/start-replica.sh
+env:
+- name: BITNAMI_DEBUG
+  value: 'false'
+- name: REDIS_REPLICATION_MODE
+  value: slave
+- name: REDIS_MASTER_HOST
+  value: redis-master-0.redis-headless.default.svc.cluster.local
+- name: REDIS_MASTER_PORT_NUMBER
+  value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS5wb3J0IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFs2Mzc5LCAiQ29uZmlnLlZhbHVlIl19LCB7Il9yYW5nZV92YWx1ZSI6IDYzNzl9XX0=___end___'''
+- name: ALLOW_EMPTY_PASSWORD
+  value: 'no'
+- name: REDIS_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: redis
+      key: redis-password
+- name: REDIS_MASTER_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: redis
+      key: redis-password
+- name: REDIS_TLS_ENABLED
+  value: 'no'
+- name: REDIS_PORT
+  value: '6379'
+ports:
+- name: redis
+  containerPort: 6379
+livenessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 6
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_liveness_local_and_master.sh 5
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_readiness_local_and_master.sh 1
+resources:
+  limits: {}
+  requests: {}
+volumeMounts:
+- name: start-scripts
+  mountPath: /opt/bitnami/scripts/start-scripts
+- name: health
+  mountPath: /health
+- name: redis-data
+  mountPath: /data
+  subPath: null
+- name: config
+  mountPath: /opt/bitnami/redis/mounted-etc
+- name: redis-tmp-conf
+  mountPath: /opt/bitnami/redis/etc
+
+The path(s)'volumeDevices,volume_devices' is/are not in resource
+name: redis
+image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+securityContext:
+  runAsUser: 1001
+command:
+- /bin/bash
+args:
+- -c
+- /opt/bitnami/scripts/start-scripts/start-replica.sh
+env:
+- name: BITNAMI_DEBUG
+  value: 'false'
+- name: REDIS_REPLICATION_MODE
+  value: slave
+- name: REDIS_MASTER_HOST
+  value: redis-master-0.redis-headless.default.svc.cluster.local
+- name: REDIS_MASTER_PORT_NUMBER
+  value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS5wb3J0IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFs2Mzc5LCAiQ29uZmlnLlZhbHVlIl19LCB7Il9yYW5nZV92YWx1ZSI6IDYzNzl9XX0=___end___'''
+- name: ALLOW_EMPTY_PASSWORD
+  value: 'no'
+- name: REDIS_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: redis
+      key: redis-password
+- name: REDIS_MASTER_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: redis
+      key: redis-password
+- name: REDIS_TLS_ENABLED
+  value: 'no'
+- name: REDIS_PORT
+  value: '6379'
+ports:
+- name: redis
+  containerPort: 6379
+livenessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 6
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_liveness_local_and_master.sh 5
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
+  successThreshold: 1
+  failureThreshold: 5
+  exec:
+    command:
+    - sh
+    - -c
+    - /health/ping_readiness_local_and_master.sh 1
+resources:
+  limits: {}
+  requests: {}
+volumeMounts:
+- name: start-scripts
+  mountPath: /opt/bitnami/scripts/start-scripts
+- name: health
+  mountPath: /health
+- name: redis-data
+  mountPath: /data
+  subPath: null
+- name: config
+  mountPath: /opt/bitnami/redis/mounted-etc
+- name: redis-tmp-conf
+  mountPath: /opt/bitnami/redis/etc
+
+The path(s)'spec/ephemeralContainers,spec/ephemeral_containers' is/are not in resource
+metadata:
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: replica
+  annotations:
+    checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+    checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+    checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+    checksum/secret: ca4e8e130aadab2c76b7dbc7707864e4bddd395ff1b4a01265d442d879a9f5d9
+spec:
+  securityContext:
+    fsGroup: 1001
+  serviceAccountName: redis
+  affinity:
+    podAffinity: null
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/instance: redis
+              app.kubernetes.io/component: replica
+          namespaces:
+          - default
+          topologyKey: kubernetes.io/hostname
+        weight: 1
+    nodeAffinity: null
+  terminationGracePeriodSeconds: 30
+  containers:
+  - name: redis
+    image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+    imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+    securityContext:
+      runAsUser: 1001
+    command:
+    - /bin/bash
+    args:
+    - -c
+    - /opt/bitnami/scripts/start-scripts/start-replica.sh
+    env:
+    - name: BITNAMI_DEBUG
+      value: 'false'
+    - name: REDIS_REPLICATION_MODE
+      value: slave
+    - name: REDIS_MASTER_HOST
+      value: redis-master-0.redis-headless.default.svc.cluster.local
+    - name: REDIS_MASTER_PORT_NUMBER
+      value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS5wb3J0IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFs2Mzc5LCAiQ29uZmlnLlZhbHVlIl19LCB7Il9yYW5nZV92YWx1ZSI6IDYzNzl9XX0=___end___'''
+    - name: ALLOW_EMPTY_PASSWORD
+      value: 'no'
+    - name: REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_MASTER_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_TLS_ENABLED
+      value: 'no'
+    - name: REDIS_PORT
+      value: '6379'
+    ports:
+    - name: redis
+      containerPort: 6379
+    livenessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 6
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_liveness_local_and_master.sh 5
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 2
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_readiness_local_and_master.sh 1
+    resources:
+      limits: {}
+      requests: {}
+    volumeMounts:
+    - name: start-scripts
+      mountPath: /opt/bitnami/scripts/start-scripts
+    - name: health
+      mountPath: /health
+    - name: redis-data
+      mountPath: /data
+      subPath: null
+    - name: config
+      mountPath: /opt/bitnami/redis/mounted-etc
+    - name: redis-tmp-conf
+      mountPath: /opt/bitnami/redis/etc
+  volumes:
+  - name: start-scripts
+    configMap:
+      name: redis-scripts
+      defaultMode: 493
+  - name: health
+    configMap:
+      name: redis-health
+      defaultMode: 493
+  - name: config
+    configMap:
+      name: redis-configuration
+  - name: redis-tmp-conf
+    emptyDir: {}
+
+The path(s)'spec/initContainers,spec/init_containers' is/are not in resource
+metadata:
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: replica
+  annotations:
+    checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+    checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+    checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+    checksum/secret: ca4e8e130aadab2c76b7dbc7707864e4bddd395ff1b4a01265d442d879a9f5d9
+spec:
+  securityContext:
+    fsGroup: 1001
+  serviceAccountName: redis
+  affinity:
+    podAffinity: null
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/instance: redis
+              app.kubernetes.io/component: replica
+          namespaces:
+          - default
+          topologyKey: kubernetes.io/hostname
+        weight: 1
+    nodeAffinity: null
+  terminationGracePeriodSeconds: 30
+  containers:
+  - name: redis
+    image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+    imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+    securityContext:
+      runAsUser: 1001
+    command:
+    - /bin/bash
+    args:
+    - -c
+    - /opt/bitnami/scripts/start-scripts/start-replica.sh
+    env:
+    - name: BITNAMI_DEBUG
+      value: 'false'
+    - name: REDIS_REPLICATION_MODE
+      value: slave
+    - name: REDIS_MASTER_HOST
+      value: redis-master-0.redis-headless.default.svc.cluster.local
+    - name: REDIS_MASTER_PORT_NUMBER
+      value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS5wb3J0IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFs2Mzc5LCAiQ29uZmlnLlZhbHVlIl19LCB7Il9yYW5nZV92YWx1ZSI6IDYzNzl9XX0=___end___'''
+    - name: ALLOW_EMPTY_PASSWORD
+      value: 'no'
+    - name: REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_MASTER_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_TLS_ENABLED
+      value: 'no'
+    - name: REDIS_PORT
+      value: '6379'
+    ports:
+    - name: redis
+      containerPort: 6379
+    livenessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 6
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_liveness_local_and_master.sh 5
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 2
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_readiness_local_and_master.sh 1
+    resources:
+      limits: {}
+      requests: {}
+    volumeMounts:
+    - name: start-scripts
+      mountPath: /opt/bitnami/scripts/start-scripts
+    - name: health
+      mountPath: /health
+    - name: redis-data
+      mountPath: /data
+      subPath: null
+    - name: config
+      mountPath: /opt/bitnami/redis/mounted-etc
+    - name: redis-tmp-conf
+      mountPath: /opt/bitnami/redis/etc
+  volumes:
+  - name: start-scripts
+    configMap:
+      name: redis-scripts
+      defaultMode: 493
+  - name: health
+    configMap:
+      name: redis-health
+      defaultMode: 493
+  - name: config
+    configMap:
+      name: redis-configuration
+  - name: redis-tmp-conf
+    emptyDir: {}
+
+The path(s)'spec/imagePullSecrets,spec/image_pull_secrets' is/are not in resource
+metadata:
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: replica
+  annotations:
+    checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+    checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+    checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+    checksum/secret: ca4e8e130aadab2c76b7dbc7707864e4bddd395ff1b4a01265d442d879a9f5d9
+spec:
+  securityContext:
+    fsGroup: 1001
+  serviceAccountName: redis
+  affinity:
+    podAffinity: null
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/instance: redis
+              app.kubernetes.io/component: replica
+          namespaces:
+          - default
+          topologyKey: kubernetes.io/hostname
+        weight: 1
+    nodeAffinity: null
+  terminationGracePeriodSeconds: 30
+  containers:
+  - name: redis
+    image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+    imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+    securityContext:
+      runAsUser: 1001
+    command:
+    - /bin/bash
+    args:
+    - -c
+    - /opt/bitnami/scripts/start-scripts/start-replica.sh
+    env:
+    - name: BITNAMI_DEBUG
+      value: 'false'
+    - name: REDIS_REPLICATION_MODE
+      value: slave
+    - name: REDIS_MASTER_HOST
+      value: redis-master-0.redis-headless.default.svc.cluster.local
+    - name: REDIS_MASTER_PORT_NUMBER
+      value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS5wb3J0IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFs2Mzc5LCAiQ29uZmlnLlZhbHVlIl19LCB7Il9yYW5nZV92YWx1ZSI6IDYzNzl9XX0=___end___'''
+    - name: ALLOW_EMPTY_PASSWORD
+      value: 'no'
+    - name: REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_MASTER_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_TLS_ENABLED
+      value: 'no'
+    - name: REDIS_PORT
+      value: '6379'
+    ports:
+    - name: redis
+      containerPort: 6379
+    livenessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 6
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_liveness_local_and_master.sh 5
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 2
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_readiness_local_and_master.sh 1
+    resources:
+      limits: {}
+      requests: {}
+    volumeMounts:
+    - name: start-scripts
+      mountPath: /opt/bitnami/scripts/start-scripts
+    - name: health
+      mountPath: /health
+    - name: redis-data
+      mountPath: /data
+      subPath: null
+    - name: config
+      mountPath: /opt/bitnami/redis/mounted-etc
+    - name: redis-tmp-conf
+      mountPath: /opt/bitnami/redis/etc
+  volumes:
+  - name: start-scripts
+    configMap:
+      name: redis-scripts
+      defaultMode: 493
+  - name: health
+    configMap:
+      name: redis-health
+      defaultMode: 493
+  - name: config
+    configMap:
+      name: redis-configuration
+  - name: redis-tmp-conf
+    emptyDir: {}
+
+The path(s)'spec/nodeSelector,spec/node_selector' is/are not in resource
+metadata:
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: replica
+  annotations:
+    checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+    checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+    checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+    checksum/secret: ca4e8e130aadab2c76b7dbc7707864e4bddd395ff1b4a01265d442d879a9f5d9
+spec:
+  securityContext:
+    fsGroup: 1001
+  serviceAccountName: redis
+  affinity:
+    podAffinity: null
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/instance: redis
+              app.kubernetes.io/component: replica
+          namespaces:
+          - default
+          topologyKey: kubernetes.io/hostname
+        weight: 1
+    nodeAffinity: null
+  terminationGracePeriodSeconds: 30
+  containers:
+  - name: redis
+    image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+    imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+    securityContext:
+      runAsUser: 1001
+    command:
+    - /bin/bash
+    args:
+    - -c
+    - /opt/bitnami/scripts/start-scripts/start-replica.sh
+    env:
+    - name: BITNAMI_DEBUG
+      value: 'false'
+    - name: REDIS_REPLICATION_MODE
+      value: slave
+    - name: REDIS_MASTER_HOST
+      value: redis-master-0.redis-headless.default.svc.cluster.local
+    - name: REDIS_MASTER_PORT_NUMBER
+      value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS5wb3J0IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFs2Mzc5LCAiQ29uZmlnLlZhbHVlIl19LCB7Il9yYW5nZV92YWx1ZSI6IDYzNzl9XX0=___end___'''
+    - name: ALLOW_EMPTY_PASSWORD
+      value: 'no'
+    - name: REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_MASTER_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_TLS_ENABLED
+      value: 'no'
+    - name: REDIS_PORT
+      value: '6379'
+    ports:
+    - name: redis
+      containerPort: 6379
+    livenessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 6
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_liveness_local_and_master.sh 5
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 2
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_readiness_local_and_master.sh 1
+    resources:
+      limits: {}
+      requests: {}
+    volumeMounts:
+    - name: start-scripts
+      mountPath: /opt/bitnami/scripts/start-scripts
+    - name: health
+      mountPath: /health
+    - name: redis-data
+      mountPath: /data
+      subPath: null
+    - name: config
+      mountPath: /opt/bitnami/redis/mounted-etc
+    - name: redis-tmp-conf
+      mountPath: /opt/bitnami/redis/etc
+  volumes:
+  - name: start-scripts
+    configMap:
+      name: redis-scripts
+      defaultMode: 493
+  - name: health
+    configMap:
+      name: redis-health
+      defaultMode: 493
+  - name: config
+    configMap:
+      name: redis-configuration
+  - name: redis-tmp-conf
+    emptyDir: {}
+
+The path(s)'spec/tolerations' is/are not in resource
+metadata:
+  labels:
+    app.kubernetes.io/name: redis
+    helm.sh/chart: redis-14.4.0
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: replica
+  annotations:
+    checksum/configmap: 442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+    checksum/health: 44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+    checksum/scripts: f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+    checksum/secret: ca4e8e130aadab2c76b7dbc7707864e4bddd395ff1b4a01265d442d879a9f5d9
+spec:
+  securityContext:
+    fsGroup: 1001
+  serviceAccountName: redis
+  affinity:
+    podAffinity: null
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/instance: redis
+              app.kubernetes.io/component: replica
+          namespaces:
+          - default
+          topologyKey: kubernetes.io/hostname
+        weight: 1
+    nodeAffinity: null
+  terminationGracePeriodSeconds: 30
+  containers:
+  - name: redis
+    image: docker.io/'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5yZXBvc2l0b3J5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiYml0bmFtaS9yZWRpcyIsICJDb25maWcuVmFsdWUiXX0sIHsiX3JhbmdlX3ZhbHVlIjogImJpdG5hbWkvcmVkaXMifV19___end___':'___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS50YWciLCAiQ29uZmlnLk5hbWUiXX0sIHsiX2NvbnN0IjogWyI2LjIuNC1kZWJpYW4tMTAtcjEzIiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiNi4yLjQtZGViaWFuLTEwLXIxMyJ9XX0=___end___'
+    imagePullPolicy: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJpbWFnZS5wdWxsUG9saWN5IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFsiSWZOb3RQcmVzZW50IiwgIkNvbmZpZy5WYWx1ZSJdfSwgeyJfcmFuZ2VfdmFsdWUiOiAiSWZOb3RQcmVzZW50In1dfQ==___end___'''
+    securityContext:
+      runAsUser: 1001
+    command:
+    - /bin/bash
+    args:
+    - -c
+    - /opt/bitnami/scripts/start-scripts/start-replica.sh
+    env:
+    - name: BITNAMI_DEBUG
+      value: 'false'
+    - name: REDIS_REPLICATION_MODE
+      value: slave
+    - name: REDIS_MASTER_HOST
+      value: redis-master-0.redis-headless.default.svc.cluster.local
+    - name: REDIS_MASTER_PORT_NUMBER
+      value: '''___term___:base64:tuple_encoding:eyJfZm4iOiBbImhlbG1fbmFtZV92YWx1ZV9pbmZvIiwgIkFueS5Kc29uIiwgeyJfY29uc3QiOiBbInJlZGlzIiwgIkFueS5TdHJpbmciXX0sIHsiX2NvbnN0IjogWyJtYXN0ZXIuc2VydmljZS5wb3J0IiwgIkNvbmZpZy5OYW1lIl19LCB7Il9jb25zdCI6IFs2Mzc5LCAiQ29uZmlnLlZhbHVlIl19LCB7Il9yYW5nZV92YWx1ZSI6IDYzNzl9XX0=___end___'''
+    - name: ALLOW_EMPTY_PASSWORD
+      value: 'no'
+    - name: REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_MASTER_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
+    - name: REDIS_TLS_ENABLED
+      value: 'no'
+    - name: REDIS_PORT
+      value: '6379'
+    ports:
+    - name: redis
+      containerPort: 6379
+    livenessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 6
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_liveness_local_and_master.sh 5
+    readinessProbe:
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 2
+      successThreshold: 1
+      failureThreshold: 5
+      exec:
+        command:
+        - sh
+        - -c
+        - /health/ping_readiness_local_and_master.sh 1
+    resources:
+      limits: {}
+      requests: {}
+    volumeMounts:
+    - name: start-scripts
+      mountPath: /opt/bitnami/scripts/start-scripts
+    - name: health
+      mountPath: /health
+    - name: redis-data
+      mountPath: /data
+      subPath: null
+    - name: config
+      mountPath: /opt/bitnami/redis/mounted-etc
+    - name: redis-tmp-conf
+      mountPath: /opt/bitnami/redis/etc
+  volumes:
+  - name: start-scripts
+    configMap:
+      name: redis-scripts
+      defaultMode: 493
+  - name: health
+    configMap:
+      name: redis-health
+      defaultMode: 493
+  - name: config
+    configMap:
+      name: redis-configuration
+  - name: redis-tmp-conf
+    emptyDir: {}
+
+The path(s)'awsElasticBlockStore,aws_elastic_block_store' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'downwardApi,downward_api' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'emptyDir,empty_dir' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'ephemeral' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'gitRepo,git_repo' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'hostPath,host_path' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'nfs' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'persistentVolumeClaim,persistent_volume_claim' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'projected' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'secret' is/are not in resource
+name: start-scripts
+configMap:
+  name: redis-scripts
+  defaultMode: 493
+
+The path(s)'awsElasticBlockStore,aws_elastic_block_store' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'downwardApi,downward_api' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'emptyDir,empty_dir' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'ephemeral' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'gitRepo,git_repo' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'hostPath,host_path' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'nfs' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'persistentVolumeClaim,persistent_volume_claim' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'projected' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'secret' is/are not in resource
+name: health
+configMap:
+  name: redis-health
+  defaultMode: 493
+
+The path(s)'awsElasticBlockStore,aws_elastic_block_store' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'downwardApi,downward_api' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'emptyDir,empty_dir' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'ephemeral' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'gitRepo,git_repo' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'hostPath,host_path' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'nfs' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'persistentVolumeClaim,persistent_volume_claim' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'projected' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'secret' is/are not in resource
+name: config
+configMap:
+  name: redis-configuration
+
+The path(s)'awsElasticBlockStore,aws_elastic_block_store' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'configMap,config_map' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'downwardApi,downward_api' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'ephemeral' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'gitRepo,git_repo' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'hostPath,host_path' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'nfs' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'persistentVolumeClaim,persistent_volume_claim' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'projected' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'secret' is/are not in resource
+name: redis-tmp-conf
+emptyDir: {}
+
+The path(s)'metadata/annotations' is/are not in resource
+metadata:
+  name: redis-data
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/component: replica
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+
+The path(s)'spec/selector/matchLabels,spec/selector/match_labels' is/are not in resource
+metadata:
+  name: redis-data
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/component: replica
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+
+The path(s)'spec/dataSource,spec/data_source' is/are not in resource
+metadata:
+  name: redis-data
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/component: replica
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+

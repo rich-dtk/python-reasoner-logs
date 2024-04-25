@@ -1,0 +1,546 @@
+logical_id: Source.Reasoner-0
+type: Source.Reasoner
+attributes:
+  name:
+    value: ai-reasoner
+    type: Any.String
+
+---
+logical_id: getdtk/graph-example1-app:latest
+type: Container.Image
+attributes:
+  name:
+    value: getdtk/graph-example1-app
+    type: Container.Image.Name
+  tag:
+    value: latest
+    type: Container.Tag.Name
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+
+---
+logical_id: getdtk/graph-example2-app:latest
+type: Container.Image
+attributes:
+  name:
+    value: getdtk/graph-example2-app
+    type: Container.Image.Name
+  tag:
+    value: latest
+    type: Container.Tag.Name
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+
+---
+logical_id: docker.io/bitnami/redis:6.2.4-debian-10-r13
+type: Container.Image
+attributes:
+  name:
+    value: docker.io/bitnami/redis
+    type: Container.Image.Name
+  tag:
+    value: 6.2.4-debian-10-r13
+    type: Container.Tag.Name
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+
+---
+logical_id: KubernetesParser.Kube.Ingress-2
+type: Kube.Ingress
+attributes:
+  rewrite_target:
+    value:
+    - /
+    type:
+      array: Config.Value
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-4
+  ingress_class:
+    endpoint_type: Kube.Ingress.Class
+    endpoints:
+    - ShadowIngressClass
+components:
+  default_backend:
+  - logical_id: KubernetesParser.Kube.Ingress-2/default_backend
+    type: Kube.Ingress.DefaultBackend
+    links:
+      _source:
+        endpoint_type: Source.Reasoner
+        endpoints:
+        - Source.Reasoner-0
+
+---
+logical_id: HelmParser.Kube.StatefulSet-0
+type: Kube.StatefulSet
+attributes:
+  managed_by_helm:
+    value: 'True'
+    type: BuiltinSort.Bool
+  stable_network_id_url:
+    value: redis-master-0.redis-headless.default.?
+    attribute_links:
+    - encoding: attribute_link
+      encoded_function:
+        attribute_name: url
+        attribute_type: Any.String
+        base_component:
+          name: HelmParser.Kube.StatefulSet-0/stable_network_id
+          type: Kube.StableNetworkId
+      user_friendly_form: null
+    type: Any.String
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-12
+  namespace_match:
+    endpoint_type: Kube.Service
+    endpoints:
+    - HelmParser.Kube.Service-2
+    - HelmParser.Kube.Service-0
+    - HelmParser.Kube.Service-1
+  service_label_match:
+    endpoint_type: Kube.Service
+    endpoints:
+    - HelmParser.Kube.Service-0
+    - HelmParser.Kube.Service-1
+components:
+  stable_network_id:
+  - logical_id: HelmParser.Kube.StatefulSet-0/stable_network_id
+    type: Kube.StableNetworkId
+    links:
+      _source:
+        endpoint_type: Source.Reasoner
+        endpoints:
+        - Source.Reasoner-0
+
+---
+logical_id: HelmParser.Kube.StatefulSet-1
+type: Kube.StatefulSet
+attributes:
+  managed_by_helm:
+    value: 'True'
+    type: BuiltinSort.Bool
+  stable_network_id_url:
+    value: redis-replicas-{0..2}.redis-headless.default.?
+    attribute_links:
+    - encoding: attribute_link
+      encoded_function:
+        attribute_name: url
+        attribute_type: Any.String
+        base_component:
+          name: HelmParser.Kube.StatefulSet-1/stable_network_id
+          type: Kube.StableNetworkId
+      user_friendly_form: null
+    type: Any.String
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-13
+  namespace_match:
+    endpoint_type: Kube.Service
+    endpoints:
+    - HelmParser.Kube.Service-2
+    - HelmParser.Kube.Service-0
+    - HelmParser.Kube.Service-1
+  service_label_match:
+    endpoint_type: Kube.Service
+    endpoints:
+    - HelmParser.Kube.Service-2
+    - HelmParser.Kube.Service-0
+components:
+  stable_network_id:
+  - logical_id: HelmParser.Kube.StatefulSet-1/stable_network_id
+    type: Kube.StableNetworkId
+    links:
+      _source:
+        endpoint_type: Source.Reasoner
+        endpoints:
+        - Source.Reasoner-0
+
+---
+logical_id: ShadowIngressClass
+type: Kube.Ingress.Class
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+
+---
+logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2/kube_service
+type: Kube.Service
+attributes:
+  _shadow_component:
+    value: 'True'
+    type: BuiltinSort.Bool
+  name:
+    value: node-app1-svc
+    type: Kube.Name
+  namespace:
+    value: or(namespace,default)
+    type: Kube.Namespace
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+
+---
+logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3/kube_service
+type: Kube.Service
+attributes:
+  _shadow_component:
+    value: 'True'
+    type: BuiltinSort.Bool
+  name:
+    value: node-app2-svc
+    type: Kube.Name
+  namespace:
+    value: or(namespace,default)
+    type: Kube.Namespace
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+
+---
+logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service
+type: Kube.Service
+attributes:
+  _shadow_component:
+    value: 'True'
+    type: BuiltinSort.Bool
+  name:
+    value: node-app1-svc
+    type: Kube.Name
+  namespace:
+    value: or(namespace,default)
+    type: Kube.Namespace
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+
+---
+logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service
+type: Kube.Service
+attributes:
+  _shadow_component:
+    value: 'True'
+    type: BuiltinSort.Bool
+  name:
+    value: node-app-svc
+    type: Kube.Name
+  namespace:
+    value: or(namespace,default)
+    type: Kube.Namespace
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+
+---
+logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service
+type: Kube.Service
+attributes:
+  _shadow_component:
+    value: 'True'
+    type: BuiltinSort.Bool
+  name:
+    value: test2
+    type: Kube.Name
+  namespace:
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: null
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+
+---
+logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service
+type: Kube.Service
+attributes:
+  _shadow_component:
+    value: 'True'
+    type: BuiltinSort.Bool
+  name:
+    value: nginx-ingress-controller
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+
+---
+logical_id: KubernetesParser.Kube.Ingress-2/default_backend/kube_service
+type: Kube.Service
+attributes:
+  _shadow_component:
+    value: 'True'
+    type: BuiltinSort.Bool
+  namespace:
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: null
+links:
+  _source:
+    endpoint_type: Source.Reasoner
+    endpoints:
+    - Source.Reasoner-0
+
+---
+logical_id: HelmParser.Kube.Service-2
+type: Kube.Service
+attributes:
+  name:
+    value: redis-replicas
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  managed_by_helm:
+    value: 'True'
+    type: BuiltinSort.Bool
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-11
+
+---
+logical_id: HelmParser.Kube.Service-0
+type: Kube.Service
+attributes:
+  name:
+    value: redis-headless
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  managed_by_helm:
+    value: 'True'
+    type: BuiltinSort.Bool
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-9
+
+---
+logical_id: HelmParser.Kube.Service-1
+type: Kube.Service
+attributes:
+  name:
+    value: redis-master
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  managed_by_helm:
+    value: 'True'
+    type: BuiltinSort.Bool
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-10
+
+---
+logical_id: KubernetesParser.Kube.Deployment-1
+type: Kube.Deployment
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-3
+components:
+  template:
+  - logical_id: KubernetesParser.Kube.Pod.Template-1
+    type: Kube.Pod.Template
+    components:
+      containers:
+      - logical_id: KubernetesParser.Kube.Container-1
+        type: Kube.Container
+        links:
+          container_image:
+            endpoint_type: Container.Image
+            endpoints:
+            - getdtk/graph-example1-app:latest
+
+---
+logical_id: KubernetesParser.Kube.Deployment-0
+type: Kube.Deployment
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-2
+components:
+  template:
+  - logical_id: KubernetesParser.Kube.Pod.Template-0
+    type: Kube.Pod.Template
+    components:
+      containers:
+      - logical_id: KubernetesParser.Kube.Container-0
+        type: Kube.Container
+        links:
+          container_image:
+            endpoint_type: Container.Image
+            endpoints:
+            - getdtk/graph-example2-app:latest
+
+---
+logical_id: KubernetesParser.Kube.Ingress-1
+type: Kube.Ingress
+attributes:
+  rewrite_target:
+    value:
+    - /
+    type:
+      array: Config.Value
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-4
+  ingress_class:
+    endpoint_type: Kube.Ingress.Class
+    endpoints:
+    - ShadowIngressClass
+components:
+  default_backend:
+  - logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-1
+    type: Kube.Ingress.DefaultBackend
+    links:
+      _source:
+        endpoint_type: Source.Reasoner
+        endpoints:
+        - Source.Reasoner-0
+
+---
+logical_id: KubernetesParser.Kube.Ingress-0
+type: Kube.Ingress
+attributes:
+  rewrite_target:
+    value:
+    - /
+    type:
+      array: Config.Value
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-4
+  ingress_class:
+    endpoint_type: Kube.Ingress.Class
+    endpoints:
+    - ShadowIngressClass
+components:
+  default_backend:
+  - logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-0
+    type: Kube.Ingress.DefaultBackend
+    links:
+      _source:
+        endpoint_type: Source.Reasoner
+        endpoints:
+        - Source.Reasoner-0
+
+---
+logical_id: KubernetesParser.Kube.Service-0
+type: Kube.Service
+attributes:
+  name:
+    value: node-app2-svc
+    type: Kube.Name
+  namespace:
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: null
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-2
+
+---
+logical_id: KubernetesParser.Kube.Service-1
+type: Kube.Service
+attributes:
+  name:
+    value: node-app1-svc
+    type: Kube.Name
+  namespace:
+    type: Kube.Namespace
+    function:
+      encoding: attribute_link
+      encoded_function:
+        attribute_name: namespace
+        attribute_type: Kube.Namespace
+        base_component:
+          name: Config.ManifestSet.Instantiation-0
+          type: Config.ManifestSet.Instantiation
+      user_friendly_form: null
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-3
+
+---
+logical_id: Config.ManifestSet.Instantiation-0
+type: Config.ManifestSet.Instantiation
+attributes:
+  namespace:
+    type: Kube.Namespace
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - HelmParser.Source.FilePath-0
+
+---

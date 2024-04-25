@@ -1,0 +1,4187 @@
+Or(Not(RULE-2),
+   ForAll([?sts,
+           ?helm_chart,
+           ?helm_chart_release,
+           ?container],
+          Or(Not(And(containers(template(?sts), ?container),
+                     name_with_version(?helm_chart) ==
+                     If(has_key(labels(?sts), helm.sh/chart),
+                        value(labels(?sts), helm.sh/chart),
+                        no_match_value),
+                     release(?helm_chart,
+                             ?helm_chart_release))),
+             helm_chart_release(?container,
+                                ?helm_chart_release))))
+
+Or(Not(RULE-3),
+   ForAll([?deployment,
+           ?helm_chart,
+           ?helm_chart_release,
+           ?container],
+          Or(Not(And(containers(template(?deployment),
+                                ?container),
+                     name_with_version(?helm_chart) ==
+                     If(has_key(labels(?deployment),
+                                helm.sh/chart),
+                        value(labels(?deployment),
+                              helm.sh/chart),
+                        no_match_value),
+                     release(?helm_chart,
+                             ?helm_chart_release))),
+             helm_chart_release(?container,
+                                ?helm_chart_release))))
+
+Or(Not(RULE-4),
+   ForAll(?kube_ingress,
+          (If(has_key(labels(?kube_ingress),
+                      app.kubernetes.io/managed-by),
+              value(labels(?kube_ingress),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?kube_ingress)))
+
+Or(Not(RULE-5),
+   ForAll(?kube_ingress,
+          _managed_by_helm_helper(?kube_ingress,
+                                  If(managed_by_helm(?kube_ingress),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-6),
+   ForAll(?kube_secret,
+          (If(has_key(labels(?kube_secret),
+                      app.kubernetes.io/managed-by),
+              value(labels(?kube_secret),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?kube_secret)))
+
+Or(Not(RULE-7),
+   ForAll(?kube_secret,
+          _managed_by_helm_helper(?kube_secret,
+                                  If(managed_by_helm(?kube_secret),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-8),
+   ForAll(?kube_ingress_class,
+          (If(has_key(labels(?kube_ingress_class),
+                      app.kubernetes.io/managed-by),
+              value(labels(?kube_ingress_class),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?kube_ingress_class)))
+
+Or(Not(RULE-9),
+   ForAll(?kube_ingress_class,
+          _managed_by_helm_helper(?kube_ingress_class,
+                                  If(managed_by_helm(?kube_ingress_class),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-10),
+   ForAll(?deployment,
+          (If(has_key(labels(?deployment),
+                      app.kubernetes.io/managed-by),
+              value(labels(?deployment),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?deployment)))
+
+Or(Not(RULE-11),
+   ForAll(?deployment,
+          _managed_by_helm_helper(?deployment,
+                                  If(managed_by_helm(?deployment),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-12),
+   ForAll(?sts,
+          (If(has_key(labels(?sts),
+                      app.kubernetes.io/managed-by),
+              value(labels(?sts),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?sts)))
+
+Or(Not(RULE-13),
+   ForAll(?sts,
+          _managed_by_helm_helper(?sts,
+                                  If(managed_by_helm(?sts),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-14),
+   ForAll(?service,
+          (If(has_key(labels(?service),
+                      app.kubernetes.io/managed-by),
+              value(labels(?service),
+                    app.kubernetes.io/managed-by),
+              no_match_value) ==
+           Helm) ==
+          managed_by_helm(?service)))
+
+Or(Not(RULE-15),
+   ForAll(?service,
+          _managed_by_helm_helper(?service,
+                                  If(managed_by_helm(?service),
+                                     True,
+                                     False))))
+
+Or(Not(RULE-16),
+   ForAll(?kube_ingress,
+          Or(Not(source_type(?kube_ingress) == file_based),
+             And(Not(kube_cluster(?kube_ingress) ==
+                     COMMON.NONE),
+                 deployment_state(?kube_ingress) == config))))
+
+Or(Not(RULE-17),
+   ForAll(?kube_secret,
+          Or(Not(source_type(?kube_secret) == file_based),
+             And(Not(kube_cluster(?kube_secret) ==
+                     COMMON.NONE),
+                 deployment_state(?kube_secret) == config))))
+
+Or(Not(RULE-18),
+   ForAll(?kube_ingress_class,
+          Or(Not(source_type(?kube_ingress_class) ==
+                 file_based),
+             And(Not(kube_cluster(?kube_ingress_class) ==
+                     COMMON.NONE),
+                 deployment_state(?kube_ingress_class) ==
+                 config))))
+
+Or(Not(RULE-19),
+   ForAll(?deployment,
+          Or(Not(source_type(?deployment) == file_based),
+             And(Not(kube_cluster(?deployment) ==
+                     COMMON.NONE),
+                 deployment_state(?deployment) == config))))
+
+Or(Not(RULE-20),
+   ForAll(?sts,
+          Or(Not(source_type(?sts) == file_based),
+             And(Not(kube_cluster(?sts) == COMMON.NONE),
+                 deployment_state(?sts) == config))))
+
+Or(Not(RULE-21),
+   ForAll(?service,
+          Or(Not(source_type(?service) == file_based),
+             And(Not(kube_cluster(?service) == COMMON.NONE),
+                 deployment_state(?service) == config))))
+
+Or(Not(RULE-22),
+   ForAll([?kube_namespace-1, ?kube_namespace-2],
+          matching_namespace(?kube_namespace-1,
+                             ?kube_namespace-2) ==
+          And(Not(?kube_namespace-1 == COMMON.NONE),
+              ?kube_namespace-1 == ?kube_namespace-2)))
+
+Or(Not(RULE-23),
+   ForAll([?service_port, ?kube_container_portitem],
+          Or(Not(And(connects_through_service(?kube_container_portitem,
+                                        service(?service_port)),
+                     Or(And(Not(container_port(?kube_container_portitem) ==
+                                COMMON.NONE),
+                            conditionally_cast_to_port_number(If(target_port(?service_port) ==
+                                        COMMON.NONE,
+                                        cast_to_port(port(?service_port)),
+                                        target_port(?service_port))) ==
+                            container_port(?kube_container_portitem)),
+                        And(Not(name(?kube_container_portitem) ==
+                                COMMON.NONE),
+                            If(target_port(?service_port) ==
+                               COMMON.NONE,
+                               cast_to_port(port(?service_port)),
+                               target_port(?service_port)) ==
+                            name(?kube_container_portitem))))),
+             matching_network_port_number(?kube_container_portitem,
+                                        ?service_port) ==
+             container_port(?kube_container_portitem))))
+
+Or(Not(RULE-24),
+   ForAll(?container,
+          And(name(container_image(?container)) ==
+              _image_name(?container),
+              tag(container_image(?container)) ==
+              _image_tag(?container))))
+
+Or(Not(RULE-25),
+   ForAll(?container,
+          _possible_shadow_component(container_image(?container))))
+
+Or(Not(RULE-26),
+   ForAll([?sts, ?service],
+          Or(Not(And(namespace(?service) == namespace(?sts),
+                     subset_of(selector(?service),
+                               match_labels(?sts)))),
+             connects_through(?sts, ?service))))
+
+Or(Not(RULE-27),
+   ForAll([?sts, ?service, ?container],
+          Or(Not(And(connects_through(?sts, ?service),
+                     containers(template(?sts), ?container))),
+             connects_through(?container, ?service))))
+
+Or(Not(RULE-28),
+   ForAll([?deployment, ?service],
+          Or(Not(And(namespace(?service) ==
+                     namespace(?deployment),
+                     subset_of(selector(?service),
+                               match_labels(?deployment)))),
+             connects_through(?deployment, ?service))))
+
+Or(Not(RULE-29),
+   ForAll([?deployment, ?service, ?container],
+          Or(Not(And(connects_through(?deployment, ?service),
+                     containers(template(?deployment),
+                                ?container))),
+             connects_through(?container, ?service))))
+
+Or(Not(RULE-30),
+   ForAll([?env_vars, ?env_name, ?kube_secret],
+          Or(Not(name(?kube_secret) ==
+                 referenced_secret_name(?env_vars,
+                                        ?env_name)),
+             linked_kube_secret(?env_vars,
+                                ?env_name,
+                                ?kube_secret))))
+
+Or(Not(RULE-31),
+   ForAll([?env_vars, ?env_name, ?kube_secret],
+          Or(Not(linked_kube_secret(?env_vars,
+                                    ?env_name,
+                                    ?kube_secret)),
+             And(secret_value(?env_vars, ?env_name) ==
+                 secret_value(keys(?kube_secret),
+                              referenced_secret_key(?env_vars,
+                                        ?env_name)),
+                 _meta_attr_fn__secret_value__c__Any.Secret(?env_vars,
+                                        ?env_name) ==
+                 keys(?kube_secret),
+                 _meta_attr_fn__secret_value__a__Any.Secret(?env_vars,
+                                        ?env_name) ==
+                 secret_value,
+                 _meta_attr_fn__secret_value__k__Any.Secret(?env_vars,
+                                        ?env_name) ==
+                 referenced_secret_key(?env_vars, ?env_name)))))
+
+Or(Not(RULE-32),
+   ForAll(?kube_ingress_class,
+          (If(has_key(annotations(?kube_ingress_class),
+                      ingressclass.kubernetes.io/is-default-class),
+              value(annotations(?kube_ingress_class),
+                    ingressclass.kubernetes.io/is-default-class),
+              no_match_value) ==
+           true) ==
+          is_default_class(?kube_ingress_class)))
+
+Or(Not(RULE-33),
+   ForAll([?kube_ingress, ?kube_ingress_class],
+          Or(Not(ingress_class_name(?kube_ingress) ==
+                 name(?kube_ingress_class)),
+             _partial_matching_ingress_class(?kube_ingress) ==
+             ?kube_ingress_class)))
+
+Or(Not(RULE-34),
+   ForAll(?kube_ingress_class,
+          Not(is_default_class(?kube_ingress_class) ==
+              is_not_default_class(?kube_ingress_class))))
+
+Or(Not(RULE-35),
+   ForAll(?kube_ingress_rule_httppath_backend,
+          Or(host_pattern_link(?kube_ingress_rule_httppath_backend) ==
+             host_pattern(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube_ingress_rule_httppath_backend))),
+             host(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube_ingress_rule_httppath_backend))) ==
+             COMMON.NONE)))
+
+Or(Not(RULE-36),
+   ForAll([?kube_ingress_defaultbackend, ?service],
+          Or(Not(And(name(?service) ==
+                     name(service(?kube_ingress_defaultbackend)),
+                     namespace(?service) ==
+                     namespace(parent(?kube_ingress_defaultbackend)))),
+             _matching_kube_service(?kube_ingress_defaultbackend,
+                                    ?service))))
+
+Or(Not(RULE-37),
+   ForAll(?kube_ingress_rule_httppath_backend,
+          Or(host_pattern_link(?kube_ingress_rule_httppath_backend) ==
+             host_pattern(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube_ingress_rule_httppath_backend))),
+             host(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube_ingress_rule_httppath_backend))) ==
+             COMMON.NONE)))
+
+Or(Not(RULE-38),
+   ForAll(?kube_ingress,
+          rewrite_target(?kube_ingress,
+                         If(has_key(annotations(?kube_ingress),
+                                    nginx.ingress.kubernetes.io/rewrite-target),
+                            value(annotations(?kube_ingress),
+                                  nginx.ingress.kubernetes.io/rewrite-target),
+                            no_match_value))))
+
+Or(Not(RULE-39),
+   ForAll(?kube_ingress_rule_httppath_backend,
+          path_pattern(network_topology_http_route(?kube_ingress_rule_httppath_backend)) ==
+          path(_parent.Kube.Ingress.Rule.HttpPath(?kube_ingress_rule_httppath_backend))))
+
+Or(Not(RULE-40),
+   ForAll(?kube_ingress_rule_httppath_backend,
+          host_pattern(network_topology_http_route(?kube_ingress_rule_httppath_backend)) ==
+          If(host(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube_ingress_rule_httppath_backend))) ==
+             COMMON.NONE,
+             *,
+             host(_parent.Kube.Ingress.Rule(_parent.Kube.Ingress.Rule.HttpPath(?kube_ingress_rule_httppath_backend))))))
+
+Or(Not(RULE-41),
+   ForAll([?app_kubeingresscontroller, ?kube_ingress],
+          Or(Not(watch_ingress_without_class(params(?app_kubeingresscontroller))),
+             _kube_ingress_modal(?app_kubeingresscontroller,
+                                 ?kube_ingress,
+                                 DoesHold))))
+
+Or(Not(RULE-42),
+   ForAll([?app_kubeingresscontroller,
+           ?kube_ingress,
+           ?kube_ingress_class],
+          Or(Not(And(kube_ingress_class(?app_kubeingresscontroller,
+                                        ?kube_ingress_class),
+                     ingress_class(?kube_ingress) ==
+                     ?kube_ingress_class)),
+             _kube_ingress_modal(?app_kubeingresscontroller,
+                                 ?kube_ingress,
+                                 DoesHold))))
+
+Or(Not(RULE-43),
+   ForAll([?app_kubeingresscontroller, ?kube_ingress_class],
+          Or(Not(controller_class(params(?app_kubeingresscontroller)) ==
+                 controller(?kube_ingress_class)),
+             kube_ingress_class(?app_kubeingresscontroller,
+                                ?kube_ingress_class))))
+
+Or(Not(RULE-44),
+   ForAll(?sts,
+          And(stable_network_id_url(?sts) ==
+              url(stable_network_id(?sts)),
+              _meta_attr_fn__stable_network_id_url__c__Any.String(?sts) ==
+              stable_network_id(?sts),
+              _meta_attr_fn__stable_network_id_url__a__Any.String(?sts) ==
+              url)))
+
+Or(Not(RULE-45),
+   ForAll([?kube_stablenetworkref, ?kube_stablenetworkid],
+          Or(Not(matches_network_id(?kube_stablenetworkref,
+                                    ?kube_stablenetworkid)),
+             And(hostname(?kube_stablenetworkref) ==
+                 hostname(?kube_stablenetworkid),
+                 Not(replica_count(?kube_stablenetworkid) +
+                     -1*index(?kube_stablenetworkref) <=
+                     0),
+                 service(?kube_stablenetworkref) ==
+                 service(?kube_stablenetworkid),
+                 namespace(?kube_stablenetworkref) ==
+                 namespace(?kube_stablenetworkid),
+                 cluster_domain_name(?kube_stablenetworkref) ==
+                 cluster_domain_name(?kube_stablenetworkid)))))
+
+Or(Not(RULE-46),
+   ForAll([?kube_stablenetworkref, ?kube_stablenetworkid],
+          Not((replica_count(?kube_stablenetworkid) +
+               -1*index(?kube_stablenetworkref) <=
+               0) ==
+              debug_matches_network_id(?kube_stablenetworkref,
+                                       ?kube_stablenetworkid))))
+
+Or(Not(RULE-47),
+   ForAll(?kube_ingress,
+          Or(Not(not_dynamically_created(App.KubeIngressController)),
+             _kube_ingress_modal(shadow-ingress-controller,
+                                 ?kube_ingress,
+                                 DoesHold))))
+
+Or(Not(RULE-48),
+   ForAll([?slave_app_redis,
+           ?master_app_redis,
+           ?app_redis_cluster],
+          Or(Not(And(redis_replication_mode(params(?slave_app_redis)) ==
+                     slave,
+                     redis_replication_mode(params(?master_app_redis)) ==
+                     master,
+                     slave_replicas(?app_redis_cluster,
+                                    ?slave_app_redis),
+                     master(?app_redis_cluster,
+                            ?master_app_redis))),
+             connects_to_master(?slave_app_redis,
+                                ?master_app_redis,
+                                ShouldHold))))
+
+Or(Not(RULE-49),
+   ForAll([?slave_app_redis, ?master_app_redis],
+          Or(Not(And(connects_to_master(?slave_app_redis,
+                                        ?master_app_redis,
+                                        ShouldHold),
+                     Not(connects_to_master(?slave_app_redis,
+                                        ?master_app_redis,
+                                        DoesHold)))),
+             connects_to_master_violation(?slave_app_redis,
+                                        ?master_app_redis))))
+
+Or(Not(RULE-50),
+   ForAll([?sts, ?master_app_redis],
+          Or(Not(redis_replication_mode(params(?master_app_redis)) ==
+                 master),
+             stable_network_id_on_master(?master_app_redis) ==
+             stable_network_id(?sts))))
+
+Or(Not(RULE-51),
+   ForAll([?slave_app_redis, ?master_app_redis],
+          Or(Not(connects_to_master(?slave_app_redis,
+                                    ?master_app_redis,
+                                    DoesHold)),
+             And(redis_master_port(params(?slave_app_redis)) ==
+                 redis_port_number(params(?master_app_redis)),
+                 matches_network_id(redis_master_stable_network_ref(?slave_app_redis),
+                                    stable_network_id_on_master(?master_app_redis))))))
+
+Or(Not(RULE-52),
+   ForAll([?sts, ?app_redis],
+          Or(Not(containers(template(?sts),
+                            kube_container(?app_redis))),
+             implemented_by__kube_statefulset(?app_redis,
+                                        ?sts))))
+
+Or(Not(RULE-53),
+   ForAll([?sts, ?app_redis, ?service],
+          Or(Not(And(implemented_by__kube_statefulset(?app_redis,
+                                        ?sts),
+                     connects_through(?sts, ?service))),
+             implemented_by__kube_service(?app_redis,
+                                        ?service))))
+
+Or(Not(RULE-54),
+   ForAll([?deployment, ?app_redis],
+          Or(Not(containers(template(?deployment),
+                            kube_container(?app_redis))),
+             implemented_by__kube_deployment(?app_redis,
+                                        ?deployment))))
+
+Or(Not(RULE-55),
+   ForAll([?deployment, ?app_redis, ?service],
+          Or(Not(And(implemented_by__kube_deployment(?app_redis,
+                                        ?deployment),
+                     connects_through(?deployment, ?service))),
+             implemented_by__kube_service(?app_redis,
+                                        ?service))))
+
+Or(Not(RULE-56),
+   ForAll([?sts, ?app_nginx],
+          Or(Not(containers(template(?sts),
+                            kube_container(?app_nginx))),
+             implemented_by__kube_statefulset(?app_nginx,
+                                        ?sts))))
+
+Or(Not(RULE-57),
+   ForAll([?sts, ?app_nginx, ?service],
+          Or(Not(And(implemented_by__kube_statefulset(?app_nginx,
+                                        ?sts),
+                     connects_through(?sts, ?service))),
+             implemented_by__kube_service(?app_nginx,
+                                        ?service))))
+
+Or(Not(RULE-58),
+   ForAll([?deployment, ?app_nginx],
+          Or(Not(containers(template(?deployment),
+                            kube_container(?app_nginx))),
+             implemented_by__kube_deployment(?app_nginx,
+                                        ?deployment))))
+
+Or(Not(RULE-59),
+   ForAll([?deployment, ?app_nginx, ?service],
+          Or(Not(And(implemented_by__kube_deployment(?app_nginx,
+                                        ?deployment),
+                     connects_through(?deployment, ?service))),
+             implemented_by__kube_service(?app_nginx,
+                                        ?service))))
+
+Or(Not(RULE-60),
+   ForAll([?sts, ?app_kubeingresscontroller],
+          Or(Not(containers(template(?sts),
+                            kube_container(?app_kubeingresscontroller))),
+             implemented_by__kube_statefulset(?app_kubeingresscontroller,
+                                        ?sts))))
+
+Or(Not(RULE-61),
+   ForAll([?sts, ?app_kubeingresscontroller, ?service],
+          Or(Not(And(implemented_by__kube_statefulset(?app_kubeingresscontroller,
+                                        ?sts),
+                     connects_through(?sts, ?service))),
+             implemented_by__kube_service(?app_kubeingresscontroller,
+                                        ?service))))
+
+Or(Not(RULE-62),
+   ForAll([?deployment, ?app_kubeingresscontroller],
+          Or(Not(containers(template(?deployment),
+                            kube_container(?app_kubeingresscontroller))),
+             implemented_by__kube_deployment(?app_kubeingresscontroller,
+                                        ?deployment))))
+
+Or(Not(RULE-63),
+   ForAll([?deployment,
+           ?app_kubeingresscontroller,
+           ?service],
+          Or(Not(And(implemented_by__kube_deployment(?app_kubeingresscontroller,
+                                        ?deployment),
+                     connects_through(?deployment, ?service))),
+             implemented_by__kube_service(?app_kubeingresscontroller,
+                                        ?service))))
+
+Or(apps_created(default), Not(DYNAMIC_ATTRIBUTE-76))
+
+Or(apps_created(default), Not(DYNAMIC_ATTRIBUTE-77))
+
+Or(Not(RULE-78),
+   subset_of(Reasoner.Kube.Labels-24,
+             Reasoner.Kube.Labels-24))
+
+Or(Not(RULE-79),
+   subset_of(Reasoner.Kube.Labels-24,
+             Reasoner.Kube.Labels-13))
+
+Or(Not(RULE-80),
+   subset_of(Reasoner.Kube.Labels-24,
+             Reasoner.Kube.Labels-21))
+
+Or(Not(RULE-81),
+   subset_of(Reasoner.Kube.Labels-13,
+             Reasoner.Kube.Labels-24))
+
+Or(Not(RULE-82),
+   subset_of(Reasoner.Kube.Labels-13,
+             Reasoner.Kube.Labels-13))
+
+Or(Not(RULE-83),
+   subset_of(Reasoner.Kube.Labels-13,
+             Reasoner.Kube.Labels-21))
+
+Or(Not(RULE-84),
+   subset_of(Reasoner.Kube.Labels-8, Reasoner.Kube.Labels-8))
+
+Or(Not(RULE-85),
+   subset_of(Reasoner.Kube.Labels-8, Reasoner.Kube.Labels-7))
+
+Or(Not(RULE-86),
+   subset_of(Reasoner.Kube.Labels-8, Reasoner.Kube.Labels-9))
+
+Or(Not(RULE-87),
+   subset_of(Reasoner.Kube.Labels-16,
+             Reasoner.Kube.Labels-16))
+
+Or(Not(RULE-88),
+   subset_of(Reasoner.Kube.Labels-16,
+             Reasoner.Kube.Labels-28))
+
+Or(Not(RULE-89),
+   subset_of(Reasoner.Kube.Labels-16,
+             Reasoner.Kube.Labels-25))
+
+Or(Not(RULE-90),
+   subset_of(Reasoner.Kube.Labels-16,
+             Reasoner.Kube.Labels-15))
+
+Or(Not(RULE-91),
+   subset_of(Reasoner.Kube.Labels-16,
+             Reasoner.Kube.Labels-26))
+
+Or(Not(RULE-92),
+   subset_of(Reasoner.Kube.Labels-21,
+             Reasoner.Kube.Labels-24))
+
+Or(Not(RULE-93),
+   subset_of(Reasoner.Kube.Labels-21,
+             Reasoner.Kube.Labels-13))
+
+Or(Not(RULE-94),
+   subset_of(Reasoner.Kube.Labels-21,
+             Reasoner.Kube.Labels-21))
+
+Or(Not(RULE-95),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-24))
+
+Or(Not(RULE-96),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-13))
+
+Or(Not(RULE-97),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-16))
+
+Or(Not(RULE-98),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-21))
+
+Or(Not(RULE-99),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-12))
+
+Or(Not(RULE-100),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-22))
+
+Or(Not(RULE-101),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-11))
+
+Or(Not(RULE-102),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-28))
+
+Or(Not(RULE-103),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-25))
+
+Or(Not(RULE-104),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-10))
+
+Or(Not(RULE-105),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-14))
+
+Or(Not(RULE-106),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-15))
+
+Or(Not(RULE-107),
+   subset_of(Reasoner.Kube.Labels-12,
+             Reasoner.Kube.Labels-26))
+
+Or(Not(RULE-108),
+   subset_of(Reasoner.Kube.Labels-5, Reasoner.Kube.Labels-5))
+
+Or(Not(RULE-109),
+   subset_of(Reasoner.Kube.Labels-5, Reasoner.Kube.Labels-6))
+
+Or(Not(RULE-110),
+   subset_of(Reasoner.Kube.Labels-5,
+             Reasoner.Kube.Labels-18))
+
+Or(Not(RULE-111),
+   subset_of(Reasoner.Kube.Labels-20,
+             Reasoner.Kube.Labels-20))
+
+Or(Not(RULE-112),
+   subset_of(Reasoner.Kube.Labels-20,
+             Reasoner.Kube.Labels-4))
+
+Or(Not(RULE-113),
+   subset_of(Reasoner.Kube.Labels-20,
+             Reasoner.Kube.Labels-19))
+
+Or(Not(RULE-114),
+   subset_of(Reasoner.Kube.Labels-20,
+             Reasoner.Kube.Labels-17))
+
+Or(Not(RULE-115),
+   subset_of(Reasoner.Kube.Labels-22,
+             Reasoner.Kube.Labels-24))
+
+Or(Not(RULE-116),
+   subset_of(Reasoner.Kube.Labels-22,
+             Reasoner.Kube.Labels-13))
+
+Or(Not(RULE-117),
+   subset_of(Reasoner.Kube.Labels-22,
+             Reasoner.Kube.Labels-21))
+
+Or(Not(RULE-118),
+   subset_of(Reasoner.Kube.Labels-22,
+             Reasoner.Kube.Labels-22))
+
+Or(Not(RULE-119),
+   subset_of(Reasoner.Kube.Labels-22,
+             Reasoner.Kube.Labels-14))
+
+Or(Not(RULE-120),
+   subset_of(Reasoner.Kube.Labels-7, Reasoner.Kube.Labels-8))
+
+Or(Not(RULE-121),
+   subset_of(Reasoner.Kube.Labels-7, Reasoner.Kube.Labels-7))
+
+Or(Not(RULE-122),
+   subset_of(Reasoner.Kube.Labels-7, Reasoner.Kube.Labels-9))
+
+Or(Not(RULE-123),
+   subset_of(Reasoner.Kube.Labels-11,
+             Reasoner.Kube.Labels-24))
+
+Or(Not(RULE-124),
+   subset_of(Reasoner.Kube.Labels-11,
+             Reasoner.Kube.Labels-13))
+
+Or(Not(RULE-125),
+   subset_of(Reasoner.Kube.Labels-11,
+             Reasoner.Kube.Labels-21))
+
+Or(Not(RULE-126),
+   subset_of(Reasoner.Kube.Labels-11,
+             Reasoner.Kube.Labels-11))
+
+Or(Not(RULE-127),
+   subset_of(Reasoner.Kube.Labels-11,
+             Reasoner.Kube.Labels-28))
+
+Or(Not(RULE-128),
+   subset_of(Reasoner.Kube.Labels-11,
+             Reasoner.Kube.Labels-25))
+
+Or(Not(RULE-129),
+   subset_of(Reasoner.Kube.Labels-11,
+             Reasoner.Kube.Labels-10))
+
+Or(Not(RULE-130),
+   subset_of(Reasoner.Kube.Labels-11,
+             Reasoner.Kube.Labels-15))
+
+Or(Not(RULE-131),
+   subset_of(Reasoner.Kube.Labels-9, Reasoner.Kube.Labels-8))
+
+Or(Not(RULE-132),
+   subset_of(Reasoner.Kube.Labels-9, Reasoner.Kube.Labels-7))
+
+Or(Not(RULE-133),
+   subset_of(Reasoner.Kube.Labels-9, Reasoner.Kube.Labels-9))
+
+Or(Not(RULE-134),
+   subset_of(Reasoner.Kube.Labels-28,
+             Reasoner.Kube.Labels-28))
+
+Or(Not(RULE-135),
+   subset_of(Reasoner.Kube.Labels-28,
+             Reasoner.Kube.Labels-25))
+
+Or(Not(RULE-136),
+   subset_of(Reasoner.Kube.Labels-28,
+             Reasoner.Kube.Labels-15))
+
+Or(Not(RULE-137),
+   subset_of(Reasoner.Kube.Labels-25,
+             Reasoner.Kube.Labels-28))
+
+Or(Not(RULE-138),
+   subset_of(Reasoner.Kube.Labels-25,
+             Reasoner.Kube.Labels-25))
+
+Or(Not(RULE-139),
+   subset_of(Reasoner.Kube.Labels-25,
+             Reasoner.Kube.Labels-15))
+
+Or(Not(RULE-140),
+   subset_of(Reasoner.Kube.Labels-10,
+             Reasoner.Kube.Labels-24))
+
+Or(Not(RULE-141),
+   subset_of(Reasoner.Kube.Labels-10,
+             Reasoner.Kube.Labels-13))
+
+Or(Not(RULE-142),
+   subset_of(Reasoner.Kube.Labels-10,
+             Reasoner.Kube.Labels-21))
+
+Or(Not(RULE-143),
+   subset_of(Reasoner.Kube.Labels-10,
+             Reasoner.Kube.Labels-11))
+
+Or(Not(RULE-144),
+   subset_of(Reasoner.Kube.Labels-10,
+             Reasoner.Kube.Labels-28))
+
+Or(Not(RULE-145),
+   subset_of(Reasoner.Kube.Labels-10,
+             Reasoner.Kube.Labels-25))
+
+Or(Not(RULE-146),
+   subset_of(Reasoner.Kube.Labels-10,
+             Reasoner.Kube.Labels-10))
+
+Or(Not(RULE-147),
+   subset_of(Reasoner.Kube.Labels-10,
+             Reasoner.Kube.Labels-15))
+
+Or(Not(RULE-148),
+   subset_of(Reasoner.Kube.Labels-14,
+             Reasoner.Kube.Labels-24))
+
+Or(Not(RULE-149),
+   subset_of(Reasoner.Kube.Labels-14,
+             Reasoner.Kube.Labels-13))
+
+Or(Not(RULE-150),
+   subset_of(Reasoner.Kube.Labels-14,
+             Reasoner.Kube.Labels-21))
+
+Or(Not(RULE-151),
+   subset_of(Reasoner.Kube.Labels-14,
+             Reasoner.Kube.Labels-22))
+
+Or(Not(RULE-152),
+   subset_of(Reasoner.Kube.Labels-14,
+             Reasoner.Kube.Labels-14))
+
+Or(Not(RULE-153),
+   subset_of(Reasoner.Kube.Labels-15,
+             Reasoner.Kube.Labels-28))
+
+Or(Not(RULE-154),
+   subset_of(Reasoner.Kube.Labels-15,
+             Reasoner.Kube.Labels-25))
+
+Or(Not(RULE-155),
+   subset_of(Reasoner.Kube.Labels-15,
+             Reasoner.Kube.Labels-15))
+
+Or(Not(RULE-156),
+   subset_of(Reasoner.Kube.Labels-4,
+             Reasoner.Kube.Labels-20))
+
+Or(Not(RULE-157),
+   subset_of(Reasoner.Kube.Labels-4, Reasoner.Kube.Labels-4))
+
+Or(Not(RULE-158),
+   subset_of(Reasoner.Kube.Labels-4,
+             Reasoner.Kube.Labels-19))
+
+Or(Not(RULE-159),
+   subset_of(Reasoner.Kube.Labels-4,
+             Reasoner.Kube.Labels-17))
+
+Or(Not(RULE-160),
+   subset_of(Reasoner.Kube.Labels-6, Reasoner.Kube.Labels-5))
+
+Or(Not(RULE-161),
+   subset_of(Reasoner.Kube.Labels-6, Reasoner.Kube.Labels-6))
+
+Or(Not(RULE-162),
+   subset_of(Reasoner.Kube.Labels-6,
+             Reasoner.Kube.Labels-18))
+
+Or(Not(RULE-163),
+   subset_of(Reasoner.Kube.Labels-19,
+             Reasoner.Kube.Labels-20))
+
+Or(Not(RULE-164),
+   subset_of(Reasoner.Kube.Labels-19,
+             Reasoner.Kube.Labels-4))
+
+Or(Not(RULE-165),
+   subset_of(Reasoner.Kube.Labels-19,
+             Reasoner.Kube.Labels-19))
+
+Or(Not(RULE-166),
+   subset_of(Reasoner.Kube.Labels-19,
+             Reasoner.Kube.Labels-17))
+
+Or(Not(RULE-167),
+   subset_of(Reasoner.Kube.Labels-17,
+             Reasoner.Kube.Labels-20))
+
+Or(Not(RULE-168),
+   subset_of(Reasoner.Kube.Labels-17,
+             Reasoner.Kube.Labels-4))
+
+Or(Not(RULE-169),
+   subset_of(Reasoner.Kube.Labels-17,
+             Reasoner.Kube.Labels-19))
+
+Or(Not(RULE-170),
+   subset_of(Reasoner.Kube.Labels-17,
+             Reasoner.Kube.Labels-17))
+
+Or(Not(RULE-171),
+   subset_of(Reasoner.Kube.Labels-18,
+             Reasoner.Kube.Labels-5))
+
+Or(Not(RULE-172),
+   subset_of(Reasoner.Kube.Labels-18,
+             Reasoner.Kube.Labels-6))
+
+Or(Not(RULE-173),
+   subset_of(Reasoner.Kube.Labels-18,
+             Reasoner.Kube.Labels-18))
+
+Or(Not(RULE-174),
+   subset_of(Reasoner.Kube.Labels-26,
+             Reasoner.Kube.Labels-16))
+
+Or(Not(RULE-175),
+   subset_of(Reasoner.Kube.Labels-26,
+             Reasoner.Kube.Labels-28))
+
+Or(Not(RULE-176),
+   subset_of(Reasoner.Kube.Labels-26,
+             Reasoner.Kube.Labels-25))
+
+Or(Not(RULE-177),
+   subset_of(Reasoner.Kube.Labels-26,
+             Reasoner.Kube.Labels-15))
+
+Or(Not(RULE-178),
+   subset_of(Reasoner.Kube.Labels-26,
+             Reasoner.Kube.Labels-26))
+
+_meta_term_component(KubernetesParser.Container.Image-0) ==
+KubernetesParser.Container.Image-0
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(getdtk/graph-example1-app) ==
+getdtk/graph-example1-app
+
+_meta_term_key(getdtk/graph-example2-app) ==
+getdtk/graph-example2-app
+
+_meta_term_key(docker.io/bitnami/redis) ==
+docker.io/bitnami/redis
+
+_meta_term_key(latest) == latest
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(6.2.4-debian-10-r13) == 6.2.4-debian-10-r13
+
+_meta_term_key(reasoner) == reasoner
+
+_meta_term_key(file_based) == file_based
+
+_meta_term_component(KubernetesParser.App-1) ==
+KubernetesParser.App-1
+
+_meta_term_component(KubernetesParser.App-0) ==
+KubernetesParser.App-0
+
+_meta_term_key(node-app2-dep) == node-app2-dep
+
+_meta_term_key(node-app1-secret) == node-app1-secret
+
+_meta_term_key(node-app1-dep) == node-app1-dep
+
+_meta_term_key(redis) == redis
+
+_meta_term_key(node-app2-secret) == node-app2-secret
+
+_meta_term_key(redis-master) == redis-master
+
+_meta_term_key(nginx-ingress-controller) ==
+nginx-ingress-controller
+
+_meta_term_key(node-app-svc) == node-app-svc
+
+_meta_term_key(node-app2-svc) == node-app2-svc
+
+_meta_term_key(redis-replicas) == redis-replicas
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(example-node-app) == example-node-app
+
+_meta_term_key(ingress3-simple-fanout) ==
+ingress3-simple-fanout
+
+_meta_term_key(redis-headless) == redis-headless
+
+_meta_term_key(node-app1-svc) == node-app1-svc
+
+_meta_term_key(nginx) == nginx
+
+_meta_term_key(ingress2-simple-service-bad-default) ==
+ingress2-simple-service-bad-default
+
+_meta_term_key(ingress1-matches-app1-with-default) ==
+ingress1-matches-app1-with-default
+
+_meta_term_key(test2) == test2
+
+_meta_term_component(redis-4.4.0) == redis-4.4.0
+
+_meta_term_component(redis-14.4.0/redis) ==
+redis-14.4.0/redis
+
+_meta_term_key(master) == master
+
+_meta_term_key(node-app1) == node-app1
+
+_meta_term_key(f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9) ==
+f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+
+_meta_term_key(redis) == redis
+
+_meta_term_key([]) == []
+
+_meta_term_key(442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634) ==
+442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+
+_meta_term_key(ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86) ==
+ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86
+
+_meta_term_key(False) == False
+
+_meta_term_key(58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58) ==
+58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58
+
+_meta_term_key(no_match_value) == no_match_value
+
+_meta_term_key(node-app2) == node-app2
+
+_meta_term_key(6.2.4-debian-10-r13) == 6.2.4-debian-10-r13
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(6379) == 6379
+
+_meta_term_key(/) == /
+
+_meta_term_key(44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6) ==
+44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+
+_meta_term_key(Helm) == Helm
+
+_meta_term_key(IfNotPresent) == IfNotPresent
+
+_meta_term_key(node) == node
+
+_meta_term_key(bitnami/redis) == bitnami/redis
+
+_meta_term_key(replica) == replica
+
+_meta_term_key(redis-14.4.0) == redis-14.4.0
+
+_meta_term_key(ExternalName) == ExternalName
+
+_meta_term_key(true) == true
+
+_meta_term_component(HelmParser.Helm.Template-1) ==
+HelmParser.Helm.Template-1
+
+_meta_term_component(HelmParser.Helm.Template-0) ==
+HelmParser.Helm.Template-0
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/redis.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/redis.yaml
+
+_meta_term_key(github.com) == github.com
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/headless-svc.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/headless-svc.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/ingress/ingress-examples.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/ingress/ingress-examples.yaml
+
+_meta_term_key(redis) == redis
+
+_meta_term_key(redis/templates/networkpolicy.yaml) ==
+redis/templates/networkpolicy.yaml
+
+_meta_term_key(docker.io/) == docker.io/
+
+_meta_term_key(:) == :
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/configmap.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/configmap.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/service.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/service.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/servicemonitor.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/servicemonitor.yaml
+
+_meta_term_key(rich_sprint44) == rich_sprint44
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/statefulset.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/statefulset.yaml
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/secret.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/secret.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/networkpolicy.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/networkpolicy.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app2.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app2.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/scripts-configmap.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/scripts-configmap.yaml
+
+_meta_term_key(redis/templates/servicemonitor.yaml) ==
+redis/templates/servicemonitor.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/statefulset.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/statefulset.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/health-configmap.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/health-configmap.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1-image.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1-image.yaml
+
+_meta_term_key(https://github.com/dtk/ai-reasoner.git) ==
+https://github.com/dtk/ai-reasoner.git
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/service.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/service.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/app.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/app.yaml
+
+_meta_term_key(HelmParser.Helm.Template.Condition-1) ==
+HelmParser.Helm.Template.Condition-1
+
+_meta_term_key(HelmParser.Helm.Template.Condition-0) ==
+HelmParser.Helm.Template.Condition-0
+
+_meta_term_key(checksum/configmap) == checksum/configmap
+
+_meta_term_key(metrics.useServiceMonitor) ==
+metrics.useServiceMonitor
+
+_meta_term_key(image.tag) == image.tag
+
+_meta_term_key(image.debug) == image.debug
+
+_meta_term_key(helm.sh/chart) == helm.sh/chart
+
+_meta_term_key(master.service.port) == master.service.port
+
+_meta_term_key(app.kubernetes.io/managed-by) ==
+app.kubernetes.io/managed-by
+
+_meta_term_key(app) == app
+
+_meta_term_key(nginx.ingress.kubernetes.io/rewrite-target) ==
+nginx.ingress.kubernetes.io/rewrite-target
+
+_meta_term_key(checksum/health) == checksum/health
+
+_meta_term_key(master.containerPort) == master.containerPort
+
+_meta_term_key(image.pullSecrets) == image.pullSecrets
+
+_meta_term_key(app.kubernetes.io/instance) ==
+app.kubernetes.io/instance
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(networkPolicy.enabled) ==
+networkPolicy.enabled
+
+_meta_term_key(checksum/scripts) == checksum/scripts
+
+_meta_term_key(app.kubernetes.io/name) ==
+app.kubernetes.io/name
+
+_meta_term_key(image.pullPolicy) == image.pullPolicy
+
+_meta_term_key(app.kubernetes.io/component) ==
+app.kubernetes.io/component
+
+_meta_term_key(image.repository) == image.repository
+
+_meta_term_key(metrics.isEnabled) == metrics.isEnabled
+
+_meta_term_key(checksum/secret) == checksum/secret
+
+_meta_term_key(master.service.type) == master.service.type
+
+_meta_term_key(ingressclass.kubernetes.io/is-default-class) ==
+ingressclass.kubernetes.io/is-default-class
+
+_meta_term_key(True) == True
+
+_meta_term_key(False) == False
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_component(COMMON.NONE) == COMMON.NONE
+
+_meta_term_component(Reasoner.Helm.Chart.Release.Values-1) ==
+Reasoner.Helm.Chart.Release.Values-1
+
+_meta_term_component(KubernetesParser.Kube.Deployment-0) ==
+KubernetesParser.Kube.Deployment-0
+
+_meta_term_component(KubernetesParser.Kube.Deployment-1) ==
+KubernetesParser.Kube.Deployment-1
+
+_meta_term_key(networking.k8s.io/v1) == networking.k8s.io/v1
+
+_meta_term_key(v1) == v1
+
+_meta_term_key(apps/v1) == apps/v1
+
+_meta_term_component(KubernetesParser.Kube.Pod.Template-0) ==
+KubernetesParser.Kube.Pod.Template-0
+
+_meta_term_component(HelmParser.Kube.Pod.Template-1) ==
+HelmParser.Kube.Pod.Template-1
+
+_meta_term_component(HelmParser.Kube.Pod.Template-0) ==
+HelmParser.Kube.Pod.Template-0
+
+_meta_term_component(KubernetesParser.Kube.Pod.Template-1) ==
+KubernetesParser.Kube.Pod.Template-1
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(default) == default
+
+_meta_term_component(KubernetesParser.Kube.Container-0) ==
+KubernetesParser.Kube.Container-0
+
+_meta_term_component(HelmParser.Kube.Container-0) ==
+HelmParser.Kube.Container-0
+
+_meta_term_component(HelmParser.Kube.Container-1) ==
+HelmParser.Kube.Container-1
+
+_meta_term_component(KubernetesParser.Kube.Container-1) ==
+KubernetesParser.Kube.Container-1
+
+_meta_term_key(docker.io/bitnami/redis:6.2.4-debian-10-r13) ==
+docker.io/bitnami/redis:6.2.4-debian-10-r13
+
+_meta_term_key(getdtk/graph-example1-app) ==
+getdtk/graph-example1-app
+
+_meta_term_key(getdtk/graph-example2-app) ==
+getdtk/graph-example2-app
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(IfNotPresent) == IfNotPresent
+
+_meta_term_key(Concat(Unit(67),
+                      Concat(Unit(79),
+                             Concat(Unit(77),
+                                    Concat(Unit(77),
+                                        Concat(Unit(79),
+                                        Concat(Unit(78),
+                                        Concat(Unit(46),
+                                        Concat(Unit(78),
+                                        Concat(Unit(79),
+                                        Concat(Unit(78),
+                                        Unit(69)))))))))))) ==
+COMMON.NONE
+
+_meta_term_key(Concat(Unit(110),
+                      Concat(Unit(111),
+                             Concat(Unit(100), Unit(101))))) ==
+node
+
+_meta_term_key(Concat(Unit(114),
+                      Concat(Unit(101),
+                             Concat(Unit(100),
+                                    Concat(Unit(105),
+                                        Unit(115)))))) ==
+redis
+
+_meta_term_key(Concat(Unit(116),
+                      Concat(Unit(99),
+                             Concat(Unit(112),
+                                    Concat(Unit(45),
+                                        Concat(Unit(114),
+                                        Concat(Unit(101),
+                                        Concat(Unit(100),
+                                        Concat(Unit(105),
+                                        Unit(115)))))))))) ==
+tcp-redis
+
+_meta_term_key(["-c", "/opt/bitnami/scripts/start-scripts/start-replica.sh"]) ==
+["-c", "/opt/bitnami/scripts/start-scripts/start-replica.sh"]
+
+_meta_term_key(6.2.4-debian-10-r13) == 6.2.4-debian-10-r13
+
+_meta_term_key(bitnami/redis) == bitnami/redis
+
+_meta_term_key(["-c", "/opt/bitnami/scripts/start-scripts/start-master.sh"]) ==
+["-c", "/opt/bitnami/scripts/start-scripts/start-master.sh"]
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(["/bin/bash"]) == ["/bin/bash"]
+
+_meta_term_component(HelmParser.Kube.Container.PortItem-1) ==
+HelmParser.Kube.Container.PortItem-1
+
+_meta_term_component(KubernetesParser.Kube.Container.PortItem-1) ==
+KubernetesParser.Kube.Container.PortItem-1
+
+_meta_term_component(KubernetesParser.Kube.Container.PortItem-0) ==
+KubernetesParser.Kube.Container.PortItem-0
+
+_meta_term_component(HelmParser.Kube.Container.PortItem-0) ==
+HelmParser.Kube.Container.PortItem-0
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(6379) == 6379
+
+_meta_term_key(31112) == 31112
+
+_meta_term_key(8080) == 8080
+
+_meta_term_key(master) == master
+
+_meta_term_key(node-app1) == node-app1
+
+_meta_term_key(f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9) ==
+f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+
+_meta_term_key(redis) == redis
+
+_meta_term_key([]) == []
+
+_meta_term_key(442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634) ==
+442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+
+_meta_term_key(ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86) ==
+ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86
+
+_meta_term_key(no_match_value) == no_match_value
+
+_meta_term_key(False) == False
+
+_meta_term_key(58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58) ==
+58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58
+
+_meta_term_key(node-app2) == node-app2
+
+_meta_term_key(6.2.4-debian-10-r13) == 6.2.4-debian-10-r13
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(6379) == 6379
+
+_meta_term_key(/) == /
+
+_meta_term_key(44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6) ==
+44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+
+_meta_term_key(Helm) == Helm
+
+_meta_term_key(IfNotPresent) == IfNotPresent
+
+_meta_term_key(node) == node
+
+_meta_term_key(bitnami/redis) == bitnami/redis
+
+_meta_term_key(replica) == replica
+
+_meta_term_key(redis-14.4.0) == redis-14.4.0
+
+_meta_term_key(ExternalName) == ExternalName
+
+_meta_term_key(master) == master
+
+_meta_term_key(node-app1) == node-app1
+
+_meta_term_key(8081) == 8081
+
+_meta_term_key(f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9) ==
+f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+
+_meta_term_key(redis) == redis
+
+_meta_term_key([]) == []
+
+_meta_term_key(442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634) ==
+442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+
+_meta_term_key(ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86) ==
+ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86
+
+_meta_term_key(no_match_value) == no_match_value
+
+_meta_term_key(False) == False
+
+_meta_term_key(58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58) ==
+58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58
+
+_meta_term_key(node-app2) == node-app2
+
+_meta_term_key(6.2.4-debian-10-r13) == 6.2.4-debian-10-r13
+
+_meta_term_key(80) == 80
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(6379) == 6379
+
+_meta_term_key(/) == /
+
+_meta_term_key(44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6) ==
+44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+
+_meta_term_key(Helm) == Helm
+
+_meta_term_key(IfNotPresent) == IfNotPresent
+
+_meta_term_key(node) == node
+
+_meta_term_key(bitnami/redis) == bitnami/redis
+
+_meta_term_key(replica) == replica
+
+_meta_term_key(redis-14.4.0) == redis-14.4.0
+
+_meta_term_key(ExternalName) == ExternalName
+
+_meta_term_key(http) == http
+
+_meta_term_key(https) == https
+
+_meta_term_key(udp) == udp
+
+_meta_term_key(scp) == scp
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(tcp) == tcp
+
+_meta_term_component(Reasoner.Kube.Labels-22) ==
+Reasoner.Kube.Labels-22
+
+_meta_term_component(Reasoner.Kube.Labels-20) ==
+Reasoner.Kube.Labels-20
+
+_meta_term_component(Reasoner.Kube.Labels-5) ==
+Reasoner.Kube.Labels-5
+
+_meta_term_component(Reasoner.Kube.Labels-7) ==
+Reasoner.Kube.Labels-7
+
+_meta_term_component(Reasoner.Kube.Labels-13) ==
+Reasoner.Kube.Labels-13
+
+_meta_term_component(Reasoner.Kube.Labels-8) ==
+Reasoner.Kube.Labels-8
+
+_meta_term_component(Reasoner.Kube.Labels-14) ==
+Reasoner.Kube.Labels-14
+
+_meta_term_component(Reasoner.Kube.Labels-6) ==
+Reasoner.Kube.Labels-6
+
+_meta_term_component(Reasoner.Kube.Labels-26) ==
+Reasoner.Kube.Labels-26
+
+_meta_term_component(Reasoner.Kube.Labels-25) ==
+Reasoner.Kube.Labels-25
+
+_meta_term_component(Reasoner.Kube.Labels-19) ==
+Reasoner.Kube.Labels-19
+
+_meta_term_component(Reasoner.Kube.Labels-24) ==
+Reasoner.Kube.Labels-24
+
+_meta_term_component(Reasoner.Kube.Labels-10) ==
+Reasoner.Kube.Labels-10
+
+_meta_term_component(COMMON.NONE) == COMMON.NONE
+
+_meta_term_component(Reasoner.Kube.Labels-12) ==
+Reasoner.Kube.Labels-12
+
+_meta_term_component(Reasoner.Kube.Labels-17) ==
+Reasoner.Kube.Labels-17
+
+_meta_term_component(Reasoner.Kube.Labels-21) ==
+Reasoner.Kube.Labels-21
+
+_meta_term_component(Reasoner.Kube.Labels-4) ==
+Reasoner.Kube.Labels-4
+
+_meta_term_component(Reasoner.Kube.Labels-9) ==
+Reasoner.Kube.Labels-9
+
+_meta_term_component(Reasoner.Kube.Labels-15) ==
+Reasoner.Kube.Labels-15
+
+_meta_term_component(Reasoner.Kube.Labels-11) ==
+Reasoner.Kube.Labels-11
+
+_meta_term_component(Reasoner.Kube.Labels-28) ==
+Reasoner.Kube.Labels-28
+
+_meta_term_component(Reasoner.Kube.Labels-16) ==
+Reasoner.Kube.Labels-16
+
+_meta_term_component(Reasoner.Kube.Labels-18) ==
+Reasoner.Kube.Labels-18
+
+_meta_term_component(Reasoner.Kube.Annotations-1) ==
+Reasoner.Kube.Annotations-1
+
+_meta_term_component(Reasoner.Kube.Annotations-4) ==
+Reasoner.Kube.Annotations-4
+
+_meta_term_component(Reasoner.Kube.Annotations-5) ==
+Reasoner.Kube.Annotations-5
+
+_meta_term_component(Reasoner.Kube.Annotations-3) ==
+Reasoner.Kube.Annotations-3
+
+_meta_term_component(COMMON.NONE) == COMMON.NONE
+
+_meta_term_component(Reasoner.Kube.Annotations-2) ==
+Reasoner.Kube.Annotations-2
+
+_meta_term_component(Reasoner.Kube.Container.EnvVarsConfig-3) ==
+Reasoner.Kube.Container.EnvVarsConfig-3
+
+_meta_term_component(Reasoner.Kube.Container.EnvVarsConfig-4) ==
+Reasoner.Kube.Container.EnvVarsConfig-4
+
+_meta_term_component(Reasoner.Kube.Container.EnvVarsConfig-2) ==
+Reasoner.Kube.Container.EnvVarsConfig-2
+
+_meta_term_component(Reasoner.Kube.Container.EnvVarsConfig-1) ==
+Reasoner.Kube.Container.EnvVarsConfig-1
+
+_meta_term_key(NODE_ENV) == NODE_ENV
+
+_meta_term_key(ALLOW_EMPTY_PASSWORD) == ALLOW_EMPTY_PASSWORD
+
+_meta_term_key(REDIS_PORT) == REDIS_PORT
+
+_meta_term_key(BITNAMI_DEBUG) == BITNAMI_DEBUG
+
+_meta_term_key(REDIS_TLS_ENABLED) == REDIS_TLS_ENABLED
+
+_meta_term_key(REDIS_MASTER_HOST) == REDIS_MASTER_HOST
+
+_meta_term_key(PORT) == PORT
+
+_meta_term_key(DB_PORT) == DB_PORT
+
+_meta_term_key(REDIS_REPLICATION_MODE) ==
+REDIS_REPLICATION_MODE
+
+_meta_term_key(REDIS_PASSWORD) == REDIS_PASSWORD
+
+_meta_term_key(REDIS_MASTER_PASSWORD) ==
+REDIS_MASTER_PASSWORD
+
+_meta_term_key(REDIS_MASTER_PORT_NUMBER) ==
+REDIS_MASTER_PORT_NUMBER
+
+_meta_term_key(DB_HOST) == DB_HOST
+
+_meta_term_key(DB_PASSWORD) == DB_PASSWORD
+
+_meta_term_key({"value": "8080"}) == {"value": "8080"}
+
+_meta_term_key({"value": "slave"}) == {"value": "slave"}
+
+_meta_term_key({"value": "redis-master-0.redis-headless.default.svc.cluster.local"}) ==
+{"value": "redis-master-0.redis-headless.default.svc.cluster.local"}
+
+_meta_term_key({"value": "6379"}) == {"value": "6379"}
+
+_meta_term_key({"value": "my-release-redis-master"}) ==
+{"value": "my-release-redis-master"}
+
+_meta_term_key({"value": "production"}) ==
+{"value": "production"}
+
+_meta_term_key({"valueFrom": {"secretKeyRef": {"name": "node-app2-secret", "key": "db_password"}}}) ==
+{"valueFrom": {"secretKeyRef": {"name": "node-app2-secret", "key": "db_password"}}}
+
+_meta_term_key({"value": "false"}) == {"value": "false"}
+
+_meta_term_key({"value": "no"}) == {"value": "no"}
+
+_meta_term_key({"valueFrom": {"secretKeyRef": {"name": "node-app1-secret", "key": "db_password"}}}) ==
+{"valueFrom": {"secretKeyRef": {"name": "node-app1-secret", "key": "db_password"}}}
+
+_meta_term_key({"value": "master"}) == {"value": "master"}
+
+_meta_term_key({"valueFrom": {"secretKeyRef": {"name": "redis", "key": "redis-password"}}}) ==
+{"valueFrom": {"secretKeyRef": {"name": "redis", "key": "redis-password"}}}
+
+_meta_term_component(KubernetesParser.Kube.Ingress-0) ==
+KubernetesParser.Kube.Ingress-0
+
+_meta_term_component(KubernetesParser.Kube.Ingress-2) ==
+KubernetesParser.Kube.Ingress-2
+
+_meta_term_component(KubernetesParser.Kube.Ingress-1) ==
+KubernetesParser.Kube.Ingress-1
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Rule-2) ==
+KubernetesParser.Kube.Ingress.Rule-2
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Rule-0) ==
+KubernetesParser.Kube.Ingress.Rule-0
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Rule-1) ==
+KubernetesParser.Kube.Ingress.Rule-1
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(*) == *
+
+_meta_term_key(foo.bar.com) == foo.bar.com
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Rule.HttpPath-0) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath-0
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Rule.HttpPath-2) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath-2
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Rule.HttpPath-1) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath-1
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Rule.HttpPath-3) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath-3
+
+_meta_term_key(/app2) == /app2
+
+_meta_term_key(/app1) == /app1
+
+_meta_term_key(/testpath) == /testpath
+
+_meta_term_key(Prefix) == Prefix
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2
+
+_meta_term_component(COMMON.NONE) == COMMON.NONE
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Backend.Service-1) ==
+KubernetesParser.Kube.Ingress.Backend.Service-1
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Backend.Service-4) ==
+KubernetesParser.Kube.Ingress.Backend.Service-4
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Backend.Service-2) ==
+KubernetesParser.Kube.Ingress.Backend.Service-2
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Backend.Service-3) ==
+KubernetesParser.Kube.Ingress.Backend.Service-3
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Backend.Service-5) ==
+KubernetesParser.Kube.Ingress.Backend.Service-5
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Backend.Service-0) ==
+KubernetesParser.Kube.Ingress.Backend.Service-0
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Backend.Service.Port-1) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-1
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Backend.Service.Port-4) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-4
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Backend.Service.Port-2) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-2
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Backend.Service.Port-5) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-5
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Backend.Service.Port-3) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-3
+
+_meta_term_component(KubernetesParser.Kube.Ingress.Backend.Service.Port-0) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-0
+
+_meta_term_component(COMMON.NONE) == COMMON.NONE
+
+_meta_term_component(KubernetesParser.Kube.Ingress.DefaultBackend-0) ==
+KubernetesParser.Kube.Ingress.DefaultBackend-0
+
+_meta_term_component(KubernetesParser.Kube.Ingress.DefaultBackend-1) ==
+KubernetesParser.Kube.Ingress.DefaultBackend-1
+
+_meta_term_component(HelmParser.Kube.NetworkPolicy-0) ==
+HelmParser.Kube.NetworkPolicy-0
+
+_meta_term_component(HelmParser.Kube.Secret-0) ==
+HelmParser.Kube.Secret-0
+
+_meta_term_component(KubernetesParser.Kube.Secret-1) ==
+KubernetesParser.Kube.Secret-1
+
+_meta_term_component(KubernetesParser.Kube.Secret-0) ==
+KubernetesParser.Kube.Secret-0
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(redis-password) == redis-password
+
+_meta_term_key(db_password) == db_password
+
+_meta_term_component(HelmParser.Kube.ServiceMonitor-0) ==
+HelmParser.Kube.ServiceMonitor-0
+
+_meta_term_component(KubernetesParser.Kube.Service-0) ==
+KubernetesParser.Kube.Service-0
+
+_meta_term_component(HelmParser.Kube.Service-2) ==
+HelmParser.Kube.Service-2
+
+_meta_term_component(HelmParser.Kube.Service-0) ==
+HelmParser.Kube.Service-0
+
+_meta_term_component(KubernetesParser.Kube.Service-1) ==
+KubernetesParser.Kube.Service-1
+
+_meta_term_component(HelmParser.Kube.Service-1) ==
+HelmParser.Kube.Service-1
+
+_meta_term_component(HelmParser.Kube.Service.ServicePort-2) ==
+HelmParser.Kube.Service.ServicePort-2
+
+_meta_term_component(HelmParser.Kube.Service.ServicePort-1) ==
+HelmParser.Kube.Service.ServicePort-1
+
+_meta_term_component(KubernetesParser.Kube.Service.ServicePort-1) ==
+KubernetesParser.Kube.Service.ServicePort-1
+
+_meta_term_component(HelmParser.Kube.Service.ServicePort-0) ==
+HelmParser.Kube.Service.ServicePort-0
+
+_meta_term_component(KubernetesParser.Kube.Service.ServicePort-0) ==
+KubernetesParser.Kube.Service.ServicePort-0
+
+_meta_term_key(COMMON.INVALID_TYPE_CAST) ==
+COMMON.INVALID_TYPE_CAST
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(LoadBalancer) == LoadBalancer
+
+_meta_term_key(NodePort) == NodePort
+
+_meta_term_key(ClusterIP) == ClusterIP
+
+_meta_term_key(ExternalName) == ExternalName
+
+_meta_term_component(HelmParser.Kube.StatefulSet-1) ==
+HelmParser.Kube.StatefulSet-1
+
+_meta_term_component(HelmParser.Kube.StatefulSet-0) ==
+HelmParser.Kube.StatefulSet-0
+
+_meta_term_key(1) == 1
+
+_meta_term_key(3) == 3
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(docker.io/bitnami/redis:6.2.4-debian-10-r13) ==
+docker.io/bitnami/redis:6.2.4-debian-10-r13
+
+_meta_term_key(Source.FilePath-1) == Source.FilePath-1
+
+_meta_term_key(Source.FilePath-13) == Source.FilePath-13
+
+_meta_term_key(Source.FilePath-4) == Source.FilePath-4
+
+_meta_term_key(Source.FilePath-11) == Source.FilePath-11
+
+_meta_term_key(Source.FilePath-3) == Source.FilePath-3
+
+_meta_term_key(Source.FilePath-6) == Source.FilePath-6
+
+_meta_term_key(Source.FilePath-12) == Source.FilePath-12
+
+_meta_term_key(Source.FilePath-5) == Source.FilePath-5
+
+_meta_term_key(HelmParser.Source.FilePath-2) ==
+HelmParser.Source.FilePath-2
+
+_meta_term_key(HelmParser.Source.FilePath-0) ==
+HelmParser.Source.FilePath-0
+
+_meta_term_key(Source.FilePath-0) == Source.FilePath-0
+
+_meta_term_key(HelmParser.Source.FilePath-1) ==
+HelmParser.Source.FilePath-1
+
+_meta_term_key(Source.FilePath-7) == Source.FilePath-7
+
+_meta_term_key(Source.FilePath-9) == Source.FilePath-9
+
+_meta_term_key(Source.FilePath-8) == Source.FilePath-8
+
+_meta_term_key(Source.FilePath-10) == Source.FilePath-10
+
+_meta_term_key(Source.FilePath-2) == Source.FilePath-2
+
+_meta_term_key(Source.FilePath-14) == Source.FilePath-14
+
+_meta_term_component(Source.GitRepo-0) == Source.GitRepo-0
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(master) == master
+
+_meta_term_key(slave) == slave
+
+_meta_term_component(KubeCluster.default) ==
+KubeCluster.default
+
+_meta_term_component(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(cluster.local) == cluster.local
+
+_meta_term_key(config) == config
+
+_meta_term_key(deployed) == deployed
+
+_meta_term_key(desired) == desired
+
+_meta_term_component(Deployment.Environment.default) ==
+Deployment.Environment.default
+
+_meta_term_key(nginx) == nginx
+
+_meta_term_key(other) == other
+
+_meta_term_key(ShouldHold) == ShouldHold
+
+_meta_term_key(DoesHold) == DoesHold
+
+_meta_term_key(default) == default
+
+_meta_term_key(nginx) == nginx
+
+_meta_term_key(other) == other
+
+_meta_term_key(Debug2) == Debug2
+
+_meta_term_key(Debug1) == Debug1
+
+_meta_term_key(redis) == redis
+
+_meta_term_key(ingress_controller) == ingress_controller
+
+_meta_term_key(holds) == holds
+
+_meta_term_key(fails) == fails
+
+_meta_term_key(undefined) == undefined
+
+_meta_term_key(StatefulSet) == StatefulSet
+
+_meta_term_key(Deployment) == Deployment
+
+_meta_term_key(Secret) == Secret
+
+_meta_term_key(getdtk/graph-example2-app:latest) ==
+getdtk/graph-example2-app:latest
+
+_meta_term_key(getdtk/graph-example1-app:latest) ==
+getdtk/graph-example1-app:latest
+
+_meta_term_key(docker.io/bitnami/redis:6.2.4-debian-10-r13) ==
+docker.io/bitnami/redis:6.2.4-debian-10-r13
+
+_meta_term_component(shadow-ingress-controller) ==
+shadow-ingress-controller
+
+_meta_term_key(KubernetesParser.Container.Image-0) ==
+KubernetesParser.Container.Image-0
+
+_meta_term_key(KubernetesParser.App-1) ==
+KubernetesParser.App-1
+
+_meta_term_key(KubernetesParser.App-0) ==
+KubernetesParser.App-0
+
+_meta_term_key(redis-4.4.0) == redis-4.4.0
+
+_meta_term_key(redis-14.4.0/redis) == redis-14.4.0/redis
+
+_meta_term_key(HelmParser.Helm.Template-1) ==
+HelmParser.Helm.Template-1
+
+_meta_term_key(HelmParser.Helm.Template-0) ==
+HelmParser.Helm.Template-0
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(Reasoner.Helm.Chart.Release.Values-1) ==
+Reasoner.Helm.Chart.Release.Values-1
+
+_meta_term_key(KubernetesParser.Kube.Deployment-0) ==
+KubernetesParser.Kube.Deployment-0
+
+_meta_term_key(KubernetesParser.Kube.Deployment-1) ==
+KubernetesParser.Kube.Deployment-1
+
+_meta_term_key(KubernetesParser.Kube.Pod.Template-0) ==
+KubernetesParser.Kube.Pod.Template-0
+
+_meta_term_key(HelmParser.Kube.Pod.Template-1) ==
+HelmParser.Kube.Pod.Template-1
+
+_meta_term_key(HelmParser.Kube.Pod.Template-0) ==
+HelmParser.Kube.Pod.Template-0
+
+_meta_term_key(KubernetesParser.Kube.Pod.Template-1) ==
+KubernetesParser.Kube.Pod.Template-1
+
+_meta_term_key(KubernetesParser.Kube.Container-0) ==
+KubernetesParser.Kube.Container-0
+
+_meta_term_key(HelmParser.Kube.Container-0) ==
+HelmParser.Kube.Container-0
+
+_meta_term_key(HelmParser.Kube.Container-1) ==
+HelmParser.Kube.Container-1
+
+_meta_term_key(KubernetesParser.Kube.Container-1) ==
+KubernetesParser.Kube.Container-1
+
+_meta_term_key(HelmParser.Kube.Container.PortItem-1) ==
+HelmParser.Kube.Container.PortItem-1
+
+_meta_term_key(KubernetesParser.Kube.Container.PortItem-1) ==
+KubernetesParser.Kube.Container.PortItem-1
+
+_meta_term_key(KubernetesParser.Kube.Container.PortItem-0) ==
+KubernetesParser.Kube.Container.PortItem-0
+
+_meta_term_key(HelmParser.Kube.Container.PortItem-0) ==
+HelmParser.Kube.Container.PortItem-0
+
+_meta_term_key(Reasoner.Kube.Labels-22) ==
+Reasoner.Kube.Labels-22
+
+_meta_term_key(Reasoner.Kube.Labels-20) ==
+Reasoner.Kube.Labels-20
+
+_meta_term_key(Reasoner.Kube.Labels-5) ==
+Reasoner.Kube.Labels-5
+
+_meta_term_key(Reasoner.Kube.Labels-7) ==
+Reasoner.Kube.Labels-7
+
+_meta_term_key(Reasoner.Kube.Labels-13) ==
+Reasoner.Kube.Labels-13
+
+_meta_term_key(Reasoner.Kube.Labels-8) ==
+Reasoner.Kube.Labels-8
+
+_meta_term_key(Reasoner.Kube.Labels-14) ==
+Reasoner.Kube.Labels-14
+
+_meta_term_key(Reasoner.Kube.Labels-6) ==
+Reasoner.Kube.Labels-6
+
+_meta_term_key(Reasoner.Kube.Labels-26) ==
+Reasoner.Kube.Labels-26
+
+_meta_term_key(Reasoner.Kube.Labels-25) ==
+Reasoner.Kube.Labels-25
+
+_meta_term_key(Reasoner.Kube.Labels-19) ==
+Reasoner.Kube.Labels-19
+
+_meta_term_key(Reasoner.Kube.Labels-24) ==
+Reasoner.Kube.Labels-24
+
+_meta_term_key(Reasoner.Kube.Labels-10) ==
+Reasoner.Kube.Labels-10
+
+_meta_term_key(Reasoner.Kube.Labels-12) ==
+Reasoner.Kube.Labels-12
+
+_meta_term_key(Reasoner.Kube.Labels-17) ==
+Reasoner.Kube.Labels-17
+
+_meta_term_key(Reasoner.Kube.Labels-21) ==
+Reasoner.Kube.Labels-21
+
+_meta_term_key(Reasoner.Kube.Labels-4) ==
+Reasoner.Kube.Labels-4
+
+_meta_term_key(Reasoner.Kube.Labels-9) ==
+Reasoner.Kube.Labels-9
+
+_meta_term_key(Reasoner.Kube.Labels-15) ==
+Reasoner.Kube.Labels-15
+
+_meta_term_key(Reasoner.Kube.Labels-11) ==
+Reasoner.Kube.Labels-11
+
+_meta_term_key(Reasoner.Kube.Labels-28) ==
+Reasoner.Kube.Labels-28
+
+_meta_term_key(Reasoner.Kube.Labels-16) ==
+Reasoner.Kube.Labels-16
+
+_meta_term_key(Reasoner.Kube.Labels-18) ==
+Reasoner.Kube.Labels-18
+
+_meta_term_key(Reasoner.Kube.Annotations-1) ==
+Reasoner.Kube.Annotations-1
+
+_meta_term_key(Reasoner.Kube.Annotations-4) ==
+Reasoner.Kube.Annotations-4
+
+_meta_term_key(Reasoner.Kube.Annotations-5) ==
+Reasoner.Kube.Annotations-5
+
+_meta_term_key(Reasoner.Kube.Annotations-3) ==
+Reasoner.Kube.Annotations-3
+
+_meta_term_key(Reasoner.Kube.Annotations-2) ==
+Reasoner.Kube.Annotations-2
+
+_meta_term_key(Reasoner.Kube.Container.EnvVarsConfig-3) ==
+Reasoner.Kube.Container.EnvVarsConfig-3
+
+_meta_term_key(Reasoner.Kube.Container.EnvVarsConfig-4) ==
+Reasoner.Kube.Container.EnvVarsConfig-4
+
+_meta_term_key(Reasoner.Kube.Container.EnvVarsConfig-2) ==
+Reasoner.Kube.Container.EnvVarsConfig-2
+
+_meta_term_key(Reasoner.Kube.Container.EnvVarsConfig-1) ==
+Reasoner.Kube.Container.EnvVarsConfig-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress-0) ==
+KubernetesParser.Kube.Ingress-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress-2) ==
+KubernetesParser.Kube.Ingress-2
+
+_meta_term_key(KubernetesParser.Kube.Ingress-1) ==
+KubernetesParser.Kube.Ingress-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule-2) ==
+KubernetesParser.Kube.Ingress.Rule-2
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule-0) ==
+KubernetesParser.Kube.Ingress.Rule-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule-1) ==
+KubernetesParser.Kube.Ingress.Rule-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath-0) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath-2) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath-2
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath-1) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath-3) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath-3
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service-1) ==
+KubernetesParser.Kube.Ingress.Backend.Service-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service-4) ==
+KubernetesParser.Kube.Ingress.Backend.Service-4
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service-2) ==
+KubernetesParser.Kube.Ingress.Backend.Service-2
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service-3) ==
+KubernetesParser.Kube.Ingress.Backend.Service-3
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service-5) ==
+KubernetesParser.Kube.Ingress.Backend.Service-5
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service-0) ==
+KubernetesParser.Kube.Ingress.Backend.Service-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service.Port-1) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service.Port-4) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-4
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service.Port-2) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-2
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service.Port-5) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-5
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service.Port-3) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-3
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service.Port-0) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress.DefaultBackend-0) ==
+KubernetesParser.Kube.Ingress.DefaultBackend-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress.DefaultBackend-1) ==
+KubernetesParser.Kube.Ingress.DefaultBackend-1
+
+_meta_term_key(HelmParser.Kube.NetworkPolicy-0) ==
+HelmParser.Kube.NetworkPolicy-0
+
+_meta_term_key(HelmParser.Kube.Secret-0) ==
+HelmParser.Kube.Secret-0
+
+_meta_term_key(KubernetesParser.Kube.Secret-1) ==
+KubernetesParser.Kube.Secret-1
+
+_meta_term_key(KubernetesParser.Kube.Secret-0) ==
+KubernetesParser.Kube.Secret-0
+
+_meta_term_key(HelmParser.Kube.ServiceMonitor-0) ==
+HelmParser.Kube.ServiceMonitor-0
+
+_meta_term_key(KubernetesParser.Kube.Service-0) ==
+KubernetesParser.Kube.Service-0
+
+_meta_term_key(HelmParser.Kube.Service-2) ==
+HelmParser.Kube.Service-2
+
+_meta_term_key(HelmParser.Kube.Service-0) ==
+HelmParser.Kube.Service-0
+
+_meta_term_key(KubernetesParser.Kube.Service-1) ==
+KubernetesParser.Kube.Service-1
+
+_meta_term_key(HelmParser.Kube.Service-1) ==
+HelmParser.Kube.Service-1
+
+_meta_term_key(HelmParser.Kube.Service.ServicePort-2) ==
+HelmParser.Kube.Service.ServicePort-2
+
+_meta_term_key(HelmParser.Kube.Service.ServicePort-1) ==
+HelmParser.Kube.Service.ServicePort-1
+
+_meta_term_key(KubernetesParser.Kube.Service.ServicePort-1) ==
+KubernetesParser.Kube.Service.ServicePort-1
+
+_meta_term_key(HelmParser.Kube.Service.ServicePort-0) ==
+HelmParser.Kube.Service.ServicePort-0
+
+_meta_term_key(KubernetesParser.Kube.Service.ServicePort-0) ==
+KubernetesParser.Kube.Service.ServicePort-0
+
+_meta_term_key(HelmParser.Kube.StatefulSet-1) ==
+HelmParser.Kube.StatefulSet-1
+
+_meta_term_key(HelmParser.Kube.StatefulSet-0) ==
+HelmParser.Kube.StatefulSet-0
+
+_meta_term_key(Source.GitRepo-0) == Source.GitRepo-0
+
+_meta_term_key(KubeCluster.default) == KubeCluster.default
+
+_meta_term_key(Deployment.Environment.default) ==
+Deployment.Environment.default
+
+_meta_term_key(shadow-ingress-controller) ==
+shadow-ingress-controller
+
+_meta_term_key(COMMON.NONE) == COMMON.NONE
+
+_meta_term_key(getdtk/graph-example1-app) ==
+getdtk/graph-example1-app
+
+_meta_term_key(getdtk/graph-example2-app) ==
+getdtk/graph-example2-app
+
+_meta_term_key(docker.io/bitnami/redis) ==
+docker.io/bitnami/redis
+
+_meta_term_key(latest) == latest
+
+_meta_term_key(6.2.4-debian-10-r13) == 6.2.4-debian-10-r13
+
+_meta_term_key(reasoner) == reasoner
+
+_meta_term_key(file_based) == file_based
+
+_meta_term_key(node-app2-dep) == node-app2-dep
+
+_meta_term_key(node-app1-secret) == node-app1-secret
+
+_meta_term_key(node-app1-dep) == node-app1-dep
+
+_meta_term_key(redis) == redis
+
+_meta_term_key(node-app2-secret) == node-app2-secret
+
+_meta_term_key(redis-master) == redis-master
+
+_meta_term_key(nginx-ingress-controller) ==
+nginx-ingress-controller
+
+_meta_term_key(node-app-svc) == node-app-svc
+
+_meta_term_key(node-app2-svc) == node-app2-svc
+
+_meta_term_key(redis-replicas) == redis-replicas
+
+_meta_term_key(example-node-app) == example-node-app
+
+_meta_term_key(ingress3-simple-fanout) ==
+ingress3-simple-fanout
+
+_meta_term_key(redis-headless) == redis-headless
+
+_meta_term_key(node-app1-svc) == node-app1-svc
+
+_meta_term_key(nginx) == nginx
+
+_meta_term_key(ingress2-simple-service-bad-default) ==
+ingress2-simple-service-bad-default
+
+_meta_term_key(ingress1-matches-app1-with-default) ==
+ingress1-matches-app1-with-default
+
+_meta_term_key(test2) == test2
+
+_meta_term_key(master) == master
+
+_meta_term_key(node-app1) == node-app1
+
+_meta_term_key(f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9) ==
+f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+
+_meta_term_key([]) == []
+
+_meta_term_key(442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634) ==
+442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634
+
+_meta_term_key(ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86) ==
+ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86
+
+_meta_term_key(False) == False
+
+_meta_term_key(58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58) ==
+58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58
+
+_meta_term_key(no_match_value) == no_match_value
+
+_meta_term_key(node-app2) == node-app2
+
+_meta_term_key(6379) == 6379
+
+_meta_term_key(/) == /
+
+_meta_term_key(44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6) ==
+44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6
+
+_meta_term_key(Helm) == Helm
+
+_meta_term_key(IfNotPresent) == IfNotPresent
+
+_meta_term_key(node) == node
+
+_meta_term_key(bitnami/redis) == bitnami/redis
+
+_meta_term_key(replica) == replica
+
+_meta_term_key(redis-14.4.0) == redis-14.4.0
+
+_meta_term_key(ExternalName) == ExternalName
+
+_meta_term_key(true) == true
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/redis.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/redis.yaml
+
+_meta_term_key(github.com) == github.com
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/headless-svc.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/headless-svc.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/ingress/ingress-examples.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/ingress/ingress-examples.yaml
+
+_meta_term_key(redis/templates/networkpolicy.yaml) ==
+redis/templates/networkpolicy.yaml
+
+_meta_term_key(docker.io/) == docker.io/
+
+_meta_term_key(:) == :
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/configmap.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/configmap.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/service.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/service.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/servicemonitor.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/servicemonitor.yaml
+
+_meta_term_key(rich_sprint44) == rich_sprint44
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/statefulset.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/statefulset.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/secret.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/secret.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/networkpolicy.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/networkpolicy.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app2.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app2.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/scripts-configmap.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/scripts-configmap.yaml
+
+_meta_term_key(redis/templates/servicemonitor.yaml) ==
+redis/templates/servicemonitor.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/statefulset.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/statefulset.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/health-configmap.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/health-configmap.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1-image.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1-image.yaml
+
+_meta_term_key(https://github.com/dtk/ai-reasoner.git) ==
+https://github.com/dtk/ai-reasoner.git
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/service.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/service.yaml
+
+_meta_term_key(/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/app.yaml) ==
+/root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/app.yaml
+
+_meta_term_key(HelmParser.Helm.Template.Condition-1) ==
+HelmParser.Helm.Template.Condition-1
+
+_meta_term_key(HelmParser.Helm.Template.Condition-0) ==
+HelmParser.Helm.Template.Condition-0
+
+_meta_term_key(checksum/configmap) == checksum/configmap
+
+_meta_term_key(metrics.useServiceMonitor) ==
+metrics.useServiceMonitor
+
+_meta_term_key(image.tag) == image.tag
+
+_meta_term_key(image.debug) == image.debug
+
+_meta_term_key(helm.sh/chart) == helm.sh/chart
+
+_meta_term_key(master.service.port) == master.service.port
+
+_meta_term_key(app.kubernetes.io/managed-by) ==
+app.kubernetes.io/managed-by
+
+_meta_term_key(app) == app
+
+_meta_term_key(nginx.ingress.kubernetes.io/rewrite-target) ==
+nginx.ingress.kubernetes.io/rewrite-target
+
+_meta_term_key(checksum/health) == checksum/health
+
+_meta_term_key(master.containerPort) == master.containerPort
+
+_meta_term_key(image.pullSecrets) == image.pullSecrets
+
+_meta_term_key(app.kubernetes.io/instance) ==
+app.kubernetes.io/instance
+
+_meta_term_key(networkPolicy.enabled) ==
+networkPolicy.enabled
+
+_meta_term_key(checksum/scripts) == checksum/scripts
+
+_meta_term_key(app.kubernetes.io/name) ==
+app.kubernetes.io/name
+
+_meta_term_key(image.pullPolicy) == image.pullPolicy
+
+_meta_term_key(app.kubernetes.io/component) ==
+app.kubernetes.io/component
+
+_meta_term_key(image.repository) == image.repository
+
+_meta_term_key(metrics.isEnabled) == metrics.isEnabled
+
+_meta_term_key(checksum/secret) == checksum/secret
+
+_meta_term_key(master.service.type) == master.service.type
+
+_meta_term_key(ingressclass.kubernetes.io/is-default-class) ==
+ingressclass.kubernetes.io/is-default-class
+
+_meta_term_key(True) == True
+
+_meta_term_key(networking.k8s.io/v1) == networking.k8s.io/v1
+
+_meta_term_key(v1) == v1
+
+_meta_term_key(apps/v1) == apps/v1
+
+_meta_term_key(default) == default
+
+_meta_term_key(docker.io/bitnami/redis:6.2.4-debian-10-r13) ==
+docker.io/bitnami/redis:6.2.4-debian-10-r13
+
+_meta_term_key(tcp-redis) == tcp-redis
+
+_meta_term_key(["-c", "/opt/bitnami/scripts/start-scripts/start-replica.sh"]) ==
+["-c", "/opt/bitnami/scripts/start-scripts/start-replica.sh"]
+
+_meta_term_key(["-c", "/opt/bitnami/scripts/start-scripts/start-master.sh"]) ==
+["-c", "/opt/bitnami/scripts/start-scripts/start-master.sh"]
+
+_meta_term_key(["/bin/bash"]) == ["/bin/bash"]
+
+_meta_term_key(31112) == 31112
+
+_meta_term_key(8080) == 8080
+
+_meta_term_key(8081) == 8081
+
+_meta_term_key(80) == 80
+
+_meta_term_key(http) == http
+
+_meta_term_key(https) == https
+
+_meta_term_key(udp) == udp
+
+_meta_term_key(scp) == scp
+
+_meta_term_key(tcp) == tcp
+
+_meta_term_key(NODE_ENV) == NODE_ENV
+
+_meta_term_key(ALLOW_EMPTY_PASSWORD) == ALLOW_EMPTY_PASSWORD
+
+_meta_term_key(REDIS_PORT) == REDIS_PORT
+
+_meta_term_key(BITNAMI_DEBUG) == BITNAMI_DEBUG
+
+_meta_term_key(REDIS_TLS_ENABLED) == REDIS_TLS_ENABLED
+
+_meta_term_key(REDIS_MASTER_HOST) == REDIS_MASTER_HOST
+
+_meta_term_key(PORT) == PORT
+
+_meta_term_key(DB_PORT) == DB_PORT
+
+_meta_term_key(REDIS_REPLICATION_MODE) ==
+REDIS_REPLICATION_MODE
+
+_meta_term_key(REDIS_PASSWORD) == REDIS_PASSWORD
+
+_meta_term_key(REDIS_MASTER_PASSWORD) ==
+REDIS_MASTER_PASSWORD
+
+_meta_term_key(REDIS_MASTER_PORT_NUMBER) ==
+REDIS_MASTER_PORT_NUMBER
+
+_meta_term_key(DB_HOST) == DB_HOST
+
+_meta_term_key(DB_PASSWORD) == DB_PASSWORD
+
+_meta_term_key({"value": "8080"}) == {"value": "8080"}
+
+_meta_term_key({"value": "slave"}) == {"value": "slave"}
+
+_meta_term_key({"value": "redis-master-0.redis-headless.default.svc.cluster.local"}) ==
+{"value": "redis-master-0.redis-headless.default.svc.cluster.local"}
+
+_meta_term_key({"value": "6379"}) == {"value": "6379"}
+
+_meta_term_key({"value": "my-release-redis-master"}) ==
+{"value": "my-release-redis-master"}
+
+_meta_term_key({"value": "production"}) ==
+{"value": "production"}
+
+_meta_term_key({"valueFrom": {"secretKeyRef": {"name": "node-app2-secret", "key": "db_password"}}}) ==
+{"valueFrom": {"secretKeyRef": {"name": "node-app2-secret", "key": "db_password"}}}
+
+_meta_term_key({"value": "false"}) == {"value": "false"}
+
+_meta_term_key({"value": "no"}) == {"value": "no"}
+
+_meta_term_key({"valueFrom": {"secretKeyRef": {"name": "node-app1-secret", "key": "db_password"}}}) ==
+{"valueFrom": {"secretKeyRef": {"name": "node-app1-secret", "key": "db_password"}}}
+
+_meta_term_key({"value": "master"}) == {"value": "master"}
+
+_meta_term_key({"valueFrom": {"secretKeyRef": {"name": "redis", "key": "redis-password"}}}) ==
+{"valueFrom": {"secretKeyRef": {"name": "redis", "key": "redis-password"}}}
+
+_meta_term_key(*) == *
+
+_meta_term_key(foo.bar.com) == foo.bar.com
+
+_meta_term_key(/app2) == /app2
+
+_meta_term_key(/app1) == /app1
+
+_meta_term_key(/testpath) == /testpath
+
+_meta_term_key(Prefix) == Prefix
+
+_meta_term_key(redis-password) == redis-password
+
+_meta_term_key(db_password) == db_password
+
+_meta_term_key(COMMON.INVALID_TYPE_CAST) ==
+COMMON.INVALID_TYPE_CAST
+
+_meta_term_key(LoadBalancer) == LoadBalancer
+
+_meta_term_key(NodePort) == NodePort
+
+_meta_term_key(ClusterIP) == ClusterIP
+
+_meta_term_key(1) == 1
+
+_meta_term_key(3) == 3
+
+_meta_term_key(Source.FilePath-1) == Source.FilePath-1
+
+_meta_term_key(Source.FilePath-13) == Source.FilePath-13
+
+_meta_term_key(Source.FilePath-4) == Source.FilePath-4
+
+_meta_term_key(Source.FilePath-11) == Source.FilePath-11
+
+_meta_term_key(Source.FilePath-3) == Source.FilePath-3
+
+_meta_term_key(Source.FilePath-6) == Source.FilePath-6
+
+_meta_term_key(Source.FilePath-12) == Source.FilePath-12
+
+_meta_term_key(Source.FilePath-5) == Source.FilePath-5
+
+_meta_term_key(HelmParser.Source.FilePath-2) ==
+HelmParser.Source.FilePath-2
+
+_meta_term_key(HelmParser.Source.FilePath-0) ==
+HelmParser.Source.FilePath-0
+
+_meta_term_key(Source.FilePath-0) == Source.FilePath-0
+
+_meta_term_key(HelmParser.Source.FilePath-1) ==
+HelmParser.Source.FilePath-1
+
+_meta_term_key(Source.FilePath-7) == Source.FilePath-7
+
+_meta_term_key(Source.FilePath-9) == Source.FilePath-9
+
+_meta_term_key(Source.FilePath-8) == Source.FilePath-8
+
+_meta_term_key(Source.FilePath-10) == Source.FilePath-10
+
+_meta_term_key(Source.FilePath-2) == Source.FilePath-2
+
+_meta_term_key(Source.FilePath-14) == Source.FilePath-14
+
+_meta_term_key(slave) == slave
+
+_meta_term_key(cluster.local) == cluster.local
+
+_meta_term_key(config) == config
+
+_meta_term_key(deployed) == deployed
+
+_meta_term_key(desired) == desired
+
+_meta_term_key(other) == other
+
+_meta_term_key(ShouldHold) == ShouldHold
+
+_meta_term_key(DoesHold) == DoesHold
+
+_meta_term_key(Debug2) == Debug2
+
+_meta_term_key(Debug1) == Debug1
+
+_meta_term_key(ingress_controller) == ingress_controller
+
+_meta_term_key(holds) == holds
+
+_meta_term_key(fails) == fails
+
+_meta_term_key(undefined) == undefined
+
+_meta_term_key(StatefulSet) == StatefulSet
+
+_meta_term_key(Deployment) == Deployment
+
+_meta_term_key(Secret) == Secret
+
+_meta_term_key(getdtk/graph-example2-app:latest) ==
+getdtk/graph-example2-app:latest
+
+_meta_term_key(getdtk/graph-example1-app:latest) ==
+getdtk/graph-example1-app:latest
+
+_meta_term_key(KubernetesParser.Container.Image-0) ==
+KubernetesParser.Container.Image-0
+
+_meta_term_key(KubernetesParser.App-1) ==
+KubernetesParser.App-1
+
+_meta_term_key(KubernetesParser.App-0) ==
+KubernetesParser.App-0
+
+_meta_term_key(redis-4.4.0) == redis-4.4.0
+
+_meta_term_key(redis-14.4.0/redis) == redis-14.4.0/redis
+
+_meta_term_key(HelmParser.Helm.Template-1) ==
+HelmParser.Helm.Template-1
+
+_meta_term_key(HelmParser.Helm.Template-0) ==
+HelmParser.Helm.Template-0
+
+_meta_term_key(Reasoner.Helm.Chart.Release.Values-1) ==
+Reasoner.Helm.Chart.Release.Values-1
+
+_meta_term_key(KubernetesParser.Kube.Deployment-0) ==
+KubernetesParser.Kube.Deployment-0
+
+_meta_term_key(KubernetesParser.Kube.Deployment-1) ==
+KubernetesParser.Kube.Deployment-1
+
+_meta_term_key(KubernetesParser.Kube.Pod.Template-0) ==
+KubernetesParser.Kube.Pod.Template-0
+
+_meta_term_key(HelmParser.Kube.Pod.Template-1) ==
+HelmParser.Kube.Pod.Template-1
+
+_meta_term_key(HelmParser.Kube.Pod.Template-0) ==
+HelmParser.Kube.Pod.Template-0
+
+_meta_term_key(KubernetesParser.Kube.Pod.Template-1) ==
+KubernetesParser.Kube.Pod.Template-1
+
+_meta_term_key(KubernetesParser.Kube.Container-0) ==
+KubernetesParser.Kube.Container-0
+
+_meta_term_key(HelmParser.Kube.Container-0) ==
+HelmParser.Kube.Container-0
+
+_meta_term_key(HelmParser.Kube.Container-1) ==
+HelmParser.Kube.Container-1
+
+_meta_term_key(KubernetesParser.Kube.Container-1) ==
+KubernetesParser.Kube.Container-1
+
+_meta_term_key(HelmParser.Kube.Container.PortItem-1) ==
+HelmParser.Kube.Container.PortItem-1
+
+_meta_term_key(KubernetesParser.Kube.Container.PortItem-1) ==
+KubernetesParser.Kube.Container.PortItem-1
+
+_meta_term_key(KubernetesParser.Kube.Container.PortItem-0) ==
+KubernetesParser.Kube.Container.PortItem-0
+
+_meta_term_key(HelmParser.Kube.Container.PortItem-0) ==
+HelmParser.Kube.Container.PortItem-0
+
+_meta_term_key(Reasoner.Kube.Labels-22) ==
+Reasoner.Kube.Labels-22
+
+_meta_term_key(Reasoner.Kube.Labels-20) ==
+Reasoner.Kube.Labels-20
+
+_meta_term_key(Reasoner.Kube.Labels-5) ==
+Reasoner.Kube.Labels-5
+
+_meta_term_key(Reasoner.Kube.Labels-7) ==
+Reasoner.Kube.Labels-7
+
+_meta_term_key(Reasoner.Kube.Labels-13) ==
+Reasoner.Kube.Labels-13
+
+_meta_term_key(Reasoner.Kube.Labels-8) ==
+Reasoner.Kube.Labels-8
+
+_meta_term_key(Reasoner.Kube.Labels-14) ==
+Reasoner.Kube.Labels-14
+
+_meta_term_key(Reasoner.Kube.Labels-6) ==
+Reasoner.Kube.Labels-6
+
+_meta_term_key(Reasoner.Kube.Labels-26) ==
+Reasoner.Kube.Labels-26
+
+_meta_term_key(Reasoner.Kube.Labels-25) ==
+Reasoner.Kube.Labels-25
+
+_meta_term_key(Reasoner.Kube.Labels-19) ==
+Reasoner.Kube.Labels-19
+
+_meta_term_key(Reasoner.Kube.Labels-24) ==
+Reasoner.Kube.Labels-24
+
+_meta_term_key(Reasoner.Kube.Labels-10) ==
+Reasoner.Kube.Labels-10
+
+_meta_term_key(Reasoner.Kube.Labels-12) ==
+Reasoner.Kube.Labels-12
+
+_meta_term_key(Reasoner.Kube.Labels-17) ==
+Reasoner.Kube.Labels-17
+
+_meta_term_key(Reasoner.Kube.Labels-21) ==
+Reasoner.Kube.Labels-21
+
+_meta_term_key(Reasoner.Kube.Labels-4) ==
+Reasoner.Kube.Labels-4
+
+_meta_term_key(Reasoner.Kube.Labels-9) ==
+Reasoner.Kube.Labels-9
+
+_meta_term_key(Reasoner.Kube.Labels-15) ==
+Reasoner.Kube.Labels-15
+
+_meta_term_key(Reasoner.Kube.Labels-11) ==
+Reasoner.Kube.Labels-11
+
+_meta_term_key(Reasoner.Kube.Labels-28) ==
+Reasoner.Kube.Labels-28
+
+_meta_term_key(Reasoner.Kube.Labels-16) ==
+Reasoner.Kube.Labels-16
+
+_meta_term_key(Reasoner.Kube.Labels-18) ==
+Reasoner.Kube.Labels-18
+
+_meta_term_key(Reasoner.Kube.Annotations-1) ==
+Reasoner.Kube.Annotations-1
+
+_meta_term_key(Reasoner.Kube.Annotations-4) ==
+Reasoner.Kube.Annotations-4
+
+_meta_term_key(Reasoner.Kube.Annotations-5) ==
+Reasoner.Kube.Annotations-5
+
+_meta_term_key(Reasoner.Kube.Annotations-3) ==
+Reasoner.Kube.Annotations-3
+
+_meta_term_key(Reasoner.Kube.Annotations-2) ==
+Reasoner.Kube.Annotations-2
+
+_meta_term_key(Reasoner.Kube.Container.EnvVarsConfig-3) ==
+Reasoner.Kube.Container.EnvVarsConfig-3
+
+_meta_term_key(Reasoner.Kube.Container.EnvVarsConfig-4) ==
+Reasoner.Kube.Container.EnvVarsConfig-4
+
+_meta_term_key(Reasoner.Kube.Container.EnvVarsConfig-2) ==
+Reasoner.Kube.Container.EnvVarsConfig-2
+
+_meta_term_key(Reasoner.Kube.Container.EnvVarsConfig-1) ==
+Reasoner.Kube.Container.EnvVarsConfig-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress-0) ==
+KubernetesParser.Kube.Ingress-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress-2) ==
+KubernetesParser.Kube.Ingress-2
+
+_meta_term_key(KubernetesParser.Kube.Ingress-1) ==
+KubernetesParser.Kube.Ingress-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule-2) ==
+KubernetesParser.Kube.Ingress.Rule-2
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule-0) ==
+KubernetesParser.Kube.Ingress.Rule-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule-1) ==
+KubernetesParser.Kube.Ingress.Rule-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath-0) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath-2) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath-2
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath-1) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath-3) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath-3
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0) ==
+KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service-1) ==
+KubernetesParser.Kube.Ingress.Backend.Service-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service-4) ==
+KubernetesParser.Kube.Ingress.Backend.Service-4
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service-2) ==
+KubernetesParser.Kube.Ingress.Backend.Service-2
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service-3) ==
+KubernetesParser.Kube.Ingress.Backend.Service-3
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service-5) ==
+KubernetesParser.Kube.Ingress.Backend.Service-5
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service-0) ==
+KubernetesParser.Kube.Ingress.Backend.Service-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service.Port-1) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-1
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service.Port-4) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-4
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service.Port-2) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-2
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service.Port-5) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-5
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service.Port-3) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-3
+
+_meta_term_key(KubernetesParser.Kube.Ingress.Backend.Service.Port-0) ==
+KubernetesParser.Kube.Ingress.Backend.Service.Port-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress.DefaultBackend-0) ==
+KubernetesParser.Kube.Ingress.DefaultBackend-0
+
+_meta_term_key(KubernetesParser.Kube.Ingress.DefaultBackend-1) ==
+KubernetesParser.Kube.Ingress.DefaultBackend-1
+
+_meta_term_key(HelmParser.Kube.NetworkPolicy-0) ==
+HelmParser.Kube.NetworkPolicy-0
+
+_meta_term_key(HelmParser.Kube.Secret-0) ==
+HelmParser.Kube.Secret-0
+
+_meta_term_key(KubernetesParser.Kube.Secret-1) ==
+KubernetesParser.Kube.Secret-1
+
+_meta_term_key(KubernetesParser.Kube.Secret-0) ==
+KubernetesParser.Kube.Secret-0
+
+_meta_term_key(HelmParser.Kube.ServiceMonitor-0) ==
+HelmParser.Kube.ServiceMonitor-0
+
+_meta_term_key(KubernetesParser.Kube.Service-0) ==
+KubernetesParser.Kube.Service-0
+
+_meta_term_key(HelmParser.Kube.Service-2) ==
+HelmParser.Kube.Service-2
+
+_meta_term_key(HelmParser.Kube.Service-0) ==
+HelmParser.Kube.Service-0
+
+_meta_term_key(KubernetesParser.Kube.Service-1) ==
+KubernetesParser.Kube.Service-1
+
+_meta_term_key(HelmParser.Kube.Service-1) ==
+HelmParser.Kube.Service-1
+
+_meta_term_key(HelmParser.Kube.Service.ServicePort-2) ==
+HelmParser.Kube.Service.ServicePort-2
+
+_meta_term_key(HelmParser.Kube.Service.ServicePort-1) ==
+HelmParser.Kube.Service.ServicePort-1
+
+_meta_term_key(KubernetesParser.Kube.Service.ServicePort-1) ==
+KubernetesParser.Kube.Service.ServicePort-1
+
+_meta_term_key(HelmParser.Kube.Service.ServicePort-0) ==
+HelmParser.Kube.Service.ServicePort-0
+
+_meta_term_key(KubernetesParser.Kube.Service.ServicePort-0) ==
+KubernetesParser.Kube.Service.ServicePort-0
+
+_meta_term_key(HelmParser.Kube.StatefulSet-1) ==
+HelmParser.Kube.StatefulSet-1
+
+_meta_term_key(HelmParser.Kube.StatefulSet-0) ==
+HelmParser.Kube.StatefulSet-0
+
+_meta_term_key(Source.GitRepo-0) == Source.GitRepo-0
+
+_meta_term_key(KubeCluster.default) == KubeCluster.default
+
+_meta_term_key(Deployment.Environment.default) ==
+Deployment.Environment.default
+
+_meta_term_key(shadow-ingress-controller) ==
+shadow-ingress-controller
+
+_meta_term_component(Kube.Service.ClusterIp) ==
+Kube.Service.ClusterIp
+
+_meta_term_component(Meta.Term) == Meta.Term
+
+_meta_term_component(Kube.Container.EnvVarItem) ==
+Kube.Container.EnvVarItem
+
+_meta_term_component(Kube.Volume.Projected.Source) ==
+Kube.Volume.Projected.Source
+
+_meta_term_component(Source.FilePath) == Source.FilePath
+
+_meta_term_component(Kube.Container.EnvValueFromConfigMapKeyRef) ==
+Kube.Container.EnvValueFromConfigMapKeyRef
+
+_meta_term_component(Network.Topology.Node) ==
+Network.Topology.Node
+
+_meta_term_component(Kube.Secret) == Kube.Secret
+
+_meta_term_component(App.Attribute.Mapping) ==
+App.Attribute.Mapping
+
+_meta_term_component(Kube.ConfigMap.BinaryData) ==
+Kube.ConfigMap.BinaryData
+
+_meta_term_component(Source.Type) == Source.Type
+
+_meta_term_component(Helm.Chart.ValuesFile) ==
+Helm.Chart.ValuesFile
+
+_meta_term_component(Kube.Container.ReadinessProbe) ==
+Kube.Container.ReadinessProbe
+
+_meta_term_component(Kube.Container.EnvValueFromResourceFieldRef) ==
+Kube.Container.EnvValueFromResourceFieldRef
+
+_meta_term_component(Service.Type) == Service.Type
+
+_meta_term_component(Kube.Container.SecurityContext) ==
+Kube.Container.SecurityContext
+
+_meta_term_component(Deployment.Environment) ==
+Deployment.Environment
+
+_meta_term_component(Kube.ActiveDeadlineSeconds) ==
+Kube.ActiveDeadlineSeconds
+
+_meta_term_component(App) == App
+
+_meta_term_component(Kube) == Kube
+
+_meta_term_component(Kube.Volume.DownwardApi.Item.FieldRef) ==
+Kube.Volume.DownwardApi.Item.FieldRef
+
+_meta_term_component(App.AttributeName) == App.AttributeName
+
+_meta_term_component(Kube.Ingress.Class) ==
+Kube.Ingress.Class
+
+_meta_term_component(Kube.Volume.DownwardApi.Item.ResourceFieldRef) ==
+Kube.Volume.DownwardApi.Item.ResourceFieldRef
+
+_meta_term_component(Kube.Volume.GitRepo) ==
+Kube.Volume.GitRepo
+
+_meta_term_component(App.KubeIngressController.Type) ==
+App.KubeIngressController.Type
+
+_meta_term_component(Kube.Secret.Immutable) ==
+Kube.Secret.Immutable
+
+_meta_term_component(Kube.Container.LivenessProbe.SuccessThreshold) ==
+Kube.Container.LivenessProbe.SuccessThreshold
+
+_meta_term_component(Kube.Volume.Projected.Source.ServiceAccountToken) ==
+Kube.Volume.Projected.Source.ServiceAccountToken
+
+_meta_term_component(Helm.Chart.Release.Values) ==
+Helm.Chart.Release.Values
+
+_meta_term_component(Helm.Chart) == Helm.Chart
+
+_meta_term_component(Kube.ApiVersion) == Kube.ApiVersion
+
+_meta_term_component(Kube.Affinity.LabelSelector.MatchLabels.Value) ==
+Kube.Affinity.LabelSelector.MatchLabels.Value
+
+_meta_term_component(Kube.Container.ReadinessProbe.InitialDelaySeconds) ==
+Kube.Container.ReadinessProbe.InitialDelaySeconds
+
+_meta_term_component(Kube.Container.ReadinessProbe.TimeoutSeconds) ==
+Kube.Container.ReadinessProbe.TimeoutSeconds
+
+_meta_term_component(Kube.Volume.Projected.Source.ConfigMap) ==
+Kube.Volume.Projected.Source.ConfigMap
+
+_meta_term_component(Kube.Selector.Name) ==
+Kube.Selector.Name
+
+_meta_term_component(Kube.Ingress.DefaultBackend) ==
+Kube.Ingress.DefaultBackend
+
+_meta_term_component(Service.Endpoint) == Service.Endpoint
+
+_meta_term_component(Kube.Container.EnvFromSourceItem) ==
+Kube.Container.EnvFromSourceItem
+
+_meta_term_component(Kube.Volume.AwsElasticBlockStore) ==
+Kube.Volume.AwsElasticBlockStore
+
+_meta_term_component(Kube.Volume.DownwardApi) ==
+Kube.Volume.DownwardApi
+
+_meta_term_component(Kube.Secret.Key) == Kube.Secret.Key
+
+_meta_term_component(Kube.BackOffLimit) == Kube.BackOffLimit
+
+_meta_term_component(Kube.Container.ExecAction) ==
+Kube.Container.ExecAction
+
+_meta_term_component(Kube.Affinity.NodeAffinityPreferedSchedulingItemPreference) ==
+Kube.Affinity.NodeAffinityPreferedSchedulingItemPreference
+
+_meta_term_component(BuiltinSort.Bool) == BuiltinSort.Bool
+
+_meta_term_component(Kube.Container.EnvFromSecretRefItem) ==
+Kube.Container.EnvFromSecretRefItem
+
+_meta_term_component(Kube.ObjectRef) == Kube.ObjectRef
+
+_meta_term_component(Kube.Container.StartupProbe.FailureThreshold) ==
+Kube.Container.StartupProbe.FailureThreshold
+
+_meta_term_component(Kube.EphemeralContainer) ==
+Kube.EphemeralContainer
+
+_meta_term_component(Network.Port.Number) ==
+Network.Port.Number
+
+_meta_term_component(Service.Endpoint.Name) ==
+Service.Endpoint.Name
+
+_meta_term_component(Kube.Affinity.LabelSelectorMatchExpressionItem) ==
+Kube.Affinity.LabelSelectorMatchExpressionItem
+
+_meta_term_component(Kube.Node.Selector) ==
+Kube.Node.Selector
+
+_meta_term_component(Kube.PersistentVolumeClaim.StorageClassName) ==
+Kube.PersistentVolumeClaim.StorageClassName
+
+_meta_term_component(Kube.Configmap.DataName) ==
+Kube.Configmap.DataName
+
+_meta_term_component(App.Redis.ReplicationMode) ==
+App.Redis.ReplicationMode
+
+_meta_term_component(Kube.Node.AddressItem) ==
+Kube.Node.AddressItem
+
+_meta_term_component(Kube.ConfigMap) == Kube.ConfigMap
+
+_meta_term_component(BuiltinSort.Z3String) ==
+BuiltinSort.Z3String
+
+_meta_term_component(Kube.Container.HttpGetAction) ==
+Kube.Container.HttpGetAction
+
+_meta_term_component(Meta.Term.Attribute) ==
+Meta.Term.Attribute
+
+_meta_term_component(App.KubeIngressController.Params) ==
+App.KubeIngressController.Params
+
+_meta_term_component(Kube.Labels) == Kube.Labels
+
+_meta_term_component(Kube.Service.ServicePort.Name) ==
+Kube.Service.ServicePort.Name
+
+_meta_term_component(Helm.Chart.Release) ==
+Helm.Chart.Release
+
+_meta_term_component(Kube.Container.LivenessProbe) ==
+Kube.Container.LivenessProbe
+
+_meta_term_component(Kube.Container.LifecycleHandler) ==
+Kube.Container.LifecycleHandler
+
+_meta_term_component(Kube.Volume.Ephemeral) ==
+Kube.Volume.Ephemeral
+
+_meta_term_component(Container.Image.Name) ==
+Container.Image.Name
+
+_meta_term_component(Kube.Ingress.Rule.HttpPath) ==
+Kube.Ingress.Rule.HttpPath
+
+_meta_term_component(Kube.Volume.Secret) ==
+Kube.Volume.Secret
+
+_meta_term_component(Kube.Container.EnvFromConfigMapRefItem) ==
+Kube.Container.EnvFromConfigMapRefItem
+
+_meta_term_component(Kube.Volume) == Kube.Volume
+
+_meta_term_component(Kube.Container.ReadinessProbe.PeriodSeconds) ==
+Kube.Container.ReadinessProbe.PeriodSeconds
+
+_meta_term_component(Service.Conn) == Service.Conn
+
+_meta_term_component(Kube.Ingress.Rule) == Kube.Ingress.Rule
+
+_meta_term_component(Kube.Cluster.EKSInfo) ==
+Kube.Cluster.EKSInfo
+
+_meta_term_component(Kube.Container.Lifecycle) ==
+Kube.Container.Lifecycle
+
+_meta_term_component(Network.Topology) == Network.Topology
+
+_meta_term_component(Kube.Ingress.Tls.Host) ==
+Kube.Ingress.Tls.Host
+
+_meta_term_component(Kube.PersistentVolumeClaim.DataSource) ==
+Kube.PersistentVolumeClaim.DataSource
+
+_meta_term_component(Kube.Container.ReadinessProbe.FailureThreshold) ==
+Kube.Container.ReadinessProbe.FailureThreshold
+
+_meta_term_component(Kube.Node) == Kube.Node
+
+_meta_term_component(Kube.Affinity.NodeAffinityRequiredScheduling) ==
+Kube.Affinity.NodeAffinityRequiredScheduling
+
+_meta_term_component(Kube.Container.EnvVarsConfig) ==
+Kube.Container.EnvVarsConfig
+
+_meta_term_component(Kube.Volume.ConfigMap) ==
+Kube.Volume.ConfigMap
+
+_meta_term_component(Kube.Affinity.PodAffinitySchedulingItem) ==
+Kube.Affinity.PodAffinitySchedulingItem
+
+_meta_term_component(Kube.Container.StartupProbe) ==
+Kube.Container.StartupProbe
+
+_meta_term_component(Meta.Term.Component) ==
+Meta.Term.Component
+
+_meta_term_component(Constraint.Value) == Constraint.Value
+
+_meta_term_component(Kube.Node.TaintItem) ==
+Kube.Node.TaintItem
+
+_meta_term_component(Kube.Affinity.PodAntiAffinity) ==
+Kube.Affinity.PodAntiAffinity
+
+_meta_term_component(Helm.Chart.Instance.Values) ==
+Helm.Chart.Instance.Values
+
+_meta_term_component(Kube.PersistentVolumeClaim.AccessMode.Item) ==
+Kube.PersistentVolumeClaim.AccessMode.Item
+
+_meta_term_component(Network.Http) == Network.Http
+
+_meta_term_component(Kube.Service.ServicePort) ==
+Kube.Service.ServicePort
+
+_meta_term_component(Network.Address) == Network.Address
+
+_meta_term_component(Any.String) == Any.String
+
+_meta_term_component(App.EnvVar.Name) == App.EnvVar.Name
+
+_meta_term_component(Kube.Ingress.Rule.HttpPath.Backend) ==
+Kube.Ingress.Rule.HttpPath.Backend
+
+_meta_term_component(Network.Port) == Network.Port
+
+_meta_term_component(Container.Tag) == Container.Tag
+
+_meta_term_component(Kube.Container.EnvValueFromSecretKeyRef) ==
+Kube.Container.EnvValueFromSecretKeyRef
+
+_meta_term_component(Kube.PersistentVolumeClaim.VolumeMode) ==
+Kube.PersistentVolumeClaim.VolumeMode
+
+_meta_term_component(App.Params) == App.Params
+
+_meta_term_component(Kube.Volume.Secret.Item) ==
+Kube.Volume.Secret.Item
+
+_meta_term_component(Kube.Cluster.Type) == Kube.Cluster.Type
+
+_meta_term_component(Container.NameAndTag) ==
+Container.NameAndTag
+
+_meta_term_component(Deployment.State) == Deployment.State
+
+_meta_term_component(Container.Tag.Name) ==
+Container.Tag.Name
+
+_meta_term_component(Kube.Daemonset.Update.Strategy.Rolling.Update) ==
+Kube.Daemonset.Update.Strategy.Rolling.Update
+
+_meta_term_component(Network.Http.HostPattern) ==
+Network.Http.HostPattern
+
+_meta_term_component(Kube.Ingress.Backend.Service) ==
+Kube.Ingress.Backend.Service
+
+_meta_term_component(Kube.TtlSecondsAfterFinished) ==
+Kube.TtlSecondsAfterFinished
+
+_meta_term_component(Kube.Volume.Nfs) == Kube.Volume.Nfs
+
+_meta_term_component(Network.Protocol) == Network.Protocol
+
+_meta_term_component(Kube.Service.Type) == Kube.Service.Type
+
+_meta_term_component(Kube.Selector.Value) ==
+Kube.Selector.Value
+
+_meta_term_component(Kube.Affinity.NodeAffinityPreferedSchedulingItem) ==
+Kube.Affinity.NodeAffinityPreferedSchedulingItem
+
+_meta_term_component(Config.Name) == Config.Name
+
+_meta_term_component(Kube.Affinity.LabelSelector) ==
+Kube.Affinity.LabelSelector
+
+_meta_term_component(Kube.Deployment.Strategy) ==
+Kube.Deployment.Strategy
+
+_meta_term_component(Helm.Template) == Helm.Template
+
+_meta_term_component(Kube.Selector) == Kube.Selector
+
+_meta_term_component(Kube.Volume.Projected.Source.Secret) ==
+Kube.Volume.Projected.Source.Secret
+
+_meta_term_component(Kube.ConfigMap.Immutable) ==
+Kube.ConfigMap.Immutable
+
+_meta_term_component(App.Container.Base) ==
+App.Container.Base
+
+_meta_term_component(Kube.PersistentVolumeClaim.Resources) ==
+Kube.PersistentVolumeClaim.Resources
+
+_meta_term_component(Network.Http.PathPattern) ==
+Network.Http.PathPattern
+
+_meta_term_component(Service.Conn.Name) == Service.Conn.Name
+
+_meta_term_component(Kube.Secret.DataValue) ==
+Kube.Secret.DataValue
+
+_meta_term_component(Kube.Volume.DownwardApi.Item) ==
+Kube.Volume.DownwardApi.Item
+
+_meta_term_component(Kube.Container.ResourcesRequests) ==
+Kube.Container.ResourcesRequests
+
+_meta_term_component(Source.GitRepo) == Source.GitRepo
+
+_meta_term_component(Any.Json) == Any.Json
+
+_meta_term_component(Kube.Affinity.LabelSelector.MatchLabels.Name) ==
+Kube.Affinity.LabelSelector.MatchLabels.Name
+
+_meta_term_component(Kube.PersistentVolumeClaim.ResourcesRequests) ==
+Kube.PersistentVolumeClaim.ResourcesRequests
+
+_meta_term_component(Config) == Config
+
+_meta_term_component(Kube.Ingress.Backend.Resource.Kind) ==
+Kube.Ingress.Backend.Resource.Kind
+
+_meta_term_component(Helm.Template.Condition) ==
+Helm.Template.Condition
+
+_meta_term_component(Kube.Ingress.Tls.SecretName) ==
+Kube.Ingress.Tls.SecretName
+
+_meta_term_component(Builtin) == Builtin
+
+_meta_term_component(Kube.Volume.Name) == Kube.Volume.Name
+
+_meta_term_component(Kube.Name) == Kube.Name
+
+_meta_term_component(Any.Integer) == Any.Integer
+
+_meta_term_component(Meta.Stage) == Meta.Stage
+
+_meta_term_component(Kube.Volume.PersistentVolumeClaim) ==
+Kube.Volume.PersistentVolumeClaim
+
+_meta_term_component(App.Service.Conn) == App.Service.Conn
+
+_meta_term_component(Kube.StatefulSet.Update.Strategy.Rolling.Update) ==
+Kube.StatefulSet.Update.Strategy.Rolling.Update
+
+_meta_term_component(App.KubeIngressController) ==
+App.KubeIngressController
+
+_meta_term_component(Kube.Container.EnvVarName) ==
+Kube.Container.EnvVarName
+
+_meta_term_component(Kube.Daemonset) == Kube.Daemonset
+
+_meta_term_component(Kube.Secret.ParsedData) ==
+Kube.Secret.ParsedData
+
+_meta_term_component(Kube.NamespaceAndName) ==
+Kube.NamespaceAndName
+
+_meta_term_component(Source) == Source
+
+_meta_term_component(Kube.Affinity.PodAffinitySchedulingItemPodAffinityTerm) ==
+Kube.Affinity.PodAffinitySchedulingItemPodAffinityTerm
+
+_meta_term_component(Kube.Cluster) == Kube.Cluster
+
+_meta_term_component(App.Service.Endpoint) ==
+App.Service.Endpoint
+
+_meta_term_component(Kube.Ingress.Backend) ==
+Kube.Ingress.Backend
+
+_meta_term_component(Network.Topology.Node.HttpRoute) ==
+Network.Topology.Node.HttpRoute
+
+_meta_term_component(Kube.Container.EnvVars) ==
+Kube.Container.EnvVars
+
+_meta_term_component(Kube.Container.StartupProbe.PeriodSeconds) ==
+Kube.Container.StartupProbe.PeriodSeconds
+
+_meta_term_component(Kube.Affinity.NodeAffinity) ==
+Kube.Affinity.NodeAffinity
+
+_meta_term_component(Service.EndpointNestedDatatype) ==
+Service.EndpointNestedDatatype
+
+_meta_term_component(Kube.Container.StartupProbe.SuccessThreshold) ==
+Kube.Container.StartupProbe.SuccessThreshold
+
+_meta_term_component(Kube.Container.PortItem) ==
+Kube.Container.PortItem
+
+_meta_term_component(Kube.Deployment.Strategy.Rolling.Update) ==
+Kube.Deployment.Strategy.Rolling.Update
+
+_meta_term_component(Kube.Container.ReadinessProbe.SuccessThreshold) ==
+Kube.Container.ReadinessProbe.SuccessThreshold
+
+_meta_term_component(Kube.Secret.Keys) == Kube.Secret.Keys
+
+_meta_term_component(Kube.Service.ServicePort.Protocol) ==
+Kube.Service.ServicePort.Protocol
+
+_meta_term_component(Kube.Container.LivenessProbe.PeriodSeconds) ==
+Kube.Container.LivenessProbe.PeriodSeconds
+
+_meta_term_component(Secret) == Secret
+
+_meta_term_component(Service) == Service
+
+_meta_term_component(Config.ManifestSet.Instantiation) ==
+Config.ManifestSet.Instantiation
+
+_meta_term_component(Kube.PersistentVolumeClaim.VolumeName) ==
+Kube.PersistentVolumeClaim.VolumeName
+
+_meta_term_component(Kube.Container.EnvValueFromFieldRef) ==
+Kube.Container.EnvValueFromFieldRef
+
+_meta_term_component(Kube.Volume.Projected) ==
+Kube.Volume.Projected
+
+_meta_term_component(Base) == Base
+
+_meta_term_component(Container) == Container
+
+_meta_term_component(Kube.Container.ResourcesLimits) ==
+Kube.Container.ResourcesLimits
+
+_meta_term_component(Helm.Chart.ValuesFile.RelativePath) ==
+Helm.Chart.ValuesFile.RelativePath
+
+_meta_term_component(Constraint) == Constraint
+
+_meta_term_component(Kube.Container.HttpGetActionHeaderItem) ==
+Kube.Container.HttpGetActionHeaderItem
+
+_meta_term_component(Kube.Affinity.PodAffinity) ==
+Kube.Affinity.PodAffinity
+
+_meta_term_component(Meta.Modality) == Meta.Modality
+
+_meta_term_component(Kube.Container.VolumeMountItem) ==
+Kube.Container.VolumeMountItem
+
+_meta_term_component(App.Nginx) == App.Nginx
+
+_meta_term_component(Kube.Namespace) == Kube.Namespace
+
+_meta_term_component(Kube.NamespaceSecrets) ==
+Kube.NamespaceSecrets
+
+_meta_term_component(Kube.Deployment) == Kube.Deployment
+
+_meta_term_component(Kube.Ref) == Kube.Ref
+
+_meta_term_component(Kube.PersistentVolumeClaim.ResourcesLimits) ==
+Kube.PersistentVolumeClaim.ResourcesLimits
+
+_meta_term_component(Kube.Min.Ready.Seconds) ==
+Kube.Min.Ready.Seconds
+
+_meta_term_component(Kube.Completions) == Kube.Completions
+
+_meta_term_component(Container.Image) == Container.Image
+
+_meta_term_component(Kube.Container.ImageRef) ==
+Kube.Container.ImageRef
+
+_meta_term_component(Kube.Daemonset.Update.Strategy) ==
+Kube.Daemonset.Update.Strategy
+
+_meta_term_component(Kube.Node.Capacity) ==
+Kube.Node.Capacity
+
+_meta_term_component(Kube.Volume.Projected.Source.DownwardApi) ==
+Kube.Volume.Projected.Source.DownwardApi
+
+_meta_term_component(Kube.Ingress.Tls) == Kube.Ingress.Tls
+
+_meta_term_component(App.Nginx.Type) == App.Nginx.Type
+
+_meta_term_component(Kube.Ingress.Backend.Service.Port) ==
+Kube.Ingress.Backend.Service.Port
+
+_meta_term_component(Kube.ManualSelector) ==
+Kube.ManualSelector
+
+_meta_term_component(Container.NameAndTag.Name) ==
+Container.NameAndTag.Name
+
+_meta_term_component(Kube.Pod.SecurityContext) ==
+Kube.Pod.SecurityContext
+
+_meta_term_component(Network.Context) == Network.Context
+
+_meta_term_component(Meta.Term.Key) == Meta.Term.Key
+
+_meta_term_component(App.Redis.Cluster) == App.Redis.Cluster
+
+_meta_term_component(Kube.Node.Info) == Kube.Node.Info
+
+_meta_term_component(Kube.Node.Allocatable) ==
+Kube.Node.Allocatable
+
+_meta_term_component(Kube.ConfigMap.Data) ==
+Kube.ConfigMap.Data
+
+_meta_term_component(App.Redis.Params) == App.Redis.Params
+
+_meta_term_component(Kube.StableNetworkId) ==
+Kube.StableNetworkId
+
+_meta_term_component(Any.Secret) == Any.Secret
+
+_meta_term_component(Kube.Pod) == Kube.Pod
+
+_meta_term_component(Kube.Ingress.Backend.Resource) ==
+Kube.Ingress.Backend.Resource
+
+_meta_term_component(Kube.Container.TcpSocketAction) ==
+Kube.Container.TcpSocketAction
+
+_meta_term_component(App.Type) == App.Type
+
+_meta_term_component(Kube.Replicas) == Kube.Replicas
+
+_meta_term_component(Kube.Ingress) == Kube.Ingress
+
+_meta_term_component(Kube.Secret.StringData.Parsed) ==
+Kube.Secret.StringData.Parsed
+
+_meta_term_component(Kube.StatefulSet) == Kube.StatefulSet
+
+_meta_term_component(Kube.ServiceMonitor) ==
+Kube.ServiceMonitor
+
+_meta_term_component(Kube.Kind) == Kube.Kind
+
+_meta_term_component(Kube.Progress.Deadline.Seconds) ==
+Kube.Progress.Deadline.Seconds
+
+_meta_term_component(Kube.Volume.ConfigMap.Item) ==
+Kube.Volume.ConfigMap.Item
+
+_meta_term_component(Kube.Volume.EmptyDir) ==
+Kube.Volume.EmptyDir
+
+_meta_term_component(Kube.Container.VolumeDeviceItem) ==
+Kube.Container.VolumeDeviceItem
+
+_meta_term_component(Kube.Secret.Type) == Kube.Secret.Type
+
+_meta_term_component(Kube.Affinity) == Kube.Affinity
+
+_meta_term_component(Kube.Container.EnvVarConfig) ==
+Kube.Container.EnvVarConfig
+
+_meta_term_component(Common.Boolean) == Common.Boolean
+
+_meta_term_component(Kube.Service.Account.Name) ==
+Kube.Service.Account.Name
+
+_meta_term_component(Kube.Service) == Kube.Service
+
+_meta_term_component(Kube.Container.EnvValueFrom) ==
+Kube.Container.EnvValueFrom
+
+_meta_term_component(Kube.Container.StartupProbe.TimeoutSeconds) ==
+Kube.Container.StartupProbe.TimeoutSeconds
+
+_meta_term_component(Kube.Container.EnvVar) ==
+Kube.Container.EnvVar
+
+_meta_term_component(Kube.Container.LivenessProbe.FailureThreshold) ==
+Kube.Container.LivenessProbe.FailureThreshold
+
+_meta_term_component(Container.TaggedImage) ==
+Container.TaggedImage
+
+_meta_term_component(Kube.Configmap.DataValue) ==
+Kube.Configmap.DataValue
+
+_meta_term_component(Kube.Namespace.Ref) ==
+Kube.Namespace.Ref
+
+_meta_term_component(Kube.Revision.History.Limit) ==
+Kube.Revision.History.Limit
+
+_meta_term_component(KubeCluster.DomainName) ==
+KubeCluster.DomainName
+
+_meta_term_component(Kube.InitContainer) ==
+Kube.InitContainer
+
+_meta_term_component(App.Redis) == App.Redis
+
+_meta_term_component(Meta) == Meta
+
+_meta_term_component(Kube.Volume.HostPath) ==
+Kube.Volume.HostPath
+
+_meta_term_component(Kube.Ingress.ControllerClass) ==
+Kube.Ingress.ControllerClass
+
+_meta_term_component(BuiltinSort.Z3Integer) ==
+BuiltinSort.Z3Integer
+
+_meta_term_component(Kube.Pod.Template) == Kube.Pod.Template
+
+_meta_term_component(Kube.Container) == Kube.Container
+
+_meta_term_component(Secret.Store) == Secret.Store
+
+_meta_term_component(Kube.Parallelism) == Kube.Parallelism
+
+_meta_term_component(Config.Value) == Config.Value
+
+_meta_term_component(Kube.StatefulSet.Update.Strategy) ==
+Kube.StatefulSet.Update.Strategy
+
+_meta_term_component(Kube.Cluster.Reference) ==
+Kube.Cluster.Reference
+
+_meta_term_component(Kube.Container.LivenessProbe.InitialDelaySeconds) ==
+Kube.Container.LivenessProbe.InitialDelaySeconds
+
+_meta_term_component(Kube.Deployment.Paused) ==
+Kube.Deployment.Paused
+
+_meta_term_component(Kube.StableNetworkRef) ==
+Kube.StableNetworkRef
+
+_meta_term_component(Kube.Container.LivenessProbe.TimeoutSeconds) ==
+Kube.Container.LivenessProbe.TimeoutSeconds
+
+_meta_term_component(Network) == Network
+
+_meta_term_component(Kube.WorkloadDomainSort) ==
+Kube.WorkloadDomainSort
+
+_meta_term_component(Meta.Term.ComponentType) ==
+Meta.Term.ComponentType
+
+_meta_term_component(Deployment) == Deployment
+
+_meta_term_component(App.Nginx.Params) == App.Nginx.Params
+
+_meta_term_component(Kube.Container.StartupProbe.InitialDelaySeconds) ==
+Kube.Container.StartupProbe.InitialDelaySeconds
+
+_meta_term_component(Kube.StatefulSet.Pod.Management.Policy) ==
+Kube.StatefulSet.Pod.Management.Policy
+
+_meta_term_component(Kube.Image.Pull.Secret) ==
+Kube.Image.Pull.Secret
+
+_meta_term_component(Kube.Affinity.NodeAffinityRequiredSchedulingNodeSelectorTermsItem) ==
+Kube.Affinity.NodeAffinityRequiredSchedulingNodeSelectorTermsItem
+
+_meta_term_component(Kube.NetworkPolicy) ==
+Kube.NetworkPolicy
+
+_meta_term_component(Kube.Ingress.Backend.Resource.ApiGroup) ==
+Kube.Ingress.Backend.Resource.ApiGroup
+
+_meta_term_component(Helm) == Helm
+
+_meta_term_component(Any.Concat) == Any.Concat
+
+_meta_term_component(Kube.Restart.Policy) ==
+Kube.Restart.Policy
+
+_meta_term_component(Kube.Toleration) == Kube.Toleration
+
+_meta_term_component(Kube.Node.Name) == Kube.Node.Name
+
+_meta_term_component(TopLevelKubeObj) == TopLevelKubeObj
+
+_meta_term_component(Kube.Affinity.NodeAffinityMatchItem) ==
+Kube.Affinity.NodeAffinityMatchItem
+
+_meta_term_component(Kube.PersistentVolumeClaim) ==
+Kube.PersistentVolumeClaim
+
+_meta_term_component(Kube.Job) == Kube.Job
+
+_meta_term_component(Kube.Ingress.Rule.HttpPath.PathType) ==
+Kube.Ingress.Rule.HttpPath.PathType
+
+_meta_term_component(Kube.Container.Resources) ==
+Kube.Container.Resources
+
+_meta_term_component(Network.URL) == Network.URL
+
+_meta_term_component(Kube.Annotations) == Kube.Annotations
+
+_meta_term_component(KubeCluster) == KubeCluster
+
+_meta_term_component(Kube.Container.ImagePullPolicy) ==
+Kube.Container.ImagePullPolicy
+
+_meta_term_component(App.Base) == App.Base
+
+_meta_term_key(secret_value) == secret_value
+
+_meta_term_key(url) == url
+
+Distinct(KubernetesParser.Container.Image-0,
+         KubernetesParser.App-1,
+         KubernetesParser.App-0,
+         redis-4.4.0,
+         redis-14.4.0/redis,
+         HelmParser.Helm.Template-1,
+         HelmParser.Helm.Template-0,
+         COMMON.NONE,
+         Reasoner.Helm.Chart.Release.Values-1,
+         KubernetesParser.Kube.Deployment-0,
+         KubernetesParser.Kube.Deployment-1,
+         KubernetesParser.Kube.Pod.Template-0,
+         HelmParser.Kube.Pod.Template-1,
+         HelmParser.Kube.Pod.Template-0,
+         KubernetesParser.Kube.Pod.Template-1,
+         KubernetesParser.Kube.Container-0,
+         HelmParser.Kube.Container-0,
+         HelmParser.Kube.Container-1,
+         KubernetesParser.Kube.Container-1,
+         HelmParser.Kube.Container.PortItem-1,
+         KubernetesParser.Kube.Container.PortItem-1,
+         KubernetesParser.Kube.Container.PortItem-0,
+         HelmParser.Kube.Container.PortItem-0,
+         Reasoner.Kube.Labels-22,
+         Reasoner.Kube.Labels-20,
+         Reasoner.Kube.Labels-5,
+         Reasoner.Kube.Labels-7,
+         Reasoner.Kube.Labels-13,
+         Reasoner.Kube.Labels-8,
+         Reasoner.Kube.Labels-14,
+         Reasoner.Kube.Labels-6,
+         Reasoner.Kube.Labels-26,
+         Reasoner.Kube.Labels-25,
+         Reasoner.Kube.Labels-19,
+         Reasoner.Kube.Labels-24,
+         Reasoner.Kube.Labels-10,
+         Reasoner.Kube.Labels-12,
+         Reasoner.Kube.Labels-17,
+         Reasoner.Kube.Labels-21,
+         Reasoner.Kube.Labels-4,
+         Reasoner.Kube.Labels-9,
+         Reasoner.Kube.Labels-15,
+         Reasoner.Kube.Labels-11,
+         Reasoner.Kube.Labels-28,
+         Reasoner.Kube.Labels-16,
+         Reasoner.Kube.Labels-18,
+         Reasoner.Kube.Annotations-1,
+         Reasoner.Kube.Annotations-4,
+         Reasoner.Kube.Annotations-5,
+         Reasoner.Kube.Annotations-3,
+         Reasoner.Kube.Annotations-2,
+         Reasoner.Kube.Container.EnvVarsConfig-3,
+         Reasoner.Kube.Container.EnvVarsConfig-4,
+         Reasoner.Kube.Container.EnvVarsConfig-2,
+         Reasoner.Kube.Container.EnvVarsConfig-1,
+         KubernetesParser.Kube.Ingress-0,
+         KubernetesParser.Kube.Ingress-2,
+         KubernetesParser.Kube.Ingress-1,
+         KubernetesParser.Kube.Ingress.Rule-2,
+         KubernetesParser.Kube.Ingress.Rule-0,
+         KubernetesParser.Kube.Ingress.Rule-1,
+         KubernetesParser.Kube.Ingress.Rule.HttpPath-0,
+         KubernetesParser.Kube.Ingress.Rule.HttpPath-2,
+         KubernetesParser.Kube.Ingress.Rule.HttpPath-1,
+         KubernetesParser.Kube.Ingress.Rule.HttpPath-3,
+         KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3,
+         KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1,
+         KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2,
+         KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0,
+         KubernetesParser.Kube.Ingress.Backend.Service-1,
+         KubernetesParser.Kube.Ingress.Backend.Service-4,
+         KubernetesParser.Kube.Ingress.Backend.Service-2,
+         KubernetesParser.Kube.Ingress.Backend.Service-3,
+         KubernetesParser.Kube.Ingress.Backend.Service-5,
+         KubernetesParser.Kube.Ingress.Backend.Service-0,
+         KubernetesParser.Kube.Ingress.Backend.Service.Port-1,
+         KubernetesParser.Kube.Ingress.Backend.Service.Port-4,
+         KubernetesParser.Kube.Ingress.Backend.Service.Port-2,
+         KubernetesParser.Kube.Ingress.Backend.Service.Port-5,
+         KubernetesParser.Kube.Ingress.Backend.Service.Port-3,
+         KubernetesParser.Kube.Ingress.Backend.Service.Port-0,
+         KubernetesParser.Kube.Ingress.DefaultBackend-0,
+         KubernetesParser.Kube.Ingress.DefaultBackend-1,
+         HelmParser.Kube.NetworkPolicy-0,
+         HelmParser.Kube.Secret-0,
+         KubernetesParser.Kube.Secret-1,
+         KubernetesParser.Kube.Secret-0,
+         HelmParser.Kube.ServiceMonitor-0,
+         KubernetesParser.Kube.Service-0,
+         HelmParser.Kube.Service-2,
+         HelmParser.Kube.Service-0,
+         KubernetesParser.Kube.Service-1,
+         HelmParser.Kube.Service-1,
+         HelmParser.Kube.Service.ServicePort-2,
+         HelmParser.Kube.Service.ServicePort-1,
+         KubernetesParser.Kube.Service.ServicePort-1,
+         HelmParser.Kube.Service.ServicePort-0,
+         KubernetesParser.Kube.Service.ServicePort-0,
+         HelmParser.Kube.StatefulSet-1,
+         HelmParser.Kube.StatefulSet-0,
+         Source.GitRepo-0,
+         KubeCluster.default,
+         Deployment.Environment.default,
+         shadow-ingress-controller,
+         Kube.Service.ClusterIp,
+         Meta.Term,
+         Kube.Container.EnvVarItem,
+         Kube.Volume.Projected.Source,
+         Source.FilePath,
+         Kube.Container.EnvValueFromConfigMapKeyRef,
+         Network.Topology.Node,
+         Kube.Secret,
+         App.Attribute.Mapping,
+         Kube.ConfigMap.BinaryData,
+         Source.Type,
+         Helm.Chart.ValuesFile,
+         Kube.Container.ReadinessProbe,
+         Kube.Container.EnvValueFromResourceFieldRef,
+         Service.Type,
+         Kube.Container.SecurityContext,
+         Deployment.Environment,
+         Kube.ActiveDeadlineSeconds,
+         App,
+         Kube,
+         Kube.Volume.DownwardApi.Item.FieldRef,
+         App.AttributeName,
+         Kube.Ingress.Class,
+         Kube.Volume.DownwardApi.Item.ResourceFieldRef,
+         Kube.Volume.GitRepo,
+         ...)
+
+Distinct(COMMON.NONE,
+         getdtk/graph-example1-app,
+         getdtk/graph-example2-app,
+         docker.io/bitnami/redis,
+         latest,
+         6.2.4-debian-10-r13,
+         reasoner,
+         file_based,
+         node-app2-dep,
+         node-app1-secret,
+         node-app1-dep,
+         redis,
+         node-app2-secret,
+         redis-master,
+         nginx-ingress-controller,
+         node-app-svc,
+         node-app2-svc,
+         redis-replicas,
+         example-node-app,
+         ingress3-simple-fanout,
+         redis-headless,
+         node-app1-svc,
+         nginx,
+         ingress2-simple-service-bad-default,
+         ingress1-matches-app1-with-default,
+         test2,
+         master,
+         node-app1,
+         f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9,
+         [],
+         442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634,
+         ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86,
+         False,
+         58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58,
+         no_match_value,
+         node-app2,
+         6379,
+         /,
+         44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6,
+         Helm,
+         IfNotPresent,
+         node,
+         bitnami/redis,
+         replica,
+         redis-14.4.0,
+         ExternalName,
+         true,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/redis.yaml,
+         github.com,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/headless-svc.yaml,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/ingress/ingress-examples.yaml,
+         redis/templates/networkpolicy.yaml,
+         docker.io/,
+         :,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/configmap.yaml,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/service.yaml,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/servicemonitor.yaml,
+         rich_sprint44,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/statefulset.yaml,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/secret.yaml,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/networkpolicy.yaml,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app2.yaml,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/scripts-configmap.yaml,
+         redis/templates/servicemonitor.yaml,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/statefulset.yaml,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1.yaml,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/health-configmap.yaml,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1-image.yaml,
+         https://github.com/dtk/ai-reasoner.git,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/service.yaml,
+         /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/app.yaml,
+         HelmParser.Helm.Template.Condition-1,
+         HelmParser.Helm.Template.Condition-0,
+         checksum/configmap,
+         metrics.useServiceMonitor,
+         image.tag,
+         image.debug,
+         helm.sh/chart,
+         master.service.port,
+         app.kubernetes.io/managed-by,
+         app,
+         nginx.ingress.kubernetes.io/rewrite-target,
+         checksum/health,
+         master.containerPort,
+         image.pullSecrets,
+         app.kubernetes.io/instance,
+         networkPolicy.enabled,
+         checksum/scripts,
+         app.kubernetes.io/name,
+         image.pullPolicy,
+         app.kubernetes.io/component,
+         image.repository,
+         metrics.isEnabled,
+         checksum/secret,
+         master.service.type,
+         ingressclass.kubernetes.io/is-default-class,
+         True,
+         networking.k8s.io/v1,
+         v1,
+         apps/v1,
+         default,
+         docker.io/bitnami/redis:6.2.4-debian-10-r13,
+         tcp-redis,
+         ["-c", "/opt/bitnami/scripts/start-scripts/start-replica.sh"],
+         ["-c", "/opt/bitnami/scripts/start-scripts/start-master.sh"],
+         ["/bin/bash"],
+         31112,
+         8080,
+         8081,
+         80,
+         http,
+         https,
+         udp,
+         scp,
+         tcp,
+         NODE_ENV,
+         ALLOW_EMPTY_PASSWORD,
+         REDIS_PORT,
+         BITNAMI_DEBUG,
+         REDIS_TLS_ENABLED,
+         REDIS_MASTER_HOST,
+         PORT,
+         DB_PORT,
+         REDIS_REPLICATION_MODE,
+         REDIS_PASSWORD,
+         REDIS_MASTER_PASSWORD,
+         REDIS_MASTER_PORT_NUMBER,
+         DB_HOST,
+         ...)
+
+
+_possible_shadow_component(redis-14.4.0/redis/redis_cluster)
+
+redis_cluster(redis-14.4.0/redis) ==
+redis-14.4.0/redis/redis_cluster
+
+helm_chart_release(redis-14.4.0/redis/redis_cluster,
+                   redis-14.4.0/redis)
+
+master(redis-14.4.0/redis/redis_cluster,
+       redis-14.4.0/redis/redis_cluster/master[0])
+
+kube_container(redis-14.4.0/redis/redis_cluster/master[0]) ==
+HelmParser.Kube.Container-0
+
+params(redis-14.4.0/redis/redis_cluster/master[0]) ==
+redis-14.4.0/redis/redis_cluster/master[0]/params
+
+redis_replication_mode(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+master
+
+And(_meta_attr_fn__redis_replication_mode__c__App.Redis.ReplicationMode(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+    env_vars(HelmParser.Kube.Container-0),
+    _meta_attr_fn__redis_replication_mode__a__App.Redis.ReplicationMode(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+    value,
+    _meta_attr_fn__redis_replication_mode__k__App.Redis.ReplicationMode(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+    REDIS_REPLICATION_MODE)
+
+redis_password(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+secret_value(env_vars(HelmParser.Kube.Container-0),
+             REDIS_PASSWORD)
+
+And(_meta_attr_fn__redis_password__c__Any.Secret(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+    env_vars(HelmParser.Kube.Container-0),
+    _meta_attr_fn__redis_password__a__Any.Secret(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+    secret_value,
+    _meta_attr_fn__redis_password__k__Any.Secret(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+    REDIS_PASSWORD)
+
+redis_tls_enabled(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+no
+
+And(_meta_attr_fn__redis_tls_enabled__c__Any.String(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+    env_vars(HelmParser.Kube.Container-0),
+    _meta_attr_fn__redis_tls_enabled__a__Any.String(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+    value,
+    _meta_attr_fn__redis_tls_enabled__k__Any.String(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+    REDIS_TLS_ENABLED)
+
+default_redis_port_number(redis-14.4.0/redis/redis_cluster/master[0]/params) ==
+6379
+
+slave_replicas(redis-14.4.0/redis/redis_cluster,
+               redis-14.4.0/redis/redis_cluster/slave_replicas[0])
+
+kube_container(redis-14.4.0/redis/redis_cluster/slave_replicas[0]) ==
+HelmParser.Kube.Container-1
+
+params(redis-14.4.0/redis/redis_cluster/slave_replicas[0]) ==
+redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params
+
+redis_replication_mode(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+slave
+
+And(_meta_attr_fn__redis_replication_mode__c__App.Redis.ReplicationMode(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    env_vars(HelmParser.Kube.Container-1),
+    _meta_attr_fn__redis_replication_mode__a__App.Redis.ReplicationMode(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    value,
+    _meta_attr_fn__redis_replication_mode__k__App.Redis.ReplicationMode(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    REDIS_REPLICATION_MODE)
+
+redis_password(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+secret_value(env_vars(HelmParser.Kube.Container-1),
+             REDIS_PASSWORD)
+
+And(_meta_attr_fn__redis_password__c__Any.Secret(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    env_vars(HelmParser.Kube.Container-1),
+    _meta_attr_fn__redis_password__a__Any.Secret(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    secret_value,
+    _meta_attr_fn__redis_password__k__Any.Secret(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    REDIS_PASSWORD)
+
+redis_master_password(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+secret_value(env_vars(HelmParser.Kube.Container-1),
+             REDIS_MASTER_PASSWORD)
+
+And(_meta_attr_fn__redis_master_password__c__Any.Secret(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    env_vars(HelmParser.Kube.Container-1),
+    _meta_attr_fn__redis_master_password__a__Any.Secret(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    secret_value,
+    _meta_attr_fn__redis_master_password__k__Any.Secret(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    REDIS_MASTER_PASSWORD)
+
+redis_tls_enabled(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+no
+
+And(_meta_attr_fn__redis_tls_enabled__c__Any.String(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    env_vars(HelmParser.Kube.Container-1),
+    _meta_attr_fn__redis_tls_enabled__a__Any.String(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    value,
+    _meta_attr_fn__redis_tls_enabled__k__Any.String(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    REDIS_TLS_ENABLED)
+
+redis_master_port(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+6379
+
+And(_meta_attr_fn__redis_master_port__c__Network.Port.Number(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    env_vars(HelmParser.Kube.Container-1),
+    _meta_attr_fn__redis_master_port__a__Network.Port.Number(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    value,
+    _meta_attr_fn__redis_master_port__k__Network.Port.Number(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    REDIS_MASTER_PORT_NUMBER)
+
+redis_master_host(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+redis-master-0.redis-headless.default.svc.cluster.local
+
+And(_meta_attr_fn__redis_master_host__c__Network.Address(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    env_vars(HelmParser.Kube.Container-1),
+    _meta_attr_fn__redis_master_host__a__Network.Address(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    value,
+    _meta_attr_fn__redis_master_host__k__Network.Address(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+    REDIS_MASTER_HOST)
+
+default_redis_port_number(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params) ==
+6379
+
+service_endpoints(redis-14.4.0/redis/redis_cluster/master[0],
+                  redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints)
+
+And(service_type(redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints) ==
+    redis,
+    And(port(redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints) ==
+        default_redis_port_number(redis-14.4.0/redis/redis_cluster/master[0]/params),
+        And(_meta_attr_fn__port__c__Network.Port.Number(redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints) ==
+            redis-14.4.0/redis/redis_cluster/master[0]/params,
+            _meta_attr_fn__port__a__Network.Port.Number(redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints) ==
+            default_redis_port_number)),
+    protocol(redis-14.4.0/redis/redis_cluster/master[0]/service_endpoints) ==
+    http)
+
+service_endpoints(redis-14.4.0/redis/redis_cluster/slave_replicas[0],
+                  redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints)
+
+And(service_type(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints) ==
+    redis,
+    And(port(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints) ==
+        default_redis_port_number(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params),
+        And(_meta_attr_fn__port__c__Network.Port.Number(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints) ==
+            redis-14.4.0/redis/redis_cluster/slave_replicas[0]/params,
+            _meta_attr_fn__port__a__Network.Port.Number(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints) ==
+            default_redis_port_number)),
+    protocol(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/service_endpoints) ==
+    http)
+
+redis_master_stable_network_ref(redis-14.4.0/redis/redis_cluster/slave_replicas[0]) ==
+redis-14.4.0/redis/redis_cluster/slave_replicas[0]/redis_master_stable_network_ref
+
+hostname(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/redis_master_stable_network_ref) ==
+redis-master
+
+0 ==
+index(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/redis_master_stable_network_ref)
+
+service(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/redis_master_stable_network_ref) ==
+redis-headless
+
+namespace(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/redis_master_stable_network_ref) ==
+default
+
+cluster_domain_name(redis-14.4.0/redis/redis_cluster/slave_replicas[0]/redis_master_stable_network_ref) ==
+svc.cluster.local
+
+not_dynamically_created(App.KubeIngressController)
+
+
+Or(ingress_class(KubernetesParser.Kube.Ingress-0) ==
+   ShadowIngressClass)
+
+Or(ingress_class(KubernetesParser.Kube.Ingress-2) ==
+   ShadowIngressClass)
+
+Or(ingress_class(KubernetesParser.Kube.Ingress-1) ==
+   ShadowIngressClass)
+
+

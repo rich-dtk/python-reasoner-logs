@@ -1,0 +1,79 @@
+Or(Not(DYNAMIC_ATTRIBUTE-31),
+   replica_count(KubeParser.Kube.StatefulSet-2/stable_network_id) ==
+   replicas(KubeParser.Kube.StatefulSet-2))
+
+Or(Not(DYNAMIC_ATTRIBUTE-32),
+   hostname(KubeParser.Kube.StatefulSet-2/stable_network_id) ==
+   name(KubeParser.Kube.StatefulSet-2))
+
+Or(Not(DYNAMIC_ATTRIBUTE-33),
+   namespace(KubeParser.Kube.StatefulSet-2/stable_network_id) ==
+   namespace(KubeParser.Kube.StatefulSet-2))
+
+Or(Not(DYNAMIC_ATTRIBUTE-34),
+   service(KubeParser.Kube.StatefulSet-2/stable_network_id) ==
+   service_name(KubeParser.Kube.StatefulSet-2))
+
+Or(Not(DYNAMIC_ATTRIBUTE-35),
+   cluster_domain_name(KubeParser.Kube.StatefulSet-2/stable_network_id) ==
+   cluster_domain_name(kube_cluster(manifest_set(KubeParser.Kube.StatefulSet-2))))
+
+Or(Not(DYNAMIC_ATTRIBUTE-38),
+   replica_count(KubeParser.Kube.StatefulSet-1/stable_network_id) ==
+   replicas(KubeParser.Kube.StatefulSet-1))
+
+Or(Not(DYNAMIC_ATTRIBUTE-39),
+   hostname(KubeParser.Kube.StatefulSet-1/stable_network_id) ==
+   name(KubeParser.Kube.StatefulSet-1))
+
+Or(Not(DYNAMIC_ATTRIBUTE-40),
+   namespace(KubeParser.Kube.StatefulSet-1/stable_network_id) ==
+   namespace(KubeParser.Kube.StatefulSet-1))
+
+Or(Not(DYNAMIC_ATTRIBUTE-41),
+   service(KubeParser.Kube.StatefulSet-1/stable_network_id) ==
+   service_name(KubeParser.Kube.StatefulSet-1))
+
+Or(Not(DYNAMIC_ATTRIBUTE-42),
+   cluster_domain_name(KubeParser.Kube.StatefulSet-1/stable_network_id) ==
+   cluster_domain_name(kube_cluster(manifest_set(KubeParser.Kube.StatefulSet-1))))
+
+Or(Not(DYNAMIC_COMPONENT_LINK-47),
+   kube_cluster(Config.ManifestSet.Instantiation-0) ==
+   KubeCluster-0)
+
+Or(Not(DYNAMIC_ATTRIBUTE-48),
+   conditionally_cast_to_port_number(replica) == COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-49),
+   conditionally_cast_to_port_number(redis-14.4.0) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-50),
+   conditionally_cast_to_port_number(no_match_value) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-51),
+   conditionally_cast_to_port_number(master) == COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-52),
+   conditionally_cast_to_port_number(Helm) == COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-53),
+   conditionally_cast_to_port_number(release-name) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-54),
+   conditionally_cast_to_port_number(redis) == COMMON.NONE)
+
+Or(Not(DYNAMIC_ATTRIBUTE-55),
+   conditionally_cast_to_port_number(COMMON.NONE) ==
+   COMMON.NONE)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-57),
+   cast_to_port(6379) == 6379)
+
+Or(Not(DYNAMIC_COMPONENT_LINK-58),
+   cast_to_port(COMMON.NONE) == COMMON.NONE)
+
+

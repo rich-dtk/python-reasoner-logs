@@ -1,0 +1,65 @@
+Query helm_chart(Kube.StatefulSet, Helm.Chart):BuiltinSort.Bool: timing=0.0141;num_tuples=0
+Query managed_by_helm(Kube.StatefulSet):BuiltinSort.Bool: timing=0.0141;num_tuples=2
+Query connected_by_service(Kube.StatefulSet, Kube.Service):BuiltinSort.Bool: timing=0.0547;num_tuples=4
+Query namespace_match(Kube.StatefulSet, Kube.Service):BuiltinSort.Bool: timing=0.0653;num_tuples=6
+Query service_label_match(Kube.StatefulSet, Kube.Service):BuiltinSort.Bool: timing=0.0469;num_tuples=4
+Query stable_network_id(Kube.StatefulSet):Kube.StableNetworkId: timing=0.0145;num_tuples=2
+Query cluster_domain_name(Kube.StatefulSet):KubeCluster.DomainName: timing=0.0173;num_tuples=0
+Query manifest_set(Kube.Workload):Config.ManifestSet.Instantiation: timing=0.0291;num_tuples=4
+Query kind(Kube.Workload):Kube.Kind: timing=0.0286;num_tuples=4
+Query name(Kube.Workload):Kube.Name: timing=0.0293;num_tuples=4
+Query namespace(Kube.Workload):Kube.Namespace: timing=0.0295;num_tuples=4
+Query kind(Kube.Workload):Kube.Kind: timing=0.0292;num_tuples=4
+Query name(Kube.Workload):Kube.Name: timing=0.0289;num_tuples=4
+Query namespace(Kube.Workload):Kube.Namespace: timing=0.0292;num_tuples=4
+Query manifest_set(Kube.Workload):Config.ManifestSet.Instantiation: timing=0.0285;num_tuples=4
+Query same_manifest_set(Kube.Workload, Kube.Workload):BuiltinSort.Bool: timing=0.0805;num_tuples=8
+Query env_vars(Kube.Container):Kube.Container.EnvVars: timing=0.0279;num_tuples=4
+Query container_image(Kube.Container):Container.Image: timing=0.0293;num_tuples=4
+Query workload(Kube.Container):Kube.Workload: timing=0.0296;num_tuples=4
+Query helm_chart_release(Kube.Container, Helm.Chart.Release):BuiltinSort.Bool: timing=0.0186;num_tuples=0
+Query helm_chart_release_name(Kube.Container, Config.Value):BuiltinSort.Bool: timing=0.0408;num_tuples=2
+Query connected_by_service(Kube.Container, Kube.Service):BuiltinSort.Bool: timing=0.0557;num_tuples=5
+Query helm_chart(Kube.Ingress, Helm.Chart):BuiltinSort.Bool: timing=0.0127;num_tuples=0
+Query managed_by_helm(Kube.Ingress):BuiltinSort.Bool: timing=0.0146;num_tuples=0
+Query default_backend(Kube.Ingress):Kube.Ingress.DefaultBackend: timing=0.0201;num_tuples=3
+Query rewrite_target(Kube.Ingress, Config.Value):BuiltinSort.Bool: timing=0.0471;num_tuples=3
+Query name(Container.Image):Container.Image.Name: timing=0.0189;num_tuples=3
+Query is_default_class(Kube.Ingress.Class):BuiltinSort.Bool: timing=0.0129;num_tuples=0
+Query _matching_kube_service(Kube.Ingress.DefaultBackend, Kube.Service):BuiltinSort.Bool: timing=0.0149;num_tuples=0
+Query _matching_kube_service(Kube.Ingress.Rule.HttpPath.Backend, Kube.Service):BuiltinSort.Bool: timing=0.0136;num_tuples=0
+Query cluster_domain_name(Kube.StableNetworkId):KubeCluster.DomainName: timing=0.0126;num_tuples=0
+Query not_connects_through_service(Kube.Container, Kube.Service):BuiltinSort.Bool: timing=0.0129;num_tuples=0
+Query apps_can_be_created(Meta.Stage):BuiltinSort.Bool: timing=0.0115;num_tuples=0
+Query hostname(Kube.StableNetworkId):Kube.Name: timing=0.0161;num_tuples=2
+Query _service_name(Kube.Ingress.DefaultBackend):Kube.Name: timing=0.0250;num_tuples=2
+Query apps_created(Meta.Stage):BuiltinSort.Bool: timing=0.0079;num_tuples=1
+Query watch_ingress_without_class(App.KubeIngressController.Params):BuiltinSort.Bool: timing=0.0125;num_tuples=0
+Query replica_count(Kube.StableNetworkId):BuiltinSort.Z3Integer: timing=0.0157;num_tuples=2
+Query _namespace(Kube.Ingress.DefaultBackend):Kube.Namespace: timing=0.0305;num_tuples=3
+Query namespace(Kube.StableNetworkId):Kube.Namespace: timing=0.0167;num_tuples=2
+Query _partial_matching_ingress_class(Kube.Ingress):Kube.Ingress.Class: timing=0.0129;num_tuples=0
+Query _service_name(Kube.Ingress.Rule.HttpPath.Backend):Kube.Name: timing=0.0437;num_tuples=4
+Query ingress_class(Kube.Ingress):Kube.Ingress.Class: timing=0.0211;num_tuples=3
+Query service(Kube.StableNetworkId):Kube.Name: timing=0.0163;num_tuples=2
+Query _namespace(Kube.Ingress.Rule.HttpPath.Backend):Kube.Namespace: timing=0.0109;disjunct query
+Query _namespace(Kube.Ingress.Rule.HttpPath.Backend):Kube.Namespace: timing=0.0123;disjunct query
+Query _namespace(Kube.Ingress.Rule.HttpPath.Backend):Kube.Namespace: timing=0.0124;disjunct query
+Query _namespace(Kube.Ingress.Rule.HttpPath.Backend):Kube.Namespace: timing=0.0119;disjunct query
+Query _namespace(Kube.Ingress.Rule.HttpPath.Backend):Kube.Namespace: timing=0.0117;disjunct query
+Query _namespace(Kube.Ingress.Rule.HttpPath.Backend):Kube.Namespace: timing=0.0133;disjunct query
+Query _namespace(Kube.Ingress.Rule.HttpPath.Backend):Kube.Namespace: timing=0.0114;disjunct query
+Query _namespace(Kube.Ingress.Rule.HttpPath.Backend):Kube.Namespace: timing=0.0125;disjunct query
+Query _namespace(Kube.Ingress.Rule.HttpPath.Backend):Kube.Namespace: timing=0.1522;num_tuples=4
+Query stable_network_id_url(Kube.StatefulSet):Any.String: timing=0.0181;num_tuples=2
+Query _shadow_component(Kube.Service):BuiltinSort.Bool: timing=0.0845;num_tuples=7
+Query name(Kube.Service):Kube.Name: timing=0.1380;num_tuples=11
+Query namespace(Kube.Service):Kube.Namespace: timing=0.0990;num_tuples=8
+Query helm_chart(Kube.Service, Helm.Chart):BuiltinSort.Bool: timing=0.0168;num_tuples=0
+Query managed_by_helm(Kube.Service):BuiltinSort.Bool: timing=0.0519;num_tuples=3
+Query name(Kube.Service):Kube.Name: timing=0.1420;num_tuples=11
+Query namespace(Kube.Service):Kube.Namespace: timing=0.0998;num_tuples=8
+Query namespace_match(Kube.Service, Kube.Workload):BuiltinSort.Bool: timing=0.2575;num_tuples=16
+Query label_subset(Kube.Service, Kube.Workload):BuiltinSort.Bool: timing=0.0744;num_tuples=5
+Query same_manifest_set(Kube.Service, Kube.Workload):BuiltinSort.Bool: timing=0.1505;num_tuples=10
+Query debug_label_regex(Kube.Service):BuiltinSort.Bool: timing=0.0163;num_tuples=0

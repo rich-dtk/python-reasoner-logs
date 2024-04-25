@@ -1,0 +1,56 @@
+Query container_image(Kube.Container):Container.Image: timing=0.0108; num_tuples=4
+Query name(Container.Image):Container.Image.Name: timing=0.0106; num_tuples=3
+Query helm_chart_release(Kube.Container, Helm.Chart.Release):BuiltinSort.Bool: timing=0.0219; num_tuples=2
+Query is_default_class(Kube.Ingress.Class):BuiltinSort.Bool: timing=0.0160; num_tuples=0
+Query implemented_by__kube_deployment(App.Redis, Kube.Deployment):BuiltinSort.Bool: timing=0.0172; num_tuples=0
+Query implemented_by__kube_secret(App.Redis, Kube.Secret):BuiltinSort.Bool: timing=0.0162; num_tuples=0
+Query implemented_by__kube_service(App.Redis, Kube.Service):BuiltinSort.Bool: timing=0.0334; num_tuples=4
+Query implemented_by__kube_statefulset(App.Redis, Kube.StatefulSet):BuiltinSort.Bool: timing=0.0229; num_tuples=2
+Query kube_container(App.Redis):Kube.Container: timing=0.0085; num_tuples=2
+Query service_endpoints(App.Redis, Service.Endpoint):BuiltinSort.Bool: timing=0.0221; num_tuples=2
+Query debug_service_endpoint(App.Redis):Service.Endpoint: timing=0.0128; num_tuples=0
+Query params(App.Redis):App.Redis.Params: timing=0.0092; num_tuples=2
+Query redis_master_stable_network_ref(App.Redis):Kube.StableNetworkRef: timing=0.0171; num_tuples=1
+Query stable_network_id_on_master(App.Redis):Kube.StableNetworkId: timing=0.0137; num_tuples=0
+Query connects_to_master(App.Redis, App.Redis, Meta.Modality):BuiltinSort.Bool: timing=0.0177; num_tuples=1
+Query not_connects_to_master(App.Redis, App.Redis):BuiltinSort.Bool: timing=0.0127; num_tuples=0
+Query connects_to_master_violation(App.Redis, App.Redis):BuiltinSort.Bool: timing=0.0123; num_tuples=0
+Query redis_replication_mode(App.Redis.Params):App.Redis.ReplicationMode: timing=0.0091; num_tuples=2
+Query redis_password(App.Redis.Params):Any.Secret: timing=0.0132; num_tuples=0
+Query redis_master_password(App.Redis.Params):Any.Secret: timing=0.0132; num_tuples=0
+Query redis_tls_enabled(App.Redis.Params):Any.String: timing=0.0085; num_tuples=2
+Query redis_port_number(App.Redis.Params):Network.Port.Number: timing=0.0115; num_tuples=0
+Query default_redis_port_number(App.Redis.Params):Network.Port.Number: timing=0.0078; num_tuples=2
+Query redis_master_port(App.Redis.Params):Network.Port.Number: timing=0.0164; num_tuples=1
+Query redis_master_host(App.Redis.Params):Network.Address: timing=0.0170; num_tuples=1
+Query config_map(App.KubeIngressController.Params):Kube.NamespaceAndName: timing=0.0124; num_tuples=0
+Query election_id(App.KubeIngressController.Params):Any.String: timing=0.0121; num_tuples=0
+Query default_backend_service(App.KubeIngressController.Params):Kube.NamespaceAndName: timing=0.0118; num_tuples=0
+Query pod_name(App.KubeIngressController.Params):Kube.Name: timing=0.0119; num_tuples=0
+Query pod_namespace(App.KubeIngressController.Params):Kube.Namespace: timing=0.0108; num_tuples=0
+Query controller_class(App.KubeIngressController.Params):Kube.Ingress.ControllerClass: timing=0.0120; num_tuples=0
+Query watch_ingress_without_class(App.KubeIngressController.Params):BuiltinSort.Bool: timing=0.0108; num_tuples=0
+Query not_dynamically_created(Meta.Term.ComponentType):BuiltinSort.Bool: timing=0.0626; num_tuples=1
+Query implemented_by__kube_deployment(App.KubeIngressController, Kube.Deployment):BuiltinSort.Bool: timing=0.0124; num_tuples=0
+Query implemented_by__kube_secret(App.KubeIngressController, Kube.Secret):BuiltinSort.Bool: timing=0.0118; num_tuples=0
+Query implemented_by__kube_service(App.KubeIngressController, Kube.Service):BuiltinSort.Bool: timing=0.0126; num_tuples=0
+Query implemented_by__kube_statefulset(App.KubeIngressController, Kube.StatefulSet):BuiltinSort.Bool: timing=0.0119; num_tuples=0
+Query kube_container(App.KubeIngressController):Kube.Container: timing=0.0109; disjunct query
+Query kube_container(App.KubeIngressController):Kube.Container: timing=0.0118; disjunct query
+Query kube_container(App.KubeIngressController):Kube.Container: timing=0.0103; disjunct query
+Query kube_container(App.KubeIngressController):Kube.Container: timing=0.0116; disjunct query
+Query kube_container(App.KubeIngressController):Kube.Container: timing=0.0515; num_tuples=1
+Query service_endpoints(App.KubeIngressController, Service.Endpoint):BuiltinSort.Bool: timing=0.0113; num_tuples=0
+Query debug_service_endpoint(App.KubeIngressController):Service.Endpoint: timing=0.0119; num_tuples=0
+Query default_backend_namespace(App.KubeIngressController):Kube.Namespace: timing=0.0116; num_tuples=0
+Query default_backend_name(App.KubeIngressController):Kube.Name: timing=0.0117; num_tuples=0
+Query is_not_discovered(App.KubeIngressController):BuiltinSort.Bool: timing=0.0120; num_tuples=0
+Query kube_ingress_class(App.KubeIngressController, Kube.Ingress.Class):BuiltinSort.Bool: timing=0.0112; num_tuples=0
+Query controller_type(App.KubeIngressController):App.KubeIngressController.Type: timing=0.0100; disjunct query
+Query controller_type(App.KubeIngressController):App.KubeIngressController.Type: timing=0.0109; disjunct query
+Query controller_type(App.KubeIngressController):App.KubeIngressController.Type: timing=0.0280; num_tuples=1
+Query params(App.KubeIngressController):App.KubeIngressController.Params: timing=0.0112; num_tuples=0
+Query apps_can_be_created(Meta.Stage):BuiltinSort.Bool: timing=0.0107; num_tuples=0
+Query apps_created(Meta.Stage):BuiltinSort.Bool: timing=0.0051; num_tuples=1
+Query _partial_matching_ingress_class(Kube.Ingress):Kube.Ingress.Class: timing=0.0121; num_tuples=0
+Query kube_ingress(App.KubeIngressController, Kube.Ingress):BuiltinSort.Bool: timing=0.0139; num_tuples=3

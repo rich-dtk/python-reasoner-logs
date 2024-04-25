@@ -1,0 +1,32 @@
+Query value(Kube.Container.EnvVars, Kube.Container.EnvVarName):Config.Value: timing=0.0052;num_tuples=0
+Query secret_value(Kube.Container.EnvVars, Kube.Container.EnvVarName):Any.Secret: timing=0.0037;num_tuples=0
+Query pod_obj_link(Kube.Service.ServicePort, Kube.Workload):BuiltinSort.Bool: timing=0.0036;num_tuples=0
+Query service(Kube.Service.ServicePort):Kube.Service: timing=0.0037;num_tuples=0
+Query cross_namespace_endpoints(Kube.Service.ServicePort, Kube.Name, Kube.Namespace, KubeCluster.DomainName, Network.Port):BuiltinSort.Bool: timing=0.0070;num_tuples=0
+Query debug_cross_namespace_endpoints_user(Kube.Service.ServicePort, Kube.Name):BuiltinSort.Bool: timing=0.0286;num_tuples=3
+Query debug_cross_namespace_url_fn(Kube.Service.ServicePort, Kube.Name, Kube.Namespace, KubeCluster.DomainName, Network.Port):Network.URL: timing=0.0067;num_tuples=0
+Query debug_z3_string(Kube.Service.ServicePort):BuiltinSort.Z3String: timing=0.0034;num_tuples=0
+Query has_namespace(KubeCluster, Kube.Namespace):BuiltinSort.Bool: timing=0.0032;num_tuples=0
+Query cluster_domain_name(KubeCluster):KubeCluster.DomainName: timing=0.0040;num_tuples=1
+Query kind(Kube.Ref):Kube.Kind: timing=29.4803;num_tuples=60
+Query name(Kube.Ref):Kube.Name: timing=29.4478;num_tuples=60
+Query namespace_ref(Kube.Ref):Kube.Namespace.Ref: timing=29.6027;num_tuples=60
+Query service_type(Service.EndpointNestedDatatype):Service.Type: timing=1.1670;num_tuples=20
+Query port(Service.EndpointNestedDatatype):Network.Port.Number: timing=1.1408;num_tuples=20
+Query protocol(Service.EndpointNestedDatatype):Network.Protocol: timing=1.1380;num_tuples=20
+Query kube_cluster(Config.ManifestSet.Instantiation):KubeCluster: timing=0.0039;num_tuples=1
+Query kube_cluster_domain_name(Config.ManifestSet.Instantiation):KubeCluster.DomainName: timing=0.0040;num_tuples=1
+Query kube_secret(Secret.Store, Kube.Secret):BuiltinSort.Bool: timing=0.0033;num_tuples=1
+Query member(Secret.Store, Secret):BuiltinSort.Bool: timing=0.0035;num_tuples=1
+Query key_names(Kube.Secret, Kube.Secret.Key):BuiltinSort.Bool: timing=0.0035;num_tuples=0
+Query _matching_kube_service(Kube.Ingress.DefaultBackend, Kube.Service):BuiltinSort.Bool: timing=0.0039;num_tuples=0
+Query _matching_kube_service(Kube.Ingress.Rule.HttpPath.Backend, Kube.Service):BuiltinSort.Bool: timing=0.0037;num_tuples=0
+Query cross_namespace_url(Kube.Service.ServicePort):Network.URL: timing=0.0038;num_tuples=0
+Query debug_cross_namespace_url_string(Kube.Service.ServicePort):BuiltinSort.Z3String: timing=0.0041;num_tuples=0
+Query debug_cross_namespace_url(Kube.Service.ServicePort):Network.URL: timing=0.0039;num_tuples=0
+Query debug_concat_url(Kube.Service.ServicePort):BuiltinSort.Z3String: timing=0.0038;num_tuples=0
+Query debug_target_port(Kube.Service.ServicePort):Network.Port: timing=0.0046;num_tuples=0
+Query member(Kube.NamespaceSecrets, Kube.Secret):BuiltinSort.Bool: timing=0.0032;num_tuples=1
+Query _service_name(Kube.Ingress.DefaultBackend):Kube.Name: timing=0.0044;num_tuples=0
+Query url_matches_prefix(Kube.Service.ServicePort, String):BuiltinSort.Bool: timing=0.0041;num_tuples=0
+Query url_matches_canned_prefix(Kube.Service.ServicePort):BuiltinSort.Bool: timing=0.0031;num_tuples=0

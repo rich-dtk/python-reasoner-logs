@@ -1,0 +1,299 @@
+type: Config.ManifestSet.Instantiation
+logical_id: Config.ManifestSet.Instantiation-0
+attributes:
+  namespace:
+    type: Kube.Namespace
+
+---
+type: Kube.Ingress.Class
+logical_id: ShadowIngressClass
+
+---
+type: Kube.Ingress
+logical_id: KubernetesParser.Kube.Ingress-0
+top_component_ref: default/ingress1-matches-app1-with-default
+attributes:
+  rewrite_target:
+    value:
+    - /
+    type:
+      array: Config.Value
+links:
+  ingress_class:
+  - Kube.Ingress.Class[ShadowIngressClass]
+components:
+- type: Kube.Ingress.DefaultBackend
+  logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-0
+  fqdn: default_backend
+  links:
+    kube_service:
+    - Kube.Service[KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service]
+- type: Kube.Ingress.Rule
+  logical_id: KubernetesParser.Kube.Ingress.Rule-0
+  fqdn: rules[0]
+  components:
+  - type: Kube.Ingress.Rule.HttpPath
+    logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath-0
+    fqdn: rules[0]/paths[0]
+    components:
+    - type: Kube.Ingress.Rule.HttpPath.Backend
+      logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0
+      fqdn: rules[0]/paths[0]/backend
+      attributes:
+        host_pattern:
+          value: '*'
+          type: Network.Http.HostPattern
+      links:
+        kube_service:
+        - Kube.Service[KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service]
+
+---
+type: Kube.Ingress
+logical_id: KubernetesParser.Kube.Ingress-1
+top_component_ref: default/ingress2-simple-service-bad-default
+attributes:
+  rewrite_target:
+    value:
+    - /
+    type:
+      array: Config.Value
+links:
+  ingress_class:
+  - Kube.Ingress.Class[ShadowIngressClass]
+components:
+- type: Kube.Ingress.DefaultBackend
+  logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-1
+  fqdn: default_backend
+  links:
+    kube_service:
+    - Kube.Service[KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service]
+- type: Kube.Ingress.Rule
+  logical_id: KubernetesParser.Kube.Ingress.Rule-1
+  fqdn: rules[0]
+  components:
+  - type: Kube.Ingress.Rule.HttpPath
+    logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath-1
+    fqdn: rules[0]/paths[0]
+    components:
+    - type: Kube.Ingress.Rule.HttpPath.Backend
+      logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1
+      fqdn: rules[0]/paths[0]/backend
+      attributes:
+        host_pattern:
+          value: '*'
+          type: Network.Http.HostPattern
+      links:
+        kube_service:
+        - Kube.Service[KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service]
+
+---
+type: Kube.Ingress
+logical_id: KubernetesParser.Kube.Ingress-2
+top_component_ref: default/ingress3-simple-fanout
+attributes:
+  rewrite_target:
+    value:
+    - /
+    type:
+      array: Config.Value
+links:
+  ingress_class:
+  - Kube.Ingress.Class[ShadowIngressClass]
+components:
+- type: Kube.Ingress.DefaultBackend
+  logical_id: KubernetesParser.Kube.Ingress-2/default_backend
+  fqdn: default_backend
+  attributes:
+    _shadow_component:
+      value: 'True'
+      type: bool
+  links:
+    kube_service:
+    - Kube.Service[KubernetesParser.Kube.Ingress-2/default_backend/kube_service]
+- type: Kube.Ingress.Rule
+  logical_id: KubernetesParser.Kube.Ingress.Rule-2
+  fqdn: rules[0]
+  attributes:
+    host_pattern:
+      type: Network.Http.HostPattern
+  components:
+  - type: Kube.Ingress.Rule.HttpPath
+    logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath-3
+    fqdn: rules[0]/paths[1]
+    components:
+    - type: Kube.Ingress.Rule.HttpPath.Backend
+      logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3
+      fqdn: rules[0]/paths[1]/backend
+      attributes:
+        host_pattern:
+          value: foo.bar.com
+          type: Network.Http.HostPattern
+        host_pattern_link:
+          type: Network.Http.HostPattern
+          function: Kube.Ingress[default/ingress3-simple-fanout]/rules[0]/host_pattern
+      links:
+        kube_service:
+        - Kube.Service[default/node-app2-svc]
+  - type: Kube.Ingress.Rule.HttpPath
+    logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath-2
+    fqdn: rules[0]/paths[0]
+    components:
+    - type: Kube.Ingress.Rule.HttpPath.Backend
+      logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2
+      fqdn: rules[0]/paths[0]/backend
+      attributes:
+        host_pattern:
+          value: foo.bar.com
+          type: Network.Http.HostPattern
+        host_pattern_link:
+          type: Network.Http.HostPattern
+          function: Kube.Ingress[default/ingress3-simple-fanout]/rules[0]/host_pattern
+      links:
+        kube_service:
+        - Kube.Service[default/node-app1-svc]
+
+---
+type: Kube.Service
+logical_id: HelmParser.Kube.Service-0
+top_component_ref: default/redis-headless
+attributes:
+  name:
+    value: redis-headless
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  managed_by_helm:
+    value: 'True'
+    type: bool
+
+---
+type: Kube.Service
+logical_id: HelmParser.Kube.Service-1
+top_component_ref: default/redis-master
+attributes:
+  name:
+    value: redis-master
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  managed_by_helm:
+    value: 'True'
+    type: bool
+
+---
+type: Kube.Service
+logical_id: HelmParser.Kube.Service-2
+top_component_ref: default/redis-replicas
+attributes:
+  name:
+    value: redis-replicas
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  managed_by_helm:
+    value: 'True'
+    type: bool
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Ingress-2/default_backend/kube_service
+attributes:
+  _shadow_component:
+    value: 'True'
+    type: bool
+  namespace:
+    type: Kube.Namespace
+    function: Config.ManifestSet.Instantiation[Config.ManifestSet.Instantiation-0]/namespace
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service
+attributes:
+  _shadow_component:
+    value: 'True'
+    type: bool
+  name:
+    value: nginx-ingress-controller
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service
+attributes:
+  _shadow_component:
+    value: 'True'
+    type: bool
+  name:
+    value: test2
+    type: Kube.Name
+  namespace:
+    type: Kube.Namespace
+    function: Config.ManifestSet.Instantiation[Config.ManifestSet.Instantiation-0]/namespace
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service
+attributes:
+  _shadow_component:
+    value: 'True'
+    type: bool
+  name:
+    value: node-app1-svc
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service
+attributes:
+  _shadow_component:
+    value: 'True'
+    type: bool
+  name:
+    value: node-app-svc
+    type: Kube.Name
+  namespace:
+    type: Kube.Namespace
+    function: Config.ManifestSet.Instantiation[Config.ManifestSet.Instantiation-0]/namespace
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Service-0
+top_component_ref: default/node-app2-svc
+attributes:
+  name:
+    value: node-app2-svc
+    type: Kube.Name
+  namespace:
+    type: Kube.Namespace
+    function: Config.ManifestSet.Instantiation[Config.ManifestSet.Instantiation-0]/namespace
+
+---
+type: Kube.Service
+logical_id: KubernetesParser.Kube.Service-1
+top_component_ref: default/node-app1-svc
+attributes:
+  name:
+    value: node-app1-svc
+    type: Kube.Name
+  namespace:
+    type: Kube.Namespace
+    function: Config.ManifestSet.Instantiation[Config.ManifestSet.Instantiation-0]/namespace
+
+---
+type: Source.Reasoner
+logical_id: Source.Reasoner-0
+attributes:
+  name:
+    value: ai-reasoner
+    type: string
+
+---

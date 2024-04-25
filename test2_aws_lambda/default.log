@@ -1,0 +1,2673 @@
+The following sort metadata errors have been found:
+  The function 'Kube.Service.selector' is declared as asserted, but not in parser defs
+  The function 'Kube.Service.ports' is declared as asserted, but not in parser defs
+  The function 'Kube.Ingress.manifest_set' is declared as asserted, but not in parser defs
+  The function 'Any.Concat.cast_to_any_json' is declared as asserted, but not in parser defs
+  The function 'TopLevelKubeObj.manifest_set' is declared as asserted, but not in parser defs
+  The function 'TopLevelKubeObj.api_version' is declared as asserted, but not in parser defs
+  The function 'TopLevelKubeObj.name' is declared as asserted, but not in parser defs
+  The function 'TopLevelKubeObj.namespace' is declared as asserted, but not in parser defs
+  The function 'TopLevelKubeObj.annotations' is declared as asserted, but not in parser defs
+  The function 'TopLevelKubeObj.labels' is declared as asserted, but not in parser defs
+  The function 'Kube.Secret.Keys.value' is declared as asserted, but not in parser defs
+  The function 'Kube.Secret.Keys.has_key' is declared as asserted, but not in parser defs
+  The function 'Kube.Ingress.Class.manifest_set' is declared as asserted, but not in parser defs
+  The function 'Kube.Ingress.Class.api_version' is declared as asserted, but not in parser defs
+  The function 'Kube.Secret.manifest_set' is declared as asserted, but not in parser defs
+  The function 'Kube.Annotations.value' is declared as asserted, but not in parser defs
+  The function 'Kube.Annotations.has_key' is declared as asserted, but not in parser defs
+  The function 'Helm.Chart.Release.Values.value' is declared as asserted, but not in parser defs
+  The function 'Helm.Chart.Release.Values.has_key' is declared as asserted, but not in parser defs
+  The function 'Secret.manifest_set' is declared as asserted, but not in parser defs
+  The function 'Kube.Labels.value' is declared as asserted, but not in parser defs
+  The function 'Kube.Labels.has_key' is declared as asserted, but not in parser defs
+  The function 'Config.ManifestSet.Instantiation.namespace' is declared as asserted, but not in parser defs
+  The function 'Kube.Container.EnvVarsConfig.value' is declared as asserted, but not in parser defs
+  The function 'Kube.Container.EnvVarsConfig.has_key' is declared as asserted, but not in parser defs
+  The function 'Helm.Chart.Release.value_assignments' is declared as asserted, but not in parser defs
+  The function 'Helm.Chart.Release.values_file' is declared as asserted, but not in parser defs
+  The function 'Kube.Workload.api_version' is declared as asserted, but not in parser defs
+  The function 'Kube.Workload.annotations' is declared as asserted, but not in parser defs
+  The function 'Kube.Workload.labels' is declared as asserted, but not in parser defs
+DEBUG: Renaming: 'Kube.Service.selector' to 'selector'
+DEBUG: Renaming: 'Kube.Service.ports' to 'ports'
+DEBUG: Renaming: 'Kube.Service.ports' to 'ports'
+DEBUG: Renaming: 'Kube.Service.selector' to 'selector'
+DEBUG: Renaming: 'Kube.Service.ports' to 'ports'
+DEBUG: Renaming: 'Kube.Service.selector' to 'selector'
+DEBUG: Renaming: 'Kube.Service.ports' to 'ports'
+DEBUG: Renaming: 'Kube.Service.selector' to 'selector'
+DEBUG: Renaming: 'Kube.Service.ports' to 'ports'
+DEBUG: Renaming: 'Kube.Service.selector' to 'selector'
+DEBUG: Renaming: 'Kube.Service.ports' to 'ports'
+DEBUG: Renaming: 'Kube.Service.selector' to 'selector'
+adding_dynamic_rule: rule=update_meta_stage_to_apps_created for computed_effect=Meta.Stage.apps_can_be_created
+scheduling_precondition: preconditon=Kube.Container.container_image from dynamic_rule=update_meta_stage_to_apps_created
+scheduling_precondition: preconditon=Container.Image.name from dynamic_rule=update_meta_stage_to_apps_created
+scheduling_precondition: preconditon=Kube.Container.helm_chart_release from dynamic_rule=update_meta_stage_to_apps_created
+adding_dynamic_rule: rule=update_meta_stage_to_apps_can_be_create for computed_effect=Meta.Stage.apps_created
+scheduling_precondition: preconditon=Meta.Stage.apps_can_be_created from dynamic_rule=update_meta_stage_to_apps_can_be_create
+Ignoring filtered dynamic rule:
+cross_namespace_url
+adding_dynamic_rule: rule=label_subset for computed_effect=Kube.Service.label_subset
+adding_dynamic_rule: rule=label_subset for computed_effect=Kube.Deployment.service_label_match
+adding_dynamic_rule: rule=label_subset for computed_effect=Kube.StatefulSet.service_label_match
+adding_dynamic_rule: rule=network_port_number_violation for computed_effect=Kube.Container.PortItem.network_port_number_violation
+blocked_by_precondition_filter: preconditon=Kube.Container.PortItem.matching_network_port_number in dynamic_rule=network_port_number_violation
+Ignoring filtered dynamic rule:
+label_value_cast_to_z3_string
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars._meta_term_component
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars._meta_term_key
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars._meta_attribute_function__component
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars._meta_attribute_function__attribute
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars._meta_attribute_function__key
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars.value
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars.secret_value
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars.referenced_secret_name
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars.referenced_secret_key
+adding_dynamic_rule: rule=env_vars for computed_effect=Kube.Container.EnvVars.linked_kube_secret
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_term_component
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_term_key
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_attribute_function__component
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_attribute_function__attribute
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_attribute_function__key
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys.secret_value
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_term_component
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_term_key
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_attribute_function__component
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_attribute_function__attribute
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_attribute_function__key
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.Secret.Keys.secret_value
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.NamespaceSecrets._meta_term_component
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.NamespaceSecrets._meta_term_key
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.NamespaceSecrets._meta_attribute_function__component
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.NamespaceSecrets._meta_attribute_function__attribute
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.NamespaceSecrets._meta_attribute_function__key
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.NamespaceSecrets._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.NamespaceSecrets._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.NamespaceSecrets._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=populate_secret_info for computed_effect=Kube.NamespaceSecrets.member
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=Kube.Ingress.ingress_class
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=App.KubeIngressController._kube_ingress_modal
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=App.KubeIngressController.kube_ingress
+scheduling_precondition: preconditon=Kube.Ingress.Class.is_default_class from dynamic_rule=matching_ingress_class
+adding_dynamic_rule: rule=computed_default_backend for computed_effect=Kube.Ingress.default_backend
+adding_dynamic_rule: rule=computed_default_backend for computed_effect=Kube.Ingress.DefaultBackend.parent
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Ingress.DefaultBackend.kube_service
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Ingress.Rule.HttpPath.Backend.kube_service
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._shadow_component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_term_component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_term_key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__attribute
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.kind
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.name
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.helm_chart
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.managed_by_helm
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._managed_by_helm_helper
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.name
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace_match
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.label_subset
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.same_manifest_set
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.debug_label_regex
+scheduling_precondition: preconditon=Kube.Ingress.DefaultBackend._matching_kube_service from dynamic_rule=connects_to_service
+scheduling_precondition: preconditon=Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service from dynamic_rule=connects_to_service
+adding_dynamic_rule: rule=path_backend_host_pattern for computed_effect=Kube.Ingress.Rule.HttpPath.Backend.host_pattern_link
+adding_dynamic_rule: rule=network_port_number_violation for computed_effect=Kube.Ingress.DefaultBackend.no_matching_services_violation
+adding_dynamic_rule: rule=network_port_number_violation for computed_effect=Kube.Ingress.Rule.HttpPath.Backend.no_matching_services_violation
+blocked_by_precondition_filter: preconditon=Kube.Ingress.DefaultBackend._matching_kube_service in dynamic_rule=network_port_number_violation
+blocked_by_precondition_filter: preconditon=Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service in dynamic_rule=network_port_number_violation
+adding_dynamic_rule: rule=network_topology_routing_node_and_routes for computed_effect=Kube.Ingress.network_topology_node
+adding_dynamic_rule: rule=network_topology_routing_node_and_routes for computed_effect=Network.Topology.Node.http_routes
+adding_dynamic_rule: rule=network_topology_routing_node_and_routes for computed_effect=Network.Topology.Node.HttpRoute.path_pattern
+adding_dynamic_rule: rule=network_topology_routing_node_and_routes for computed_effect=Network.Topology.Node.HttpRoute.host_pattern
+blocked_by_precondition_filter: preconditon=Kube.Ingress.Rule.HttpPath.Backend._ingress in dynamic_rule=network_topology_routing_node_and_routes
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StatefulSet.stable_network_id
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId._meta_term_component
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId._meta_term_key
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId._meta_attribute_function__component
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId._meta_attribute_function__attribute
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId._meta_attribute_function__key
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId.hostname
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId.namespace
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId.cluster_domain_name
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId.service
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId.replica_count
+adding_dynamic_rule: rule=compute_stable_network_id_details for computed_effect=Kube.StableNetworkId.url
+adding_dynamic_rule: rule=compute_stable_network_id_url for computed_effect=Kube.StableNetworkId.url
+adding_dynamic_rule: rule=compute_stable_network_id_url for computed_effect=Kube.StatefulSet.stable_network_id_url
+scheduling_precondition: preconditon=Kube.StableNetworkId.cluster_domain_name from dynamic_rule=compute_stable_network_id_url
+adding_dynamic_rule: rule=create_kube_cluster_if_needed for computed_effect=Config.ManifestSet.Instantiation.kube_cluster
+adding_dynamic_rule: rule=create_kube_cluster_if_needed for computed_effect=KubeCluster.cluster_domain_name
+For 'kube_cluster' on Config.ManifestSet.Instantiation-0:Config.ManifestSet.Instantiation add_component_linka should be used in dynamic rule
+adding_dynamic_rule: rule=conditionally_cast_to_port_number for computed_effect=Network.Port.conditionally_cast_to_port_number
+adding_dynamic_rule: rule=cast_port_number_to_port for computed_effect=Network.Port.Number.cast_to_port
+For 'cast_to_port' on 6379:Network.Port.Number add_component_linka should be used in dynamic rule
+For 'cast_to_port' on 8080:Network.Port.Number add_component_linka should be used in dynamic rule
+For 'cast_to_port' on COMMON.NONE:Network.Port.Number add_component_linka should be used in dynamic rule
+For 'cast_to_port' on 31112:Network.Port.Number add_component_linka should be used in dynamic rule
+For 'cast_to_port' on 8081:Network.Port.Number add_component_linka should be used in dynamic rule
+For 'cast_to_port' on 80:Network.Port.Number add_component_linka should be used in dynamic rule
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_term_component
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_term_key
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_attribute_function__component
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_attribute_function__attribute
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_attribute_function__key
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.secret
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.kube_container
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.service_endpoints
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.debug_service_endpoint
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.default_backend_namespace
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.default_backend_name
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.is_not_discovered
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.kube_ingress_class
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._kube_ingress_modal
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.kube_ingress
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.controller_type
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.params
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_term_component
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_term_key
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_attribute_function__component
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_attribute_function__attribute
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_attribute_function__key
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.config_map
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.election_id
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.default_backend_service
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.pod_name
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.pod_namespace
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.controller_class
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.watch_ingress_without_class
+blocked_by_precondition_filter: preconditon=Kube.Container.container_image in dynamic_rule=discover_ingress_controllers
+blocked_by_precondition_filter: preconditon=Container.Image.name in dynamic_rule=discover_ingress_controllers
+blocked_by_precondition_filter: preconditon=Kube.Container.helm_chart_release in dynamic_rule=discover_ingress_controllers
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis._meta_term_component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis._meta_term_key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis._meta_attribute_function__component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis._meta_attribute_function__attribute
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis._meta_attribute_function__key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.secret
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.kube_container
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.service_endpoints
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.debug_service_endpoint
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.params
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.redis_master_stable_network_ref
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.stable_network_id_on_master
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.connects_to_master
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.not_connects_to_master
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.connects_to_master_violation
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params._meta_term_component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params._meta_term_key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params._meta_attribute_function__component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params._meta_attribute_function__attribute
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params._meta_attribute_function__key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params.redis_replication_mode
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params.redis_password
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params.redis_master_password
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params.redis_tls_enabled
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params.redis_port_number
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params.default_redis_port_number
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params.redis_master_port
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Params.redis_master_host
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Cluster._meta_term_component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Cluster._meta_term_key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Cluster._meta_attribute_function__component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Cluster._meta_attribute_function__attribute
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Cluster._meta_attribute_function__key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Cluster._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Cluster._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Cluster._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Cluster.name
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Cluster.slave_replicas
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Cluster.master
+adding_dynamic_rule: rule=create_redis_components for computed_effect=App.Redis.Cluster.helm_chart_release
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef._meta_term_component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef._meta_term_key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef._meta_attribute_function__component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef._meta_attribute_function__attribute
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef._meta_attribute_function__key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef.hostname
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef.namespace
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef.cluster_domain_name
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef.service
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef.index
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef.matches_network_id
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Kube.StableNetworkRef.debug_matches_network_id
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Service.Endpoint._meta_term_component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Service.Endpoint._meta_term_key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Service.Endpoint._meta_attribute_function__component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Service.Endpoint._meta_attribute_function__attribute
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Service.Endpoint._meta_attribute_function__key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Service.Endpoint._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Service.Endpoint._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Service.Endpoint._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Service.Endpoint.service_endpoints
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Service.Endpoint.service_type
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Service.Endpoint.port
+adding_dynamic_rule: rule=create_redis_components for computed_effect=Service.Endpoint.protocol
+blocked_by_precondition_filter: preconditon=Kube.Container.container_image in dynamic_rule=create_redis_components
+blocked_by_precondition_filter: preconditon=Container.Image.name in dynamic_rule=create_redis_components
+blocked_by_precondition_filter: preconditon=Kube.Container.helm_chart_release in dynamic_rule=create_redis_components
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret.Store._meta_term_component
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret.Store._meta_term_key
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret.Store._meta_attribute_function__component
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret.Store._meta_attribute_function__attribute
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret.Store._meta_attribute_function__key
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret.Store._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret.Store._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret.Store._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret.Store.kube_secret
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret.Store.member
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret._meta_term_component
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret._meta_term_key
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret._meta_attribute_function__component
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret._meta_attribute_function__attribute
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret._meta_attribute_function__key
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=populate_secret_store for computed_effect=Secret.kube_ref
+unknown
+solver.check: 0.0157
+unknown
+solver.check: 0.0128
+unknown
+solver.check: 0.0123
+Check sat for model checking
+sat
+solver.check: 0.1186
+===================
+preconditions for Kube.StatefulSet.service_label_match
+   DynamicRulePrecondition(label_subset); is_met=True
+===================
+===================
+preconditions for Kube.StatefulSet.stable_network_id_url
+   FunctionPrecondition(Kube.StableNetworkId.cluster_domain_name); is_met=False
+   DynamicRulePrecondition(compute_stable_network_id_url); is_met=False
+===================
+===================
+preconditions for Kube.StatefulSet.stable_network_id
+   DynamicRulePrecondition(compute_stable_network_id_details); is_met=True
+===================
+===================
+preconditions for Kube.Service._shadow_component
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.name
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.helm_chart
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.managed_by_helm
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.name
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace_match
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.label_subset
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=False
+   DynamicRulePrecondition(label_subset); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.same_manifest_set
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.debug_label_regex
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=False
+===================
+===================
+preconditions for Kube.Container.not_connects_through_service
+   FunctionPrecondition(Kube.Container.connected_by_service); is_met=False
+===================
+===================
+preconditions for Kube.Ingress.default_backend
+   DynamicRulePrecondition(computed_default_backend); is_met=True
+===================
+===================
+preconditions for Kube.Ingress.ingress_class
+   DynamicRulePrecondition(matching_ingress_class); is_met=False
+   FunctionPrecondition(Kube.Ingress.Class.is_default_class); is_met=False
+===================
+===================
+preconditions for Meta.Stage.apps_can_be_created
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=False
+   FunctionPrecondition(Container.Image.name); is_met=False
+   FunctionPrecondition(Kube.Container.container_image); is_met=False
+   DynamicRulePrecondition(update_meta_stage_to_apps_created); is_met=False
+===================
+===================
+preconditions for Meta.Stage.apps_created
+   DynamicRulePrecondition(update_meta_stage_to_apps_can_be_create); is_met=False
+   FunctionPrecondition(Meta.Stage.apps_can_be_created); is_met=False
+===================
+===================
+preconditions for Kube.StableNetworkId.cluster_domain_name
+   DynamicRulePrecondition(compute_stable_network_id_details); is_met=True
+===================
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+helm_chart
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+managed_by_helm
+In process_else_value processor 'Processor', not processing: k!1129(Var(1)) == Kube.Service!val!4
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+connected_by_service
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+namespace_match
+In process_else_value processor 'Processor', not processing: k!1129(Var(1)) == Kube.Service!val!4
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+service_label_match
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+stable_network_id
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+cluster_domain_name
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+manifest_set
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+kind
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+name
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+namespace
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+kind
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+name
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+namespace
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+manifest_set
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+same_manifest_set
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+env_vars
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+container_image
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+workload
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+helm_chart_release
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+helm_chart_release_name
+In process_else_value processor 'Processor', not processing: k!1129(Var(1)) == Kube.Service!val!2
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+connected_by_service
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+helm_chart
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+managed_by_helm
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+default_backend
+In process_else_value processor 'Processor', not processing: Or(Var(0) == KubernetesParser.Kube.Ingress-0,
+   Var(0) == KubernetesParser.Kube.Ingress-1,
+   Var(0) == KubernetesParser.Kube.Ingress-2)
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+rewrite_target
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+name
+In process_else_value processor 'Processor', not processing: value(annotations(Var(0)), Config.Name!val!12) ==
+Config.Value!val!22
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+is_default_class
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+_matching_kube_service
+In process_else_value processor 'Processor', not processing: k!1129(Var(1)) == Kube.Service!val!2
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+_matching_kube_service
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+cluster_domain_name
+===============================
+===============================
+query results for stage 1
+===============================
+{'query': 'helm_chart(Kube.StatefulSet, Helm.Chart):BuiltinSort.Bool',
+ 'function_results': []}
+===============================
+
+
+===============================
+{'query': 'managed_by_helm(Kube.StatefulSet):BuiltinSort.Bool',
+ 'function_results': [{'input': [HelmParser.Kube.StatefulSet-0],
+                       'output': ScalarSingleValue(z3_value=True)},
+                      {'input': [HelmParser.Kube.StatefulSet-1],
+                       'output': ScalarSingleValue(z3_value=True)}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-0 -> '
+                                           'True',
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'connected_by_service(Kube.StatefulSet, '
+          'Kube.Service):BuiltinSort.Bool',
+ 'function_results': [{'arg1': HelmParser.Kube.StatefulSet-0,
+                       'arg2': HelmParser.Kube.Service-0},
+                      {'arg1': HelmParser.Kube.StatefulSet-0,
+                       'arg2': HelmParser.Kube.Service-1},
+                      {'arg1': HelmParser.Kube.StatefulSet-1,
+                       'arg2': HelmParser.Kube.Service-0},
+                      {'arg1': HelmParser.Kube.StatefulSet-1,
+                       'arg2': HelmParser.Kube.Service-2}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-0, '
+                                           'HelmParser.Kube.Service-0 -> True',
+                                           'HelmParser.Kube.StatefulSet-0, '
+                                           'HelmParser.Kube.Service-1 -> True',
+                                           'HelmParser.Kube.StatefulSet-1, '
+                                           'HelmParser.Kube.Service-0 -> True',
+                                           'HelmParser.Kube.StatefulSet-1, '
+                                           'HelmParser.Kube.Service-2 -> True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'namespace_match(Kube.StatefulSet, Kube.Service):BuiltinSort.Bool',
+ 'function_results': [{'arg1': HelmParser.Kube.StatefulSet-0,
+                       'arg2': HelmParser.Kube.Service-0},
+                      {'arg1': HelmParser.Kube.StatefulSet-0,
+                       'arg2': HelmParser.Kube.Service-1},
+                      {'arg1': HelmParser.Kube.StatefulSet-0,
+                       'arg2': HelmParser.Kube.Service-2},
+                      {'arg1': HelmParser.Kube.StatefulSet-1,
+                       'arg2': HelmParser.Kube.Service-0},
+                      {'arg1': HelmParser.Kube.StatefulSet-1,
+                       'arg2': HelmParser.Kube.Service-1},
+                      {'arg1': HelmParser.Kube.StatefulSet-1,
+                       'arg2': HelmParser.Kube.Service-2}]}
+===============================
+
+
+===============================
+{'query': 'service_label_match(Kube.StatefulSet, '
+          'Kube.Service):BuiltinSort.Bool',
+ 'function_results': [{'arg1': HelmParser.Kube.StatefulSet-0,
+                       'arg2': HelmParser.Kube.Service-0},
+                      {'arg1': HelmParser.Kube.StatefulSet-0,
+                       'arg2': HelmParser.Kube.Service-1},
+                      {'arg1': HelmParser.Kube.StatefulSet-1,
+                       'arg2': HelmParser.Kube.Service-0},
+                      {'arg1': HelmParser.Kube.StatefulSet-1,
+                       'arg2': HelmParser.Kube.Service-2}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-0, '
+                                           'HelmParser.Kube.Service-0 -> True',
+                                           'HelmParser.Kube.StatefulSet-0, '
+                                           'HelmParser.Kube.Service-1 -> True',
+                                           'HelmParser.Kube.StatefulSet-1, '
+                                           'HelmParser.Kube.Service-0 -> True',
+                                           'HelmParser.Kube.StatefulSet-1, '
+                                           'HelmParser.Kube.Service-2 -> True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'stable_network_id(Kube.StatefulSet):Kube.StableNetworkId',
+ 'function_results': [{'arg1': HelmParser.Kube.StatefulSet-0,
+                       'arg2': HelmParser.Kube.StatefulSet-0/stable_network_id},
+                      {'arg1': HelmParser.Kube.StatefulSet-1,
+                       'arg2': HelmParser.Kube.StatefulSet-1/stable_network_id}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-1 -> '
+                                           'HelmParser.Kube.StatefulSet-1/stable_network_id',
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'HelmParser.Kube.StatefulSet-0/stable_network_id'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'cluster_domain_name(Kube.StatefulSet):KubeCluster.DomainName',
+ 'function_results': []}
+===============================
+
+
+===============================
+{'query': 'manifest_set(Kube.Workload):Config.ManifestSet.Instantiation',
+ 'function_results': [{'arg1': KubernetesParser.Kube.Deployment-0,
+                       'arg2': Config.ManifestSet.Instantiation-0},
+                      {'arg1': KubernetesParser.Kube.Deployment-1,
+                       'arg2': Config.ManifestSet.Instantiation-0},
+                      {'arg1': HelmParser.Kube.StatefulSet-0,
+                       'arg2': COMMON.NONE},
+                      {'arg1': HelmParser.Kube.StatefulSet-1,
+                       'arg2': COMMON.NONE}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-1 -> '
+                                           'COMMON.NONE',
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> '
+                                           'Config.ManifestSet.Instantiation-0',
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> '
+                                           'Config.ManifestSet.Instantiation-0',
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'COMMON.NONE'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'kind(Kube.Workload):Kube.Kind',
+ 'function_results': [{'input': [HelmParser.Kube.StatefulSet-0],
+                       'output': ScalarSingleValue(z3_value=StatefulSet)},
+                      {'input': [KubernetesParser.Kube.Deployment-0],
+                       'output': ScalarSingleValue(z3_value=Deployment)},
+                      {'input': [KubernetesParser.Kube.Deployment-1],
+                       'output': ScalarSingleValue(z3_value=Deployment)},
+                      {'input': [HelmParser.Kube.StatefulSet-1],
+                       'output': ScalarSingleValue(z3_value=StatefulSet)}],
+ 'model_results': {'tuples': {'elements': ['KubernetesParser.Kube.Deployment-0 '
+                                           '-> Deployment',
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> Deployment',
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'StatefulSet',
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'StatefulSet'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'name(Kube.Workload):Kube.Name',
+ 'function_results': [{'input': [HelmParser.Kube.StatefulSet-0],
+                       'output': ScalarSingleValue(z3_value=redis-master)},
+                      {'input': [KubernetesParser.Kube.Deployment-0],
+                       'output': ScalarSingleValue(z3_value=node-app2-dep)},
+                      {'input': [KubernetesParser.Kube.Deployment-1],
+                       'output': ScalarSingleValue(z3_value=node-app1-dep)},
+                      {'input': [HelmParser.Kube.StatefulSet-1],
+                       'output': ScalarSingleValue(z3_value=redis-replicas)}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-1 -> '
+                                           'redis-replicas',
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> node-app2-dep',
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> node-app1-dep',
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'redis-master'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'namespace(Kube.Workload):Kube.Namespace',
+ 'function_results': [{'input': [KubernetesParser.Kube.Deployment-0],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))},
+                      {'input': [KubernetesParser.Kube.Deployment-1],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))},
+                      {'input': [HelmParser.Kube.StatefulSet-0],
+                       'output': ScalarSingleValue(z3_value=default)},
+                      {'input': [HelmParser.Kube.StatefulSet-1],
+                       'output': ScalarSingleValue(z3_value=default)}],
+ 'model_results': {'tuples': {'elements': ['KubernetesParser.Kube.Deployment-0 '
+                                           '-> '
+                                           'namespace(Config.ManifestSet.Instantiation-0)',
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> '
+                                           'namespace(Config.ManifestSet.Instantiation-0)',
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'default',
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'default'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'kind(Kube.Workload):Kube.Kind',
+ 'function_results': [{'input': [HelmParser.Kube.StatefulSet-0],
+                       'output': ScalarSingleValue(z3_value=StatefulSet)},
+                      {'input': [KubernetesParser.Kube.Deployment-0],
+                       'output': ScalarSingleValue(z3_value=Deployment)},
+                      {'input': [KubernetesParser.Kube.Deployment-1],
+                       'output': ScalarSingleValue(z3_value=Deployment)},
+                      {'input': [HelmParser.Kube.StatefulSet-1],
+                       'output': ScalarSingleValue(z3_value=StatefulSet)}],
+ 'model_results': {'tuples': {'elements': ['KubernetesParser.Kube.Deployment-0 '
+                                           '-> Deployment',
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> Deployment',
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'StatefulSet',
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'StatefulSet'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'name(Kube.Workload):Kube.Name',
+ 'function_results': [{'input': [HelmParser.Kube.StatefulSet-0],
+                       'output': ScalarSingleValue(z3_value=redis-master)},
+                      {'input': [KubernetesParser.Kube.Deployment-0],
+                       'output': ScalarSingleValue(z3_value=node-app2-dep)},
+                      {'input': [KubernetesParser.Kube.Deployment-1],
+                       'output': ScalarSingleValue(z3_value=node-app1-dep)},
+                      {'input': [HelmParser.Kube.StatefulSet-1],
+                       'output': ScalarSingleValue(z3_value=redis-replicas)}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-1 -> '
+                                           'redis-replicas',
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> node-app2-dep',
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> node-app1-dep',
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'redis-master'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'namespace(Kube.Workload):Kube.Namespace',
+ 'function_results': [{'input': [KubernetesParser.Kube.Deployment-0],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))},
+                      {'input': [KubernetesParser.Kube.Deployment-1],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))},
+                      {'input': [HelmParser.Kube.StatefulSet-0],
+                       'output': ScalarSingleValue(z3_value=default)},
+                      {'input': [HelmParser.Kube.StatefulSet-1],
+                       'output': ScalarSingleValue(z3_value=default)}],
+ 'model_results': {'tuples': {'elements': ['KubernetesParser.Kube.Deployment-0 '
+                                           '-> '
+                                           'namespace(Config.ManifestSet.Instantiation-0)',
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> '
+                                           'namespace(Config.ManifestSet.Instantiation-0)',
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'default',
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'default'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'manifest_set(Kube.Workload):Config.ManifestSet.Instantiation',
+ 'function_results': [{'arg1': KubernetesParser.Kube.Deployment-0,
+                       'arg2': Config.ManifestSet.Instantiation-0},
+                      {'arg1': KubernetesParser.Kube.Deployment-1,
+                       'arg2': Config.ManifestSet.Instantiation-0},
+                      {'arg1': HelmParser.Kube.StatefulSet-0,
+                       'arg2': COMMON.NONE},
+                      {'arg1': HelmParser.Kube.StatefulSet-1,
+                       'arg2': COMMON.NONE}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-1 -> '
+                                           'COMMON.NONE',
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> '
+                                           'Config.ManifestSet.Instantiation-0',
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> '
+                                           'Config.ManifestSet.Instantiation-0',
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'COMMON.NONE'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'same_manifest_set(Kube.Workload, Kube.Workload):BuiltinSort.Bool',
+ 'function_results': [{'arg1': HelmParser.Kube.StatefulSet-0,
+                       'arg2': HelmParser.Kube.StatefulSet-0},
+                      {'arg1': KubernetesParser.Kube.Deployment-0,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': KubernetesParser.Kube.Deployment-1,
+                       'arg2': KubernetesParser.Kube.Deployment-1},
+                      {'arg1': HelmParser.Kube.StatefulSet-1,
+                       'arg2': HelmParser.Kube.StatefulSet-1},
+                      {'arg1': KubernetesParser.Kube.Deployment-0,
+                       'arg2': KubernetesParser.Kube.Deployment-1},
+                      {'arg1': HelmParser.Kube.StatefulSet-0,
+                       'arg2': HelmParser.Kube.StatefulSet-1},
+                      {'arg1': KubernetesParser.Kube.Deployment-1,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': HelmParser.Kube.StatefulSet-1,
+                       'arg2': HelmParser.Kube.StatefulSet-0}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-1, '
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'True',
+                                           'KubernetesParser.Kube.Deployment-0, '
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> True',
+                                           'HelmParser.Kube.StatefulSet-1, '
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'True',
+                                           'HelmParser.Kube.StatefulSet-0, '
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'True',
+                                           'KubernetesParser.Kube.Deployment-1, '
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> True',
+                                           'HelmParser.Kube.StatefulSet-0, '
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'True',
+                                           'KubernetesParser.Kube.Deployment-0, '
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Deployment-1, '
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'env_vars(Kube.Container):Kube.Container.EnvVars',
+ 'function_results': [{'arg1': HelmParser.Kube.Container-0,
+                       'arg2': HelmParser.Kube.Container-0/env_vars},
+                      {'arg1': KubernetesParser.Kube.Container-0,
+                       'arg2': KubernetesParser.Kube.Container-0/env_vars},
+                      {'arg1': KubernetesParser.Kube.Container-1,
+                       'arg2': KubernetesParser.Kube.Container-1/env_vars},
+                      {'arg1': HelmParser.Kube.Container-1,
+                       'arg2': HelmParser.Kube.Container-1/env_vars}],
+ 'model_results': {'tuples': {'elements': ['KubernetesParser.Kube.Container-1 '
+                                           '-> '
+                                           'KubernetesParser.Kube.Container-1/env_vars',
+                                           'HelmParser.Kube.Container-0 -> '
+                                           'HelmParser.Kube.Container-0/env_vars',
+                                           'HelmParser.Kube.Container-1 -> '
+                                           'HelmParser.Kube.Container-1/env_vars',
+                                           'KubernetesParser.Kube.Container-0 '
+                                           '-> '
+                                           'KubernetesParser.Kube.Container-0/env_vars'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'container_image(Kube.Container):Container.Image',
+ 'function_results': [{'arg1': HelmParser.Kube.Container-0,
+                       'arg2': docker.io/bitnami/redis:6.2.4-debian-10-r13},
+                      {'arg1': KubernetesParser.Kube.Container-0,
+                       'arg2': getdtk/graph-example2-app:latest},
+                      {'arg1': KubernetesParser.Kube.Container-1,
+                       'arg2': getdtk/graph-example1-app:latest},
+                      {'arg1': HelmParser.Kube.Container-1,
+                       'arg2': docker.io/bitnami/redis:6.2.4-debian-10-r13}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Container-0 -> '
+                                           'docker.io/bitnami/redis:6.2.4-debian-10-r13',
+                                           'KubernetesParser.Kube.Container-0 '
+                                           '-> '
+                                           'getdtk/graph-example2-app:latest',
+                                           'KubernetesParser.Kube.Container-1 '
+                                           '-> '
+                                           'getdtk/graph-example1-app:latest',
+                                           'HelmParser.Kube.Container-1 -> '
+                                           'docker.io/bitnami/redis:6.2.4-debian-10-r13'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'workload(Kube.Container):Kube.Workload',
+ 'function_results': [{'arg1': HelmParser.Kube.Container-0,
+                       'arg2': HelmParser.Kube.StatefulSet-0},
+                      {'arg1': HelmParser.Kube.Container-1,
+                       'arg2': HelmParser.Kube.StatefulSet-1},
+                      {'arg1': KubernetesParser.Kube.Container-0,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': KubernetesParser.Kube.Container-1,
+                       'arg2': KubernetesParser.Kube.Deployment-1}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Container-1 -> '
+                                           'HelmParser.Kube.StatefulSet-1',
+                                           'KubernetesParser.Kube.Container-1 '
+                                           '-> '
+                                           'KubernetesParser.Kube.Deployment-1',
+                                           'HelmParser.Kube.Container-0 -> '
+                                           'HelmParser.Kube.StatefulSet-0',
+                                           'KubernetesParser.Kube.Container-0 '
+                                           '-> '
+                                           'KubernetesParser.Kube.Deployment-0'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'helm_chart_release(Kube.Container, '
+          'Helm.Chart.Release):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'helm_chart_release_name(Kube.Container, '
+          'Config.Value):BuiltinSort.Bool',
+ 'function_results': [{'input': [HelmParser.Kube.Container-0, redis],
+                       'output': ScalarSingleValue(z3_value=True)},
+                      {'input': [HelmParser.Kube.Container-1, redis],
+                       'output': ScalarSingleValue(z3_value=True)}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Container-0, redis '
+                                           '-> True',
+                                           'HelmParser.Kube.Container-1, redis '
+                                           '-> True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'connected_by_service(Kube.Container, Kube.Service):BuiltinSort.Bool',
+ 'function_results': [{'arg1': HelmParser.Kube.Container-0,
+                       'arg2': HelmParser.Kube.Service-0},
+                      {'arg1': HelmParser.Kube.Container-0,
+                       'arg2': HelmParser.Kube.Service-1},
+                      {'arg1': HelmParser.Kube.Container-1,
+                       'arg2': HelmParser.Kube.Service-0},
+                      {'arg1': HelmParser.Kube.Container-1,
+                       'arg2': HelmParser.Kube.Service-2},
+                      {'arg1': KubernetesParser.Kube.Container-0,
+                       'arg2': KubernetesParser.Kube.Service-0}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Container-0, '
+                                           'HelmParser.Kube.Service-0 -> True',
+                                           'HelmParser.Kube.Container-1, '
+                                           'HelmParser.Kube.Service-0 -> True',
+                                           'HelmParser.Kube.Container-0, '
+                                           'HelmParser.Kube.Service-1 -> True',
+                                           'HelmParser.Kube.Container-1, '
+                                           'HelmParser.Kube.Service-2 -> True',
+                                           'KubernetesParser.Kube.Container-0, '
+                                           'KubernetesParser.Kube.Service-0 -> '
+                                           'True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'helm_chart(Kube.Ingress, Helm.Chart):BuiltinSort.Bool',
+ 'function_results': []}
+===============================
+
+
+===============================
+{'query': 'managed_by_helm(Kube.Ingress):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'default_backend(Kube.Ingress):Kube.Ingress.DefaultBackend',
+ 'function_results': [{'arg1': KubernetesParser.Kube.Ingress-2,
+                       'arg2': COMMON.NONE},
+                      {'arg1': KubernetesParser.Kube.Ingress-0,
+                       'arg2': KubernetesParser.Kube.Ingress.DefaultBackend-0},
+                      {'arg1': KubernetesParser.Kube.Ingress-1,
+                       'arg2': KubernetesParser.Kube.Ingress.DefaultBackend-1}],
+ 'model_results': {'tuples': {'elements': ['KubernetesParser.Kube.Ingress-1 -> '
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-1',
+                                           'KubernetesParser.Kube.Ingress-2 -> '
+                                           'KubernetesParser.Kube.Ingress-2/default_backend',
+                                           'KubernetesParser.Kube.Ingress-0 -> '
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-0'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'rewrite_target(Kube.Ingress, Config.Value):BuiltinSort.Bool',
+ 'function_results': [{'input': [KubernetesParser.Kube.Ingress-2, /],
+                       'output': ScalarSingleValue(z3_value=True)},
+                      {'input': [KubernetesParser.Kube.Ingress-0, /],
+                       'output': ScalarSingleValue(z3_value=True)},
+                      {'input': [KubernetesParser.Kube.Ingress-1, /],
+                       'output': ScalarSingleValue(z3_value=True)}],
+ 'model_results': {'tuples': {'elements': ['KubernetesParser.Kube.Ingress-1, / '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Ingress-2, / '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Ingress-0, / '
+                                           '-> True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'name(Container.Image):Container.Image.Name',
+ 'function_results': [{'input': [docker.io/bitnami/redis:6.2.4-debian-10-r13],
+                       'output': ScalarSingleValue(z3_value=docker.io/bitnami/redis)},
+                      {'input': [getdtk/graph-example2-app:latest],
+                       'output': ScalarSingleValue(z3_value=getdtk/graph-example2-app)},
+                      {'input': [getdtk/graph-example1-app:latest],
+                       'output': ScalarSingleValue(z3_value=getdtk/graph-example1-app)}],
+ 'model_results': {'tuples': {'elements': ['getdtk/graph-example2-app:latest '
+                                           '-> getdtk/graph-example2-app',
+                                           'getdtk/graph-example1-app:latest '
+                                           '-> getdtk/graph-example1-app',
+                                           'docker.io/bitnami/redis:6.2.4-debian-10-r13 '
+                                           '-> docker.io/bitnami/redis'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'is_default_class(Kube.Ingress.Class):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': '_matching_kube_service(Kube.Ingress.DefaultBackend, '
+          'Kube.Service):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': '_matching_kube_service(Kube.Ingress.Rule.HttpPath.Backend, '
+          'Kube.Service):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'cluster_domain_name(Kube.StableNetworkId):KubeCluster.DomainName',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+
+adding_dynamic_rule: rule=update_meta_stage_to_apps_can_be_create for computed_effect=Meta.Stage.apps_created
+scheduling_precondition: preconditon=Meta.Stage.apps_can_be_created from dynamic_rule=update_meta_stage_to_apps_can_be_create
+adding_dynamic_rule: rule=compute_stable_network_id_url for computed_effect=Kube.StableNetworkId.url
+adding_dynamic_rule: rule=compute_stable_network_id_url for computed_effect=Kube.StatefulSet.stable_network_id_url
+scheduling_precondition: preconditon=Kube.StableNetworkId.hostname from dynamic_rule=compute_stable_network_id_url
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=Kube.Ingress.ingress_class
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=App.KubeIngressController._kube_ingress_modal
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=App.KubeIngressController.kube_ingress
+scheduling_precondition: preconditon=App.KubeIngressController.Params.watch_ingress_without_class from dynamic_rule=matching_ingress_class
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Ingress.DefaultBackend.kube_service
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Ingress.Rule.HttpPath.Backend.kube_service
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._shadow_component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_term_component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_term_key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__attribute
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.kind
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.name
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.helm_chart
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.managed_by_helm
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._managed_by_helm_helper
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.name
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace_match
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.label_subset
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.same_manifest_set
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.debug_label_regex
+scheduling_precondition: preconditon=Kube.Ingress.DefaultBackend._service_name from dynamic_rule=connects_to_service
+adding_dynamic_rule: rule=update_meta_stage_to_apps_created for computed_effect=Meta.Stage.apps_can_be_created
+unknown
+solver.check: 0.0125
+Check sat for model checking
+sat
+solver.check: 0.1173
+===================
+preconditions for Kube.StatefulSet.stable_network_id_url
+   FunctionPrecondition(Kube.StableNetworkId.cluster_domain_name); is_met=True
+   FunctionPrecondition(Kube.StableNetworkId.hostname); is_met=False
+   DynamicRulePrecondition(compute_stable_network_id_url); is_met=False
+===================
+===================
+preconditions for Kube.Service._shadow_component
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=False
+===================
+===================
+preconditions for Kube.Service.name
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=False
+===================
+===================
+preconditions for Kube.Service.helm_chart
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=False
+===================
+===================
+preconditions for Kube.Service.managed_by_helm
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=False
+===================
+===================
+preconditions for Kube.Service.name
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace_match
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=False
+===================
+===================
+preconditions for Kube.Service.label_subset
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=False
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(label_subset); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.same_manifest_set
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=False
+===================
+===================
+preconditions for Kube.Service.debug_label_regex
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=False
+===================
+===================
+preconditions for Kube.Container.not_connects_through_service
+   FunctionPrecondition(Kube.Container.connected_by_service); is_met=True
+===================
+===================
+preconditions for Kube.Ingress.ingress_class
+   DynamicRulePrecondition(matching_ingress_class); is_met=False
+   FunctionPrecondition(Kube.Ingress.Class.is_default_class); is_met=True
+   FunctionPrecondition(App.KubeIngressController.Params.watch_ingress_without_class); is_met=False
+===================
+===================
+preconditions for Meta.Stage.apps_can_be_created
+   FunctionPrecondition(Kube.Container.helm_chart_release); is_met=True
+   FunctionPrecondition(Container.Image.name); is_met=True
+   FunctionPrecondition(Kube.Container.container_image); is_met=True
+   DynamicRulePrecondition(update_meta_stage_to_apps_created); is_met=True
+===================
+===================
+preconditions for Meta.Stage.apps_created
+   DynamicRulePrecondition(update_meta_stage_to_apps_can_be_create); is_met=False
+   FunctionPrecondition(Meta.Stage.apps_can_be_created); is_met=False
+===================
+===================
+preconditions for Kube.StableNetworkId.hostname
+   DynamicRulePrecondition(compute_stable_network_id_details); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.Params.watch_ingress_without_class
+   DynamicRulePrecondition(discover_ingress_controllers); is_met=False
+===================
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+not_connects_through_service
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+apps_can_be_created
+In process_else_value processor 'Processor', not processing: Not(Var(0) == Kube.StableNetworkId!val!1)
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+hostname
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+_service_name
+===============================
+===============================
+query results for stage 2
+===============================
+{'query': 'not_connects_through_service(Kube.Container, '
+          'Kube.Service):BuiltinSort.Bool',
+ 'function_results': []}
+===============================
+
+
+===============================
+{'query': 'apps_can_be_created(Meta.Stage):BuiltinSort.Bool',
+ 'function_results': []}
+===============================
+
+
+===============================
+{'query': 'hostname(Kube.StableNetworkId):Kube.Name',
+ 'function_results': [{'input': [HelmParser.Kube.StatefulSet-0/stable_network_id],
+                       'output': ScalarSingleValue(z3_value=redis-master)},
+                      {'input': [HelmParser.Kube.StatefulSet-1/stable_network_id],
+                       'output': ScalarSingleValue(z3_value=redis-replicas)}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-1/stable_network_id '
+                                           '-> redis-replicas',
+                                           'HelmParser.Kube.StatefulSet-0/stable_network_id '
+                                           '-> redis-master'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': '_service_name(Kube.Ingress.DefaultBackend):Kube.Name',
+ 'function_results': [{'input': [KubernetesParser.Kube.Ingress.DefaultBackend-1],
+                       'output': ScalarSingleValue(z3_value=test2)},
+                      {'input': [KubernetesParser.Kube.Ingress.DefaultBackend-0],
+                       'output': ScalarSingleValue(z3_value=nginx-ingress-controller)}]}
+===============================
+
+
+adding_dynamic_rule: rule=update_meta_stage_to_apps_can_be_create for computed_effect=Meta.Stage.apps_created
+adding_dynamic_rule: rule=compute_stable_network_id_url for computed_effect=Kube.StableNetworkId.url
+adding_dynamic_rule: rule=compute_stable_network_id_url for computed_effect=Kube.StatefulSet.stable_network_id_url
+scheduling_precondition: preconditon=Kube.StableNetworkId.replica_count from dynamic_rule=compute_stable_network_id_url
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=Kube.Ingress.ingress_class
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=App.KubeIngressController._kube_ingress_modal
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=App.KubeIngressController.kube_ingress
+scheduling_precondition: preconditon=App.KubeIngressController.Params.watch_ingress_without_class from dynamic_rule=matching_ingress_class
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Ingress.DefaultBackend.kube_service
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Ingress.Rule.HttpPath.Backend.kube_service
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._shadow_component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_term_component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_term_key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__attribute
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.kind
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.name
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.helm_chart
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.managed_by_helm
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._managed_by_helm_helper
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.name
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace_match
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.label_subset
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.same_manifest_set
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.debug_label_regex
+scheduling_precondition: preconditon=Kube.Ingress.DefaultBackend._namespace from dynamic_rule=connects_to_service
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_term_component
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_term_key
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_attribute_function__component
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_attribute_function__attribute
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_attribute_function__key
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.secret
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.kube_container
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.service_endpoints
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.debug_service_endpoint
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.default_backend_namespace
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.default_backend_name
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.is_not_discovered
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.kube_ingress_class
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController._kube_ingress_modal
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.kube_ingress
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.controller_type
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.params
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_term_component
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_term_key
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_attribute_function__component
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_attribute_function__attribute
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_attribute_function__key
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.config_map
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.election_id
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.default_backend_service
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.pod_name
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.pod_namespace
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.controller_class
+adding_dynamic_rule: rule=discover_ingress_controllers for computed_effect=App.KubeIngressController.Params.watch_ingress_without_class
+unknown
+solver.check: 0.0118
+Check sat for model checking
+sat
+solver.check: 0.0674
+===================
+preconditions for Kube.StatefulSet.stable_network_id_url
+   FunctionPrecondition(Kube.StableNetworkId.cluster_domain_name); is_met=True
+   FunctionPrecondition(Kube.StableNetworkId.hostname); is_met=True
+   FunctionPrecondition(Kube.StableNetworkId.replica_count); is_met=False
+   DynamicRulePrecondition(compute_stable_network_id_url); is_met=False
+===================
+===================
+preconditions for Kube.Service._shadow_component
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=False
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.name
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=False
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=False
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.helm_chart
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=False
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.managed_by_helm
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=False
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.name
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=False
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=False
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace_match
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=False
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.label_subset
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=False
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(label_subset); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.same_manifest_set
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=False
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.debug_label_regex
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=False
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Ingress.ingress_class
+   DynamicRulePrecondition(matching_ingress_class); is_met=False
+   FunctionPrecondition(Kube.Ingress.Class.is_default_class); is_met=True
+   FunctionPrecondition(App.KubeIngressController.Params.watch_ingress_without_class); is_met=False
+===================
+===================
+preconditions for Meta.Stage.apps_created
+   DynamicRulePrecondition(update_meta_stage_to_apps_can_be_create); is_met=True
+   FunctionPrecondition(Meta.Stage.apps_can_be_created); is_met=True
+===================
+===================
+preconditions for App.KubeIngressController.Params.watch_ingress_without_class
+   DynamicRulePrecondition(discover_ingress_controllers); is_met=True
+===================
+===================
+preconditions for Kube.StableNetworkId.replica_count
+   DynamicRulePrecondition(compute_stable_network_id_details); is_met=True
+===================
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+apps_created
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+watch_ingress_without_class
+In process_else_value processor 'Processor', not processing: Not(Var(0) == Kube.StableNetworkId!val!1)
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+replica_count
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+_namespace
+===============================
+===============================
+query results for stage 3
+===============================
+{'query': 'apps_created(Meta.Stage):BuiltinSort.Bool',
+ 'function_results': [{'input': [default],
+                       'output': ScalarSingleValue(z3_value=True)}],
+ 'model_results': {'tuples': {'elements': ['default -> True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'watch_ingress_without_class(App.KubeIngressController.Params):BuiltinSort.Bool',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'replica_count(Kube.StableNetworkId):BuiltinSort.Z3Integer',
+ 'function_results': [{'input': [HelmParser.Kube.StatefulSet-0/stable_network_id],
+                       'output': ScalarSingleValue(z3_value=1)},
+                      {'input': [HelmParser.Kube.StatefulSet-1/stable_network_id],
+                       'output': ScalarSingleValue(z3_value=3)}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-1/stable_network_id '
+                                           '-> 3',
+                                           'HelmParser.Kube.StatefulSet-0/stable_network_id '
+                                           '-> 1'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': '_namespace(Kube.Ingress.DefaultBackend):Kube.Namespace',
+ 'function_results': [{'input': [KubernetesParser.Kube.Ingress.DefaultBackend-1],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))},
+                      {'input': [KubernetesParser.Kube.Ingress.DefaultBackend-0],
+                       'output': ScalarSingleValue(z3_value=default)},
+                      {'input': [KubernetesParser.Kube.Ingress-2/default_backend],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))}]}
+===============================
+
+
+adding_dynamic_rule: rule=compute_stable_network_id_url for computed_effect=Kube.StableNetworkId.url
+adding_dynamic_rule: rule=compute_stable_network_id_url for computed_effect=Kube.StatefulSet.stable_network_id_url
+scheduling_precondition: preconditon=Kube.StableNetworkId.namespace from dynamic_rule=compute_stable_network_id_url
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=Kube.Ingress.ingress_class
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=App.KubeIngressController._kube_ingress_modal
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=App.KubeIngressController.kube_ingress
+scheduling_precondition: preconditon=Kube.Ingress._partial_matching_ingress_class from dynamic_rule=matching_ingress_class
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Ingress.DefaultBackend.kube_service
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Ingress.Rule.HttpPath.Backend.kube_service
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._shadow_component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_term_component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_term_key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__attribute
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.kind
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.name
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.helm_chart
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.managed_by_helm
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._managed_by_helm_helper
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.name
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace_match
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.label_subset
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.same_manifest_set
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.debug_label_regex
+scheduling_precondition: preconditon=Kube.Ingress.Rule.HttpPath.Backend._service_name from dynamic_rule=connects_to_service
+unknown
+solver.check: 0.0108
+Check sat for model checking
+sat
+solver.check: 0.1166
+===================
+preconditions for Kube.StatefulSet.stable_network_id_url
+   FunctionPrecondition(Kube.StableNetworkId.cluster_domain_name); is_met=True
+   FunctionPrecondition(Kube.StableNetworkId.namespace); is_met=False
+   FunctionPrecondition(Kube.StableNetworkId.hostname); is_met=True
+   DynamicRulePrecondition(compute_stable_network_id_url); is_met=False
+   FunctionPrecondition(Kube.StableNetworkId.replica_count); is_met=True
+===================
+===================
+preconditions for Kube.Service._shadow_component
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.name
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.helm_chart
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.managed_by_helm
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.name
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace_match
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.label_subset
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=False
+   DynamicRulePrecondition(label_subset); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.same_manifest_set
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.debug_label_regex
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=False
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Ingress.ingress_class
+   DynamicRulePrecondition(matching_ingress_class); is_met=False
+   FunctionPrecondition(Kube.Ingress._partial_matching_ingress_class); is_met=False
+   FunctionPrecondition(Kube.Ingress.Class.is_default_class); is_met=True
+   FunctionPrecondition(App.KubeIngressController.Params.watch_ingress_without_class); is_met=True
+===================
+===================
+preconditions for Kube.StableNetworkId.namespace
+   DynamicRulePrecondition(compute_stable_network_id_details); is_met=True
+===================
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+namespace
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+_partial_matching_ingress_class
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+_service_name
+===============================
+===============================
+query results for stage 4
+===============================
+{'query': 'namespace(Kube.StableNetworkId):Kube.Namespace',
+ 'function_results': [{'input': [HelmParser.Kube.StatefulSet-0/stable_network_id],
+                       'output': ScalarSingleValue(z3_value=default)},
+                      {'input': [HelmParser.Kube.StatefulSet-1/stable_network_id],
+                       'output': ScalarSingleValue(z3_value=default)}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-1/stable_network_id '
+                                           '-> default',
+                                           'HelmParser.Kube.StatefulSet-0/stable_network_id '
+                                           '-> default'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': '_partial_matching_ingress_class(Kube.Ingress):Kube.Ingress.Class',
+ 'function_results': [],
+ 'model_results': {'tuples': {'elements': [], 'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': '_service_name(Kube.Ingress.Rule.HttpPath.Backend):Kube.Name',
+ 'function_results': [{'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1],
+                       'output': ScalarSingleValue(z3_value=node-app-svc)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3],
+                       'output': ScalarSingleValue(z3_value=node-app2-svc)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0],
+                       'output': ScalarSingleValue(z3_value=node-app1-svc)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2],
+                       'output': ScalarSingleValue(z3_value=node-app1-svc)}]}
+===============================
+
+
+adding_dynamic_rule: rule=compute_stable_network_id_url for computed_effect=Kube.StableNetworkId.url
+adding_dynamic_rule: rule=compute_stable_network_id_url for computed_effect=Kube.StatefulSet.stable_network_id_url
+scheduling_precondition: preconditon=Kube.StableNetworkId.service from dynamic_rule=compute_stable_network_id_url
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=Kube.Ingress.ingress_class
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=App.KubeIngressController._kube_ingress_modal
+adding_dynamic_rule: rule=matching_ingress_class for computed_effect=App.KubeIngressController.kube_ingress
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Ingress.DefaultBackend.kube_service
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Ingress.Rule.HttpPath.Backend.kube_service
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._shadow_component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_term_component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_term_key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__attribute
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.kind
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.name
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.helm_chart
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.managed_by_helm
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._managed_by_helm_helper
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.name
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace_match
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.label_subset
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.same_manifest_set
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.debug_label_regex
+scheduling_precondition: preconditon=Kube.Ingress.Rule.HttpPath.Backend._namespace from dynamic_rule=connects_to_service
+unknown
+solver.check: 0.0116
+Check sat for model checking
+sat
+solver.check: 0.0692
+===================
+preconditions for Kube.StatefulSet.stable_network_id_url
+   FunctionPrecondition(Kube.StableNetworkId.cluster_domain_name); is_met=True
+   FunctionPrecondition(Kube.StableNetworkId.namespace); is_met=True
+   FunctionPrecondition(Kube.StableNetworkId.hostname); is_met=True
+   FunctionPrecondition(Kube.StableNetworkId.service); is_met=False
+   DynamicRulePrecondition(compute_stable_network_id_url); is_met=False
+   FunctionPrecondition(Kube.StableNetworkId.replica_count); is_met=True
+===================
+===================
+preconditions for Kube.Service._shadow_component
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.name
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.helm_chart
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.managed_by_helm
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.name
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.namespace_match
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.label_subset
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   DynamicRulePrecondition(label_subset); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.same_manifest_set
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Service.debug_label_regex
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=False
+   DynamicRulePrecondition(connects_to_service); is_met=False
+===================
+===================
+preconditions for Kube.Ingress.ingress_class
+   DynamicRulePrecondition(matching_ingress_class); is_met=True
+   FunctionPrecondition(Kube.Ingress._partial_matching_ingress_class); is_met=True
+   FunctionPrecondition(Kube.Ingress.Class.is_default_class); is_met=True
+   FunctionPrecondition(App.KubeIngressController.Params.watch_ingress_without_class); is_met=True
+===================
+===================
+preconditions for Kube.StableNetworkId.service
+   DynamicRulePrecondition(compute_stable_network_id_details); is_met=True
+===================
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+ingress_class
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+service
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+_namespace
+===== Searching for disjunctive permutations
+unknown
+solver.check: 0.0099
+unknown
+solver.check: 0.0109
+===== Searching for disjunctive permutations
+unknown
+solver.check: 0.0114
+unknown
+solver.check: 0.0109
+===== Searching for disjunctive permutations
+unknown
+solver.check: 0.0108
+unknown
+solver.check: 0.0124
+===== Searching for disjunctive permutations
+unknown
+solver.check: 0.0102
+unknown
+solver.check: 0.0115
+===============================
+===============================
+query results for stage 5
+===============================
+{'query': 'ingress_class(Kube.Ingress):Kube.Ingress.Class',
+ 'function_results': [{'arg1': KubernetesParser.Kube.Ingress-2,
+                       'arg2': ShadowIngressClass},
+                      {'arg1': KubernetesParser.Kube.Ingress-0,
+                       'arg2': ShadowIngressClass},
+                      {'arg1': KubernetesParser.Kube.Ingress-1,
+                       'arg2': ShadowIngressClass}],
+ 'model_results': {'tuples': {'elements': ['KubernetesParser.Kube.Ingress-2 -> '
+                                           'ShadowIngressClass',
+                                           'KubernetesParser.Kube.Ingress-0 -> '
+                                           'ShadowIngressClass',
+                                           'KubernetesParser.Kube.Ingress-1 -> '
+                                           'ShadowIngressClass'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'service(Kube.StableNetworkId):Kube.Name',
+ 'function_results': [{'input': [HelmParser.Kube.StatefulSet-0/stable_network_id],
+                       'output': ScalarSingleValue(z3_value=redis-headless)},
+                      {'input': [HelmParser.Kube.StatefulSet-1/stable_network_id],
+                       'output': ScalarSingleValue(z3_value=redis-headless)}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-1/stable_network_id '
+                                           '-> redis-headless',
+                                           'HelmParser.Kube.StatefulSet-0/stable_network_id '
+                                           '-> redis-headless'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': '_namespace(Kube.Ingress.Rule.HttpPath.Backend):Kube.Namespace',
+ 'function_results': [{'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0],
+                       'output': SingleValueDisjunction(z3_value=or(default,namespace),
+                                                        z3_disjuncts=[default,
+                                                                      namespace(Config.ManifestSet.Instantiation-0)])},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2],
+                       'output': SingleValueDisjunction(z3_value=or(default,namespace),
+                                                        z3_disjuncts=[default,
+                                                                      namespace(Config.ManifestSet.Instantiation-0)])},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1],
+                       'output': SingleValueDisjunction(z3_value=or(default,namespace),
+                                                        z3_disjuncts=[default,
+                                                                      namespace(Config.ManifestSet.Instantiation-0)])},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3],
+                       'output': SingleValueDisjunction(z3_value=or(default,namespace),
+                                                        z3_disjuncts=[default,
+                                                                      namespace(Config.ManifestSet.Instantiation-0)])}]}
+===============================
+
+
+adding_dynamic_rule: rule=compute_stable_network_id_url for computed_effect=Kube.StableNetworkId.url
+adding_dynamic_rule: rule=compute_stable_network_id_url for computed_effect=Kube.StatefulSet.stable_network_id_url
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Ingress.DefaultBackend.kube_service
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Ingress.Rule.HttpPath.Backend.kube_service
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._shadow_component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_term_component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_term_key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__attribute
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_attribute_function__key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__component
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__attribute
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._meta_dict_attribute_function__key
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.kind
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.name
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.helm_chart
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.managed_by_helm
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service._managed_by_helm_helper
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.name
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.namespace_match
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.label_subset
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.same_manifest_set
+adding_dynamic_rule: rule=connects_to_service for computed_effect=Kube.Service.debug_label_regex
+unknown
+solver.check: 0.0168
+Check sat for model checking
+sat
+solver.check: 0.1726
+===================
+preconditions for Kube.StatefulSet.stable_network_id_url
+   FunctionPrecondition(Kube.StableNetworkId.cluster_domain_name); is_met=True
+   FunctionPrecondition(Kube.StableNetworkId.namespace); is_met=True
+   FunctionPrecondition(Kube.StableNetworkId.hostname); is_met=True
+   FunctionPrecondition(Kube.StableNetworkId.service); is_met=True
+   DynamicRulePrecondition(compute_stable_network_id_url); is_met=True
+   FunctionPrecondition(Kube.StableNetworkId.replica_count); is_met=True
+===================
+===================
+preconditions for Kube.Service._shadow_component
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=True
+===================
+===================
+preconditions for Kube.Service.name
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=True
+===================
+===================
+preconditions for Kube.Service.namespace
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=True
+===================
+===================
+preconditions for Kube.Service.helm_chart
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=True
+===================
+===================
+preconditions for Kube.Service.managed_by_helm
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=True
+===================
+===================
+preconditions for Kube.Service.name
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=True
+===================
+===================
+preconditions for Kube.Service.namespace
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=True
+===================
+===================
+preconditions for Kube.Service.namespace_match
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=True
+===================
+===================
+preconditions for Kube.Service.label_subset
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   DynamicRulePrecondition(label_subset); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=True
+===================
+===================
+preconditions for Kube.Service.same_manifest_set
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=True
+===================
+===================
+preconditions for Kube.Service.debug_label_regex
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._namespace); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._service_name); is_met=True
+   FunctionPrecondition(Kube.Ingress.DefaultBackend._matching_kube_service); is_met=True
+   FunctionPrecondition(Kube.Ingress.Rule.HttpPath.Backend._namespace); is_met=True
+   DynamicRulePrecondition(connects_to_service); is_met=True
+===================
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+stable_network_id_url
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+_shadow_component
+In process_else_value processor 'Processor', not processing: k!7211(Var(0)) == Kube.Service!val!7
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+name
+In process_else_value processor 'Processor', not processing: k!7211(Var(0)) == Kube.Service!val!13
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+namespace
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+helm_chart
+In process_else_value processor 'Processor', not processing: k!7219(Var(0)) == Kube.Service!val!9
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+managed_by_helmIn process_else_value processor
+ 'Processor', not processing: k!7211(Var(0)) == Kube.Service!val!7
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+name
+In process_else_value processor 'Processor', not processing: k!7211(Var(0)) == Kube.Service!val!13
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+namespace
+In process_else_value processor 'Processor', not processing: k!7211(Var(0)) == Kube.Service!val!0
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+namespace_match
+In process_else_value processor 'Processor', not processing: k!7211(Var(0)) == Kube.Service!val!0
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+label_subset
+In process_else_value processor 'Processor', not processing: k!7211(Var(0)) == Kube.Service!val!4
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+same_manifest_set
+==============================================
+Computing with strategy 'ProcessVarMarkers':
+debug_label_regex
+===============================
+===============================
+query results for stage 6
+===============================
+{'query': 'stable_network_id_url(Kube.StatefulSet):Any.String',
+ 'function_results': [{'input': [HelmParser.Kube.StatefulSet-0],
+                       'output': ScalarSingleValue(z3_value=redis-master-0.redis-headless.default.?)},
+                      {'input': [HelmParser.Kube.StatefulSet-1],
+                       'output': ScalarSingleValue(z3_value=redis-replicas-{0..2}.redis-headless.default.?)}],
+ 'attribute_links': ['HelmParser.Kube.StatefulSet-0#stable_network_id_url -> '
+                     'HelmParser.Kube.StatefulSet-0/stable_network_id#url',
+                     'HelmParser.Kube.StatefulSet-1#stable_network_id_url -> '
+                     'HelmParser.Kube.StatefulSet-1/stable_network_id#url'],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.StatefulSet-1 -> '
+                                           'redis-replicas-{0..2}.redis-headless.default.?',
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'redis-master-0.redis-headless.default.?'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': '_shadow_component(Kube.Service):BuiltinSort.Bool',
+ 'function_results': [{'input': [KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service],
+                       'output': ScalarSingleValue(z3_value=True)},
+                      {'input': [KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service],
+                       'output': ScalarSingleValue(z3_value=True)},
+                      {'input': [KubernetesParser.Kube.Ingress-2/default_backend/kube_service],
+                       'output': ScalarSingleValue(z3_value=True)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service],
+                       'output': ScalarSingleValue(z3_value=True)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3/kube_service],
+                       'output': ScalarSingleValue(z3_value=True)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service],
+                       'output': ScalarSingleValue(z3_value=True)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2/kube_service],
+                       'output': ScalarSingleValue(z3_value=True)}],
+ 'model_results': {'tuples': {'elements': ['KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Ingress-2/default_backend/kube_service '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3/kube_service '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2/kube_service '
+                                           '-> True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'name(Kube.Service):Kube.Name',
+ 'function_results': [{'input': [HelmParser.Kube.Service-0],
+                       'output': ScalarSingleValue(z3_value=redis-headless)},
+                      {'input': [KubernetesParser.Kube.Service-1],
+                       'output': ScalarSingleValue(z3_value=node-app1-svc)},
+                      {'input': [KubernetesParser.Kube.Service-0],
+                       'output': ScalarSingleValue(z3_value=node-app2-svc)},
+                      {'input': [HelmParser.Kube.Service-1],
+                       'output': ScalarSingleValue(z3_value=redis-master)},
+                      {'input': [HelmParser.Kube.Service-2],
+                       'output': ScalarSingleValue(z3_value=redis-replicas)},
+                      {'input': [KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service],
+                       'output': ScalarSingleValue(z3_value=test2)},
+                      {'input': [KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service],
+                       'output': ScalarSingleValue(z3_value=nginx-ingress-controller)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service],
+                       'output': ScalarSingleValue(z3_value=node-app-svc)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3/kube_service],
+                       'output': ScalarSingleValue(z3_value=node-app2-svc)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service],
+                       'output': ScalarSingleValue(z3_value=node-app1-svc)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2/kube_service],
+                       'output': ScalarSingleValue(z3_value=node-app1-svc)}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Service-0 -> '
+                                           'redis-headless',
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service '
+                                           '-> nginx-ingress-controller',
+                                           'KubernetesParser.Kube.Service-1 -> '
+                                           'node-app1-svc',
+                                           'KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service '
+                                           '-> node-app-svc',
+                                           'KubernetesParser.Kube.Service-0 -> '
+                                           'node-app2-svc',
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service '
+                                           '-> test2',
+                                           'KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3/kube_service '
+                                           '-> node-app2-svc',
+                                           'KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service '
+                                           '-> node-app1-svc',
+                                           'HelmParser.Kube.Service-1 -> '
+                                           'redis-master',
+                                           'HelmParser.Kube.Service-2 -> '
+                                           'redis-replicas',
+                                           'KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2/kube_service '
+                                           '-> node-app1-svc'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'namespace(Kube.Service):Kube.Namespace',
+ 'function_results': [{'input': [HelmParser.Kube.Service-0],
+                       'output': ScalarSingleValue(z3_value=default)},
+                      {'input': [KubernetesParser.Kube.Service-1],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))},
+                      {'input': [KubernetesParser.Kube.Service-0],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))},
+                      {'input': [HelmParser.Kube.Service-1],
+                       'output': ScalarSingleValue(z3_value=default)},
+                      {'input': [HelmParser.Kube.Service-2],
+                       'output': ScalarSingleValue(z3_value=default)},
+                      {'input': [KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))},
+                      {'input': [KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service],
+                       'output': ScalarSingleValue(z3_value=default)},
+                      {'input': [KubernetesParser.Kube.Ingress-2/default_backend/kube_service],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Service-0 -> '
+                                           'default',
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service '
+                                           '-> default',
+                                           'KubernetesParser.Kube.Service-1 -> '
+                                           'namespace(Config.ManifestSet.Instantiation-0)',
+                                           'KubernetesParser.Kube.Service-0 -> '
+                                           'namespace(Config.ManifestSet.Instantiation-0)',
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service '
+                                           '-> '
+                                           'namespace(Config.ManifestSet.Instantiation-0)',
+                                           'KubernetesParser.Kube.Ingress-2/default_backend/kube_service '
+                                           '-> '
+                                           'namespace(Config.ManifestSet.Instantiation-0)',
+                                           'HelmParser.Kube.Service-1 -> '
+                                           'default',
+                                           'HelmParser.Kube.Service-2 -> '
+                                           'default'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'helm_chart(Kube.Service, Helm.Chart):BuiltinSort.Bool',
+ 'function_results': []}
+===============================
+
+
+===============================
+{'query': 'managed_by_helm(Kube.Service):BuiltinSort.Bool',
+ 'function_results': [{'input': [HelmParser.Kube.Service-0],
+                       'output': ScalarSingleValue(z3_value=True)},
+                      {'input': [HelmParser.Kube.Service-1],
+                       'output': ScalarSingleValue(z3_value=True)},
+                      {'input': [HelmParser.Kube.Service-2],
+                       'output': ScalarSingleValue(z3_value=True)}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Service-0 -> True',
+                                           'HelmParser.Kube.Service-1 -> True',
+                                           'HelmParser.Kube.Service-2 -> True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'name(Kube.Service):Kube.Name',
+ 'function_results': [{'input': [HelmParser.Kube.Service-0],
+                       'output': ScalarSingleValue(z3_value=redis-headless)},
+                      {'input': [KubernetesParser.Kube.Service-1],
+                       'output': ScalarSingleValue(z3_value=node-app1-svc)},
+                      {'input': [KubernetesParser.Kube.Service-0],
+                       'output': ScalarSingleValue(z3_value=node-app2-svc)},
+                      {'input': [HelmParser.Kube.Service-1],
+                       'output': ScalarSingleValue(z3_value=redis-master)},
+                      {'input': [HelmParser.Kube.Service-2],
+                       'output': ScalarSingleValue(z3_value=redis-replicas)},
+                      {'input': [KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service],
+                       'output': ScalarSingleValue(z3_value=test2)},
+                      {'input': [KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service],
+                       'output': ScalarSingleValue(z3_value=nginx-ingress-controller)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service],
+                       'output': ScalarSingleValue(z3_value=node-app-svc)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3/kube_service],
+                       'output': ScalarSingleValue(z3_value=node-app2-svc)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service],
+                       'output': ScalarSingleValue(z3_value=node-app1-svc)},
+                      {'input': [KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2/kube_service],
+                       'output': ScalarSingleValue(z3_value=node-app1-svc)}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Service-0 -> '
+                                           'redis-headless',
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service '
+                                           '-> nginx-ingress-controller',
+                                           'KubernetesParser.Kube.Service-1 -> '
+                                           'node-app1-svc',
+                                           'KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service '
+                                           '-> node-app-svc',
+                                           'KubernetesParser.Kube.Service-0 -> '
+                                           'node-app2-svc',
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service '
+                                           '-> test2',
+                                           'KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3/kube_service '
+                                           '-> node-app2-svc',
+                                           'KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service '
+                                           '-> node-app1-svc',
+                                           'HelmParser.Kube.Service-1 -> '
+                                           'redis-master',
+                                           'HelmParser.Kube.Service-2 -> '
+                                           'redis-replicas',
+                                           'KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2/kube_service '
+                                           '-> node-app1-svc'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'namespace(Kube.Service):Kube.Namespace',
+ 'function_results': [{'input': [HelmParser.Kube.Service-0],
+                       'output': ScalarSingleValue(z3_value=default)},
+                      {'input': [KubernetesParser.Kube.Service-1],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))},
+                      {'input': [KubernetesParser.Kube.Service-0],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))},
+                      {'input': [HelmParser.Kube.Service-1],
+                       'output': ScalarSingleValue(z3_value=default)},
+                      {'input': [HelmParser.Kube.Service-2],
+                       'output': ScalarSingleValue(z3_value=default)},
+                      {'input': [KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))},
+                      {'input': [KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service],
+                       'output': ScalarSingleValue(z3_value=default)},
+                      {'input': [KubernetesParser.Kube.Ingress-2/default_backend/kube_service],
+                       'output': AttributeLinkValue(z3_value=namespace(Config.ManifestSet.Instantiation-0))}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Service-0 -> '
+                                           'default',
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service '
+                                           '-> default',
+                                           'KubernetesParser.Kube.Service-1 -> '
+                                           'namespace(Config.ManifestSet.Instantiation-0)',
+                                           'KubernetesParser.Kube.Service-0 -> '
+                                           'namespace(Config.ManifestSet.Instantiation-0)',
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service '
+                                           '-> '
+                                           'namespace(Config.ManifestSet.Instantiation-0)',
+                                           'KubernetesParser.Kube.Ingress-2/default_backend/kube_service '
+                                           '-> '
+                                           'namespace(Config.ManifestSet.Instantiation-0)',
+                                           'HelmParser.Kube.Service-1 -> '
+                                           'default',
+                                           'HelmParser.Kube.Service-2 -> '
+                                           'default'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'namespace_match(Kube.Service, Kube.Workload):BuiltinSort.Bool',
+ 'function_results': [{'arg1': KubernetesParser.Kube.Service-1,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': KubernetesParser.Kube.Service-0,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': KubernetesParser.Kube.Ingress-2/default_backend/kube_service,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': KubernetesParser.Kube.Service-1,
+                       'arg2': KubernetesParser.Kube.Deployment-1},
+                      {'arg1': KubernetesParser.Kube.Service-0,
+                       'arg2': KubernetesParser.Kube.Deployment-1},
+                      {'arg1': KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service,
+                       'arg2': KubernetesParser.Kube.Deployment-1},
+                      {'arg1': KubernetesParser.Kube.Ingress-2/default_backend/kube_service,
+                       'arg2': KubernetesParser.Kube.Deployment-1},
+                      {'arg1': HelmParser.Kube.Service-0,
+                       'arg2': HelmParser.Kube.StatefulSet-0},
+                      {'arg1': HelmParser.Kube.Service-1,
+                       'arg2': HelmParser.Kube.StatefulSet-0},
+                      {'arg1': HelmParser.Kube.Service-2,
+                       'arg2': HelmParser.Kube.StatefulSet-0},
+                      {'arg1': KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service,
+                       'arg2': HelmParser.Kube.StatefulSet-0},
+                      {'arg1': HelmParser.Kube.Service-0,
+                       'arg2': HelmParser.Kube.StatefulSet-1},
+                      {'arg1': HelmParser.Kube.Service-1,
+                       'arg2': HelmParser.Kube.StatefulSet-1},
+                      {'arg1': HelmParser.Kube.Service-2,
+                       'arg2': HelmParser.Kube.StatefulSet-1},
+                      {'arg1': KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service,
+                       'arg2': HelmParser.Kube.StatefulSet-1}],
+ 'model_results': {'tuples': {'elements': ['KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service, '
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'True',
+                                           'HelmParser.Kube.Service-2, '
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'True',
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service, '
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Service-1, '
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Service-0, '
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> True',
+                                           'HelmParser.Kube.Service-0, '
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'True',
+                                           'HelmParser.Kube.Service-2, '
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'True',
+                                           'KubernetesParser.Kube.Ingress-2/default_backend/kube_service, '
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Service-1, '
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Ingress-2/default_backend/kube_service, '
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service, '
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> True',
+                                           'HelmParser.Kube.Service-0, '
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'True',
+                                           'HelmParser.Kube.Service-1, '
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'True',
+                                           'KubernetesParser.Kube.Service-0, '
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service, '
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'True',
+                                           'HelmParser.Kube.Service-1, '
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'label_subset(Kube.Service, Kube.Workload):BuiltinSort.Bool',
+ 'function_results': [{'arg1': HelmParser.Kube.Service-0,
+                       'arg2': HelmParser.Kube.StatefulSet-0},
+                      {'arg1': HelmParser.Kube.Service-0,
+                       'arg2': HelmParser.Kube.StatefulSet-1},
+                      {'arg1': KubernetesParser.Kube.Service-0,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': HelmParser.Kube.Service-1,
+                       'arg2': HelmParser.Kube.StatefulSet-0},
+                      {'arg1': HelmParser.Kube.Service-2,
+                       'arg2': HelmParser.Kube.StatefulSet-1}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Service-2, '
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'True',
+                                           'KubernetesParser.Kube.Service-0, '
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> True',
+                                           'HelmParser.Kube.Service-0, '
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'True',
+                                           'HelmParser.Kube.Service-0, '
+                                           'HelmParser.Kube.StatefulSet-1 -> '
+                                           'True',
+                                           'HelmParser.Kube.Service-1, '
+                                           'HelmParser.Kube.StatefulSet-0 -> '
+                                           'True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'same_manifest_set(Kube.Service, Kube.Workload):BuiltinSort.Bool',
+ 'function_results': [{'arg1': HelmParser.Kube.Service-0,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': HelmParser.Kube.Service-0,
+                       'arg2': KubernetesParser.Kube.Deployment-1},
+                      {'arg1': KubernetesParser.Kube.Service-1,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': KubernetesParser.Kube.Service-1,
+                       'arg2': KubernetesParser.Kube.Deployment-1},
+                      {'arg1': KubernetesParser.Kube.Service-0,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': KubernetesParser.Kube.Service-0,
+                       'arg2': KubernetesParser.Kube.Deployment-1},
+                      {'arg1': HelmParser.Kube.Service-1,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': HelmParser.Kube.Service-1,
+                       'arg2': KubernetesParser.Kube.Deployment-1},
+                      {'arg1': HelmParser.Kube.Service-2,
+                       'arg2': KubernetesParser.Kube.Deployment-0},
+                      {'arg1': HelmParser.Kube.Service-2,
+                       'arg2': KubernetesParser.Kube.Deployment-1}],
+ 'model_results': {'tuples': {'elements': ['HelmParser.Kube.Service-1, '
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> True',
+                                           'HelmParser.Kube.Service-0, '
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Service-1, '
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Service-0, '
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> True',
+                                           'HelmParser.Kube.Service-0, '
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> True',
+                                           'HelmParser.Kube.Service-2, '
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Service-1, '
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> True',
+                                           'KubernetesParser.Kube.Service-0, '
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> True',
+                                           'HelmParser.Kube.Service-2, '
+                                           'KubernetesParser.Kube.Deployment-1 '
+                                           '-> True',
+                                           'HelmParser.Kube.Service-1, '
+                                           'KubernetesParser.Kube.Deployment-0 '
+                                           '-> True'],
+                              'results_complete': True}}}
+===============================
+
+
+===============================
+{'query': 'debug_label_regex(Kube.Service):BuiltinSort.Bool',
+ 'function_results': []}
+===============================
+
+
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-0', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-1', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-0', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-1', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-0', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-1', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-0', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-0', which is not a component
+Ignoring query result with subject 'KubernetesParser.Kube.Deployment-1', which is not a component
+Ignoring query result with subject 'HelmParser.Kube.StatefulSet-1', which is not a component
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-0, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-1, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-0, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-1, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-0, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-1, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-0, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-1, Kube.Workload)'
+No self._matching_component() to component 'Component(HelmParser.Kube.StatefulSet-0, Kube.Workload)'
+No self._matching_component() to component 'Component(HelmParser.Kube.StatefulSet-1, Kube.Workload)'
+No self._matching_component() to component 'Component(HelmParser.Kube.StatefulSet-0, Kube.Workload)'
+No self._matching_component() to component 'Component(HelmParser.Kube.StatefulSet-1, Kube.Workload)'
+No self._matching_component() to component 'Component(HelmParser.Kube.StatefulSet-0, Kube.Workload)'
+No self._matching_component() to component 'Component(HelmParser.Kube.StatefulSet-1, Kube.Workload)'
+No self._matching_component() to component 'Component(HelmParser.Kube.StatefulSet-0, Kube.Workload)'
+No self._matching_component() to component 'Component(HelmParser.Kube.StatefulSet-1, Kube.Workload)'
+No self._matching_component() to component 'Component(HelmParser.Kube.StatefulSet-0, Kube.Workload)'
+No self._matching_component() to component 'Component(HelmParser.Kube.StatefulSet-1, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-0, Kube.Workload)'
+No self._matching_component() to component 'Component(HelmParser.Kube.StatefulSet-0, Kube.Workload)'
+No self._matching_component() to component 'Component(HelmParser.Kube.StatefulSet-1, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-0, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-1, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-0, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-1, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-0, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-1, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-0, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-1, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-0, Kube.Workload)'
+No self._matching_component() to component 'Component(KubernetesParser.Kube.Deployment-1, Kube.Workload)'

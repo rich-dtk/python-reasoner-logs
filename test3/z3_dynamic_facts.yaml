@@ -1,0 +1,73 @@
+Or(Not(DYNAMIC_ATTRIBUTE-64),
+   _image_name(KubernetesParser.Kube.Container-0) ==
+   getdtk/graph-example2-app)
+
+Or(Not(DYNAMIC_ATTRIBUTE-65),
+   _image_tag(KubernetesParser.Kube.Container-0) == latest)
+
+Or(Not(DYNAMIC_ATTRIBUTE-66),
+   image_name_and_tag(KubernetesParser.Kube.Container-0) ==
+   getdtk/graph-example2-app:latest)
+
+Or(Not(DYNAMIC_ATTRIBUTE-67),
+   _image_name(KubernetesParser.Kube.Container-1) ==
+   getdtk/graph-example1-app)
+
+Or(Not(DYNAMIC_ATTRIBUTE-68),
+   _image_tag(KubernetesParser.Kube.Container-1) == latest)
+
+Or(Not(DYNAMIC_ATTRIBUTE-69),
+   image_name_and_tag(KubernetesParser.Kube.Container-1) ==
+   getdtk/graph-example1-app:latest)
+
+Or(Not(DYNAMIC_ATTRIBUTE-70),
+   _image_name(HelmParser.Kube.Container-0) ==
+   docker.io/bitnami/redis)
+
+Or(Not(DYNAMIC_ATTRIBUTE-71),
+   _image_tag(HelmParser.Kube.Container-0) ==
+   6.2.4-debian-10-r13)
+
+Or(Not(DYNAMIC_ATTRIBUTE-72),
+   image_name_and_tag(HelmParser.Kube.Container-0) ==
+   docker.io/bitnami/redis:6.2.4-debian-10-r13)
+
+Or(Not(DYNAMIC_ATTRIBUTE-73),
+   _image_name(HelmParser.Kube.Container-1) ==
+   docker.io/bitnami/redis)
+
+Or(Not(DYNAMIC_ATTRIBUTE-74),
+   _image_tag(HelmParser.Kube.Container-1) ==
+   6.2.4-debian-10-r13)
+
+Or(Not(DYNAMIC_ATTRIBUTE-75),
+   image_name_and_tag(HelmParser.Kube.Container-1) ==
+   docker.io/bitnami/redis:6.2.4-debian-10-r13)
+
+
+Or(Not(SHADOW_COMPONENT_RULE-2),
+   container_image(KubernetesParser.Kube.Container-0) ==
+   getdtk/graph-example2-app:latest)
+
+Or(Not(SHADOW_COMPONENT_RULE-3),
+   _is_shadow_component(getdtk/graph-example2-app:latest))
+
+Or(Not(SHADOW_COMPONENT_RULE-4),
+   container_image(HelmParser.Kube.Container-0) ==
+   docker.io/bitnami/redis:6.2.4-debian-10-r13)
+
+Or(Not(SHADOW_COMPONENT_RULE-5),
+   _is_shadow_component(docker.io/bitnami/redis:6.2.4-debian-10-r13))
+
+Or(Not(SHADOW_COMPONENT_RULE-6),
+   container_image(HelmParser.Kube.Container-1) ==
+   docker.io/bitnami/redis:6.2.4-debian-10-r13)
+
+Or(Not(SHADOW_COMPONENT_RULE-7),
+   _is_shadow_component(docker.io/bitnami/redis:6.2.4-debian-10-r13))
+
+Or(Not(SHADOW_COMPONENT_RULE-8),
+   container_image(KubernetesParser.Kube.Container-1) ==
+   KubernetesParser.Container.Image-0)
+
+

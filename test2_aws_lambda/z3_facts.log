@@ -1,0 +1,2831 @@
+Or(Not(DISTINCT_CONSTANTS-2),
+   Distinct(redis-replicas,
+            ingress3-simple-fanout,
+            test2,
+            nginx-ingress-controller,
+            node-app-svc,
+            redis,
+            redis-master,
+            node-app2-svc,
+            ingress1-matches-app1-with-default,
+            node-app2-dep,
+            node-app1-secret,
+            node-app2-secret,
+            ingress2-simple-service-bad-default,
+            node-app1-dep,
+            example-node-app,
+            COMMON.NONE,
+            node-app1-svc,
+            redis-headless,
+            nginx))
+
+Or(Not(DISTINCT_CONSTANTS-3),
+   Not(Config.ManifestSet.Instantiation-0 == COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-4),
+   Distinct(redis-14.4.0,
+            node-app2,
+            ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86,
+            master,
+            bitnami/redis,
+            redis,
+            6.2.4-debian-10-r13,
+            442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634,
+            /,
+            58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58,
+            no_match_value,
+            Helm,
+            node,
+            redis-4.4.0,
+            44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6,
+            replica,
+            False,
+            node-app1,
+            f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9,
+            COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-5),
+   Distinct(rich_sprint44,
+            docker.io/,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/app.yaml,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1.yaml,
+            redis/templates/networkpolicy.yaml,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/configmap.yaml,
+            redis/templates/servicemonitor.yaml,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/networkpolicy.yaml,
+            redis,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/secret.yaml,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/statefulset.yaml,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/scripts-configmap.yaml,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests,
+            https://github.com/dtk/ai-reasoner.git,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/servicemonitor.yaml,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/headless-svc.yaml,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/service.yaml,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/ingress/ingress-examples.yaml,
+            :,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/health-configmap.yaml,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/statefulset.yaml,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/service.yaml,
+            COMMON.NONE,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/redis.yaml,
+            github.com,
+            /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app2.yaml))
+
+Or(Not(DISTINCT_CONSTANTS-6),
+   Distinct(helm.sh/chart,
+            app.kubernetes.io/name,
+            checksum/health,
+            image.tag,
+            image.repository,
+            nginx.ingress.kubernetes.io/rewrite-target,
+            metrics.isEnabled,
+            app.kubernetes.io/component,
+            app,
+            networkPolicy.enabled,
+            app.kubernetes.io/instance,
+            app.kubernetes.io/managed-by,
+            metrics.useServiceMonitor,
+            checksum/scripts,
+            checksum/secret,
+            checksum/configmap))
+
+Or(Not(DISTINCT_CONSTANTS-7), Not(default == COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-8),
+   Distinct(6379, 8080, COMMON.NONE, 31112))
+
+Or(Not(DISTINCT_CONSTANTS-9),
+   Distinct(redis-14.4.0,
+            node-app2,
+            ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86,
+            master,
+            bitnami/redis,
+            redis,
+            6.2.4-debian-10-r13,
+            442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634,
+            /,
+            58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58,
+            no_match_value,
+            Helm,
+            node,
+            redis-4.4.0,
+            44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6,
+            replica,
+            False,
+            COMMON.NONE,
+            node-app1,
+            f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9))
+
+Or(Not(DISTINCT_CONSTANTS-10),
+   Distinct(redis-14.4.0,
+            node-app2,
+            ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86,
+            8081,
+            master,
+            bitnami/redis,
+            redis,
+            6.2.4-debian-10-r13,
+            442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634,
+            /,
+            80,
+            58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58,
+            no_match_value,
+            Helm,
+            node,
+            redis-4.4.0,
+            44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6,
+            replica,
+            False,
+            COMMON.NONE,
+            node-app1,
+            f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9))
+
+Or(Not(DISTINCT_CONSTANTS-11),
+   Distinct(scp, COMMON.NONE, udp, http, tcp, https))
+
+Or(Not(DISTINCT_CONSTANTS-12),
+   Distinct(DB_PASSWORD,
+            REDIS_MASTER_PASSWORD,
+            REDIS_PASSWORD,
+            PORT,
+            REDIS_PORT,
+            BITNAMI_DEBUG,
+            REDIS_REPLICATION_MODE,
+            REDIS_MASTER_PORT_NUMBER,
+            NODE_ENV,
+            REDIS_MASTER_HOST,
+            ALLOW_EMPTY_PASSWORD,
+            REDIS_TLS_ENABLED,
+            DB_HOST,
+            DB_PORT))
+
+Or(Not(DISTINCT_CONSTANTS-13),
+   Distinct(foo.bar.com, *, COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-14),
+   Distinct(/app1, /testpath, /app2))
+
+Or(Not(DISTINCT_CONSTANTS-15),
+   Distinct(KubernetesParser.Kube.Ingress.Backend.Service-3,
+            KubernetesParser.Kube.Ingress.Backend.Service-1,
+            KubernetesParser.Kube.Ingress.Backend.Service-2,
+            KubernetesParser.Kube.Ingress.Backend.Service-0,
+            KubernetesParser.Kube.Ingress.Backend.Service-5,
+            KubernetesParser.Kube.Ingress.Backend.Service-4))
+
+Or(Not(DISTINCT_CONSTANTS-16),
+   Distinct(KubernetesParser.Kube.Ingress.DefaultBackend-1,
+            COMMON.NONE,
+            KubernetesParser.Kube.Ingress.DefaultBackend-0))
+
+Or(Not(DISTINCT_CONSTANTS-17),
+   Distinct(redis-password, db_password, COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-18),
+   Distinct(HelmParser.Kube.Service-0,
+            KubernetesParser.Kube.Service-1,
+            KubernetesParser.Kube.Service-0,
+            HelmParser.Kube.Service-1,
+            HelmParser.Kube.Service-2))
+
+Or(Not(DISTINCT_CONSTANTS-19),
+   Not(redis == ingress_controller))
+
+Or(Not(DISTINCT_CONSTANTS-20), Not(Debug2 == Debug1))
+
+Or(Not(DISTINCT_CONSTANTS-21),
+   Distinct(StatefulSet, Secret, Deployment))
+
+Or(Not(BASE_FACT-2),
+   image_name(KubernetesParser.App-0) == COMMON.NONE)
+
+Or(Not(BASE_FACT-3),
+   image_tag(KubernetesParser.App-0) == COMMON.NONE)
+
+Or(Not(BASE_FACT-4),
+   image_name(KubernetesParser.App-1) == COMMON.NONE)
+
+Or(Not(BASE_FACT-5),
+   image_tag(KubernetesParser.App-1) == COMMON.NONE)
+
+Or(Not(BASE_FACT-6),
+   name_with_version(redis-4.4.0) == redis-4.4.0)
+
+Or(Not(BASE_FACT-7),
+   release(redis-4.4.0, redis-4.4.0/redis))
+
+Or(Not(BASE_FACT-8),
+   labels(KubernetesParser.Kube.Deployment-0) ==
+   Reasoner.Kube.Labels-4)
+
+Or(Not(BASE_FACT-9),
+   value(Reasoner.Kube.Labels-4, app) == node)
+
+Or(Not(BASE_FACT-10), has_key(Reasoner.Kube.Labels-4, app))
+
+Or(Not(BASE_FACT-11),
+   annotations(KubernetesParser.Kube.Deployment-0) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-12),
+   labels(KubernetesParser.Kube.Pod.Template-0) ==
+   Reasoner.Kube.Labels-5)
+
+Or(Not(BASE_FACT-13),
+   value(Reasoner.Kube.Labels-5, app) == node-app2)
+
+Or(Not(BASE_FACT-14), has_key(Reasoner.Kube.Labels-5, app))
+
+Or(Not(BASE_FACT-15),
+   annotations(KubernetesParser.Kube.Pod.Template-0) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-16),
+   Kube.Deployment.template(KubernetesParser.Kube.Deployment-0) ==
+   KubernetesParser.Kube.Pod.Template-0)
+
+Or(Not(BASE_FACT-17),
+   Kube.Deployment.match_labels(KubernetesParser.Kube.Deployment-0,
+                                KubernetesParser.Kube.Selector-1))
+
+Or(Not(BASE_FACT-18),
+   labels(KubernetesParser.Kube.Pod.Template-0) ==
+   Reasoner.Kube.Labels-5)
+
+Or(Not(BASE_FACT-19),
+   value(Reasoner.Kube.Labels-5, app) == node-app2)
+
+Or(Not(BASE_FACT-20), has_key(Reasoner.Kube.Labels-5, app))
+
+Or(Not(BASE_FACT-21),
+   annotations(KubernetesParser.Kube.Pod.Template-0) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-22),
+   env_vars_config(KubernetesParser.Kube.Container-0) ==
+   Reasoner.Kube.Container.EnvVarsConfig-1)
+
+Or(Not(BASE_FACT-23),
+   value(Reasoner.Kube.Container.EnvVarsConfig-1, NODE_ENV) ==
+   {"value": "production"})
+
+Or(Not(BASE_FACT-24),
+   value(Reasoner.Kube.Container.EnvVarsConfig-1, PORT) ==
+   {"value": "8080"})
+
+Or(Not(BASE_FACT-25),
+   value(Reasoner.Kube.Container.EnvVarsConfig-1,
+         DB_PASSWORD) ==
+   {"valueFrom": {"secretKeyRef": {"name": "node-app2-secret", "key": "db_password"}}})
+
+Or(Not(BASE_FACT-26),
+   value(Reasoner.Kube.Container.EnvVarsConfig-1, DB_HOST) ==
+   {"value": "my-release-redis-master"})
+
+Or(Not(BASE_FACT-27),
+   value(Reasoner.Kube.Container.EnvVarsConfig-1, DB_PORT) ==
+   {"value": "6379"})
+
+Or(Not(BASE_FACT-28),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-1,
+           NODE_ENV))
+
+Or(Not(BASE_FACT-29),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-1, PORT))
+
+Or(Not(BASE_FACT-30),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-1,
+           DB_PASSWORD))
+
+Or(Not(BASE_FACT-31),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-1, DB_HOST))
+
+Or(Not(BASE_FACT-32),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-1, DB_PORT))
+
+Or(Not(BASE_FACT-33),
+   Kube.Container.command(KubernetesParser.Kube.Container-0) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-34),
+   Kube.Pod.Template.containers(KubernetesParser.Kube.Pod.Template-0,
+                                KubernetesParser.Kube.Container-0))
+
+Or(Not(BASE_FACT-35),
+   env_vars_config(KubernetesParser.Kube.Container-0) ==
+   Reasoner.Kube.Container.EnvVarsConfig-1)
+
+Or(Not(BASE_FACT-36),
+   value(Reasoner.Kube.Container.EnvVarsConfig-1, NODE_ENV) ==
+   {"value": "production"})
+
+Or(Not(BASE_FACT-37),
+   value(Reasoner.Kube.Container.EnvVarsConfig-1, PORT) ==
+   {"value": "8080"})
+
+Or(Not(BASE_FACT-38),
+   value(Reasoner.Kube.Container.EnvVarsConfig-1,
+         DB_PASSWORD) ==
+   {"valueFrom": {"secretKeyRef": {"name": "node-app2-secret", "key": "db_password"}}})
+
+Or(Not(BASE_FACT-39),
+   value(Reasoner.Kube.Container.EnvVarsConfig-1, DB_HOST) ==
+   {"value": "my-release-redis-master"})
+
+Or(Not(BASE_FACT-40),
+   value(Reasoner.Kube.Container.EnvVarsConfig-1, DB_PORT) ==
+   {"value": "6379"})
+
+Or(Not(BASE_FACT-41),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-1,
+           NODE_ENV))
+
+Or(Not(BASE_FACT-42),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-1, PORT))
+
+Or(Not(BASE_FACT-43),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-1,
+           DB_PASSWORD))
+
+Or(Not(BASE_FACT-44),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-1, DB_HOST))
+
+Or(Not(BASE_FACT-45),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-1, DB_PORT))
+
+Or(Not(BASE_FACT-46),
+   Kube.Container.command(KubernetesParser.Kube.Container-0) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-47),
+   Kube.Container.ports(KubernetesParser.Kube.Container-0,
+                        KubernetesParser.Kube.Container.PortItem-0))
+
+Or(Not(BASE_FACT-48),
+   labels(KubernetesParser.Kube.Deployment-1) ==
+   Reasoner.Kube.Labels-6)
+
+Or(Not(BASE_FACT-49),
+   value(Reasoner.Kube.Labels-6, app) == node-app1)
+
+Or(Not(BASE_FACT-50), has_key(Reasoner.Kube.Labels-6, app))
+
+Or(Not(BASE_FACT-51),
+   annotations(KubernetesParser.Kube.Deployment-1) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-52),
+   labels(KubernetesParser.Kube.Pod.Template-1) ==
+   Reasoner.Kube.Labels-7)
+
+Or(Not(BASE_FACT-53),
+   value(Reasoner.Kube.Labels-7, app) == node-app1)
+
+Or(Not(BASE_FACT-54), has_key(Reasoner.Kube.Labels-7, app))
+
+Or(Not(BASE_FACT-55),
+   annotations(KubernetesParser.Kube.Pod.Template-1) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-56),
+   Kube.Deployment.template(KubernetesParser.Kube.Deployment-1) ==
+   KubernetesParser.Kube.Pod.Template-1)
+
+Or(Not(BASE_FACT-57),
+   Kube.Deployment.match_labels(KubernetesParser.Kube.Deployment-1,
+                                KubernetesParser.Kube.Selector-3))
+
+Or(Not(BASE_FACT-58),
+   labels(KubernetesParser.Kube.Pod.Template-1) ==
+   Reasoner.Kube.Labels-7)
+
+Or(Not(BASE_FACT-59),
+   value(Reasoner.Kube.Labels-7, app) == node-app1)
+
+Or(Not(BASE_FACT-60), has_key(Reasoner.Kube.Labels-7, app))
+
+Or(Not(BASE_FACT-61),
+   annotations(KubernetesParser.Kube.Pod.Template-1) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-62),
+   env_vars_config(KubernetesParser.Kube.Container-1) ==
+   Reasoner.Kube.Container.EnvVarsConfig-2)
+
+Or(Not(BASE_FACT-63),
+   value(Reasoner.Kube.Container.EnvVarsConfig-2, NODE_ENV) ==
+   {"value": "production"})
+
+Or(Not(BASE_FACT-64),
+   value(Reasoner.Kube.Container.EnvVarsConfig-2, PORT) ==
+   {"value": "8080"})
+
+Or(Not(BASE_FACT-65),
+   value(Reasoner.Kube.Container.EnvVarsConfig-2,
+         DB_PASSWORD) ==
+   {"valueFrom": {"secretKeyRef": {"name": "node-app1-secret", "key": "db_password"}}})
+
+Or(Not(BASE_FACT-66),
+   value(Reasoner.Kube.Container.EnvVarsConfig-2, DB_HOST) ==
+   {"value": "my-release-redis-master"})
+
+Or(Not(BASE_FACT-67),
+   value(Reasoner.Kube.Container.EnvVarsConfig-2, DB_PORT) ==
+   {"value": "6379"})
+
+Or(Not(BASE_FACT-68),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-2,
+           NODE_ENV))
+
+Or(Not(BASE_FACT-69),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-2, PORT))
+
+Or(Not(BASE_FACT-70),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-2,
+           DB_PASSWORD))
+
+Or(Not(BASE_FACT-71),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-2, DB_HOST))
+
+Or(Not(BASE_FACT-72),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-2, DB_PORT))
+
+Or(Not(BASE_FACT-73),
+   Kube.Container.command(KubernetesParser.Kube.Container-1) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-74),
+   Kube.Pod.Template.containers(KubernetesParser.Kube.Pod.Template-1,
+                                KubernetesParser.Kube.Container-1))
+
+Or(Not(BASE_FACT-75),
+   env_vars_config(KubernetesParser.Kube.Container-1) ==
+   Reasoner.Kube.Container.EnvVarsConfig-2)
+
+Or(Not(BASE_FACT-76),
+   value(Reasoner.Kube.Container.EnvVarsConfig-2, NODE_ENV) ==
+   {"value": "production"})
+
+Or(Not(BASE_FACT-77),
+   value(Reasoner.Kube.Container.EnvVarsConfig-2, PORT) ==
+   {"value": "8080"})
+
+Or(Not(BASE_FACT-78),
+   value(Reasoner.Kube.Container.EnvVarsConfig-2,
+         DB_PASSWORD) ==
+   {"valueFrom": {"secretKeyRef": {"name": "node-app1-secret", "key": "db_password"}}})
+
+Or(Not(BASE_FACT-79),
+   value(Reasoner.Kube.Container.EnvVarsConfig-2, DB_HOST) ==
+   {"value": "my-release-redis-master"})
+
+Or(Not(BASE_FACT-80),
+   value(Reasoner.Kube.Container.EnvVarsConfig-2, DB_PORT) ==
+   {"value": "6379"})
+
+Or(Not(BASE_FACT-81),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-2,
+           NODE_ENV))
+
+Or(Not(BASE_FACT-82),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-2, PORT))
+
+Or(Not(BASE_FACT-83),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-2,
+           DB_PASSWORD))
+
+Or(Not(BASE_FACT-84),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-2, DB_HOST))
+
+Or(Not(BASE_FACT-85),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-2, DB_PORT))
+
+Or(Not(BASE_FACT-86),
+   Kube.Container.command(KubernetesParser.Kube.Container-1) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-87),
+   Kube.Container.ports(KubernetesParser.Kube.Container-1,
+                        KubernetesParser.Kube.Container.PortItem-1))
+
+Or(Not(BASE_FACT-88),
+   annotations(KubernetesParser.Kube.Ingress-0) ==
+   Reasoner.Kube.Annotations-1)
+
+Or(Not(BASE_FACT-89),
+   value(Reasoner.Kube.Annotations-1,
+         nginx.ingress.kubernetes.io/rewrite-target) ==
+   /)
+
+Or(Not(BASE_FACT-90),
+   has_key(Reasoner.Kube.Annotations-1,
+           nginx.ingress.kubernetes.io/rewrite-target))
+
+Or(Not(BASE_FACT-91),
+   labels(KubernetesParser.Kube.Ingress-0) == COMMON.NONE)
+
+Or(Not(BASE_FACT-92),
+   Kube.Ingress.rules(KubernetesParser.Kube.Ingress-0,
+                      KubernetesParser.Kube.Ingress.Rule-0))
+
+Or(Not(BASE_FACT-93),
+   default_backend(KubernetesParser.Kube.Ingress-0) ==
+   KubernetesParser.Kube.Ingress.DefaultBackend-0)
+
+Or(Not(BASE_FACT-94),
+   Kube.Ingress.Rule.paths(KubernetesParser.Kube.Ingress.Rule-0,
+                           KubernetesParser.Kube.Ingress.Rule.HttpPath-0))
+
+Or(Not(BASE_FACT-95),
+   annotations(KubernetesParser.Kube.Ingress-1) ==
+   Reasoner.Kube.Annotations-2)
+
+Or(Not(BASE_FACT-96),
+   value(Reasoner.Kube.Annotations-2,
+         nginx.ingress.kubernetes.io/rewrite-target) ==
+   /)
+
+Or(Not(BASE_FACT-97),
+   has_key(Reasoner.Kube.Annotations-2,
+           nginx.ingress.kubernetes.io/rewrite-target))
+
+Or(Not(BASE_FACT-98),
+   labels(KubernetesParser.Kube.Ingress-1) == COMMON.NONE)
+
+Or(Not(BASE_FACT-99),
+   Kube.Ingress.rules(KubernetesParser.Kube.Ingress-1,
+                      KubernetesParser.Kube.Ingress.Rule-1))
+
+Or(Not(BASE_FACT-100),
+   default_backend(KubernetesParser.Kube.Ingress-1) ==
+   KubernetesParser.Kube.Ingress.DefaultBackend-1)
+
+Or(Not(BASE_FACT-101),
+   Kube.Ingress.Rule.paths(KubernetesParser.Kube.Ingress.Rule-1,
+                           KubernetesParser.Kube.Ingress.Rule.HttpPath-1))
+
+Or(Not(BASE_FACT-102),
+   annotations(KubernetesParser.Kube.Ingress-2) ==
+   Reasoner.Kube.Annotations-3)
+
+Or(Not(BASE_FACT-103),
+   value(Reasoner.Kube.Annotations-3,
+         nginx.ingress.kubernetes.io/rewrite-target) ==
+   /)
+
+Or(Not(BASE_FACT-104),
+   has_key(Reasoner.Kube.Annotations-3,
+           nginx.ingress.kubernetes.io/rewrite-target))
+
+Or(Not(BASE_FACT-105),
+   labels(KubernetesParser.Kube.Ingress-2) == COMMON.NONE)
+
+Or(Not(BASE_FACT-106),
+   default_backend(KubernetesParser.Kube.Ingress-2) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-107),
+   Kube.Ingress.rules(KubernetesParser.Kube.Ingress-2,
+                      KubernetesParser.Kube.Ingress.Rule-2))
+
+Or(Not(BASE_FACT-108),
+   And(Kube.Ingress.Rule.paths(KubernetesParser.Kube.Ingress.Rule-2,
+                               KubernetesParser.Kube.Ingress.Rule.HttpPath-2),
+       Kube.Ingress.Rule.paths(KubernetesParser.Kube.Ingress.Rule-2,
+                               KubernetesParser.Kube.Ingress.Rule.HttpPath-3)))
+
+Or(Not(BASE_FACT-109),
+   labels(HelmParser.Kube.Secret-0) ==
+   Reasoner.Kube.Labels-8)
+
+Or(Not(BASE_FACT-110),
+   value(Reasoner.Kube.Labels-8, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-111),
+   value(Reasoner.Kube.Labels-8, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-112),
+   value(Reasoner.Kube.Labels-8, app.kubernetes.io/instance) ==
+   redis)
+
+Or(Not(BASE_FACT-113),
+   value(Reasoner.Kube.Labels-8,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-114),
+   has_key(Reasoner.Kube.Labels-8, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-115),
+   has_key(Reasoner.Kube.Labels-8, helm.sh/chart))
+
+Or(Not(BASE_FACT-116),
+   has_key(Reasoner.Kube.Labels-8,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-117),
+   has_key(Reasoner.Kube.Labels-8,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-118),
+   annotations(HelmParser.Kube.Secret-0) == COMMON.NONE)
+
+Or(Not(BASE_FACT-119),
+   key_names(HelmParser.Kube.Secret-0, redis-password))
+
+Or(Not(BASE_FACT-120),
+   string_data_key(HelmParser.Kube.Secret-0) == COMMON.NONE)
+
+Or(Not(BASE_FACT-121),
+   labels(KubernetesParser.Kube.Secret-0) == COMMON.NONE)
+
+Or(Not(BASE_FACT-122),
+   annotations(KubernetesParser.Kube.Secret-0) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-123),
+   key_names(KubernetesParser.Kube.Secret-0, db_password))
+
+Or(Not(BASE_FACT-124),
+   string_data_key(KubernetesParser.Kube.Secret-0) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-125),
+   labels(KubernetesParser.Kube.Secret-1) == COMMON.NONE)
+
+Or(Not(BASE_FACT-126),
+   annotations(KubernetesParser.Kube.Secret-1) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-127),
+   key_names(KubernetesParser.Kube.Secret-1, db_password))
+
+Or(Not(BASE_FACT-128),
+   string_data_key(KubernetesParser.Kube.Secret-1) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-129),
+   labels(HelmParser.Kube.Service-0) ==
+   Reasoner.Kube.Labels-9)
+
+Or(Not(BASE_FACT-130),
+   value(Reasoner.Kube.Labels-9, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-131),
+   value(Reasoner.Kube.Labels-9, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-132),
+   value(Reasoner.Kube.Labels-9, app.kubernetes.io/instance) ==
+   redis)
+
+Or(Not(BASE_FACT-133),
+   value(Reasoner.Kube.Labels-9,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-134),
+   has_key(Reasoner.Kube.Labels-9, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-135),
+   has_key(Reasoner.Kube.Labels-9, helm.sh/chart))
+
+Or(Not(BASE_FACT-136),
+   has_key(Reasoner.Kube.Labels-9,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-137),
+   has_key(Reasoner.Kube.Labels-9,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-138),
+   annotations(HelmParser.Kube.Service-0) == COMMON.NONE)
+
+Or(Not(BASE_FACT-139),
+   Kube.Service.type(HelmParser.Kube.Service-0) == ClusterIP)
+
+Or(Not(BASE_FACT-140),
+   ports(HelmParser.Kube.Service-0,
+         HelmParser.Kube.Service.ServicePort-0))
+
+Or(Not(BASE_FACT-141),
+   And(selector(HelmParser.Kube.Service-0,
+                HelmParser.Kube.Selector-0),
+       selector(HelmParser.Kube.Service-0,
+                HelmParser.Kube.Selector-1)))
+
+Or(Not(BASE_FACT-142),
+   labels(HelmParser.Kube.Service-1) ==
+   Reasoner.Kube.Labels-10)
+
+Or(Not(BASE_FACT-143),
+   value(Reasoner.Kube.Labels-10, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-144),
+   value(Reasoner.Kube.Labels-10, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-145),
+   value(Reasoner.Kube.Labels-10,
+         app.kubernetes.io/instance) ==
+   redis)
+
+Or(Not(BASE_FACT-146),
+   value(Reasoner.Kube.Labels-10,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-147),
+   value(Reasoner.Kube.Labels-10,
+         app.kubernetes.io/component) ==
+   master)
+
+Or(Not(BASE_FACT-148),
+   has_key(Reasoner.Kube.Labels-10, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-149),
+   has_key(Reasoner.Kube.Labels-10, helm.sh/chart))
+
+Or(Not(BASE_FACT-150),
+   has_key(Reasoner.Kube.Labels-10,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-151),
+   has_key(Reasoner.Kube.Labels-10,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-152),
+   has_key(Reasoner.Kube.Labels-10,
+           app.kubernetes.io/component))
+
+Or(Not(BASE_FACT-153),
+   annotations(HelmParser.Kube.Service-1) == COMMON.NONE)
+
+Or(Not(BASE_FACT-154),
+   Kube.Service.type(HelmParser.Kube.Service-1) ==
+   ExternalName)
+
+Or(Not(BASE_FACT-155),
+   ports(HelmParser.Kube.Service-1,
+         HelmParser.Kube.Service.ServicePort-1))
+
+Or(Not(BASE_FACT-156),
+   And(selector(HelmParser.Kube.Service-1,
+                HelmParser.Kube.Selector-2),
+       selector(HelmParser.Kube.Service-1,
+                HelmParser.Kube.Selector-3),
+       selector(HelmParser.Kube.Service-1,
+                HelmParser.Kube.Selector-4)))
+
+Or(Not(BASE_FACT-157),
+   labels(HelmParser.Kube.Service-2) ==
+   Reasoner.Kube.Labels-11)
+
+Or(Not(BASE_FACT-158),
+   value(Reasoner.Kube.Labels-11, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-159),
+   value(Reasoner.Kube.Labels-11, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-160),
+   value(Reasoner.Kube.Labels-11,
+         app.kubernetes.io/instance) ==
+   redis)
+
+Or(Not(BASE_FACT-161),
+   value(Reasoner.Kube.Labels-11,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-162),
+   value(Reasoner.Kube.Labels-11,
+         app.kubernetes.io/component) ==
+   replica)
+
+Or(Not(BASE_FACT-163),
+   has_key(Reasoner.Kube.Labels-11, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-164),
+   has_key(Reasoner.Kube.Labels-11, helm.sh/chart))
+
+Or(Not(BASE_FACT-165),
+   has_key(Reasoner.Kube.Labels-11,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-166),
+   has_key(Reasoner.Kube.Labels-11,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-167),
+   has_key(Reasoner.Kube.Labels-11,
+           app.kubernetes.io/component))
+
+Or(Not(BASE_FACT-168),
+   annotations(HelmParser.Kube.Service-2) == COMMON.NONE)
+
+Or(Not(BASE_FACT-169),
+   Kube.Service.type(HelmParser.Kube.Service-2) == ClusterIP)
+
+Or(Not(BASE_FACT-170),
+   ports(HelmParser.Kube.Service-2,
+         HelmParser.Kube.Service.ServicePort-2))
+
+Or(Not(BASE_FACT-171),
+   And(selector(HelmParser.Kube.Service-2,
+                HelmParser.Kube.Selector-5),
+       selector(HelmParser.Kube.Service-2,
+                HelmParser.Kube.Selector-6),
+       selector(HelmParser.Kube.Service-2,
+                HelmParser.Kube.Selector-7)))
+
+Or(Not(BASE_FACT-172),
+   labels(KubernetesParser.Kube.Service-0) ==
+   Reasoner.Kube.Labels-12)
+
+Or(Not(BASE_FACT-173),
+   value(Reasoner.Kube.Labels-12, app) == node)
+
+Or(Not(BASE_FACT-174),
+   has_key(Reasoner.Kube.Labels-12, app))
+
+Or(Not(BASE_FACT-175),
+   annotations(KubernetesParser.Kube.Service-0) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-176),
+   Kube.Service.type(KubernetesParser.Kube.Service-0) ==
+   NodePort)
+
+Or(Not(BASE_FACT-177),
+   ports(KubernetesParser.Kube.Service-0,
+         KubernetesParser.Kube.Service.ServicePort-0))
+
+Or(Not(BASE_FACT-178),
+   selector(KubernetesParser.Kube.Service-0,
+            KubernetesParser.Kube.Selector-0))
+
+Or(Not(BASE_FACT-179),
+   labels(KubernetesParser.Kube.Service-1) ==
+   Reasoner.Kube.Labels-13)
+
+Or(Not(BASE_FACT-180),
+   value(Reasoner.Kube.Labels-13, app) == node)
+
+Or(Not(BASE_FACT-181),
+   has_key(Reasoner.Kube.Labels-13, app))
+
+Or(Not(BASE_FACT-182),
+   annotations(KubernetesParser.Kube.Service-1) ==
+   COMMON.NONE)
+
+Or(Not(BASE_FACT-183),
+   Kube.Service.type(KubernetesParser.Kube.Service-1) ==
+   NodePort)
+
+Or(Not(BASE_FACT-184),
+   ports(KubernetesParser.Kube.Service-1,
+         KubernetesParser.Kube.Service.ServicePort-1))
+
+Or(Not(BASE_FACT-185),
+   selector(KubernetesParser.Kube.Service-1,
+            KubernetesParser.Kube.Selector-2))
+
+Or(Not(BASE_FACT-186),
+   labels(HelmParser.Kube.StatefulSet-0) ==
+   Reasoner.Kube.Labels-14)
+
+Or(Not(BASE_FACT-187),
+   value(Reasoner.Kube.Labels-14, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-188),
+   value(Reasoner.Kube.Labels-14, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-189),
+   value(Reasoner.Kube.Labels-14,
+         app.kubernetes.io/instance) ==
+   redis)
+
+Or(Not(BASE_FACT-190),
+   value(Reasoner.Kube.Labels-14,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-191),
+   value(Reasoner.Kube.Labels-14,
+         app.kubernetes.io/component) ==
+   master)
+
+Or(Not(BASE_FACT-192),
+   has_key(Reasoner.Kube.Labels-14, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-193),
+   has_key(Reasoner.Kube.Labels-14, helm.sh/chart))
+
+Or(Not(BASE_FACT-194),
+   has_key(Reasoner.Kube.Labels-14,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-195),
+   has_key(Reasoner.Kube.Labels-14,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-196),
+   has_key(Reasoner.Kube.Labels-14,
+           app.kubernetes.io/component))
+
+Or(Not(BASE_FACT-197),
+   annotations(HelmParser.Kube.StatefulSet-0) == COMMON.NONE)
+
+Or(Not(BASE_FACT-198),
+   annotations(HelmParser.Kube.Pod.Template-0) ==
+   Reasoner.Kube.Annotations-4)
+
+Or(Not(BASE_FACT-199),
+   value(Reasoner.Kube.Annotations-4, checksum/configmap) ==
+   442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634)
+
+Or(Not(BASE_FACT-200),
+   value(Reasoner.Kube.Annotations-4, checksum/health) ==
+   44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6)
+
+Or(Not(BASE_FACT-201),
+   value(Reasoner.Kube.Annotations-4, checksum/scripts) ==
+   f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9)
+
+Or(Not(BASE_FACT-202),
+   value(Reasoner.Kube.Annotations-4, checksum/secret) ==
+   ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86)
+
+Or(Not(BASE_FACT-203),
+   has_key(Reasoner.Kube.Annotations-4, checksum/configmap))
+
+Or(Not(BASE_FACT-204),
+   has_key(Reasoner.Kube.Annotations-4, checksum/health))
+
+Or(Not(BASE_FACT-205),
+   has_key(Reasoner.Kube.Annotations-4, checksum/scripts))
+
+Or(Not(BASE_FACT-206),
+   has_key(Reasoner.Kube.Annotations-4, checksum/secret))
+
+Or(Not(BASE_FACT-207),
+   labels(HelmParser.Kube.Pod.Template-0) ==
+   Reasoner.Kube.Labels-16)
+
+Or(Not(BASE_FACT-208),
+   value(Reasoner.Kube.Labels-16, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-209),
+   value(Reasoner.Kube.Labels-16, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-210),
+   value(Reasoner.Kube.Labels-16,
+         app.kubernetes.io/instance) ==
+   redis)
+
+Or(Not(BASE_FACT-211),
+   value(Reasoner.Kube.Labels-16,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-212),
+   value(Reasoner.Kube.Labels-16,
+         app.kubernetes.io/component) ==
+   master)
+
+Or(Not(BASE_FACT-213),
+   has_key(Reasoner.Kube.Labels-16, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-214),
+   has_key(Reasoner.Kube.Labels-16, helm.sh/chart))
+
+Or(Not(BASE_FACT-215),
+   has_key(Reasoner.Kube.Labels-16,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-216),
+   has_key(Reasoner.Kube.Labels-16,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-217),
+   has_key(Reasoner.Kube.Labels-16,
+           app.kubernetes.io/component))
+
+Or(Not(BASE_FACT-218),
+   Kube.StatefulSet.template(HelmParser.Kube.StatefulSet-0) ==
+   HelmParser.Kube.Pod.Template-0)
+
+Or(Not(BASE_FACT-219),
+   And(Kube.StatefulSet.match_labels(HelmParser.Kube.StatefulSet-0,
+                                     HelmParser.Kube.Selector-8),
+       Kube.StatefulSet.match_labels(HelmParser.Kube.StatefulSet-0,
+                                     HelmParser.Kube.Selector-9),
+       Kube.StatefulSet.match_labels(HelmParser.Kube.StatefulSet-0,
+                                     HelmParser.Kube.Selector-10)))
+
+Or(Not(BASE_FACT-220),
+   annotations(HelmParser.Kube.Pod.Template-0) ==
+   Reasoner.Kube.Annotations-4)
+
+Or(Not(BASE_FACT-221),
+   value(Reasoner.Kube.Annotations-4, checksum/configmap) ==
+   442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634)
+
+Or(Not(BASE_FACT-222),
+   value(Reasoner.Kube.Annotations-4, checksum/health) ==
+   44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6)
+
+Or(Not(BASE_FACT-223),
+   value(Reasoner.Kube.Annotations-4, checksum/scripts) ==
+   f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9)
+
+Or(Not(BASE_FACT-224),
+   value(Reasoner.Kube.Annotations-4, checksum/secret) ==
+   ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86)
+
+Or(Not(BASE_FACT-225),
+   has_key(Reasoner.Kube.Annotations-4, checksum/configmap))
+
+Or(Not(BASE_FACT-226),
+   has_key(Reasoner.Kube.Annotations-4, checksum/health))
+
+Or(Not(BASE_FACT-227),
+   has_key(Reasoner.Kube.Annotations-4, checksum/scripts))
+
+Or(Not(BASE_FACT-228),
+   has_key(Reasoner.Kube.Annotations-4, checksum/secret))
+
+Or(Not(BASE_FACT-229),
+   labels(HelmParser.Kube.Pod.Template-0) ==
+   Reasoner.Kube.Labels-16)
+
+Or(Not(BASE_FACT-230),
+   value(Reasoner.Kube.Labels-16, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-231),
+   value(Reasoner.Kube.Labels-16, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-232),
+   value(Reasoner.Kube.Labels-16,
+         app.kubernetes.io/instance) ==
+   redis)
+
+Or(Not(BASE_FACT-233),
+   value(Reasoner.Kube.Labels-16,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-234),
+   value(Reasoner.Kube.Labels-16,
+         app.kubernetes.io/component) ==
+   master)
+
+Or(Not(BASE_FACT-235),
+   has_key(Reasoner.Kube.Labels-16, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-236),
+   has_key(Reasoner.Kube.Labels-16, helm.sh/chart))
+
+Or(Not(BASE_FACT-237),
+   has_key(Reasoner.Kube.Labels-16,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-238),
+   has_key(Reasoner.Kube.Labels-16,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-239),
+   has_key(Reasoner.Kube.Labels-16,
+           app.kubernetes.io/component))
+
+Or(Not(BASE_FACT-240),
+   env_vars_config(HelmParser.Kube.Container-0) ==
+   Reasoner.Kube.Container.EnvVarsConfig-3)
+
+Or(Not(BASE_FACT-241),
+   value(Reasoner.Kube.Container.EnvVarsConfig-3,
+         BITNAMI_DEBUG) ==
+   {"value": "false"})
+
+Or(Not(BASE_FACT-242),
+   value(Reasoner.Kube.Container.EnvVarsConfig-3,
+         REDIS_REPLICATION_MODE) ==
+   {"value": "master"})
+
+Or(Not(BASE_FACT-243),
+   value(Reasoner.Kube.Container.EnvVarsConfig-3,
+         ALLOW_EMPTY_PASSWORD) ==
+   {"value": "no"})
+
+Or(Not(BASE_FACT-244),
+   value(Reasoner.Kube.Container.EnvVarsConfig-3,
+         REDIS_PASSWORD) ==
+   {"valueFrom": {"secretKeyRef": {"name": "redis", "key": "redis-password"}}})
+
+Or(Not(BASE_FACT-245),
+   value(Reasoner.Kube.Container.EnvVarsConfig-3,
+         REDIS_TLS_ENABLED) ==
+   {"value": "no"})
+
+Or(Not(BASE_FACT-246),
+   value(Reasoner.Kube.Container.EnvVarsConfig-3,
+         REDIS_PORT) ==
+   {"value": "6379"})
+
+Or(Not(BASE_FACT-247),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-3,
+           BITNAMI_DEBUG))
+
+Or(Not(BASE_FACT-248),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-3,
+           REDIS_REPLICATION_MODE))
+
+Or(Not(BASE_FACT-249),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-3,
+           ALLOW_EMPTY_PASSWORD))
+
+Or(Not(BASE_FACT-250),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-3,
+           REDIS_PASSWORD))
+
+Or(Not(BASE_FACT-251),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-3,
+           REDIS_TLS_ENABLED))
+
+Or(Not(BASE_FACT-252),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-3,
+           REDIS_PORT))
+
+Or(Not(BASE_FACT-253),
+   Kube.Container.command(HelmParser.Kube.Container-0) ==
+   ["/bin/bash"])
+
+Or(Not(BASE_FACT-254),
+   Kube.Pod.Template.containers(HelmParser.Kube.Pod.Template-0,
+                                HelmParser.Kube.Container-0))
+
+Or(Not(BASE_FACT-255),
+   env_vars_config(HelmParser.Kube.Container-0) ==
+   Reasoner.Kube.Container.EnvVarsConfig-3)
+
+Or(Not(BASE_FACT-256),
+   value(Reasoner.Kube.Container.EnvVarsConfig-3,
+         BITNAMI_DEBUG) ==
+   {"value": "false"})
+
+Or(Not(BASE_FACT-257),
+   value(Reasoner.Kube.Container.EnvVarsConfig-3,
+         REDIS_REPLICATION_MODE) ==
+   {"value": "master"})
+
+Or(Not(BASE_FACT-258),
+   value(Reasoner.Kube.Container.EnvVarsConfig-3,
+         ALLOW_EMPTY_PASSWORD) ==
+   {"value": "no"})
+
+Or(Not(BASE_FACT-259),
+   value(Reasoner.Kube.Container.EnvVarsConfig-3,
+         REDIS_PASSWORD) ==
+   {"valueFrom": {"secretKeyRef": {"name": "redis", "key": "redis-password"}}})
+
+Or(Not(BASE_FACT-260),
+   value(Reasoner.Kube.Container.EnvVarsConfig-3,
+         REDIS_TLS_ENABLED) ==
+   {"value": "no"})
+
+Or(Not(BASE_FACT-261),
+   value(Reasoner.Kube.Container.EnvVarsConfig-3,
+         REDIS_PORT) ==
+   {"value": "6379"})
+
+Or(Not(BASE_FACT-262),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-3,
+           BITNAMI_DEBUG))
+
+Or(Not(BASE_FACT-263),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-3,
+           REDIS_REPLICATION_MODE))
+
+Or(Not(BASE_FACT-264),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-3,
+           ALLOW_EMPTY_PASSWORD))
+
+Or(Not(BASE_FACT-265),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-3,
+           REDIS_PASSWORD))
+
+Or(Not(BASE_FACT-266),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-3,
+           REDIS_TLS_ENABLED))
+
+Or(Not(BASE_FACT-267),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-3,
+           REDIS_PORT))
+
+Or(Not(BASE_FACT-268),
+   Kube.Container.command(HelmParser.Kube.Container-0) ==
+   ["/bin/bash"])
+
+Or(Not(BASE_FACT-269),
+   Kube.Container.ports(HelmParser.Kube.Container-0,
+                        HelmParser.Kube.Container.PortItem-0))
+
+Or(Not(BASE_FACT-270),
+   labels(HelmParser.Kube.StatefulSet-1) ==
+   Reasoner.Kube.Labels-17)
+
+Or(Not(BASE_FACT-271),
+   value(Reasoner.Kube.Labels-17, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-272),
+   value(Reasoner.Kube.Labels-17, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-273),
+   value(Reasoner.Kube.Labels-17,
+         app.kubernetes.io/instance) ==
+   redis)
+
+Or(Not(BASE_FACT-274),
+   value(Reasoner.Kube.Labels-17,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-275),
+   value(Reasoner.Kube.Labels-17,
+         app.kubernetes.io/component) ==
+   replica)
+
+Or(Not(BASE_FACT-276),
+   has_key(Reasoner.Kube.Labels-17, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-277),
+   has_key(Reasoner.Kube.Labels-17, helm.sh/chart))
+
+Or(Not(BASE_FACT-278),
+   has_key(Reasoner.Kube.Labels-17,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-279),
+   has_key(Reasoner.Kube.Labels-17,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-280),
+   has_key(Reasoner.Kube.Labels-17,
+           app.kubernetes.io/component))
+
+Or(Not(BASE_FACT-281),
+   annotations(HelmParser.Kube.StatefulSet-1) == COMMON.NONE)
+
+Or(Not(BASE_FACT-282),
+   annotations(HelmParser.Kube.Pod.Template-1) ==
+   Reasoner.Kube.Annotations-5)
+
+Or(Not(BASE_FACT-283),
+   value(Reasoner.Kube.Annotations-5, checksum/configmap) ==
+   442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634)
+
+Or(Not(BASE_FACT-284),
+   value(Reasoner.Kube.Annotations-5, checksum/health) ==
+   44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6)
+
+Or(Not(BASE_FACT-285),
+   value(Reasoner.Kube.Annotations-5, checksum/scripts) ==
+   f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9)
+
+Or(Not(BASE_FACT-286),
+   value(Reasoner.Kube.Annotations-5, checksum/secret) ==
+   58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58)
+
+Or(Not(BASE_FACT-287),
+   has_key(Reasoner.Kube.Annotations-5, checksum/configmap))
+
+Or(Not(BASE_FACT-288),
+   has_key(Reasoner.Kube.Annotations-5, checksum/health))
+
+Or(Not(BASE_FACT-289),
+   has_key(Reasoner.Kube.Annotations-5, checksum/scripts))
+
+Or(Not(BASE_FACT-290),
+   has_key(Reasoner.Kube.Annotations-5, checksum/secret))
+
+Or(Not(BASE_FACT-291),
+   labels(HelmParser.Kube.Pod.Template-1) ==
+   Reasoner.Kube.Labels-19)
+
+Or(Not(BASE_FACT-292),
+   value(Reasoner.Kube.Labels-19, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-293),
+   value(Reasoner.Kube.Labels-19, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-294),
+   value(Reasoner.Kube.Labels-19,
+         app.kubernetes.io/instance) ==
+   redis)
+
+Or(Not(BASE_FACT-295),
+   value(Reasoner.Kube.Labels-19,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-296),
+   value(Reasoner.Kube.Labels-19,
+         app.kubernetes.io/component) ==
+   replica)
+
+Or(Not(BASE_FACT-297),
+   has_key(Reasoner.Kube.Labels-19, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-298),
+   has_key(Reasoner.Kube.Labels-19, helm.sh/chart))
+
+Or(Not(BASE_FACT-299),
+   has_key(Reasoner.Kube.Labels-19,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-300),
+   has_key(Reasoner.Kube.Labels-19,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-301),
+   has_key(Reasoner.Kube.Labels-19,
+           app.kubernetes.io/component))
+
+Or(Not(BASE_FACT-302),
+   Kube.StatefulSet.template(HelmParser.Kube.StatefulSet-1) ==
+   HelmParser.Kube.Pod.Template-1)
+
+Or(Not(BASE_FACT-303),
+   And(Kube.StatefulSet.match_labels(HelmParser.Kube.StatefulSet-1,
+                                     HelmParser.Kube.Selector-11),
+       Kube.StatefulSet.match_labels(HelmParser.Kube.StatefulSet-1,
+                                     HelmParser.Kube.Selector-12),
+       Kube.StatefulSet.match_labels(HelmParser.Kube.StatefulSet-1,
+                                     HelmParser.Kube.Selector-13)))
+
+Or(Not(BASE_FACT-304),
+   annotations(HelmParser.Kube.Pod.Template-1) ==
+   Reasoner.Kube.Annotations-5)
+
+Or(Not(BASE_FACT-305),
+   value(Reasoner.Kube.Annotations-5, checksum/configmap) ==
+   442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634)
+
+Or(Not(BASE_FACT-306),
+   value(Reasoner.Kube.Annotations-5, checksum/health) ==
+   44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6)
+
+Or(Not(BASE_FACT-307),
+   value(Reasoner.Kube.Annotations-5, checksum/scripts) ==
+   f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9)
+
+Or(Not(BASE_FACT-308),
+   value(Reasoner.Kube.Annotations-5, checksum/secret) ==
+   58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58)
+
+Or(Not(BASE_FACT-309),
+   has_key(Reasoner.Kube.Annotations-5, checksum/configmap))
+
+Or(Not(BASE_FACT-310),
+   has_key(Reasoner.Kube.Annotations-5, checksum/health))
+
+Or(Not(BASE_FACT-311),
+   has_key(Reasoner.Kube.Annotations-5, checksum/scripts))
+
+Or(Not(BASE_FACT-312),
+   has_key(Reasoner.Kube.Annotations-5, checksum/secret))
+
+Or(Not(BASE_FACT-313),
+   labels(HelmParser.Kube.Pod.Template-1) ==
+   Reasoner.Kube.Labels-19)
+
+Or(Not(BASE_FACT-314),
+   value(Reasoner.Kube.Labels-19, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-315),
+   value(Reasoner.Kube.Labels-19, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-316),
+   value(Reasoner.Kube.Labels-19,
+         app.kubernetes.io/instance) ==
+   redis)
+
+Or(Not(BASE_FACT-317),
+   value(Reasoner.Kube.Labels-19,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-318),
+   value(Reasoner.Kube.Labels-19,
+         app.kubernetes.io/component) ==
+   replica)
+
+Or(Not(BASE_FACT-319),
+   has_key(Reasoner.Kube.Labels-19, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-320),
+   has_key(Reasoner.Kube.Labels-19, helm.sh/chart))
+
+Or(Not(BASE_FACT-321),
+   has_key(Reasoner.Kube.Labels-19,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-322),
+   has_key(Reasoner.Kube.Labels-19,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-323),
+   has_key(Reasoner.Kube.Labels-19,
+           app.kubernetes.io/component))
+
+Or(Not(BASE_FACT-324),
+   env_vars_config(HelmParser.Kube.Container-1) ==
+   Reasoner.Kube.Container.EnvVarsConfig-4)
+
+Or(Not(BASE_FACT-325),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         BITNAMI_DEBUG) ==
+   {"value": "false"})
+
+Or(Not(BASE_FACT-326),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_REPLICATION_MODE) ==
+   {"value": "slave"})
+
+Or(Not(BASE_FACT-327),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_MASTER_HOST) ==
+   {"value": "redis-master-0.redis-headless.default.svc.cluster.local"})
+
+Or(Not(BASE_FACT-328),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_MASTER_PORT_NUMBER) ==
+   {"value": "6379"})
+
+Or(Not(BASE_FACT-329),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         ALLOW_EMPTY_PASSWORD) ==
+   {"value": "no"})
+
+Or(Not(BASE_FACT-330),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_PASSWORD) ==
+   {"valueFrom": {"secretKeyRef": {"name": "redis", "key": "redis-password"}}})
+
+Or(Not(BASE_FACT-331),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_MASTER_PASSWORD) ==
+   {"valueFrom": {"secretKeyRef": {"name": "redis", "key": "redis-password"}}})
+
+Or(Not(BASE_FACT-332),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_TLS_ENABLED) ==
+   {"value": "no"})
+
+Or(Not(BASE_FACT-333),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_PORT) ==
+   {"value": "6379"})
+
+Or(Not(BASE_FACT-334),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           BITNAMI_DEBUG))
+
+Or(Not(BASE_FACT-335),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_REPLICATION_MODE))
+
+Or(Not(BASE_FACT-336),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_MASTER_HOST))
+
+Or(Not(BASE_FACT-337),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_MASTER_PORT_NUMBER))
+
+Or(Not(BASE_FACT-338),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           ALLOW_EMPTY_PASSWORD))
+
+Or(Not(BASE_FACT-339),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_PASSWORD))
+
+Or(Not(BASE_FACT-340),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_MASTER_PASSWORD))
+
+Or(Not(BASE_FACT-341),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_TLS_ENABLED))
+
+Or(Not(BASE_FACT-342),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_PORT))
+
+Or(Not(BASE_FACT-343),
+   Kube.Container.command(HelmParser.Kube.Container-1) ==
+   ["/bin/bash"])
+
+Or(Not(BASE_FACT-344),
+   Kube.Pod.Template.containers(HelmParser.Kube.Pod.Template-1,
+                                HelmParser.Kube.Container-1))
+
+Or(Not(BASE_FACT-345),
+   env_vars_config(HelmParser.Kube.Container-1) ==
+   Reasoner.Kube.Container.EnvVarsConfig-4)
+
+Or(Not(BASE_FACT-346),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         BITNAMI_DEBUG) ==
+   {"value": "false"})
+
+Or(Not(BASE_FACT-347),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_REPLICATION_MODE) ==
+   {"value": "slave"})
+
+Or(Not(BASE_FACT-348),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_MASTER_HOST) ==
+   {"value": "redis-master-0.redis-headless.default.svc.cluster.local"})
+
+Or(Not(BASE_FACT-349),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_MASTER_PORT_NUMBER) ==
+   {"value": "6379"})
+
+Or(Not(BASE_FACT-350),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         ALLOW_EMPTY_PASSWORD) ==
+   {"value": "no"})
+
+Or(Not(BASE_FACT-351),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_PASSWORD) ==
+   {"valueFrom": {"secretKeyRef": {"name": "redis", "key": "redis-password"}}})
+
+Or(Not(BASE_FACT-352),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_MASTER_PASSWORD) ==
+   {"valueFrom": {"secretKeyRef": {"name": "redis", "key": "redis-password"}}})
+
+Or(Not(BASE_FACT-353),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_TLS_ENABLED) ==
+   {"value": "no"})
+
+Or(Not(BASE_FACT-354),
+   value(Reasoner.Kube.Container.EnvVarsConfig-4,
+         REDIS_PORT) ==
+   {"value": "6379"})
+
+Or(Not(BASE_FACT-355),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           BITNAMI_DEBUG))
+
+Or(Not(BASE_FACT-356),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_REPLICATION_MODE))
+
+Or(Not(BASE_FACT-357),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_MASTER_HOST))
+
+Or(Not(BASE_FACT-358),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_MASTER_PORT_NUMBER))
+
+Or(Not(BASE_FACT-359),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           ALLOW_EMPTY_PASSWORD))
+
+Or(Not(BASE_FACT-360),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_PASSWORD))
+
+Or(Not(BASE_FACT-361),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_MASTER_PASSWORD))
+
+Or(Not(BASE_FACT-362),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_TLS_ENABLED))
+
+Or(Not(BASE_FACT-363),
+   has_key(Reasoner.Kube.Container.EnvVarsConfig-4,
+           REDIS_PORT))
+
+Or(Not(BASE_FACT-364),
+   Kube.Container.command(HelmParser.Kube.Container-1) ==
+   ["/bin/bash"])
+
+Or(Not(BASE_FACT-365),
+   Kube.Container.ports(HelmParser.Kube.Container-1,
+                        HelmParser.Kube.Container.PortItem-1))
+
+Or(Not(STRUCT_FACT-2),
+   name(KubernetesParser.App-0) == example-node-app)
+
+Or(Not(STRUCT_FACT-3),
+   namespace(KubernetesParser.App-0) ==
+   namespace(Config.ManifestSet.Instantiation-0))
+
+Or(Not(DISTINCT_CONSTANTS-22),
+   Not(namespace(Config.ManifestSet.Instantiation-0) ==
+       COMMON.NONE))
+
+Or(Not(STRUCT_FACT-4),
+   name(KubernetesParser.App-1) == redis)
+
+Or(Not(STRUCT_FACT-5),
+   namespace(KubernetesParser.App-1) ==
+   namespace(Config.ManifestSet.Instantiation-0))
+
+Or(Not(STRUCT_FACT-6),
+   release_name(redis-4.4.0/redis) == redis)
+
+Or(Not(STRUCT_FACT-7),
+   manifest_set(redis-4.4.0/redis) ==
+   Config.ManifestSet.Instantiation-0)
+
+Or(Not(STRUCT_FACT-8),
+   path(HelmParser.Helm.Template-0) ==
+   redis/templates/networkpolicy.yaml)
+
+Or(Not(STRUCT_FACT-9),
+   exists_kube_networkpolicy(HelmParser.Helm.Template.Condition-0) ==
+   cast_to_builtin_sort_bool(default_manifest_value(networkPolicy.enabled)))
+
+Or(Not(TYPE_CAST_FACT-2),
+   cast_to_builtin_sort_bool(default_manifest_value(networkPolicy.enabled)) ==
+   False)
+
+Or(Not(STRUCT_FACT-10),
+   path(HelmParser.Helm.Template-1) ==
+   redis/templates/servicemonitor.yaml)
+
+Or(Not(STRUCT_FACT-11),
+   exists_kube_servicemonitor(HelmParser.Helm.Template.Condition-1) ==
+   __and(default_manifest_value(metrics.isEnabled),
+         __not(default_manifest_value(metrics.useServiceMonitor))))
+
+Or(Not(STRUCT_FACT-12),
+   name(KubernetesParser.Kube.Deployment-0) == node-app2-dep)
+
+Or(Not(STRUCT_FACT-13),
+   namespace(KubernetesParser.Kube.Deployment-0) ==
+   namespace(Config.ManifestSet.Instantiation-0))
+
+Or(Not(STRUCT_FACT-14),
+   manifest_set(KubernetesParser.Kube.Deployment-0) ==
+   Config.ManifestSet.Instantiation-0)
+
+Or(Not(STRUCT_FACT-15),
+   api_version(KubernetesParser.Kube.Deployment-0) ==
+   apps/v1)
+
+Or(Not(STRUCT_FACT-16),
+   name(KubernetesParser.Kube.Pod.Template-0) == COMMON.NONE)
+
+Or(Not(STRUCT_FACT-17),
+   namespace(KubernetesParser.Kube.Pod.Template-0) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-18),
+   image(KubernetesParser.Kube.Container-0) ==
+   getdtk/graph-example2-app)
+
+Or(Not(STRUCT_FACT-19),
+   image_pull_policy(KubernetesParser.Kube.Container-0) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-20),
+   name(KubernetesParser.Kube.Container-0) ==
+   Concat(Unit(110),
+          Concat(Unit(111), Concat(Unit(100), Unit(101)))))
+
+Or(Not(STRUCT_FACT-21),
+   args(KubernetesParser.Kube.Container-0) == COMMON.NONE)
+
+Or(Not(STRUCT_FACT-22),
+   container_port(KubernetesParser.Kube.Container.PortItem-0) ==
+   8080)
+
+Or(Not(STRUCT_FACT-23),
+   host_ip(KubernetesParser.Kube.Container.PortItem-0) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-24),
+   host_port(KubernetesParser.Kube.Container.PortItem-0) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-25),
+   name(KubernetesParser.Kube.Container.PortItem-0) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-26),
+   protocol(KubernetesParser.Kube.Container.PortItem-0) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-27),
+   name(KubernetesParser.Kube.Selector-1) == app)
+
+Or(Not(STRUCT_FACT-28),
+   value(KubernetesParser.Kube.Selector-1) == node-app2)
+
+Or(Not(STRUCT_FACT-29),
+   name(KubernetesParser.Kube.Deployment-1) == node-app1-dep)
+
+Or(Not(STRUCT_FACT-30),
+   namespace(KubernetesParser.Kube.Deployment-1) ==
+   namespace(Config.ManifestSet.Instantiation-0))
+
+Or(Not(STRUCT_FACT-31),
+   manifest_set(KubernetesParser.Kube.Deployment-1) ==
+   Config.ManifestSet.Instantiation-0)
+
+Or(Not(STRUCT_FACT-32),
+   api_version(KubernetesParser.Kube.Deployment-1) ==
+   apps/v1)
+
+Or(Not(STRUCT_FACT-33),
+   name(KubernetesParser.Kube.Pod.Template-1) == COMMON.NONE)
+
+Or(Not(STRUCT_FACT-34),
+   namespace(KubernetesParser.Kube.Pod.Template-1) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-35),
+   image(KubernetesParser.Kube.Container-1) ==
+   getdtk/graph-example1-app)
+
+Or(Not(STRUCT_FACT-36),
+   image_pull_policy(KubernetesParser.Kube.Container-1) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-37),
+   name(KubernetesParser.Kube.Container-1) ==
+   Concat(Unit(110),
+          Concat(Unit(111), Concat(Unit(100), Unit(101)))))
+
+Or(Not(STRUCT_FACT-38),
+   args(KubernetesParser.Kube.Container-1) == COMMON.NONE)
+
+Or(Not(STRUCT_FACT-39),
+   container_port(KubernetesParser.Kube.Container.PortItem-1) ==
+   8080)
+
+Or(Not(STRUCT_FACT-40),
+   host_ip(KubernetesParser.Kube.Container.PortItem-1) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-41),
+   host_port(KubernetesParser.Kube.Container.PortItem-1) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-42),
+   name(KubernetesParser.Kube.Container.PortItem-1) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-43),
+   protocol(KubernetesParser.Kube.Container.PortItem-1) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-44),
+   name(KubernetesParser.Kube.Selector-3) == app)
+
+Or(Not(STRUCT_FACT-45),
+   value(KubernetesParser.Kube.Selector-3) == node-app1)
+
+Or(Not(STRUCT_FACT-46),
+   name(KubernetesParser.Kube.Ingress-0) ==
+   ingress1-matches-app1-with-default)
+
+Or(Not(STRUCT_FACT-47),
+   namespace(KubernetesParser.Kube.Ingress-0) == default)
+
+Or(Not(STRUCT_FACT-48),
+   ingress_class_name(KubernetesParser.Kube.Ingress-0) ==
+   nginx)
+
+Or(Not(STRUCT_FACT-49),
+   api_version(KubernetesParser.Kube.Ingress-0) ==
+   networking.k8s.io/v1)
+
+Or(Not(STRUCT_FACT-50),
+   host(KubernetesParser.Kube.Ingress.Rule-0) == COMMON.NONE)
+
+Or(Not(STRUCT_FACT-51),
+   path(KubernetesParser.Kube.Ingress.Rule.HttpPath-0) ==
+   /testpath)
+
+Or(Not(STRUCT_FACT-52),
+   path_type(KubernetesParser.Kube.Ingress.Rule.HttpPath-0) ==
+   Prefix)
+
+Or(Not(PARENT_FACT-2),
+   backend(KubernetesParser.Kube.Ingress.Rule.HttpPath-0) ==
+   KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0)
+
+Or(Not(PARENT_FACT-3),
+   And(_parent.Kube.Ingress.Rule.HttpPath(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0) ==
+       KubernetesParser.Kube.Ingress.Rule.HttpPath-0,
+       _parent_type(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0) ==
+       Kube.Ingress.Rule.HttpPath))
+
+Or(Not(PARENT_FACT-4),
+   service(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0) ==
+   KubernetesParser.Kube.Ingress.Backend.Service-1)
+
+Or(Not(PARENT_FACT-5),
+   And(_parent.Kube.Ingress.Rule.HttpPath.Backend(KubernetesParser.Kube.Ingress.Backend.Service-1) ==
+       KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0,
+       _parent_type(KubernetesParser.Kube.Ingress.Backend.Service-1) ==
+       Kube.Ingress.Rule.HttpPath.Backend))
+
+Or(Not(STRUCT_FACT-53),
+   name(KubernetesParser.Kube.Ingress.Backend.Service-1) ==
+   node-app1-svc)
+
+Or(Not(PARENT_FACT-6),
+   port(KubernetesParser.Kube.Ingress.Backend.Service-1) ==
+   KubernetesParser.Kube.Ingress.Backend.Service.Port-1)
+
+Or(Not(PARENT_FACT-7),
+   And(_parent.Kube.Ingress.Backend.Service(KubernetesParser.Kube.Ingress.Backend.Service.Port-1) ==
+       KubernetesParser.Kube.Ingress.Backend.Service-1,
+       _parent_type(KubernetesParser.Kube.Ingress.Backend.Service.Port-1) ==
+       Kube.Ingress.Backend.Service))
+
+Or(Not(STRUCT_FACT-54),
+   name(KubernetesParser.Kube.Ingress.Backend.Service.Port-1) ==
+   Concat(Unit(67),
+          Concat(Unit(79),
+                 Concat(Unit(77),
+                        Concat(Unit(77),
+                               Concat(Unit(79),
+                                      Concat(Unit(78),
+                                        Concat(Unit(46),
+                                        Concat(Unit(78),
+                                        Concat(Unit(79),
+                                        Concat(Unit(78),
+                                        Unit(69))))))))))))
+
+Or(Not(STRUCT_FACT-55),
+   number(KubernetesParser.Kube.Ingress.Backend.Service.Port-1) ==
+   80)
+
+Or(Not(PARENT_FACT-8),
+   service(KubernetesParser.Kube.Ingress.DefaultBackend-0) ==
+   KubernetesParser.Kube.Ingress.Backend.Service-0)
+
+Or(Not(PARENT_FACT-9),
+   And(_parent.Kube.Ingress.DefaultBackend(KubernetesParser.Kube.Ingress.Backend.Service-0) ==
+       KubernetesParser.Kube.Ingress.DefaultBackend-0,
+       _parent_type(KubernetesParser.Kube.Ingress.Backend.Service-0) ==
+       Kube.Ingress.DefaultBackend))
+
+Or(Not(STRUCT_FACT-56),
+   name(KubernetesParser.Kube.Ingress.Backend.Service-0) ==
+   nginx-ingress-controller)
+
+Or(Not(PARENT_FACT-10),
+   port(KubernetesParser.Kube.Ingress.Backend.Service-0) ==
+   KubernetesParser.Kube.Ingress.Backend.Service.Port-0)
+
+Or(Not(PARENT_FACT-11),
+   And(_parent.Kube.Ingress.Backend.Service(KubernetesParser.Kube.Ingress.Backend.Service.Port-0) ==
+       KubernetesParser.Kube.Ingress.Backend.Service-0,
+       _parent_type(KubernetesParser.Kube.Ingress.Backend.Service.Port-0) ==
+       Kube.Ingress.Backend.Service))
+
+Or(Not(STRUCT_FACT-57),
+   name(KubernetesParser.Kube.Ingress.Backend.Service.Port-0) ==
+   Concat(Unit(67),
+          Concat(Unit(79),
+                 Concat(Unit(77),
+                        Concat(Unit(77),
+                               Concat(Unit(79),
+                                      Concat(Unit(78),
+                                        Concat(Unit(46),
+                                        Concat(Unit(78),
+                                        Concat(Unit(79),
+                                        Concat(Unit(78),
+                                        Unit(69))))))))))))
+
+Or(Not(STRUCT_FACT-58),
+   number(KubernetesParser.Kube.Ingress.Backend.Service.Port-0) ==
+   80)
+
+Or(Not(STRUCT_FACT-59),
+   name(KubernetesParser.Kube.Ingress-1) ==
+   ingress2-simple-service-bad-default)
+
+Or(Not(STRUCT_FACT-60),
+   namespace(KubernetesParser.Kube.Ingress-1) ==
+   namespace(Config.ManifestSet.Instantiation-0))
+
+Or(Not(STRUCT_FACT-61),
+   ingress_class_name(KubernetesParser.Kube.Ingress-1) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-62),
+   api_version(KubernetesParser.Kube.Ingress-1) ==
+   networking.k8s.io/v1)
+
+Or(Not(STRUCT_FACT-63),
+   host(KubernetesParser.Kube.Ingress.Rule-1) == COMMON.NONE)
+
+Or(Not(STRUCT_FACT-64),
+   path(KubernetesParser.Kube.Ingress.Rule.HttpPath-1) ==
+   /testpath)
+
+Or(Not(STRUCT_FACT-65),
+   path_type(KubernetesParser.Kube.Ingress.Rule.HttpPath-1) ==
+   Prefix)
+
+Or(Not(PARENT_FACT-12),
+   backend(KubernetesParser.Kube.Ingress.Rule.HttpPath-1) ==
+   KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1)
+
+Or(Not(PARENT_FACT-13),
+   And(_parent.Kube.Ingress.Rule.HttpPath(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1) ==
+       KubernetesParser.Kube.Ingress.Rule.HttpPath-1,
+       _parent_type(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1) ==
+       Kube.Ingress.Rule.HttpPath))
+
+Or(Not(PARENT_FACT-14),
+   service(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1) ==
+   KubernetesParser.Kube.Ingress.Backend.Service-3)
+
+Or(Not(PARENT_FACT-15),
+   And(_parent.Kube.Ingress.Rule.HttpPath.Backend(KubernetesParser.Kube.Ingress.Backend.Service-3) ==
+       KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1,
+       _parent_type(KubernetesParser.Kube.Ingress.Backend.Service-3) ==
+       Kube.Ingress.Rule.HttpPath.Backend))
+
+Or(Not(STRUCT_FACT-66),
+   name(KubernetesParser.Kube.Ingress.Backend.Service-3) ==
+   node-app-svc)
+
+Or(Not(PARENT_FACT-16),
+   port(KubernetesParser.Kube.Ingress.Backend.Service-3) ==
+   KubernetesParser.Kube.Ingress.Backend.Service.Port-3)
+
+Or(Not(PARENT_FACT-17),
+   And(_parent.Kube.Ingress.Backend.Service(KubernetesParser.Kube.Ingress.Backend.Service.Port-3) ==
+       KubernetesParser.Kube.Ingress.Backend.Service-3,
+       _parent_type(KubernetesParser.Kube.Ingress.Backend.Service.Port-3) ==
+       Kube.Ingress.Backend.Service))
+
+Or(Not(STRUCT_FACT-67),
+   name(KubernetesParser.Kube.Ingress.Backend.Service.Port-3) ==
+   Concat(Unit(67),
+          Concat(Unit(79),
+                 Concat(Unit(77),
+                        Concat(Unit(77),
+                               Concat(Unit(79),
+                                      Concat(Unit(78),
+                                        Concat(Unit(46),
+                                        Concat(Unit(78),
+                                        Concat(Unit(79),
+                                        Concat(Unit(78),
+                                        Unit(69))))))))))))
+
+Or(Not(STRUCT_FACT-68),
+   number(KubernetesParser.Kube.Ingress.Backend.Service.Port-3) ==
+   80)
+
+Or(Not(PARENT_FACT-18),
+   service(KubernetesParser.Kube.Ingress.DefaultBackend-1) ==
+   KubernetesParser.Kube.Ingress.Backend.Service-2)
+
+Or(Not(PARENT_FACT-19),
+   And(_parent.Kube.Ingress.DefaultBackend(KubernetesParser.Kube.Ingress.Backend.Service-2) ==
+       KubernetesParser.Kube.Ingress.DefaultBackend-1,
+       _parent_type(KubernetesParser.Kube.Ingress.Backend.Service-2) ==
+       Kube.Ingress.DefaultBackend))
+
+Or(Not(STRUCT_FACT-69),
+   name(KubernetesParser.Kube.Ingress.Backend.Service-2) ==
+   test2)
+
+Or(Not(PARENT_FACT-20),
+   port(KubernetesParser.Kube.Ingress.Backend.Service-2) ==
+   KubernetesParser.Kube.Ingress.Backend.Service.Port-2)
+
+Or(Not(PARENT_FACT-21),
+   And(_parent.Kube.Ingress.Backend.Service(KubernetesParser.Kube.Ingress.Backend.Service.Port-2) ==
+       KubernetesParser.Kube.Ingress.Backend.Service-2,
+       _parent_type(KubernetesParser.Kube.Ingress.Backend.Service.Port-2) ==
+       Kube.Ingress.Backend.Service))
+
+Or(Not(STRUCT_FACT-70),
+   name(KubernetesParser.Kube.Ingress.Backend.Service.Port-2) ==
+   Concat(Unit(67),
+          Concat(Unit(79),
+                 Concat(Unit(77),
+                        Concat(Unit(77),
+                               Concat(Unit(79),
+                                      Concat(Unit(78),
+                                        Concat(Unit(46),
+                                        Concat(Unit(78),
+                                        Concat(Unit(79),
+                                        Concat(Unit(78),
+                                        Unit(69))))))))))))
+
+Or(Not(STRUCT_FACT-71),
+   number(KubernetesParser.Kube.Ingress.Backend.Service.Port-2) ==
+   80)
+
+Or(Not(STRUCT_FACT-72),
+   name(KubernetesParser.Kube.Ingress-2) ==
+   ingress3-simple-fanout)
+
+Or(Not(STRUCT_FACT-73),
+   namespace(KubernetesParser.Kube.Ingress-2) ==
+   namespace(Config.ManifestSet.Instantiation-0))
+
+Or(Not(STRUCT_FACT-74),
+   ingress_class_name(KubernetesParser.Kube.Ingress-2) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-75),
+   api_version(KubernetesParser.Kube.Ingress-2) ==
+   networking.k8s.io/v1)
+
+Or(Not(STRUCT_FACT-76),
+   host(KubernetesParser.Kube.Ingress.Rule-2) == foo.bar.com)
+
+Or(Not(STRUCT_FACT-77),
+   path(KubernetesParser.Kube.Ingress.Rule.HttpPath-2) ==
+   /app1)
+
+Or(Not(STRUCT_FACT-78),
+   path_type(KubernetesParser.Kube.Ingress.Rule.HttpPath-2) ==
+   Prefix)
+
+Or(Not(PARENT_FACT-22),
+   backend(KubernetesParser.Kube.Ingress.Rule.HttpPath-2) ==
+   KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2)
+
+Or(Not(PARENT_FACT-23),
+   And(_parent.Kube.Ingress.Rule.HttpPath(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2) ==
+       KubernetesParser.Kube.Ingress.Rule.HttpPath-2,
+       _parent_type(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2) ==
+       Kube.Ingress.Rule.HttpPath))
+
+Or(Not(PARENT_FACT-24),
+   service(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2) ==
+   KubernetesParser.Kube.Ingress.Backend.Service-4)
+
+Or(Not(PARENT_FACT-25),
+   And(_parent.Kube.Ingress.Rule.HttpPath.Backend(KubernetesParser.Kube.Ingress.Backend.Service-4) ==
+       KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2,
+       _parent_type(KubernetesParser.Kube.Ingress.Backend.Service-4) ==
+       Kube.Ingress.Rule.HttpPath.Backend))
+
+Or(Not(STRUCT_FACT-79),
+   name(KubernetesParser.Kube.Ingress.Backend.Service-4) ==
+   node-app1-svc)
+
+Or(Not(PARENT_FACT-26),
+   port(KubernetesParser.Kube.Ingress.Backend.Service-4) ==
+   KubernetesParser.Kube.Ingress.Backend.Service.Port-4)
+
+Or(Not(PARENT_FACT-27),
+   And(_parent.Kube.Ingress.Backend.Service(KubernetesParser.Kube.Ingress.Backend.Service.Port-4) ==
+       KubernetesParser.Kube.Ingress.Backend.Service-4,
+       _parent_type(KubernetesParser.Kube.Ingress.Backend.Service.Port-4) ==
+       Kube.Ingress.Backend.Service))
+
+Or(Not(STRUCT_FACT-80),
+   name(KubernetesParser.Kube.Ingress.Backend.Service.Port-4) ==
+   Concat(Unit(67),
+          Concat(Unit(79),
+                 Concat(Unit(77),
+                        Concat(Unit(77),
+                               Concat(Unit(79),
+                                      Concat(Unit(78),
+                                        Concat(Unit(46),
+                                        Concat(Unit(78),
+                                        Concat(Unit(79),
+                                        Concat(Unit(78),
+                                        Unit(69))))))))))))
+
+Or(Not(STRUCT_FACT-81),
+   number(KubernetesParser.Kube.Ingress.Backend.Service.Port-4) ==
+   80)
+
+Or(Not(STRUCT_FACT-82),
+   path(KubernetesParser.Kube.Ingress.Rule.HttpPath-3) ==
+   /app2)
+
+Or(Not(STRUCT_FACT-83),
+   path_type(KubernetesParser.Kube.Ingress.Rule.HttpPath-3) ==
+   Prefix)
+
+Or(Not(PARENT_FACT-28),
+   backend(KubernetesParser.Kube.Ingress.Rule.HttpPath-3) ==
+   KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3)
+
+Or(Not(PARENT_FACT-29),
+   And(_parent.Kube.Ingress.Rule.HttpPath(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3) ==
+       KubernetesParser.Kube.Ingress.Rule.HttpPath-3,
+       _parent_type(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3) ==
+       Kube.Ingress.Rule.HttpPath))
+
+Or(Not(PARENT_FACT-30),
+   service(KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3) ==
+   KubernetesParser.Kube.Ingress.Backend.Service-5)
+
+Or(Not(PARENT_FACT-31),
+   And(_parent.Kube.Ingress.Rule.HttpPath.Backend(KubernetesParser.Kube.Ingress.Backend.Service-5) ==
+       KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3,
+       _parent_type(KubernetesParser.Kube.Ingress.Backend.Service-5) ==
+       Kube.Ingress.Rule.HttpPath.Backend))
+
+Or(Not(STRUCT_FACT-84),
+   name(KubernetesParser.Kube.Ingress.Backend.Service-5) ==
+   node-app2-svc)
+
+Or(Not(PARENT_FACT-32),
+   port(KubernetesParser.Kube.Ingress.Backend.Service-5) ==
+   KubernetesParser.Kube.Ingress.Backend.Service.Port-5)
+
+Or(Not(PARENT_FACT-33),
+   And(_parent.Kube.Ingress.Backend.Service(KubernetesParser.Kube.Ingress.Backend.Service.Port-5) ==
+       KubernetesParser.Kube.Ingress.Backend.Service-5,
+       _parent_type(KubernetesParser.Kube.Ingress.Backend.Service.Port-5) ==
+       Kube.Ingress.Backend.Service))
+
+Or(Not(STRUCT_FACT-85),
+   name(KubernetesParser.Kube.Ingress.Backend.Service.Port-5) ==
+   Concat(Unit(67),
+          Concat(Unit(79),
+                 Concat(Unit(77),
+                        Concat(Unit(77),
+                               Concat(Unit(79),
+                                      Concat(Unit(78),
+                                        Concat(Unit(46),
+                                        Concat(Unit(78),
+                                        Concat(Unit(79),
+                                        Concat(Unit(78),
+                                        Unit(69))))))))))))
+
+Or(Not(STRUCT_FACT-86),
+   number(KubernetesParser.Kube.Ingress.Backend.Service.Port-5) ==
+   80)
+
+Or(Not(STRUCT_FACT-87),
+   _exists(HelmParser.Kube.NetworkPolicy-0) ==
+   cast_to_builtin_sort_bool(exists_kube_networkpolicy(HelmParser.Helm.Template.Condition-0)))
+
+Or(Not(TYPE_CAST_FACT-3),
+   cast_to_builtin_sort_bool(exists_kube_networkpolicy(HelmParser.Helm.Template.Condition-0)) ==
+   False)
+
+Or(Not(STRUCT_FACT-88),
+   name(HelmParser.Kube.Secret-0) == redis)
+
+Or(Not(STRUCT_FACT-89),
+   namespace(HelmParser.Kube.Secret-0) == default)
+
+Or(Not(STRUCT_FACT-90),
+   api_version(HelmParser.Kube.Secret-0) == v1)
+
+Or(Not(STRUCT_FACT-91),
+   name(KubernetesParser.Kube.Secret-0) == node-app2-secret)
+
+Or(Not(STRUCT_FACT-92),
+   namespace(KubernetesParser.Kube.Secret-0) ==
+   namespace(Config.ManifestSet.Instantiation-0))
+
+Or(Not(STRUCT_FACT-93),
+   api_version(KubernetesParser.Kube.Secret-0) == v1)
+
+Or(Not(STRUCT_FACT-94),
+   name(KubernetesParser.Kube.Secret-1) == node-app1-secret)
+
+Or(Not(STRUCT_FACT-95),
+   namespace(KubernetesParser.Kube.Secret-1) ==
+   namespace(Config.ManifestSet.Instantiation-0))
+
+Or(Not(STRUCT_FACT-96),
+   api_version(KubernetesParser.Kube.Secret-1) == v1)
+
+Or(Not(STRUCT_FACT-97),
+   _exists(HelmParser.Kube.ServiceMonitor-0) ==
+   cast_to_builtin_sort_bool(exists_kube_servicemonitor(HelmParser.Helm.Template.Condition-1)))
+
+Or(Not(TYPE_CAST_FACT-4),
+   cast_to_builtin_sort_bool(exists_kube_servicemonitor(HelmParser.Helm.Template.Condition-1)) ==
+   False)
+
+Or(Not(STRUCT_FACT-98),
+   name(HelmParser.Kube.Service-0) == redis-headless)
+
+Or(Not(STRUCT_FACT-99),
+   namespace(HelmParser.Kube.Service-0) == default)
+
+Or(Not(STRUCT_FACT-100),
+   manifest_set(HelmParser.Kube.Service-0) ==
+   Config.ManifestSet.Instantiation-0)
+
+Or(Not(STRUCT_FACT-101),
+   api_version(HelmParser.Kube.Service-0) == v1)
+
+Or(Not(STRUCT_FACT-102),
+   name(HelmParser.Kube.Service.ServicePort-0) ==
+   Concat(Unit(116),
+          Concat(Unit(99),
+                 Concat(Unit(112),
+                        Concat(Unit(45),
+                               Concat(Unit(114),
+                                      Concat(Unit(101),
+                                        Concat(Unit(100),
+                                        Concat(Unit(105),
+                                        Unit(115))))))))))
+
+Or(Not(STRUCT_FACT-103),
+   node_port(HelmParser.Kube.Service.ServicePort-0) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-104),
+   port(HelmParser.Kube.Service.ServicePort-0) == 6379)
+
+Or(Not(STRUCT_FACT-105),
+   target_port(HelmParser.Kube.Service.ServicePort-0) ==
+   redis)
+
+Or(Not(STRUCT_FACT-106),
+   name(HelmParser.Kube.Selector-0) ==
+   app.kubernetes.io/name)
+
+Or(Not(STRUCT_FACT-107),
+   value(HelmParser.Kube.Selector-0) == redis)
+
+Or(Not(STRUCT_FACT-108),
+   name(HelmParser.Kube.Selector-1) ==
+   app.kubernetes.io/instance)
+
+Or(Not(STRUCT_FACT-109),
+   value(HelmParser.Kube.Selector-1) == redis)
+
+Or(Not(STRUCT_FACT-110),
+   name(HelmParser.Kube.Service-1) == redis-master)
+
+Or(Not(STRUCT_FACT-111),
+   namespace(HelmParser.Kube.Service-1) == default)
+
+Or(Not(STRUCT_FACT-112),
+   manifest_set(HelmParser.Kube.Service-1) ==
+   Config.ManifestSet.Instantiation-0)
+
+Or(Not(STRUCT_FACT-113),
+   api_version(HelmParser.Kube.Service-1) == v1)
+
+Or(Not(STRUCT_FACT-114),
+   name(HelmParser.Kube.Service.ServicePort-1) ==
+   Concat(Unit(116),
+          Concat(Unit(99),
+                 Concat(Unit(112),
+                        Concat(Unit(45),
+                               Concat(Unit(114),
+                                      Concat(Unit(101),
+                                        Concat(Unit(100),
+                                        Concat(Unit(105),
+                                        Unit(115))))))))))
+
+Or(Not(STRUCT_FACT-115),
+   node_port(HelmParser.Kube.Service.ServicePort-1) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-116),
+   port(HelmParser.Kube.Service.ServicePort-1) == 6379)
+
+Or(Not(STRUCT_FACT-117),
+   target_port(HelmParser.Kube.Service.ServicePort-1) ==
+   redis)
+
+Or(Not(STRUCT_FACT-118),
+   name(HelmParser.Kube.Selector-2) ==
+   app.kubernetes.io/name)
+
+Or(Not(STRUCT_FACT-119),
+   value(HelmParser.Kube.Selector-2) == redis)
+
+Or(Not(STRUCT_FACT-120),
+   name(HelmParser.Kube.Selector-3) ==
+   app.kubernetes.io/instance)
+
+Or(Not(STRUCT_FACT-121),
+   value(HelmParser.Kube.Selector-3) == redis)
+
+Or(Not(STRUCT_FACT-122),
+   name(HelmParser.Kube.Selector-4) ==
+   app.kubernetes.io/component)
+
+Or(Not(STRUCT_FACT-123),
+   value(HelmParser.Kube.Selector-4) == master)
+
+Or(Not(STRUCT_FACT-124),
+   name(HelmParser.Kube.Service-2) == redis-replicas)
+
+Or(Not(STRUCT_FACT-125),
+   namespace(HelmParser.Kube.Service-2) == default)
+
+Or(Not(STRUCT_FACT-126),
+   manifest_set(HelmParser.Kube.Service-2) ==
+   Config.ManifestSet.Instantiation-0)
+
+Or(Not(STRUCT_FACT-127),
+   api_version(HelmParser.Kube.Service-2) == v1)
+
+Or(Not(STRUCT_FACT-128),
+   name(HelmParser.Kube.Service.ServicePort-2) ==
+   Concat(Unit(116),
+          Concat(Unit(99),
+                 Concat(Unit(112),
+                        Concat(Unit(45),
+                               Concat(Unit(114),
+                                      Concat(Unit(101),
+                                        Concat(Unit(100),
+                                        Concat(Unit(105),
+                                        Unit(115))))))))))
+
+Or(Not(STRUCT_FACT-129),
+   node_port(HelmParser.Kube.Service.ServicePort-2) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-130),
+   port(HelmParser.Kube.Service.ServicePort-2) == 6379)
+
+Or(Not(STRUCT_FACT-131),
+   target_port(HelmParser.Kube.Service.ServicePort-2) ==
+   redis)
+
+Or(Not(STRUCT_FACT-132),
+   name(HelmParser.Kube.Selector-5) ==
+   app.kubernetes.io/name)
+
+Or(Not(STRUCT_FACT-133),
+   value(HelmParser.Kube.Selector-5) == redis)
+
+Or(Not(STRUCT_FACT-134),
+   name(HelmParser.Kube.Selector-6) ==
+   app.kubernetes.io/instance)
+
+Or(Not(STRUCT_FACT-135),
+   value(HelmParser.Kube.Selector-6) == redis)
+
+Or(Not(STRUCT_FACT-136),
+   name(HelmParser.Kube.Selector-7) ==
+   app.kubernetes.io/component)
+
+Or(Not(STRUCT_FACT-137),
+   value(HelmParser.Kube.Selector-7) == replica)
+
+Or(Not(STRUCT_FACT-138),
+   name(KubernetesParser.Kube.Service-0) == node-app2-svc)
+
+Or(Not(STRUCT_FACT-139),
+   namespace(KubernetesParser.Kube.Service-0) ==
+   namespace(Config.ManifestSet.Instantiation-0))
+
+Or(Not(STRUCT_FACT-140),
+   manifest_set(KubernetesParser.Kube.Service-0) ==
+   Config.ManifestSet.Instantiation-0)
+
+Or(Not(STRUCT_FACT-141),
+   api_version(KubernetesParser.Kube.Service-0) == v1)
+
+Or(Not(STRUCT_FACT-142),
+   name(KubernetesParser.Kube.Service.ServicePort-0) ==
+   Concat(Unit(67),
+          Concat(Unit(79),
+                 Concat(Unit(77),
+                        Concat(Unit(77),
+                               Concat(Unit(79),
+                                      Concat(Unit(78),
+                                        Concat(Unit(46),
+                                        Concat(Unit(78),
+                                        Concat(Unit(79),
+                                        Concat(Unit(78),
+                                        Unit(69))))))))))))
+
+Or(Not(STRUCT_FACT-143),
+   node_port(KubernetesParser.Kube.Service.ServicePort-0) ==
+   31112)
+
+Or(Not(STRUCT_FACT-144),
+   port(KubernetesParser.Kube.Service.ServicePort-0) == 8080)
+
+Or(Not(STRUCT_FACT-145),
+   target_port(KubernetesParser.Kube.Service.ServicePort-0) ==
+   8081)
+
+Or(Not(STRUCT_FACT-146),
+   name(KubernetesParser.Kube.Selector-0) == app)
+
+Or(Not(STRUCT_FACT-147),
+   value(KubernetesParser.Kube.Selector-0) == node-app2)
+
+Or(Not(STRUCT_FACT-148),
+   name(KubernetesParser.Kube.Service-1) == node-app1-svc)
+
+Or(Not(STRUCT_FACT-149),
+   namespace(KubernetesParser.Kube.Service-1) ==
+   namespace(Config.ManifestSet.Instantiation-0))
+
+Or(Not(STRUCT_FACT-150),
+   manifest_set(KubernetesParser.Kube.Service-1) ==
+   Config.ManifestSet.Instantiation-0)
+
+Or(Not(STRUCT_FACT-151),
+   api_version(KubernetesParser.Kube.Service-1) == v1)
+
+Or(Not(STRUCT_FACT-152),
+   name(KubernetesParser.Kube.Service.ServicePort-1) ==
+   Concat(Unit(67),
+          Concat(Unit(79),
+                 Concat(Unit(77),
+                        Concat(Unit(77),
+                               Concat(Unit(79),
+                                      Concat(Unit(78),
+                                        Concat(Unit(46),
+                                        Concat(Unit(78),
+                                        Concat(Unit(79),
+                                        Concat(Unit(78),
+                                        Unit(69))))))))))))
+
+Or(Not(STRUCT_FACT-153),
+   node_port(KubernetesParser.Kube.Service.ServicePort-1) ==
+   31112)
+
+Or(Not(STRUCT_FACT-154),
+   port(KubernetesParser.Kube.Service.ServicePort-1) == 8080)
+
+Or(Not(STRUCT_FACT-155),
+   target_port(KubernetesParser.Kube.Service.ServicePort-1) ==
+   8081)
+
+Or(Not(STRUCT_FACT-156),
+   name(KubernetesParser.Kube.Selector-2) == app)
+
+Or(Not(STRUCT_FACT-157),
+   value(KubernetesParser.Kube.Selector-2) == node)
+
+Or(Not(STRUCT_FACT-158),
+   name(HelmParser.Kube.StatefulSet-0) == redis-master)
+
+Or(Not(STRUCT_FACT-159),
+   namespace(HelmParser.Kube.StatefulSet-0) == default)
+
+Or(Not(STRUCT_FACT-160),
+   replicas(HelmParser.Kube.StatefulSet-0) == 1)
+
+Or(Not(STRUCT_FACT-161),
+   service_name(HelmParser.Kube.StatefulSet-0) ==
+   redis-headless)
+
+Or(Not(STRUCT_FACT-162),
+   manifest_set(HelmParser.Kube.StatefulSet-0) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-163),
+   api_version(HelmParser.Kube.StatefulSet-0) == apps/v1)
+
+Or(Not(STRUCT_FACT-164),
+   name(HelmParser.Kube.Pod.Template-0) == COMMON.NONE)
+
+Or(Not(STRUCT_FACT-165),
+   namespace(HelmParser.Kube.Pod.Template-0) == COMMON.NONE)
+
+Or(Not(STRUCT_FACT-166),
+   image(HelmParser.Kube.Container-0) ==
+   cast_to_kube_container_image_ref(__concat(docker.io/,
+                                        helm_name_value_info(redis,
+                                        image.repository,
+                                        bitnami/redis),
+                                        :,
+                                        helm_name_value_info(redis,
+                                        image.tag,
+                                        6.2.4-debian-10-r13))))
+
+Or(Not(CONCAT_FACT-2),
+   __concat(docker.io/,
+            helm_name_value_info(redis,
+                                 image.repository,
+                                 bitnami/redis),
+            :,
+            helm_name_value_info(redis,
+                                 image.tag,
+                                 6.2.4-debian-10-r13)) ==
+   docker.io/bitnami/redis:6.2.4-debian-10-r13)
+
+Or(Not(TYPE_CAST_FACT-5),
+   cast_to_kube_container_image_ref(__concat(docker.io/,
+                                        helm_name_value_info(redis,
+                                        image.repository,
+                                        bitnami/redis),
+                                        :,
+                                        helm_name_value_info(redis,
+                                        image.tag,
+                                        6.2.4-debian-10-r13))) ==
+   docker.io/bitnami/redis:6.2.4-debian-10-r13)
+
+Or(Not(STRUCT_FACT-167),
+   image_pull_policy(HelmParser.Kube.Container-0) ==
+   IfNotPresent)
+
+Or(Not(STRUCT_FACT-168),
+   name(HelmParser.Kube.Container-0) ==
+   Concat(Unit(114),
+          Concat(Unit(101),
+                 Concat(Unit(100),
+                        Concat(Unit(105), Unit(115))))))
+
+Or(Not(STRUCT_FACT-169),
+   args(HelmParser.Kube.Container-0) ==
+   ["-c", "/opt/bitnami/scripts/start-scripts/start-master.sh"])
+
+Or(Not(STRUCT_FACT-170),
+   container_port(HelmParser.Kube.Container.PortItem-0) ==
+   6379)
+
+Or(Not(STRUCT_FACT-171),
+   host_ip(HelmParser.Kube.Container.PortItem-0) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-172),
+   host_port(HelmParser.Kube.Container.PortItem-0) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-173),
+   name(HelmParser.Kube.Container.PortItem-0) == redis)
+
+Or(Not(STRUCT_FACT-174),
+   protocol(HelmParser.Kube.Container.PortItem-0) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-175),
+   name(HelmParser.Kube.Selector-8) ==
+   app.kubernetes.io/name)
+
+Or(Not(STRUCT_FACT-176),
+   value(HelmParser.Kube.Selector-8) == redis)
+
+Or(Not(STRUCT_FACT-177),
+   name(HelmParser.Kube.Selector-9) ==
+   app.kubernetes.io/instance)
+
+Or(Not(STRUCT_FACT-178),
+   value(HelmParser.Kube.Selector-9) == redis)
+
+Or(Not(STRUCT_FACT-179),
+   name(HelmParser.Kube.Selector-10) ==
+   app.kubernetes.io/component)
+
+Or(Not(STRUCT_FACT-180),
+   value(HelmParser.Kube.Selector-10) == master)
+
+Or(Not(STRUCT_FACT-181),
+   name(HelmParser.Kube.StatefulSet-1) == redis-replicas)
+
+Or(Not(STRUCT_FACT-182),
+   namespace(HelmParser.Kube.StatefulSet-1) == default)
+
+Or(Not(STRUCT_FACT-183),
+   replicas(HelmParser.Kube.StatefulSet-1) == 3)
+
+Or(Not(STRUCT_FACT-184),
+   service_name(HelmParser.Kube.StatefulSet-1) ==
+   redis-headless)
+
+Or(Not(STRUCT_FACT-185),
+   manifest_set(HelmParser.Kube.StatefulSet-1) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-186),
+   api_version(HelmParser.Kube.StatefulSet-1) == apps/v1)
+
+Or(Not(STRUCT_FACT-187),
+   name(HelmParser.Kube.Pod.Template-1) == COMMON.NONE)
+
+Or(Not(STRUCT_FACT-188),
+   namespace(HelmParser.Kube.Pod.Template-1) == COMMON.NONE)
+
+Or(Not(STRUCT_FACT-189),
+   image(HelmParser.Kube.Container-1) ==
+   cast_to_kube_container_image_ref(__concat(docker.io/,
+                                        helm_name_value_info(redis,
+                                        image.repository,
+                                        bitnami/redis),
+                                        :,
+                                        helm_name_value_info(redis,
+                                        image.tag,
+                                        6.2.4-debian-10-r13))))
+
+Or(Not(CONCAT_FACT-3),
+   __concat(docker.io/,
+            helm_name_value_info(redis,
+                                 image.repository,
+                                 bitnami/redis),
+            :,
+            helm_name_value_info(redis,
+                                 image.tag,
+                                 6.2.4-debian-10-r13)) ==
+   docker.io/bitnami/redis:6.2.4-debian-10-r13)
+
+Or(Not(TYPE_CAST_FACT-6),
+   cast_to_kube_container_image_ref(__concat(docker.io/,
+                                        helm_name_value_info(redis,
+                                        image.repository,
+                                        bitnami/redis),
+                                        :,
+                                        helm_name_value_info(redis,
+                                        image.tag,
+                                        6.2.4-debian-10-r13))) ==
+   docker.io/bitnami/redis:6.2.4-debian-10-r13)
+
+Or(Not(STRUCT_FACT-190),
+   image_pull_policy(HelmParser.Kube.Container-1) ==
+   IfNotPresent)
+
+Or(Not(STRUCT_FACT-191),
+   name(HelmParser.Kube.Container-1) ==
+   Concat(Unit(114),
+          Concat(Unit(101),
+                 Concat(Unit(100),
+                        Concat(Unit(105), Unit(115))))))
+
+Or(Not(STRUCT_FACT-192),
+   args(HelmParser.Kube.Container-1) ==
+   ["-c", "/opt/bitnami/scripts/start-scripts/start-replica.sh"])
+
+Or(Not(STRUCT_FACT-193),
+   container_port(HelmParser.Kube.Container.PortItem-1) ==
+   6379)
+
+Or(Not(STRUCT_FACT-194),
+   host_ip(HelmParser.Kube.Container.PortItem-1) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-195),
+   host_port(HelmParser.Kube.Container.PortItem-1) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-196),
+   name(HelmParser.Kube.Container.PortItem-1) == redis)
+
+Or(Not(STRUCT_FACT-197),
+   protocol(HelmParser.Kube.Container.PortItem-1) ==
+   COMMON.NONE)
+
+Or(Not(STRUCT_FACT-198),
+   name(HelmParser.Kube.Selector-11) ==
+   app.kubernetes.io/name)
+
+Or(Not(STRUCT_FACT-199),
+   value(HelmParser.Kube.Selector-11) == redis)
+
+Or(Not(STRUCT_FACT-200),
+   name(HelmParser.Kube.Selector-12) ==
+   app.kubernetes.io/instance)
+
+Or(Not(STRUCT_FACT-201),
+   value(HelmParser.Kube.Selector-12) == redis)
+
+Or(Not(STRUCT_FACT-202),
+   name(HelmParser.Kube.Selector-13) ==
+   app.kubernetes.io/component)
+
+Or(Not(STRUCT_FACT-203),
+   value(HelmParser.Kube.Selector-13) == replica)
+
+Or(Not(STRUCT_FACT-204),
+   Source.FilePath(HelmParser.Source.FilePath-0) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests)
+
+Or(Not(STRUCT_FACT-205),
+   Source.FilePath(HelmParser.Source.FilePath-1) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/networkpolicy.yaml)
+
+Or(Not(STRUCT_FACT-206),
+   Source.FilePath(HelmParser.Source.FilePath-2) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/servicemonitor.yaml)
+
+Or(Not(STRUCT_FACT-207),
+   url(Source.GitRepo-0) ==
+   https://github.com/dtk/ai-reasoner.git)
+
+Or(Not(STRUCT_FACT-208), public(Source.GitRepo-0) == True)
+
+Or(Not(STRUCT_FACT-209),
+   provider(Source.GitRepo-0) == github.com)
+
+Or(Not(STRUCT_FACT-210),
+   branch(Source.GitRepo-0) == rich_sprint44)
+
+Or(Not(STRUCT_FACT-211),
+   path(Source.FilePath-0) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/app.yaml)
+
+Or(Not(STRUCT_FACT-212),
+   path(Source.FilePath-1) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/redis.yaml)
+
+Or(Not(STRUCT_FACT-213),
+   path(Source.FilePath-2) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app2.yaml)
+
+Or(Not(STRUCT_FACT-214),
+   path(Source.FilePath-3) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1.yaml)
+
+Or(Not(STRUCT_FACT-215),
+   path(Source.FilePath-4) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/ingress/ingress-examples.yaml)
+
+Or(Not(STRUCT_FACT-216),
+   path(Source.FilePath-5) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/secret.yaml)
+
+Or(Not(STRUCT_FACT-217),
+   path(Source.FilePath-6) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/configmap.yaml)
+
+Or(Not(STRUCT_FACT-218),
+   path(Source.FilePath-7) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/health-configmap.yaml)
+
+Or(Not(STRUCT_FACT-219),
+   path(Source.FilePath-8) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/scripts-configmap.yaml)
+
+Or(Not(STRUCT_FACT-220),
+   path(Source.FilePath-9) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/headless-svc.yaml)
+
+Or(Not(STRUCT_FACT-221),
+   path(Source.FilePath-10) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/service.yaml)
+
+Or(Not(STRUCT_FACT-222),
+   path(Source.FilePath-11) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/service.yaml)
+
+Or(Not(STRUCT_FACT-223),
+   path(Source.FilePath-12) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/statefulset.yaml)
+
+Or(Not(STRUCT_FACT-224),
+   path(Source.FilePath-13) ==
+   /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/statefulset.yaml)
+
+Or(Not(DISTINCT_CONSTANTS-150),
+   Not(secret(redis, redis-password:Kube.Secret.Key) ==
+       COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-153),
+   Not(secret(node-app2-secret, db_password:Kube.Secret.Key) ==
+       COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-156),
+   Not(secret(node-app1-secret, db_password:Kube.Secret.Key) ==
+       COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-175),
+   Not(host_pattern(KubernetesParser.Kube.Ingress.Rule-1) ==
+       COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-176),
+   Not(host_pattern(KubernetesParser.Kube.Ingress.Rule-2) ==
+       COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-177),
+   Not(host_pattern(KubernetesParser.Kube.Ingress.Rule-0) ==
+       COMMON.NONE))
+
+

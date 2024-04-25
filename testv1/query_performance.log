@@ -1,0 +1,42 @@
+Query helm_chart(Kube.Ingress.Class, Helm.Chart):BuiltinSort.Bool: timing=0.0137;num_tuples=0
+Query managed_by_helm(Kube.Ingress.Class):BuiltinSort.Bool: timing=0.0138;num_tuples=0
+Query debug_no_annotations(Kube.Ingress.Class):BuiltinSort.Bool: timing=0.0144;num_tuples=0
+Query is_default_class(Kube.Ingress.Class):BuiltinSort.Bool: timing=0.0142;num_tuples=0
+Query is_not_default_class(Kube.Ingress.Class):BuiltinSort.Bool: timing=0.0147;num_tuples=0
+Query helm_chart(Kube.Ingress, Helm.Chart):BuiltinSort.Bool: timing=0.0142;num_tuples=0
+Query managed_by_helm(Kube.Ingress):BuiltinSort.Bool: timing=0.0130;num_tuples=0
+Query default_backend(Kube.Ingress):Kube.Ingress.DefaultBackend: timing=0.0197;num_tuples=3
+Query rewrite_target(Kube.Ingress, Config.Value):BuiltinSort.Bool: timing=0.0437;num_tuples=3
+Query _shadow_component(Kube.Ingress.DefaultBackend):BuiltinSort.Bool: timing=0.0189;num_tuples=1
+Query debug_service(Kube.Ingress.DefaultBackend):Kube.Ingress.Backend.Service: timing=0.0156;num_tuples=0
+Query host_pattern(Kube.Ingress.Rule.HttpPath.Backend):Network.Http.HostPattern: timing=0.0382;num_tuples=4
+Query parents_host(Kube.Ingress.Rule.HttpPath.Backend):Network.Http.HostPattern: timing=0.0124;num_tuples=0
+Query host_pattern_link(Kube.Ingress.Rule.HttpPath.Backend):Network.Http.HostPattern: timing=0.0247;num_tuples=2
+Query network_topology_http_route(Kube.Ingress.Rule.HttpPath.Backend):Network.Topology.Node.HttpRoute: timing=0.0101;num_tuples=0
+Query container_image(Kube.Container):Container.Image: timing=0.0288;num_tuples=4
+Query name(Container.Image):Container.Image.Name: timing=0.0177;num_tuples=3
+Query helm_chart_release(Kube.Container, Helm.Chart.Release):BuiltinSort.Bool: timing=0.0157;num_tuples=0
+Query _matching_kube_service(Kube.Ingress.DefaultBackend, Kube.Service):BuiltinSort.Bool: timing=0.0140;num_tuples=0
+Query _matching_kube_service(Kube.Ingress.Rule.HttpPath.Backend, Kube.Service):BuiltinSort.Bool: timing=0.0283;num_tuples=2
+Query apps_can_be_created(Meta.Stage):BuiltinSort.Bool: timing=0.0131;num_tuples=0
+Query _service_name(Kube.Ingress.DefaultBackend):Kube.Name: timing=0.0278;num_tuples=2
+Query apps_created(Meta.Stage):BuiltinSort.Bool: timing=0.0077;num_tuples=1
+Query watch_ingress_without_class(App.KubeIngressController.Params):BuiltinSort.Bool: timing=0.0144;num_tuples=0
+Query _namespace(Kube.Ingress.DefaultBackend):Kube.Namespace: timing=0.0332;num_tuples=3
+Query _partial_matching_ingress_class(Kube.Ingress):Kube.Ingress.Class: timing=0.0133;num_tuples=0
+Query _service_name(Kube.Ingress.Rule.HttpPath.Backend):Kube.Name: timing=0.0405;num_tuples=4
+Query ingress_class(Kube.Ingress):Kube.Ingress.Class: timing=0.0185;num_tuples=3
+Query _namespace(Kube.Ingress.Rule.HttpPath.Backend):Kube.Namespace: timing=0.0402;num_tuples=4
+Query kube_service(Kube.Ingress.DefaultBackend):Kube.Service: timing=0.0216;num_tuples=3
+Query kube_service(Kube.Ingress.Rule.HttpPath.Backend):Kube.Service: timing=0.0305;num_tuples=4
+Query _shadow_component(Kube.Service):BuiltinSort.Bool: timing=0.0612;num_tuples=5
+Query name(Kube.Service):Kube.Name: timing=0.0941;num_tuples=9
+Query namespace(Kube.Service):Kube.Namespace: timing=0.0874;num_tuples=10
+Query helm_chart(Kube.Service, Helm.Chart):BuiltinSort.Bool: timing=0.0166;num_tuples=0
+Query managed_by_helm(Kube.Service):BuiltinSort.Bool: timing=0.0487;num_tuples=3
+Query name(Kube.Service):Kube.Name: timing=0.1003;num_tuples=9
+Query namespace(Kube.Service):Kube.Namespace: timing=0.0863;num_tuples=10
+Query namespace_match(Kube.Service, Kube.Workload):BuiltinSort.Bool: timing=0.2903;num_tuples=20
+Query label_subset(Kube.Service, Kube.Workload):BuiltinSort.Bool: timing=0.0597;num_tuples=5
+Query same_manifest_set(Kube.Service, Kube.Workload):BuiltinSort.Bool: timing=0.1211;num_tuples=10
+Query debug_label_regex(Kube.Service):BuiltinSort.Bool: timing=0.0206;num_tuples=0

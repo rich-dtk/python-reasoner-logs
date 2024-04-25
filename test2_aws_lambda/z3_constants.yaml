@@ -1,0 +1,791 @@
+App:
+- KubernetesParser.App-1
+- KubernetesParser.App-0
+Kube.Name:
+- redis-replicas
+- ingress3-simple-fanout
+- test2
+- nginx-ingress-controller
+- node-app-svc
+- redis
+- redis-master
+- node-app2-svc
+- ingress1-matches-app1-with-default
+- node-app2-dep
+- node-app1-secret
+- node-app2-secret
+- ingress2-simple-service-bad-default
+- node-app1-dep
+- example-node-app
+- COMMON.NONE
+- node-app1-svc
+- redis-headless
+- nginx
+Config.ManifestSet.Instantiation:
+- Config.ManifestSet.Instantiation-0
+- COMMON.NONE
+Container.Image.Name:
+- COMMON.NONE
+- docker.io/bitnami/redis
+- getdtk/graph-example2-app
+- getdtk/graph-example1-app
+Container.Tag.Name:
+- COMMON.NONE
+- '|6.2.4-debian-10-r13|'
+- latest
+Helm.Chart:
+- redis-4.4.0
+Helm.Chart.Release:
+- redis-4.4.0/redis
+Config.Value:
+- redis-14.4.0
+- node-app2
+- ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86
+- master
+- bitnami/redis
+- redis
+- '|6.2.4-debian-10-r13|'
+- '|442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634|'
+- /
+- '|58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58|'
+- no_match_value
+- Helm
+- node
+- redis-4.4.0
+- '|44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6|'
+- replica
+- 'False'
+- node-app1
+- f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+- COMMON.NONE
+- '|8080|'
+- production
+- my-release-redis-master
+- '|6379|'
+- 'false'
+- 'no'
+- slave
+- redis-master-0.redis-headless.default.svc.cluster.local
+- 'true'
+Helm.Template:
+- HelmParser.Helm.Template-1
+- HelmParser.Helm.Template-0
+Any.String:
+- rich_sprint44
+- docker.io/
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/app.yaml
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app1.yaml
+- redis/templates/networkpolicy.yaml
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/configmap.yaml
+- redis/templates/servicemonitor.yaml
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/networkpolicy.yaml
+- redis
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/secret.yaml
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/statefulset.yaml
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/scripts-configmap.yaml
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests
+- '|https://github.com/dtk/ai-reasoner.git|'
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/redis/templates/servicemonitor.yaml
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/headless-svc.yaml
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/master/service.yaml
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/ingress/ingress-examples.yaml
+- '|:|'
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/health-configmap.yaml
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/statefulset.yaml
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/helm/redis/templates/replicas/service.yaml
+- COMMON.NONE
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/app/redis.yaml
+- github.com
+- /root/ai_reasoner_parser/examples/kube-ingress-no-controllers/manifests/kube/app/app2.yaml
+Helm.Template.Condition:
+- HelmParser.Helm.Template.Condition-0
+- HelmParser.Helm.Template.Condition-1
+Config.Name:
+- helm.sh/chart
+- app.kubernetes.io/name
+- checksum/health
+- image.tag
+- image.repository
+- nginx.ingress.kubernetes.io/rewrite-target
+- metrics.isEnabled
+- app.kubernetes.io/component
+- app
+- networkPolicy.enabled
+- app.kubernetes.io/instance
+- app.kubernetes.io/managed-by
+- metrics.useServiceMonitor
+- checksum/scripts
+- checksum/secret
+- checksum/configmap
+- ingressclass.kubernetes.io/is-default-class
+BuiltinSort.Bool:
+- 'False'
+- 'True'
+- COMMON.NONE
+Kube.Deployment:
+- KubernetesParser.Kube.Deployment-0
+- KubernetesParser.Kube.Deployment-1
+Kube.ApiVersion:
+- apps/v1
+- v1
+- networking.k8s.io/v1
+Kube.Pod.Template:
+- HelmParser.Kube.Pod.Template-0
+- KubernetesParser.Kube.Pod.Template-1
+- HelmParser.Kube.Pod.Template-1
+- KubernetesParser.Kube.Pod.Template-0
+Kube.Namespace:
+- default
+- COMMON.NONE
+- (namespace Config.ManifestSet.Instantiation-0)
+Kube.Container:
+- HelmParser.Kube.Container-0
+- KubernetesParser.Kube.Container-0
+- KubernetesParser.Kube.Container-1
+- HelmParser.Kube.Container-1
+Kube.Container.ImageRef:
+- '|docker.io/bitnami/redis:6.2.4-debian-10-r13|'
+- getdtk/graph-example2-app
+- getdtk/graph-example1-app
+Kube.Container.ImagePullPolicy:
+- COMMON.NONE
+- IfNotPresent
+BuiltinSort.Z3String:
+- '"redis"'
+- '"node"'
+- '"COMMON.NONE"'
+- '"tcp-redis"'
+Any.Json:
+- '|6.2.4-debian-10-r13|'
+- COMMON.NONE
+- '|["/bin/bash"]|'
+- '|["-c", "/opt/bitnami/scripts/start-scripts/start-replica.sh"]|'
+- bitnami/redis
+- '|["-c", "/opt/bitnami/scripts/start-scripts/start-master.sh"]|'
+Kube.Container.PortItem:
+- HelmParser.Kube.Container.PortItem-0
+- KubernetesParser.Kube.Container.PortItem-1
+- HelmParser.Kube.Container.PortItem-1
+- KubernetesParser.Kube.Container.PortItem-0
+Network.Port.Number:
+- '|6379|'
+- '|8080|'
+- COMMON.NONE
+- '|31112|'
+- '|8081|'
+- '|80|'
+Network.Address:
+- redis-14.4.0
+- node-app2
+- ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86
+- master
+- bitnami/redis
+- redis
+- '|6.2.4-debian-10-r13|'
+- '|442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634|'
+- /
+- '|58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58|'
+- no_match_value
+- Helm
+- node
+- redis-4.4.0
+- '|44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6|'
+- replica
+- 'False'
+- COMMON.NONE
+- node-app1
+- f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+Network.Port:
+- redis-14.4.0
+- node-app2
+- ec5782aa2c2a32b47c1260c39980563a7d808d9c4ed4cdab14bcc2b59b89eb86
+- '|8081|'
+- master
+- bitnami/redis
+- redis
+- '|6.2.4-debian-10-r13|'
+- '|442476b6eef39c39f0c7b62bdbff834dcbc4f00008fc95f44d5adc21083a7634|'
+- /
+- '|80|'
+- '|58872dd4fd1428da8f6cf996a8e11d24b639309b344d99470697ca57d6e6ff58|'
+- no_match_value
+- Helm
+- node
+- redis-4.4.0
+- '|44280ff7498e21a0264b2f9e23b93d6b6ad603b7800ee6586f64b0b41297fab6|'
+- replica
+- 'False'
+- COMMON.NONE
+- node-app1
+- f99788d35f7da4b949f6ff488e93bd7d71a953ab6cf08ac19547c2581ae6ead9
+- '|6379|'
+- '|8080|'
+- '|31112|'
+Network.Protocol:
+- scp
+- COMMON.NONE
+- udp
+- http
+- tcp
+- https
+Kube.Selector:
+- HelmParser.Kube.Selector-7
+- HelmParser.Kube.Selector-12
+- KubernetesParser.Kube.Selector-1
+- KubernetesParser.Kube.Selector-3
+- HelmParser.Kube.Selector-9
+- KubernetesParser.Kube.Selector-2
+- HelmParser.Kube.Selector-10
+- HelmParser.Kube.Selector-5
+- HelmParser.Kube.Selector-13
+- HelmParser.Kube.Selector-11
+- HelmParser.Kube.Selector-6
+- HelmParser.Kube.Selector-1
+- HelmParser.Kube.Selector-8
+- HelmParser.Kube.Selector-0
+- HelmParser.Kube.Selector-4
+- HelmParser.Kube.Selector-3
+- KubernetesParser.Kube.Selector-0
+- HelmParser.Kube.Selector-2
+Kube.Selector.Name:
+- app.kubernetes.io/component
+- app
+- app.kubernetes.io/name
+- app.kubernetes.io/instance
+Kube.Selector.Value:
+- redis
+- replica
+- node-app1
+- node-app2
+- node
+- master
+Kube.Labels:
+- Reasoner.Kube.Labels-16
+- Reasoner.Kube.Labels-5
+- Reasoner.Kube.Labels-8
+- Reasoner.Kube.Labels-11
+- Reasoner.Kube.Labels-6
+- Reasoner.Kube.Labels-9
+- Reasoner.Kube.Labels-7
+- COMMON.NONE
+- Reasoner.Kube.Labels-14
+- Reasoner.Kube.Labels-19
+- Reasoner.Kube.Labels-12
+- Reasoner.Kube.Labels-13
+- Reasoner.Kube.Labels-10
+- Reasoner.Kube.Labels-4
+- Reasoner.Kube.Labels-17
+Kube.Annotations:
+- Reasoner.Kube.Annotations-5
+- Reasoner.Kube.Annotations-2
+- Reasoner.Kube.Annotations-4
+- COMMON.NONE
+- Reasoner.Kube.Annotations-1
+- Reasoner.Kube.Annotations-3
+Kube.Container.EnvVarsConfig:
+- Reasoner.Kube.Container.EnvVarsConfig-1
+- Reasoner.Kube.Container.EnvVarsConfig-4
+- Reasoner.Kube.Container.EnvVarsConfig-2
+- Reasoner.Kube.Container.EnvVarsConfig-3
+Kube.Container.EnvVarName:
+- DB_PASSWORD
+- REDIS_MASTER_PASSWORD
+- REDIS_PASSWORD
+- PORT
+- REDIS_PORT
+- BITNAMI_DEBUG
+- REDIS_REPLICATION_MODE
+- REDIS_MASTER_PORT_NUMBER
+- NODE_ENV
+- REDIS_MASTER_HOST
+- ALLOW_EMPTY_PASSWORD
+- REDIS_TLS_ENABLED
+- DB_HOST
+- DB_PORT
+Kube.Container.EnvVarConfig:
+- '|{"value": "my-release-redis-master"}|'
+- '|{"valueFrom": {"secretKeyRef": {"name": "node-app1-secret", "key": "db_password"}}}|'
+- '|{"valueFrom": {"secretKeyRef": {"name": "redis", "key": "redis-password"}}}|'
+- '|{"value": "redis-master-0.redis-headless.default.svc.cluster.local"}|'
+- '|{"value": "no"}|'
+- '|{"value": "8080"}|'
+- '|{"value": "slave"}|'
+- '|{"value": "master"}|'
+- '|{"valueFrom": {"secretKeyRef": {"name": "node-app2-secret", "key": "db_password"}}}|'
+- '|{"value": "production"}|'
+- '|{"value": "6379"}|'
+- '|{"value": "false"}|'
+Kube.Ingress:
+- KubernetesParser.Kube.Ingress-2
+- KubernetesParser.Kube.Ingress-0
+- KubernetesParser.Kube.Ingress-1
+Kube.Ingress.Rule:
+- KubernetesParser.Kube.Ingress.Rule-1
+- KubernetesParser.Kube.Ingress.Rule-2
+- KubernetesParser.Kube.Ingress.Rule-0
+Network.Http.HostPattern:
+- foo.bar.com
+- '*'
+- COMMON.NONE
+- (host_pattern KubernetesParser.Kube.Ingress.Rule-1)
+- (host_pattern KubernetesParser.Kube.Ingress.Rule-2)
+- (host_pattern KubernetesParser.Kube.Ingress.Rule-0)
+Kube.Ingress.Rule.HttpPath:
+- KubernetesParser.Kube.Ingress.Rule.HttpPath-1
+- KubernetesParser.Kube.Ingress.Rule.HttpPath-0
+- KubernetesParser.Kube.Ingress.Rule.HttpPath-3
+- KubernetesParser.Kube.Ingress.Rule.HttpPath-2
+Network.Http.PathPattern:
+- /app1
+- /testpath
+- /app2
+Kube.Ingress.Rule.HttpPath.PathType:
+- Prefix
+Kube.Ingress.Rule.HttpPath.Backend:
+- KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1
+- KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3
+- COMMON.NONE
+- KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0
+- KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2
+Kube.Ingress.Backend.Service:
+- KubernetesParser.Kube.Ingress.Backend.Service-3
+- KubernetesParser.Kube.Ingress.Backend.Service-1
+- KubernetesParser.Kube.Ingress.Backend.Service-2
+- KubernetesParser.Kube.Ingress.Backend.Service-0
+- KubernetesParser.Kube.Ingress.Backend.Service-5
+- KubernetesParser.Kube.Ingress.Backend.Service-4
+Kube.Ingress.Backend.Service.Port:
+- KubernetesParser.Kube.Ingress.Backend.Service.Port-3
+- KubernetesParser.Kube.Ingress.Backend.Service.Port-2
+- KubernetesParser.Kube.Ingress.Backend.Service.Port-0
+- KubernetesParser.Kube.Ingress.Backend.Service.Port-1
+- KubernetesParser.Kube.Ingress.Backend.Service.Port-4
+- KubernetesParser.Kube.Ingress.Backend.Service.Port-5
+Kube.Ingress.DefaultBackend:
+- KubernetesParser.Kube.Ingress.DefaultBackend-1
+- COMMON.NONE
+- KubernetesParser.Kube.Ingress.DefaultBackend-0
+- KubernetesParser.Kube.Ingress-2/default_backend
+Kube.NetworkPolicy:
+- HelmParser.Kube.NetworkPolicy-0
+Kube.Secret:
+- KubernetesParser.Kube.Secret-1
+- KubernetesParser.Kube.Secret-0
+- HelmParser.Kube.Secret-0
+Kube.Secret.Key:
+- redis-password
+- db_password
+- COMMON.NONE
+Kube.ServiceMonitor:
+- HelmParser.Kube.ServiceMonitor-0
+Kube.Service:
+- HelmParser.Kube.Service-0
+- KubernetesParser.Kube.Service-1
+- KubernetesParser.Kube.Service-0
+- HelmParser.Kube.Service-1
+- HelmParser.Kube.Service-2
+Kube.Service.ServicePort:
+- KubernetesParser.Kube.Service.ServicePort-0
+- HelmParser.Kube.Service.ServicePort-0
+- HelmParser.Kube.Service.ServicePort-1
+- HelmParser.Kube.Service.ServicePort-2
+- KubernetesParser.Kube.Service.ServicePort-1
+Kube.Service.Type:
+- ExternalName
+- LoadBalancer
+- NodePort
+- COMMON.NONE
+- COMMON.INVALID_TYPE_CAST
+- ClusterIP
+Kube.StatefulSet:
+- HelmParser.Kube.StatefulSet-0
+- HelmParser.Kube.StatefulSet-1
+BuiltinSort.Z3Integer:
+- '3'
+- '1'
+Any.Concat:
+- '|docker.io/bitnami/redis:6.2.4-debian-10-r13|'
+- COMMON.NONE
+Source.FilePath:
+- Source.FilePath-11
+- Source.FilePath-5
+- HelmParser.Source.FilePath-2
+- Source.FilePath-10
+- Source.FilePath-7
+- Source.FilePath-12
+- Source.FilePath-2
+- HelmParser.Source.FilePath-0
+- Source.FilePath-1
+- Source.FilePath-3
+- Source.FilePath-13
+- Source.FilePath-6
+- HelmParser.Source.FilePath-1
+- Source.FilePath-0
+- Source.FilePath-4
+- Source.FilePath-9
+- Source.FilePath-8
+Source.GitRepo:
+- Source.GitRepo-0
+App.Redis.ReplicationMode:
+- master
+- slave
+- COMMON.NONE
+Any.Secret:
+- COMMON.NONE
+- '|secret(redis, redis-password:Kube.Secret.Key)|'
+- '|secret(node-app2-secret, db_password:Kube.Secret.Key)|'
+- '|secret(node-app1-secret, db_password:Kube.Secret.Key)|'
+Meta.Modality:
+- ShouldHold
+- DoesHold
+Meta.Stage:
+- default
+App.Nginx.Type:
+- nginx
+- other
+Constraint.Value:
+- holds
+- fails
+- undefined
+KubeCluster.DomainName:
+- cluster.local
+- (cluster_domain_name KubeCluster-0)
+App.KubeIngressController.Type:
+- nginx
+- other
+Kube.StableNetworkId:
+- COMMON.NONE
+- HelmParser.Kube.StatefulSet-0/stable_network_id
+- HelmParser.Kube.StatefulSet-1/stable_network_id
+BuiltinSort.SemanticType:
+- Kube.PersistentVolumeClaim.DataSource
+- Meta.Term.Attribute
+- Kube.Pod.Template
+- Helm.Chart.Instance.Values
+- Container.Image
+- Kube.Selector.Value
+- Kube.Volume.Nfs
+- Kube.Ingress.Tls.Host
+- Kube.PersistentVolumeClaim.AccessMode.Item
+- Meta.Stage
+- Kube.Cluster.Reference
+- Kube.Secret.Key
+- Kube.Daemonset.Update.Strategy
+- Kube.Volume.Secret.Item
+- Helm.Chart.ValuesFile
+- Any.Secret
+- Kube.Affinity.NodeAffinityPreferedSchedulingItem
+- Kube.Affinity.LabelSelector.MatchLabels.Value
+- Kube.StatefulSet.Update.Strategy
+- Kube.Container.EnvVarItem
+- Helm.Chart.Release
+- Kube.Node.Allocatable
+- Constraint.Value
+- Service.Type
+- Kube.Ingress.ControllerClass
+- Kube.Affinity.PodAffinitySchedulingItem
+- Kube.BackOffLimit
+- Kube.Volume.AwsElasticBlockStore
+- App.AttributeName
+- Kube.Volume.DownwardApi.Item.FieldRef
+- Kube.Container.ReadinessProbe.TimeoutSeconds
+- Network.Protocol
+- Kube.Container.StartupProbe.FailureThreshold
+- Kube.ServiceMonitor
+- Kube.PersistentVolumeClaim
+- Kube.ActiveDeadlineSeconds
+- Kube.Ingress.Rule.HttpPath
+- Kube.Selector
+- App.KubeIngressController.Params
+- Kube.Volume.HostPath
+- BuiltinSort.Z3Integer
+- Source.GitRepo
+- Kube.Workload
+- Kube.Container.LivenessProbe.InitialDelaySeconds
+- Kube.StatefulSet
+- Kube.Container.LivenessProbe.PeriodSeconds
+- Kube.Volume.GitRepo
+- Kube.Affinity.NodeAffinity
+- Kube.NetworkPolicy
+- Kube.Secret.Type
+- Kube.Ingress.Tls.SecretName
+- Kube.Volume.Name
+- Kube.Name
+- Kube.Volume.EmptyDir
+- Kube.Container.EnvFromConfigMapRefItem
+- Config.ManifestSet.Instantiation
+- Kube.Completions
+- Common.Boolean
+- Kube.Container.StartupProbe.PeriodSeconds
+- Kube.Volume.PersistentVolumeClaim
+- Container.Image.Name
+- Kube.Annotations
+- Constraint
+- Kube.ConfigMap
+- Config.Value
+- Kube.NamespaceSecrets
+- Kube.Job
+- Helm.Chart.Release.Values
+- Kube.Affinity.NodeAffinityPreferedSchedulingItemPreference
+- Kube.Toleration
+- Kube.Volume.DownwardApi.Item
+- Kube.Parallelism
+- Kube.Node.Capacity
+- App.Redis.ReplicationMode
+- Kube.Volume.Ephemeral
+- Kube.Container
+- Kube.Container.EnvValueFrom
+- Network.Topology.Node.HttpRoute
+- Kube.Container.ImagePullPolicy
+- Kube
+- Kube.Node.AddressItem
+- Kube.Volume.Projected.Source.ConfigMap
+- Kube.Container.ReadinessProbe
+- Kube.Pod.SecurityContext
+- Kube.Affinity.LabelSelector.MatchLabels.Name
+- Kube.Container.EnvVarsConfig
+- Network
+- Kube.Cluster.Type
+- Service.EndpointNestedDatatype
+- Kube.Ingress.Rule.HttpPath.PathType
+- Kube.Node.TaintItem
+- Meta.Modality
+- Kube.Volume.ConfigMap
+- Kube.Container.ReadinessProbe.FailureThreshold
+- Kube.Container.LifecycleHandler
+- Kube.Container.LivenessProbe.TimeoutSeconds
+- Kube.Cluster.EKSInfo
+- Kube.Affinity.NodeAffinityMatchItem
+- App.Redis.Params
+- Any.Integer
+- Kube.Volume.DownwardApi
+- Kube.Deployment
+- App.Redis
+- Kube.ObjectRef
+- App.Nginx.Params
+- Kube.Deployment.Paused
+- Kube.Container.Lifecycle
+- Kube.Affinity.LabelSelectorMatchExpressionItem
+- Kube.Label.Value
+- Kube.Service.ClusterIp
+- Kube.Node.Name
+- Kube.StableNetworkRef
+- Kube.Container.LivenessProbe.SuccessThreshold
+- App.Container.Base
+- Kube.Container.EnvValueFromConfigMapKeyRef
+- Kube.Ingress.Backend.Service
+- Kube.Container.EnvVars
+- Container.Tag.Name
+- Kube.ConfigMap.BinaryData
+- Network.Http.PathPattern
+- Kube.Container.VolumeDeviceItem
+- BuiltinSort.Z3String
+- BuiltinSort.Bool
+- Kube.Namespace
+- Kube.StableNetworkId
+- App.Attribute.Mapping
+- KubeCluster.DomainName
+- Kube.ApiVersion
+- Kube.Ref
+- Kube.Image.Pull.Secret
+- Secret.Store
+- App.KubeIngressController.Type
+- Kube.ConfigMap.Data
+- Kube.Ingress
+- Any.Json
+- Kube.PersistentVolumeClaim.VolumeName
+- Kube.Ingress.Backend
+- Kube.Ingress.Rule.HttpPath.Backend
+- Kube.Container.HttpGetActionHeaderItem
+- Kube.Ingress.Tls
+- Kube.Pod
+- Kube.Container.ReadinessProbe.InitialDelaySeconds
+- Kube.Container.HttpGetAction
+- Kube.Volume.DownwardApi.Item.ResourceFieldRef
+- Network.Port.Number
+- Helm.Template
+- Kube.Kind
+- Kube.Ingress.Class
+- Kube.Container.EnvVarName
+- Kube.Container.LivenessProbe.FailureThreshold
+- Kube.Node
+- Network.Http
+- Kube.Secret.ParsedData
+- Kube.Selector.Name
+- Meta.Term.Key
+- Kube.EphemeralContainer
+- Kube.Label.Name
+- Kube.Container.PortItem
+- Kube.Affinity.PodAffinitySchedulingItemPodAffinityTerm
+- Kube.Deployment.Strategy.Rolling.Update
+- Kube.Affinity
+- Helm.Template.Condition
+- Kube.Secret.Keys
+- Config
+- Kube.Volume.Projected.Source.DownwardApi
+- Kube.PersistentVolumeClaim.Resources
+- Kube.Container.EnvValueFromResourceFieldRef
+- Kube.StatefulSet.Update.Strategy.Rolling.Update
+- Any.String
+- Meta
+- Kube.StatefulSet.Pod.Management.Policy
+- Kube.Affinity.PodAntiAffinity
+- Kube.Container.EnvValueFromFieldRef
+- Kube.PersistentVolumeClaim.ResourcesRequests
+- App.Nginx.Type
+- Kube.Volume.Projected.Source
+- Kube.PersistentVolumeClaim.VolumeMode
+- Kube.Container.SecurityContext
+- Kube.Affinity.NodeAffinityRequiredScheduling
+- Kube.Volume.Projected.Source.Secret
+- Kube.Ingress.DefaultBackend
+- Meta.Term.Component
+- Helm.Chart
+- Kube.Labels
+- App.Base
+- Kube.Deployment.Strategy
+- Kube.Node.Info
+- Network.Topology
+- Config.Name
+- Kube.Container.ImageRef
+- Kube.Ingress.Backend.Resource
+- App.KubeIngressController
+- Kube.Container.ResourcesRequests
+- Container
+- Kube.Volume
+- Kube.Container.EnvValueFromSecretKeyRef
+- TopLevelKubeObj
+- Container.Tag
+- Source
+- Kube.Container.EnvVarConfig
+- Kube.PersistentVolumeClaim.StorageClassName
+- Kube.Container.StartupProbe.TimeoutSeconds
+- Kube.Label
+- Any.Concat
+- Kube.Container.EnvVar
+- Kube.Container.StartupProbe.InitialDelaySeconds
+- Kube.Service.ServicePort.Protocol
+- Kube.Service
+- Network.Address
+- Service.Conn.Name
+- Kube.Service.ServicePort
+- App.Redis.Cluster
+- App.Service.Conn
+- Kube.Container.LivenessProbe
+- App
+- Kube.Ingress.Backend.Service.Port
+- Service
+- App.Service.Endpoint
+- COMMON.NONE
+- Kube.Volume.Projected.Source.ServiceAccountToken
+- Kube.Secret.StringData.Parsed
+- Kube.Container.VolumeMountItem
+- Kube.Secret
+- Kube.Affinity.PodAffinity
+- Kube.Container.ReadinessProbe.PeriodSeconds
+- Kube.Container.ReadinessProbe.SuccessThreshold
+- BuiltinSort.SemanticType
+- Kube.Container.StartupProbe
+- Kube.Restart.Policy
+- Network.Topology.Node
+- Kube.Container.StartupProbe.SuccessThreshold
+- Kube.Container.ExecAction
+- DomainSort
+- KubeCluster
+- App.EnvVar.Name
+- Network.URL
+- Kube.Container.EnvFromSecretRefItem
+- Kube.Replicas
+- App.Type
+- Kube.Service.Account.Name
+- Network.Context
+- Network.Port
+- Kube.InitContainer
+- Kube.Volume.Secret
+- Kube.Configmap.DataValue
+- Kube.Ingress.Backend.Resource.Kind
+- Kube.Ingress.Backend.Resource.ApiGroup
+- Kube.Revision.History.Limit
+- Meta.Term
+- Kube.Min.Ready.Seconds
+- Kube.Container.ResourcesLimits
+- Container.TaggedImage
+- Kube.TtlSecondsAfterFinished
+- Kube.Node.Selector
+- Kube.ConfigMap.Immutable
+- Secret
+- Kube.Volume.ConfigMap.Item
+- Helm
+- Service.Endpoint.Name
+- Kube.Service.Type
+- Kube.Affinity.NodeAffinityRequiredSchedulingNodeSelectorTermsItem
+- Kube.Container.TcpSocketAction
+- Kube.PersistentVolumeClaim.ResourcesLimits
+- Kube.Container.Resources
+- Kube.NamespaceAndName
+- Kube.Progress.Deadline.Seconds
+- App.Nginx
+- App.Params
+- Kube.Volume.Projected
+- Kube.Ingress.Rule
+- Kube.Cluster
+- Kube.Service.ServicePort.Name
+- Kube.Configmap.DataName
+- Kube.ManualSelector
+- Service.Endpoint
+- Kube.Namespace.Ref
+- Network.Http.HostPattern
+- Kube.Affinity.LabelSelector
+- Service.Conn
+- Kube.Container.EnvFromSourceItem
+- Kube.Daemonset
+- Helm.Chart.ValuesFile.RelativePath
+- Kube.Daemonset.Update.Strategy.Rolling.Update
+- Source.FilePath
+- Kube.Secret.DataValue
+- Config.ManifestSet
+- Kube.Secret.Immutable
+Service.Type:
+- redis
+- ingress_controller
+Kube.Ingress.ControllerClass:
+- Debug2
+- Debug1
+Kube.Kind:
+- StatefulSet
+- Secret
+- Deployment
+Kube.NamespaceSecrets:
+- default
+- '|${Config.ManifestSet.Instantiation-0.namespace}|'
+Kube.Secret.Keys:
+- KubernetesParser.Kube.Secret-1/keys
+- KubernetesParser.Kube.Secret-0/keys
+- HelmParser.Kube.Secret-0/keys
+Secret.Store:
+- default
+KubeCluster:
+- KubeCluster-0
+Secret:
+- '|default/member[0]|'
+- '|default/member[1]|'
+- '|default/member[2]|'
+Container.Image:
+- '|docker.io/bitnami/redis:6.2.4-debian-10-r13|'
+- '|getdtk/graph-example2-app:latest|'
+- '|getdtk/graph-example1-app:latest|'
+Kube.Container.EnvVars:
+- KubernetesParser.Kube.Container-0/env_vars
+- KubernetesParser.Kube.Container-1/env_vars
+- HelmParser.Kube.Container-0/env_vars
+- HelmParser.Kube.Container-1/env_vars
+Kube.Workload:
+- HelmParser.Kube.StatefulSet-0
+- KubernetesParser.Kube.Deployment-0
+- KubernetesParser.Kube.Deployment-1
+- HelmParser.Kube.StatefulSet-1
+_meta_attr_fn__secret_value__a__Any.Secret__sort:
+- secret_value
+_meta_attr_fn__stable_network_id_url__a__Any.String__sort:
+- url
+

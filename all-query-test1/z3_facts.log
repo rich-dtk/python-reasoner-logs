@@ -1,0 +1,375 @@
+Or(Not(DISTINCT_CONSTANTS-2),
+   Distinct(release-name-redis-master,
+            release-name-redis,
+            release-name-redis-headless,
+            release-name-redis-replicas,
+            COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-3), Not(default == COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-4),
+   Distinct(app.kubernetes.io/instance,
+            app.kubernetes.io/name,
+            app.kubernetes.io/component,
+            app.kubernetes.io/managed-by,
+            helm.sh/chart))
+
+Or(Not(DISTINCT_CONSTANTS-5),
+   Distinct(replica,
+            COMMON.NONE,
+            no_match_value,
+            master,
+            Helm,
+            release-name,
+            redis,
+            redis-14.4.0))
+
+Or(Not(DISTINCT_CONSTANTS-6),
+   Distinct(KubeParser.Kube.Service-2,
+            KubeParser.Kube.Service-3,
+            KubeParser.Kube.Service-1))
+
+Or(Not(DISTINCT_CONSTANTS-7), Not(6379 == COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-8), Not(Debug2 == Debug1))
+
+Or(Not(DISTINCT_CONSTANTS-9),
+   Not(ingress_controller == redis))
+
+Or(Not(DISTINCT_CONSTANTS-10),
+   Distinct(replica,
+            redis-14.4.0,
+            no_match_value,
+            master,
+            Helm,
+            release-name,
+            redis,
+            COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-11), Not(* == COMMON.NONE))
+
+Or(Not(DISTINCT_CONSTANTS-12),
+   Distinct(scp, udp, http, https, tcp))
+
+Or(Not(DISTINCT_CONSTANTS-13),
+   Distinct(StatefulSet, Secret, Deployment))
+
+Or(Not(DISTINCT_CONSTANTS-14),
+   Distinct(replica,
+            redis-14.4.0,
+            no_match_value,
+            master,
+            Helm,
+            release-name,
+            redis,
+            COMMON.NONE))
+
+Or(Not(BASE_FACT-2),
+   labels(KubeParser.Kube.Secret-1) ==
+   Reasoner.Kube.Labels-1)
+
+Or(Not(BASE_FACT-3),
+   value(Reasoner.Kube.Labels-1, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-4),
+   value(Reasoner.Kube.Labels-1, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-5),
+   value(Reasoner.Kube.Labels-1, app.kubernetes.io/instance) ==
+   release-name)
+
+Or(Not(BASE_FACT-6),
+   value(Reasoner.Kube.Labels-1,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-7),
+   has_key(Reasoner.Kube.Labels-1, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-8),
+   has_key(Reasoner.Kube.Labels-1, helm.sh/chart))
+
+Or(Not(BASE_FACT-9),
+   has_key(Reasoner.Kube.Labels-1,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-10),
+   has_key(Reasoner.Kube.Labels-1,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-11),
+   labels(KubeParser.Kube.Service-1) ==
+   Reasoner.Kube.Labels-2)
+
+Or(Not(BASE_FACT-12),
+   value(Reasoner.Kube.Labels-2, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-13),
+   value(Reasoner.Kube.Labels-2, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-14),
+   value(Reasoner.Kube.Labels-2, app.kubernetes.io/instance) ==
+   release-name)
+
+Or(Not(BASE_FACT-15),
+   value(Reasoner.Kube.Labels-2,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-16),
+   has_key(Reasoner.Kube.Labels-2, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-17),
+   has_key(Reasoner.Kube.Labels-2, helm.sh/chart))
+
+Or(Not(BASE_FACT-18),
+   has_key(Reasoner.Kube.Labels-2,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-19),
+   has_key(Reasoner.Kube.Labels-2,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-20),
+   ports(KubeParser.Kube.Service-1,
+         KubeParser.Kube.Service.ServicePort-1))
+
+Or(Not(BASE_FACT-21),
+   labels(KubeParser.Kube.Service-2) ==
+   Reasoner.Kube.Labels-3)
+
+Or(Not(BASE_FACT-22),
+   value(Reasoner.Kube.Labels-3, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-23),
+   value(Reasoner.Kube.Labels-3, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-24),
+   value(Reasoner.Kube.Labels-3, app.kubernetes.io/instance) ==
+   release-name)
+
+Or(Not(BASE_FACT-25),
+   value(Reasoner.Kube.Labels-3,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-26),
+   value(Reasoner.Kube.Labels-3,
+         app.kubernetes.io/component) ==
+   master)
+
+Or(Not(BASE_FACT-27),
+   has_key(Reasoner.Kube.Labels-3, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-28),
+   has_key(Reasoner.Kube.Labels-3, helm.sh/chart))
+
+Or(Not(BASE_FACT-29),
+   has_key(Reasoner.Kube.Labels-3,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-30),
+   has_key(Reasoner.Kube.Labels-3,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-31),
+   has_key(Reasoner.Kube.Labels-3,
+           app.kubernetes.io/component))
+
+Or(Not(BASE_FACT-32),
+   ports(KubeParser.Kube.Service-2,
+         KubeParser.Kube.Service.ServicePort-2))
+
+Or(Not(BASE_FACT-33),
+   labels(KubeParser.Kube.Service-3) ==
+   Reasoner.Kube.Labels-4)
+
+Or(Not(BASE_FACT-34),
+   value(Reasoner.Kube.Labels-4, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-35),
+   value(Reasoner.Kube.Labels-4, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-36),
+   value(Reasoner.Kube.Labels-4, app.kubernetes.io/instance) ==
+   release-name)
+
+Or(Not(BASE_FACT-37),
+   value(Reasoner.Kube.Labels-4,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-38),
+   value(Reasoner.Kube.Labels-4,
+         app.kubernetes.io/component) ==
+   replica)
+
+Or(Not(BASE_FACT-39),
+   has_key(Reasoner.Kube.Labels-4, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-40),
+   has_key(Reasoner.Kube.Labels-4, helm.sh/chart))
+
+Or(Not(BASE_FACT-41),
+   has_key(Reasoner.Kube.Labels-4,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-42),
+   has_key(Reasoner.Kube.Labels-4,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-43),
+   has_key(Reasoner.Kube.Labels-4,
+           app.kubernetes.io/component))
+
+Or(Not(BASE_FACT-44),
+   ports(KubeParser.Kube.Service-3,
+         KubeParser.Kube.Service.ServicePort-3))
+
+Or(Not(BASE_FACT-45),
+   labels(KubeParser.Kube.StatefulSet-1) ==
+   Reasoner.Kube.Labels-5)
+
+Or(Not(BASE_FACT-46),
+   value(Reasoner.Kube.Labels-5, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-47),
+   value(Reasoner.Kube.Labels-5, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-48),
+   value(Reasoner.Kube.Labels-5, app.kubernetes.io/instance) ==
+   release-name)
+
+Or(Not(BASE_FACT-49),
+   value(Reasoner.Kube.Labels-5,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-50),
+   value(Reasoner.Kube.Labels-5,
+         app.kubernetes.io/component) ==
+   master)
+
+Or(Not(BASE_FACT-51),
+   has_key(Reasoner.Kube.Labels-5, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-52),
+   has_key(Reasoner.Kube.Labels-5, helm.sh/chart))
+
+Or(Not(BASE_FACT-53),
+   has_key(Reasoner.Kube.Labels-5,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-54),
+   has_key(Reasoner.Kube.Labels-5,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-55),
+   has_key(Reasoner.Kube.Labels-5,
+           app.kubernetes.io/component))
+
+Or(Not(BASE_FACT-56),
+   labels(KubeParser.Kube.StatefulSet-2) ==
+   Reasoner.Kube.Labels-6)
+
+Or(Not(BASE_FACT-57),
+   value(Reasoner.Kube.Labels-6, app.kubernetes.io/name) ==
+   redis)
+
+Or(Not(BASE_FACT-58),
+   value(Reasoner.Kube.Labels-6, helm.sh/chart) ==
+   redis-14.4.0)
+
+Or(Not(BASE_FACT-59),
+   value(Reasoner.Kube.Labels-6, app.kubernetes.io/instance) ==
+   release-name)
+
+Or(Not(BASE_FACT-60),
+   value(Reasoner.Kube.Labels-6,
+         app.kubernetes.io/managed-by) ==
+   Helm)
+
+Or(Not(BASE_FACT-61),
+   value(Reasoner.Kube.Labels-6,
+         app.kubernetes.io/component) ==
+   replica)
+
+Or(Not(BASE_FACT-62),
+   has_key(Reasoner.Kube.Labels-6, app.kubernetes.io/name))
+
+Or(Not(BASE_FACT-63),
+   has_key(Reasoner.Kube.Labels-6, helm.sh/chart))
+
+Or(Not(BASE_FACT-64),
+   has_key(Reasoner.Kube.Labels-6,
+           app.kubernetes.io/instance))
+
+Or(Not(BASE_FACT-65),
+   has_key(Reasoner.Kube.Labels-6,
+           app.kubernetes.io/managed-by))
+
+Or(Not(BASE_FACT-66),
+   has_key(Reasoner.Kube.Labels-6,
+           app.kubernetes.io/component))
+
+Or(Not(STRUCT_FACT-2),
+   name(KubeParser.Kube.Secret-1) == release-name-redis)
+
+Or(Not(STRUCT_FACT-3),
+   namespace(KubeParser.Kube.Secret-1) == default)
+
+Or(Not(STRUCT_FACT-4),
+   name(KubeParser.Kube.Service-1) ==
+   release-name-redis-headless)
+
+Or(Not(STRUCT_FACT-5),
+   namespace(KubeParser.Kube.Service-1) == default)
+
+Or(Not(STRUCT_FACT-6),
+   port(KubeParser.Kube.Service.ServicePort-1) == 6379)
+
+Or(Not(STRUCT_FACT-7),
+   name(KubeParser.Kube.Service-2) ==
+   release-name-redis-master)
+
+Or(Not(STRUCT_FACT-8),
+   namespace(KubeParser.Kube.Service-2) == default)
+
+Or(Not(STRUCT_FACT-9),
+   port(KubeParser.Kube.Service.ServicePort-2) == 6379)
+
+Or(Not(STRUCT_FACT-10),
+   name(KubeParser.Kube.Service-3) ==
+   release-name-redis-replicas)
+
+Or(Not(STRUCT_FACT-11),
+   namespace(KubeParser.Kube.Service-3) == default)
+
+Or(Not(STRUCT_FACT-12),
+   port(KubeParser.Kube.Service.ServicePort-3) == 6379)
+
+Or(Not(STRUCT_FACT-13),
+   name(KubeParser.Kube.StatefulSet-1) ==
+   release-name-redis-master)
+
+Or(Not(STRUCT_FACT-14),
+   namespace(KubeParser.Kube.StatefulSet-1) == default)
+
+Or(Not(STRUCT_FACT-15),
+   name(KubeParser.Kube.StatefulSet-2) ==
+   release-name-redis-replicas)
+
+Or(Not(STRUCT_FACT-16),
+   namespace(KubeParser.Kube.StatefulSet-2) == default)
+
+

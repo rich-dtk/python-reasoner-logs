@@ -1,0 +1,409 @@
+[
+  {
+    "logical_id": "Source.Reasoner-0",
+    "type": "Source.Reasoner",
+    "fqdn": null,
+    "top_component_ref": null
+  },
+  {
+    "logical_id": "docker.io/bitnami/redis:6.2.4-debian-10-r13",
+    "type": "Container.Image",
+    "fqdn": null,
+    "top_component_ref": {
+      "resource_type": "reasoner",
+      "sort_name": "Container.Image",
+      "logical_id": "docker.io/bitnami/redis:6.2.4-debian-10-r13"
+    }
+  },
+  {
+    "logical_id": "getdtk/graph-example2-app:latest",
+    "type": "Container.Image",
+    "fqdn": null,
+    "top_component_ref": {
+      "resource_type": "reasoner",
+      "sort_name": "Container.Image",
+      "logical_id": "getdtk/graph-example2-app:latest"
+    }
+  },
+  {
+    "logical_id": "getdtk/graph-example1-app:latest",
+    "type": "Container.Image",
+    "fqdn": null,
+    "top_component_ref": {
+      "resource_type": "reasoner",
+      "sort_name": "Container.Image",
+      "logical_id": "getdtk/graph-example1-app:latest"
+    }
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Deployment-0",
+    "type": "Kube.Deployment",
+    "fqdn": null,
+    "top_component_ref": null,
+    "components": {
+      "template": [
+        {
+          "logical_id": "KubernetesParser.Kube.Pod.Template-0",
+          "type": "Kube.Pod.Template",
+          "fqdn": null,
+          "top_component_ref": null,
+          "components": {
+            "containers": [
+              {
+                "logical_id": "KubernetesParser.Kube.Container-0",
+                "type": "Kube.Container",
+                "fqdn": null,
+                "top_component_ref": null,
+                "components": {
+                  "env_vars": [
+                    {
+                      "logical_id": "KubernetesParser.Kube.Container-0/env_vars",
+                      "type": "Kube.Container.EnvVars",
+                      "fqdn": {
+                        "internal_path": "template/containers/env_vars",
+                        "external_path": "template/containers/env_vars"
+                      },
+                      "top_component_ref": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Deployment-1",
+    "type": "Kube.Deployment",
+    "fqdn": null,
+    "top_component_ref": null,
+    "components": {
+      "template": [
+        {
+          "logical_id": "KubernetesParser.Kube.Pod.Template-1",
+          "type": "Kube.Pod.Template",
+          "fqdn": null,
+          "top_component_ref": null,
+          "components": {
+            "containers": [
+              {
+                "logical_id": "KubernetesParser.Kube.Container-1",
+                "type": "Kube.Container",
+                "fqdn": null,
+                "top_component_ref": null,
+                "components": {
+                  "env_vars": [
+                    {
+                      "logical_id": "KubernetesParser.Kube.Container-1/env_vars",
+                      "type": "Kube.Container.EnvVars",
+                      "fqdn": {
+                        "internal_path": "template/containers/env_vars",
+                        "external_path": "template/containers/env_vars"
+                      },
+                      "top_component_ref": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "logical_id": "HelmParser.Kube.StatefulSet-0",
+    "type": "Kube.StatefulSet",
+    "fqdn": null,
+    "top_component_ref": null,
+    "components": {
+      "template": [
+        {
+          "logical_id": "HelmParser.Kube.Pod.Template-0",
+          "type": "Kube.Pod.Template",
+          "fqdn": null,
+          "top_component_ref": null,
+          "components": {
+            "containers": [
+              {
+                "logical_id": "HelmParser.Kube.Container-0",
+                "type": "Kube.Container",
+                "fqdn": null,
+                "top_component_ref": null,
+                "components": {
+                  "env_vars": [
+                    {
+                      "logical_id": "HelmParser.Kube.Container-0/env_vars",
+                      "type": "Kube.Container.EnvVars",
+                      "fqdn": {
+                        "internal_path": "template/containers/env_vars",
+                        "external_path": "template/containers/env_vars"
+                      },
+                      "top_component_ref": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "logical_id": "HelmParser.Kube.StatefulSet-1",
+    "type": "Kube.StatefulSet",
+    "fqdn": null,
+    "top_component_ref": null,
+    "components": {
+      "template": [
+        {
+          "logical_id": "HelmParser.Kube.Pod.Template-1",
+          "type": "Kube.Pod.Template",
+          "fqdn": null,
+          "top_component_ref": null,
+          "components": {
+            "containers": [
+              {
+                "logical_id": "HelmParser.Kube.Container-1",
+                "type": "Kube.Container",
+                "fqdn": null,
+                "top_component_ref": null,
+                "components": {
+                  "env_vars": [
+                    {
+                      "logical_id": "HelmParser.Kube.Container-1/env_vars",
+                      "type": "Kube.Container.EnvVars",
+                      "fqdn": {
+                        "internal_path": "template/containers/env_vars",
+                        "external_path": "template/containers/env_vars"
+                      },
+                      "top_component_ref": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Ingress-2",
+    "type": "Kube.Ingress",
+    "fqdn": null,
+    "top_component_ref": null,
+    "components": {
+      "default_backend": [
+        {
+          "logical_id": "KubernetesParser.Kube.Ingress-2/default_backend",
+          "type": "Kube.Ingress.DefaultBackend",
+          "fqdn": {
+            "internal_path": "default_backend",
+            "external_path": "default_backend"
+          },
+          "top_component_ref": null
+        }
+      ]
+    }
+  },
+  {
+    "logical_id": "ShadowIngressClass",
+    "type": "Kube.Ingress.Class",
+    "fqdn": null,
+    "top_component_ref": {
+      "resource_type": "reasoner",
+      "sort_name": "Kube.Ingress.Class",
+      "logical_id": "ShadowIngressClass"
+    }
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service",
+    "type": "Kube.Service",
+    "fqdn": null,
+    "top_component_ref": {
+      "resource_type": "reasoner",
+      "sort_name": "Kube.Service",
+      "logical_id": "KubernetesParser.Kube.Ingress.DefaultBackend-1/kube_service"
+    }
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service",
+    "type": "Kube.Service",
+    "fqdn": null,
+    "top_component_ref": {
+      "resource_type": "reasoner",
+      "sort_name": "Kube.Service",
+      "logical_id": "KubernetesParser.Kube.Ingress.DefaultBackend-0/kube_service"
+    }
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Ingress-2/default_backend/kube_service",
+    "type": "Kube.Service",
+    "fqdn": null,
+    "top_component_ref": {
+      "resource_type": "reasoner",
+      "sort_name": "Kube.Service",
+      "logical_id": "KubernetesParser.Kube.Ingress-2/default_backend/kube_service"
+    }
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service",
+    "type": "Kube.Service",
+    "fqdn": null,
+    "top_component_ref": {
+      "resource_type": "reasoner",
+      "sort_name": "Kube.Service",
+      "logical_id": "KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-1/kube_service"
+    }
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3/kube_service",
+    "type": "Kube.Service",
+    "fqdn": null,
+    "top_component_ref": {
+      "resource_type": "reasoner",
+      "sort_name": "Kube.Service",
+      "logical_id": "KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-3/kube_service"
+    }
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service",
+    "type": "Kube.Service",
+    "fqdn": null,
+    "top_component_ref": {
+      "resource_type": "reasoner",
+      "sort_name": "Kube.Service",
+      "logical_id": "KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-0/kube_service"
+    }
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2/kube_service",
+    "type": "Kube.Service",
+    "fqdn": null,
+    "top_component_ref": {
+      "resource_type": "reasoner",
+      "sort_name": "Kube.Service",
+      "logical_id": "KubernetesParser.Kube.Ingress.Rule.HttpPath.Backend-2/kube_service"
+    }
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Ingress-0",
+    "type": "Kube.Ingress",
+    "fqdn": null,
+    "top_component_ref": null,
+    "components": {
+      "default_backend": [
+        {
+          "logical_id": "KubernetesParser.Kube.Ingress.DefaultBackend-0",
+          "type": "Kube.Ingress.DefaultBackend",
+          "fqdn": {
+            "internal_path": "default_backend",
+            "external_path": "default_backend"
+          },
+          "top_component_ref": null
+        }
+      ]
+    }
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Ingress-1",
+    "type": "Kube.Ingress",
+    "fqdn": null,
+    "top_component_ref": null,
+    "components": {
+      "default_backend": [
+        {
+          "logical_id": "KubernetesParser.Kube.Ingress.DefaultBackend-1",
+          "type": "Kube.Ingress.DefaultBackend",
+          "fqdn": {
+            "internal_path": "default_backend",
+            "external_path": "default_backend"
+          },
+          "top_component_ref": null
+        }
+      ]
+    }
+  },
+  {
+    "logical_id": "HelmParser.Kube.Service-0",
+    "type": "Kube.Service",
+    "attributes": {
+      "name": {
+        "value": "redis-headless",
+        "attribute_links": null,
+        "type": "Kube.Name"
+      }
+    },
+    "fqdn": null,
+    "top_component_ref": null
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Service-1",
+    "type": "Kube.Service",
+    "attributes": {
+      "name": {
+        "value": "node-app1-svc",
+        "attribute_links": null,
+        "type": "Kube.Name"
+      }
+    },
+    "fqdn": null,
+    "top_component_ref": null
+  },
+  {
+    "logical_id": "KubernetesParser.Kube.Service-0",
+    "type": "Kube.Service",
+    "attributes": {
+      "name": {
+        "value": "node-app2-svc",
+        "attribute_links": null,
+        "type": "Kube.Name"
+      }
+    },
+    "fqdn": null,
+    "top_component_ref": null
+  },
+  {
+    "logical_id": "HelmParser.Kube.Service-1",
+    "type": "Kube.Service",
+    "attributes": {
+      "name": {
+        "value": "redis-master",
+        "attribute_links": null,
+        "type": "Kube.Name"
+      }
+    },
+    "fqdn": null,
+    "top_component_ref": null
+  },
+  {
+    "logical_id": "HelmParser.Kube.Service-2",
+    "type": "Kube.Service",
+    "attributes": {
+      "name": {
+        "value": "redis-replicas",
+        "attribute_links": null,
+        "type": "Kube.Name"
+      }
+    },
+    "fqdn": null,
+    "top_component_ref": null
+  },
+  {
+    "logical_id": "Config.ManifestSet.Instantiation-0",
+    "type": "Config.ManifestSet.Instantiation",
+    "attributes": {
+      "namespace": {
+        "value": null,
+        "attribute_links": null,
+        "type": "Kube.Namespace"
+      }
+    },
+    "fqdn": null,
+    "top_component_ref": null
+  }
+]

@@ -1,0 +1,243 @@
+type: Kube.Secret
+logical_id: KubeParser.Kube.Secret-1
+attributes:
+  kind:
+    value: Secret
+    type: Kube.Kind
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/managed-by: Helm
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: release-name-redis
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-1
+
+---
+type: Kube.Service
+logical_id: KubeParser.Kube.Service-1
+attributes:
+  kind:
+    value: Service
+    type: Kube.Kind
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/managed-by: Helm
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: release-name-redis-headless
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  selector:
+    value:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: release-name
+    type:
+      Kube.Selectors:
+        map:
+        - Kube.Selector.Name
+        - Kube.Selector.Value
+components:
+  ports:
+  - type: Kube.Service.ServicePort
+    logical_id: KubeParser.Kube.Service.ServicePort-1
+    attributes:
+      port:
+        value: 6379
+        type: Network.Port.Number
+    links: {}
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-1
+
+---
+type: Kube.Service
+logical_id: KubeParser.Kube.Service-2
+attributes:
+  kind:
+    value: Service
+    type: Kube.Kind
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/component: master
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: release-name-redis-master
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  selector:
+    value:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/component: master
+    type:
+      Kube.Selectors:
+        map:
+        - Kube.Selector.Name
+        - Kube.Selector.Value
+components:
+  ports:
+  - type: Kube.Service.ServicePort
+    logical_id: KubeParser.Kube.Service.ServicePort-2
+    attributes:
+      port:
+        value: 6379
+        type: Network.Port.Number
+    links: {}
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-1
+
+---
+type: Kube.Service
+logical_id: KubeParser.Kube.Service-3
+attributes:
+  kind:
+    value: Service
+    type: Kube.Kind
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/component: replica
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: release-name-redis-replicas
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  selector:
+    value:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/component: replica
+    type:
+      Kube.Selectors:
+        map:
+        - Kube.Selector.Name
+        - Kube.Selector.Value
+components:
+  ports:
+  - type: Kube.Service.ServicePort
+    logical_id: KubeParser.Kube.Service.ServicePort-3
+    attributes:
+      port:
+        value: 6379
+        type: Network.Port.Number
+    links: {}
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-1
+
+---
+type: Kube.StatefulSet
+logical_id: KubeParser.Kube.StatefulSet-1
+attributes:
+  kind:
+    value: StatefulSet
+    type: Kube.Kind
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/component: master
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: release-name-redis-master
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-1
+
+---
+type: Kube.StatefulSet
+logical_id: KubeParser.Kube.StatefulSet-2
+attributes:
+  kind:
+    value: StatefulSet
+    type: Kube.Kind
+  labels:
+    value:
+      app.kubernetes.io/name: redis
+      helm.sh/chart: redis-14.4.0
+      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/component: replica
+    type:
+      Kube.Labels:
+        map:
+        - Config.Name
+        - Config.Value
+  name:
+    value: release-name-redis-replicas
+    type: Kube.Name
+  namespace:
+    value: default
+    type: Kube.Namespace
+  replicas:
+    value: 3
+    type: integer
+links:
+  _source:
+    endpoint_type: Source.FilePath
+    endpoints:
+    - Source.FilePath-1
+
+---
